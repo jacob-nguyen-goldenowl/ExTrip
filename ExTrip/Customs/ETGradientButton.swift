@@ -84,10 +84,11 @@ final class ETGradientButton: UIButton {
         setTitle(titleUpcase, for: .normal)
         titleLabel?.font = UIFont.poppins(style: .regular)
         cornerRadius = 20
-        self.titleColor = UIColor.theme.white ?? .white
+        self.titleColor = UIColor.theme.black ?? .black
         switch style {
             case .small: 
                 setTitle(title.rawValue, for: .normal)
+                self.backgroundColor = nil
                 titleLabel?.font = UIFont.poppins(style: .regular)
             case .nomal:
                 setTitle(title.rawValue, for: .normal)
