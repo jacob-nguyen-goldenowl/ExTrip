@@ -20,9 +20,10 @@ struct colorTheme {
     let violet = UIColor(named: "violet")
     let yellow = UIColor(named: "yellow")
     let pink = UIColor(named: "pink")
+    let orange = UIColor(named: "orange")
+    let serenade = UIColor(named: "serenade")
     let lightGray = UIColor(named: "lightGray")
     let lightBlue = UIColor(named: "lightBlue")
     let lightRed = UIColor(named: "lightRed")
-    let orange = UIColor(named: "orange")
-    let serenade = UIColor(named: "serenade")
+    let lightGreen = UIColor(named: "lightGreen")
 }
