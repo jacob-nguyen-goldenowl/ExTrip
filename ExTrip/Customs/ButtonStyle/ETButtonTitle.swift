@@ -8,8 +8,8 @@
 import Foundation
 
 enum ETButtonTitle: String {
-    case signIn = "sign in"
-    case signUp = "sign up"
+    case signIn = "Sign in"
+    case signUp = "Sign up"
     case start = "get start"
     case skip = "Skip For Now"
     case searchHotel = "search hotels"

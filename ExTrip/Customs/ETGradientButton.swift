@@ -8,9 +8,10 @@
 import UIKit
 
 final class ETGradientButton: UIButton {
-    
+        
+    // MARK: - Properties
     let gradientLayer = CAGradientLayer()
-    
+
     var cornerRadius: CGFloat = 0.0 {
         didSet {
             self.layer.cornerRadius = cornerRadius
@@ -36,8 +37,9 @@ final class ETGradientButton: UIButton {
         }
     }
 
+    // MARK: - Initialization 
     required init(title: ETButtonTitle,
-                  style: ETButtonStyle,
+                  style: ETButtonType,
                   backgroundColor: UIColor? = nil,
                   titleColor: UIColor? = nil
     ) {   
@@ -52,6 +54,7 @@ final class ETGradientButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Set gradient for button
     private func setGradient(topColor: UIColor?, bottomColor: UIColor?) {
         if let topColor = topColor,
            let bottomColor = bottomColor {
@@ -71,8 +74,9 @@ final class ETGradientButton: UIButton {
         gradientLayer.frame = bounds
     }
     
+    // MARK: - Setup style for button 
     private func setupStyleButton(title: ETButtonTitle,
-                                  style: ETButtonStyle,
+                                  style: ETButtonType,
                                   backgroundColor: UIColor?,
                                   titleColor: UIColor?
     ) {

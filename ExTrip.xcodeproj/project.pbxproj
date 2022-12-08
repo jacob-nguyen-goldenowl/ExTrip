@@ -36,7 +36,7 @@
 		04BF56722941BC8700BCF4A5 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56712941BC8700BCF4A5 /* UIStackView+Extension.swift */; };
 		04BF56752941D66400BCF4A5 /* ETGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56742941D66400BCF4A5 /* ETGradientButton.swift */; };
 		04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56762941D86B00BCF4A5 /* ETButtonTitle.swift */; };
-		04BF567A2941DB5400BCF4A5 /* ETButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56792941DB5400BCF4A5 /* ETButtonStyle.swift */; };
+		04BF567A2941DB5400BCF4A5 /* ETButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56792941DB5400BCF4A5 /* ETButtonType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +71,7 @@
 		04BF56712941BC8700BCF4A5 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		04BF56742941D66400BCF4A5 /* ETGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETGradientButton.swift; sourceTree = "<group>"; };
 		04BF56762941D86B00BCF4A5 /* ETButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETButtonTitle.swift; sourceTree = "<group>"; };
-		04BF56792941DB5400BCF4A5 /* ETButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETButtonStyle.swift; sourceTree = "<group>"; };
+		04BF56792941DB5400BCF4A5 /* ETButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETButtonType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				04BF56762941D86B00BCF4A5 /* ETButtonTitle.swift */,
-				04BF56792941DB5400BCF4A5 /* ETButtonStyle.swift */,
+				04BF56792941DB5400BCF4A5 /* ETButtonType.swift */,
 			);
 			path = ButtonStyle;
 			sourceTree = "<group>";
@@ -289,7 +289,7 @@
 				04BF566B2941A30400BCF4A5 /* Theme.swift in Sources */,
 				04BF56752941D66400BCF4A5 /* ETGradientButton.swift in Sources */,
 				04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */,
-				04BF567A2941DB5400BCF4A5 /* ETButtonStyle.swift in Sources */,
+				04BF567A2941DB5400BCF4A5 /* ETButtonType.swift in Sources */,
 				04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */,
 				04BF566E2941A65500BCF4A5 /* UIFont+Extension.swift in Sources */,
 				04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */,

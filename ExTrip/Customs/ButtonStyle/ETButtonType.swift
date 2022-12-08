@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ETButtonStyle {
+enum ETButtonType {
     case small
     case nomal
     case mysticBlue
