@@ -43,7 +43,6 @@ class OnboardingViewController: UIViewController {
         pageControl.numberOfPages = 4
         pageControl.page = 0
         pageControl.pageIndicatorTintColor = UIColor.theme.gray
-//        pageControl.currentPageIndicatorTintColor = UIColor.theme
         return pageControl
     }()
     
@@ -106,7 +105,6 @@ class OnboardingViewController: UIViewController {
                             leading: view.leadingAnchor,
                             trailing: view.trailingAnchor,
                             paddingBottom: 20)
-        
     }
     
     private func updateActionButton(_ bool: Bool) {

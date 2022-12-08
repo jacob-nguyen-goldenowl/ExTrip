@@ -83,6 +83,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     
     private func setupConstaintSubView() {
         let padding: CGFloat = 12
+        
         containerView.anchor(top: safeAreaLayoutGuide.topAnchor,
                              bottom: safeAreaLayoutGuide.bottomAnchor,
                              leading: leadingAnchor,
@@ -96,7 +97,12 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
                                leading: leadingAnchor,
                                trailing: trailingAnchor)
         
-        tripLabel.anchor(top: containerView.topAnchor, bottom: wrapContentView.topAnchor, leading: containerView.leadingAnchor, trailing: containerView.trailingAnchor, paddingTop: 100,paddingBottom: 100)
+        tripLabel.anchor(top: containerView.topAnchor,
+                         bottom: wrapContentView.topAnchor,
+                         leading: containerView.leadingAnchor,
+                         trailing: containerView.trailingAnchor,
+                         paddingTop: 100,
+                         paddingBottom: 100)
         
         wrapContentView.anchor(bottom: containerView.bottomAnchor,
                                leading: containerView.leadingAnchor,
