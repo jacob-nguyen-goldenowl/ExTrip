@@ -8,12 +8,15 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private lazy var button = ETGradientButton(title: .signIn, style: .dreamyPurple)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        view.addSubview(button)
+        button.frame = CGRect(x: 50, y: 100, width: view.frame.width - 100, height: 50)
     }
-
 
 }
 
