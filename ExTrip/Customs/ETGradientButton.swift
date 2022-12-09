@@ -41,8 +41,8 @@ final class ETGradientButton: UIButton {
     required init(title: ETButtonTitle,
                   style: ETButtonType,
                   backgroundColor: UIColor? = nil,
-                  titleColor: UIColor? = nil
-    ) {   
+                  titleColor: UIColor? = nil) {  
+        
         super.init(frame: .zero)
         setupStyleButton(title: title,
                          style: style,
@@ -78,13 +78,14 @@ final class ETGradientButton: UIButton {
     private func setupStyleButton(title: ETButtonTitle,
                                   style: ETButtonType,
                                   backgroundColor: UIColor?,
-                                  titleColor: UIColor?
-    ) {
+                                  titleColor: UIColor?) {
         let titleUpcase = title.rawValue.uppercased()
+        
         setTitle(titleUpcase, for: .normal)
         titleLabel?.font = UIFont.poppins(style: .regular)
-        cornerRadius = 20
         self.titleColor = UIColor.theme.black ?? .black
+        cornerRadius = 20
+
         switch style {
             case .small: 
                 setTitle(title.rawValue, for: .normal)
