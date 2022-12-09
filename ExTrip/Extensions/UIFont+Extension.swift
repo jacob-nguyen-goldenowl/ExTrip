@@ -36,12 +36,10 @@ extension UIFont {
         
         func getFontSize() -> CGFloat {
             switch self {
-                case .light, .regular: 
+                case .light, .regular, .thin: 
                     return 13
                 case .medium: 
                     return 16.0
-                case .thin:
-                    return 13.0
                 case .bold:
                     return 22.0
                 case .extra:
