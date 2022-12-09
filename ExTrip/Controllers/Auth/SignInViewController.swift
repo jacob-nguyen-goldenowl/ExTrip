@@ -13,15 +13,15 @@ class SignInViewController: UIViewController {
     private let verticalStackView = UIStackView()
     private let signUpStackView = UIStackView()
 
-    private lazy var emailTextField: HCTextField = {
-        let textField = HCTextField(type: .email)
+    private lazy var emailTextField: ETTextField = {
+        let textField = ETTextField(type: .email)
         textField.topPlaceholderText = "Your Email / Username"
         textField.placeholder = "Email or Username"
         return textField
     }()
     
-    private lazy var passwordTextField: HCTextField = {
-        let textField = HCTextField(type: .password)
+    private lazy var passwordTextField: ETTextField = {
+        let textField = ETTextField(type: .password)
         textField.topPlaceholderText = "Password"
         textField.placeholder = "Password"
         return textField

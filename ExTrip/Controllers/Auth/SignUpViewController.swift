@@ -13,43 +13,43 @@ class SignUpViewController: UIViewController {
     private var inputTextStackView = UIStackView()
     private var horizontalStackView = UIStackView()
     
-    private lazy var userNameTextField: HCTextField = {
-        let textField = HCTextField(type: .nomal)
+    private lazy var userNameTextField: ETTextField = {
+        let textField = ETTextField(type: .nomal)
         textField.placeholder = "Enter full name"
         return textField
     }()
     
-    private lazy var stateTextField: HCTextField = {
-        let textFiled = HCTextField(type: .nomal)
+    private lazy var stateTextField: ETTextField = {
+        let textFiled = ETTextField(type: .nomal)
         textFiled.placeholder = "State*"
         textFiled.textChangeColor = "*"
         return textFiled
     }()
     
-    private lazy var cityTextField: HCTextField = {
-        let textFiled = HCTextField(type: .nomal)
+    private lazy var cityTextField: ETTextField = {
+        let textFiled = ETTextField(type: .nomal)
         textFiled.placeholder = "City*"
         textFiled.textChangeColor = "*"
         return textFiled
     }()
     
-    private lazy var emailTextField: HCTextField = {
-        let textFiled = HCTextField(type: .nomal)
+    private lazy var emailTextField: ETTextField = {
+        let textFiled = ETTextField(type: .nomal)
         textFiled.placeholder = "Enter Email ID*"
         textFiled.textChangeColor = "*"
         return textFiled
     }()
     
-    private lazy var specialisationTextField: HCTextField = {
-        let textFiled = HCTextField(type: .nomal)
+    private lazy var specialisationTextField: ETTextField = {
+        let textFiled = ETTextField(type: .nomal)
         textFiled.placeholder = "Phone number*"
         textFiled.keyboardType = .decimalPad
         textFiled.textChangeColor = "*"
         return textFiled
     }()
     
-    private lazy var passwordTextField: HCTextField = {
-        let textField = HCTextField(type: .nomal)
+    private lazy var passwordTextField: ETTextField = {
+        let textField = ETTextField(type: .nomal)
         textField.placeholder = "Password*"
         textField.textChangeColor = "*"
         return textField
