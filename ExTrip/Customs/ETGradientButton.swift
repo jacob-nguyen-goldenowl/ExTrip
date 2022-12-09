@@ -92,6 +92,7 @@ final class ETGradientButton: UIButton {
                 self.backgroundColor = nil
                 titleLabel?.font = UIFont.poppins(style: .regular)
             case .nomal:
+                cornerRadius = 10
                 setTitle(title.rawValue, for: .normal)
                 self.backgroundColor = backgroundColor ?? .white
                 self.titleColor = titleColor ?? .black
