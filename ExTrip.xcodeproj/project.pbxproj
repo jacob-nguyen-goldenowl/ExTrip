@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562D294193B200BCF4A5 /* AppDelegate.swift */; };
 		04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562F294193B200BCF4A5 /* SceneDelegate.swift */; };
-		04BF5632294193B200BCF4A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF5631294193B200BCF4A5 /* ViewController.swift */; };
 		04BF5637294193B300BCF4A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BF5636294193B300BCF4A5 /* Assets.xcassets */; };
 		04BF563A294193B300BCF4A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BF5638294193B300BCF4A5 /* LaunchScreen.storyboard */; };
 		04BF56582941A2EF00BCF4A5 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04BF56462941A2EF00BCF4A5 /* Poppins-ExtraLight.ttf */; };
@@ -40,13 +39,13 @@
 		04BF567E2941E9F000BCF4A5 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF567D2941E9F000BCF4A5 /* OnboardingViewController.swift */; };
 		04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */; };
 		04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */; };
+		04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56872942438B00BCF4A5 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04BF562A294193B200BCF4A5 /* ExTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BF562D294193B200BCF4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04BF562F294193B200BCF4A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		04BF5631294193B200BCF4A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04BF5636294193B300BCF4A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04BF5639294193B300BCF4A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04BF563B294193B300BCF4A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		04BF567D2941E9F000BCF4A5 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		04BF56872942438B00BCF4A5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,12 +110,12 @@
 		04BF562C294193B200BCF4A5 /* ExTrip */ = {
 			isa = PBXGroup;
 			children = (
+				04BF56852942434000BCF4A5 /* Controllers */,
 				04BF56822941EA6000BCF4A5 /* Model */,
 				04BF567B2941E9D300BCF4A5 /* Views */,
 				04BF56732941D64300BCF4A5 /* Customs */,
 				04BF566C2941A63B00BCF4A5 /* Extensions */,
 				04BF5641294198DB00BCF4A5 /* AppDelegate */,
-				04BF5631294193B200BCF4A5 /* ViewController.swift */,
 				04BF564229419AB600BCF4A5 /* Resources */,
 				04BF5638294193B300BCF4A5 /* LaunchScreen.storyboard */,
 				04BF563B294193B300BCF4A5 /* Info.plist */,
@@ -236,6 +236,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		04BF56852942434000BCF4A5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04BF56862942434E00BCF4A5 /* Auth */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		04BF56862942434E00BCF4A5 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				04BF56872942438B00BCF4A5 /* MainViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -326,11 +342,11 @@
 			files = (
 				04BF56702941AAF900BCF4A5 /* UIView+Extension.swift in Sources */,
 				04BF56722941BC8700BCF4A5 /* UIStackView+Extension.swift in Sources */,
-				04BF5632294193B200BCF4A5 /* ViewController.swift in Sources */,
 				04BF566B2941A30400BCF4A5 /* Theme.swift in Sources */,
 				04BF56752941D66400BCF4A5 /* ETGradientButton.swift in Sources */,
 				04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */,
 				04BF567A2941DB5400BCF4A5 /* ETButtonType.swift in Sources */,
+				04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */,
 				04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */,
 				04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */,
 				04BF566E2941A65500BCF4A5 /* UIFont+Extension.swift in Sources */,
