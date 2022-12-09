@@ -15,6 +15,7 @@ extension UIFont {
         case regular 
         case thin
         case bold
+        case extra
         
         func getFontName() -> String {
             switch self {
@@ -28,19 +29,21 @@ extension UIFont {
                     return "Poppins-Thin"
                 case .bold:
                     return "Poppins-Bold"
+                case .extra:
+                    return "Poppins-ExtraBoldItalic"
             }
         }
         
         func getFontSize() -> CGFloat {
             switch self {
-                case .light, .regular: 
-                    return 14
+                case .light, .regular, .thin: 
+                    return 13
                 case .medium: 
                     return 16.0
-                case .thin:
-                    return 13.0
                 case .bold:
                     return 22.0
+                case .extra:
+                    return 45
             }
         }
     }

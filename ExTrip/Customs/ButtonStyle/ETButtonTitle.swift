@@ -11,6 +11,7 @@ enum ETButtonTitle: String {
     case signIn = "Sign in"
     case signUp = "Sign up"
     case start = "get start"
+    case next = "next"
     case skip = "Skip For Now"
     case searchHotel = "search hotels"
     case done = "done"

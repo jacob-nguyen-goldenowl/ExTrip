@@ -11,6 +11,7 @@
 		<string>Poppins-Regular.ttf</string>
 		<string>Poppins-Bold.ttf</string>
 		<string>Poppins-Thin.ttf</string>
+		<string>Poppins-ExtraBoldItalic.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
