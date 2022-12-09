@@ -92,10 +92,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
                              paddingLeading: padding,
                              paddingTrailing: padding)
         
-        backgroundImage.anchor(top: topAnchor,
-                               bottom: bottomAnchor,
-                               leading: leadingAnchor,
-                               trailing: trailingAnchor)
+        backgroundImage.fillAnchor(self)
         
         tripLabel.anchor(top: containerView.topAnchor,
                          bottom: wrapContentView.topAnchor,

@@ -55,13 +55,14 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         updateActionButton(true)
+        setupActionButton()
     }
     
     private func setupViews() {
         view.insertSubview(collectionView, at: 0)
-        view.addSubviews(startButton, 
+        view.addSubviews(nextButton,
+                         startButton, 
                          skipButton, 
-                         nextButton,
                          pageControll)
         
         collectionView.delegate = self
@@ -73,11 +74,8 @@ class OnboardingViewController: UIViewController {
     }
     
     private func setupConstraintViews() {
-        collectionView.anchor(top: view.topAnchor,
-                              bottom: view.bottomAnchor,
-                              leading: view.leadingAnchor,
-                              trailing: view.trailingAnchor)
-        
+        collectionView.fillAnchor(view)
+                
         skipButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
                           leading: view.leadingAnchor,
                           trailing: view.trailingAnchor,
@@ -114,12 +112,19 @@ class OnboardingViewController: UIViewController {
     } 
     
     private func showItem(in index: Int) {
-        updateActionButton(index != dataOnboarding.count - 1)
         pageControll.page = index
         let indexPath = IndexPath(item: index, section: 0)
         collectionView.scrollToItem(at: indexPath,
                                     at: .centeredHorizontally,
                                     animated: true)
+        updateActionButton(index != dataOnboarding.count - 1)
+    }
+    
+    private func setupActionButton() {
+        skipButton.addTarget(self, action: #selector(handleSkipButton), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
+        pageControll.addTarget(self, action: #selector(handleChangeValuePageControl), for: .valueChanged)
+        startButton.addTarget(self, action: #selector(handleStartButton), for: .touchUpInside)
     }
 }
 
@@ -150,7 +155,35 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
         pageControll.page = page
         updateActionButton(page != dataOnboarding.count - 1)
     }
+}
+
+// MARK: - Handle action of button
+extension OnboardingViewController {
     
+    @objc func handleSkipButton() {
+        navigationToMainScreen()
+    }
+    
+    @objc func handleChangeValuePageControl() {
+        showItem(in: pageControll.currentPage)
+    }
+    
+    @objc func handleNextButton() {
+        pageControll.page += 1
+        showItem(in: pageControll.currentPage)
+    }
+    
+    @objc func handleStartButton() {
+        navigationToMainScreen()
+    }
+    
+    private func navigationToMainScreen() {
+        let vc = MainViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
+    }
+
 }
 
 // MARK: - Extension page control
