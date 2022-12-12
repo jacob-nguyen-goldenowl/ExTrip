@@ -9,6 +9,8 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
+    private let signInViewModel = SignInViewModel()
+    
     // MARK: - Properties
     private let verticalStackView = UIStackView()
     private let signUpStackView = UIStackView()
@@ -60,6 +62,7 @@ class SignInViewController: UIViewController {
         setupViews()
         setupStackView()
         setupActionButton()
+        setupBinders()
     }
     
     private func setupNavigationBar() {
@@ -128,12 +131,71 @@ class SignInViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
         registerButton.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
     }
+    
+    // MARK: - Start & stop animate
+    private func startAnimation() {
+        customActivityIndicatory(self.view)
+        loginButton.isUserInteractionEnabled = false
+    }
+    
+    private func stopAnimation() {
+        customActivityIndicatory(self.view, startAnimate: false)
+        loginButton.isUserInteractionEnabled = true
+    }
+    
+    // MARK: - Binding
+    private func setupBinders() {
+        signInViewModel.errorMessage.bind { [weak self] error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                strongSelf.stopAnimation()
+                strongSelf.showAlert(title: "Notify",
+                          message: error,
+                          style: .alert)
+            } else {
+                strongSelf.stopAnimation()
+                strongSelf.goToHomePage()
+            }
+        }
+    }
+    
+    // MARK: - Go to home screen
+    private func goToHomePage() {
+        // Code here ...
+        print("Home page")
+    } 
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
 }
 
 // MARK: - Handle action
 extension SignInViewController {
     @objc func handleLoginButton() {
-        // Code here ...
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              !password.isEmpty,
+              !email.isEmpty else {
+            stopAnimation()
+            showAlert(title: "Notify",
+                      message: "Please enter your email and password",
+                      style: .alert)
+            return 
+        }
+        if !isValidEmail(email) { 
+            stopAnimation()
+            showAlert(title: "Notify",
+                      message: "Email is not valid",
+                      style: .alert)
+        } else {
+            startAnimation()
+            signInViewModel.login(email: email, password: password)
+        }
     }
     
     @objc func handleRegisterButton() {
