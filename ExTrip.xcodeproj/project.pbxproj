@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040911F82946D9F200C8525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040911F72946D9F200C8525F /* GoogleService-Info.plist */; };
 		044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587D92942EC29009195F2 /* ETIconButton.swift */; };
 		044587DC29431728009195F2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DB29431728009195F2 /* SignInViewController.swift */; };
 		044587DE2943174B009195F2 /* ETTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DD2943174B009195F2 /* ETTextField.swift */; };
@@ -46,9 +47,11 @@
 		04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */; };
 		04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */; };
 		04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56872942438B00BCF4A5 /* MainViewController.swift */; };
+		BB406546778E52C3D67DEEC9 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EA76F64DE8BE5A21D92918 /* Pods_ExTrip.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040911F72946D9F200C8525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		044587D92942EC29009195F2 /* ETIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETIconButton.swift; sourceTree = "<group>"; };
 		044587DB29431728009195F2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		044587DD2943174B009195F2 /* ETTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTextField.swift; sourceTree = "<group>"; };
@@ -90,6 +93,9 @@
 		04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		04BF56872942438B00BCF4A5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		7C5E109258F527B3A3A77A00 /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
+		899F57986DC6FE1A4E0DA0EA /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
+		97EA76F64DE8BE5A21D92918 /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB406546778E52C3D67DEEC9 /* Pods_ExTrip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +115,8 @@
 			children = (
 				04BF562C294193B200BCF4A5 /* ExTrip */,
 				04BF562B294193B200BCF4A5 /* Products */,
+				2DA043B931954E46AACE9358 /* Pods */,
+				3E29A661E67A26B7091B994D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +140,7 @@
 				04BF564229419AB600BCF4A5 /* Resources */,
 				04BF5638294193B300BCF4A5 /* LaunchScreen.storyboard */,
 				04BF563B294193B300BCF4A5 /* Info.plist */,
+				040911F72946D9F200C8525F /* GoogleService-Info.plist */,
 			);
 			path = ExTrip;
 			sourceTree = "<group>";
@@ -270,6 +280,23 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		2DA043B931954E46AACE9358 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				899F57986DC6FE1A4E0DA0EA /* Pods-ExTrip.debug.xcconfig */,
+				7C5E109258F527B3A3A77A00 /* Pods-ExTrip.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3E29A661E67A26B7091B994D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97EA76F64DE8BE5A21D92918 /* Pods_ExTrip.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,9 +304,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04BF563E294193B300BCF4A5 /* Build configuration list for PBXNativeTarget "ExTrip" */;
 			buildPhases = (
+				A97E7919125AB99D4266F7B3 /* [CP] Check Pods Manifest.lock */,
 				04BF5626294193B200BCF4A5 /* Sources */,
 				04BF5627294193B200BCF4A5 /* Frameworks */,
 				04BF5628294193B200BCF4A5 /* Resources */,
+				792F7C088F2432DA8DA31E9A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -348,10 +377,53 @@
 				04BF56672941A2EF00BCF4A5 /* Poppins-SemiBold.ttf in Resources */,
 				04BF563A294193B300BCF4A5 /* LaunchScreen.storyboard in Resources */,
 				04BF5637294193B300BCF4A5 /* Assets.xcassets in Resources */,
+				040911F82946D9F200C8525F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		792F7C088F2432DA8DA31E9A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A97E7919125AB99D4266F7B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExTrip-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04BF5626294193B200BCF4A5 /* Sources */ = {
@@ -510,6 +582,7 @@
 		};
 		04BF563F294193B300BCF4A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 899F57986DC6FE1A4E0DA0EA /* Pods-ExTrip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -538,6 +611,7 @@
 		};
 		04BF5640294193B300BCF4A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C5E109258F527B3A3A77A00 /* Pods-ExTrip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
