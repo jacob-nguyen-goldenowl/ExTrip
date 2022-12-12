@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		040911F82946D9F200C8525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040911F72946D9F200C8525F /* GoogleService-Info.plist */; };
+		040911FE2946E11E00C8525F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FD2946E11E00C8525F /* Observable.swift */; };
+		040912002946E15300C8525F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FF2946E15300C8525F /* SignInViewModel.swift */; };
+		040912022946E1DD00C8525F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040912012946E1DD00C8525F /* AuthManager.swift */; };
 		044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587D92942EC29009195F2 /* ETIconButton.swift */; };
 		044587DC29431728009195F2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DB29431728009195F2 /* SignInViewController.swift */; };
 		044587DE2943174B009195F2 /* ETTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DD2943174B009195F2 /* ETTextField.swift */; };
 		044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DF294317F2009195F2 /* UIViewController+Extension.swift */; };
 		044587E229432BC5009195F2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587E129432BC5009195F2 /* SignUpViewController.swift */; };
 		044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587E3294331B5009195F2 /* UINavigation+Extension.swift */; };
+		049996EA2947194D005033C9 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996E92947194D005033C9 /* RegisterModel.swift */; };
+		049996EC29471A0E005033C9 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996EB29471A0E005033C9 /* DatabaseManager.swift */; };
 		04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562D294193B200BCF4A5 /* AppDelegate.swift */; };
 		04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562F294193B200BCF4A5 /* SceneDelegate.swift */; };
 		04BF5637294193B300BCF4A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BF5636294193B300BCF4A5 /* Assets.xcassets */; };
@@ -52,12 +57,17 @@
 
 /* Begin PBXFileReference section */
 		040911F72946D9F200C8525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		040911FD2946E11E00C8525F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		040911FF2946E15300C8525F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		040912012946E1DD00C8525F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		044587D92942EC29009195F2 /* ETIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETIconButton.swift; sourceTree = "<group>"; };
 		044587DB29431728009195F2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		044587DD2943174B009195F2 /* ETTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTextField.swift; sourceTree = "<group>"; };
 		044587DF294317F2009195F2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		044587E129432BC5009195F2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		044587E3294331B5009195F2 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
+		049996E92947194D005033C9 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
+		049996EB29471A0E005033C9 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		04BF562A294193B200BCF4A5 /* ExTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BF562D294193B200BCF4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04BF562F294193B200BCF4A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +120,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040911F92946E0BE00C8525F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				040912012946E1DD00C8525F /* AuthManager.swift */,
+				049996EB29471A0E005033C9 /* DatabaseManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		040911FA2946E0DB00C8525F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				040911FF2946E15300C8525F /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		040911FC2946E0F100C8525F /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				040911FD2946E11E00C8525F /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
 		04BF5621294193B200BCF4A5 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +166,9 @@
 		04BF562C294193B200BCF4A5 /* ExTrip */ = {
 			isa = PBXGroup;
 			children = (
+				040911FC2946E0F100C8525F /* Observable */,
+				040911FA2946E0DB00C8525F /* ViewModel */,
+				040911F92946E0BE00C8525F /* Networking */,
 				04BF56852942434000BCF4A5 /* Controllers */,
 				04BF56822941EA6000BCF4A5 /* Model */,
 				04BF567B2941E9D300BCF4A5 /* Views */,
@@ -258,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */,
+				049996E92947194D005033C9 /* RegisterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,13 +470,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				04BF56702941AAF900BCF4A5 /* UIView+Extension.swift in Sources */,
+				049996EA2947194D005033C9 /* RegisterModel.swift in Sources */,
 				04BF56722941BC8700BCF4A5 /* UIStackView+Extension.swift in Sources */,
 				04BF566B2941A30400BCF4A5 /* Theme.swift in Sources */,
 				04BF56752941D66400BCF4A5 /* ETGradientButton.swift in Sources */,
 				044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */,
 				04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */,
 				044587E229432BC5009195F2 /* SignUpViewController.swift in Sources */,
+				049996EC29471A0E005033C9 /* DatabaseManager.swift in Sources */,
 				04BF567A2941DB5400BCF4A5 /* ETButtonType.swift in Sources */,
+				040912002946E15300C8525F /* SignInViewModel.swift in Sources */,
 				04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */,
 				04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */,
 				044587DC29431728009195F2 /* SignInViewController.swift in Sources */,
@@ -446,7 +488,9 @@
 				04BF567E2941E9F000BCF4A5 /* OnboardingViewController.swift in Sources */,
 				04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */,
 				04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */,
+				040911FE2946E11E00C8525F /* Observable.swift in Sources */,
 				044587DE2943174B009195F2 /* ETTextField.swift in Sources */,
+				040912022946E1DD00C8525F /* AuthManager.swift in Sources */,
 				044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */,
 				044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */,
 			);
