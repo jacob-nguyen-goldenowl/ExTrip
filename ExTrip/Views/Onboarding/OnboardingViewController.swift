@@ -84,11 +84,11 @@ class OnboardingViewController: UIViewController {
                           paddingTrailing: 38)
         
         nextButton.anchor(bottom: skipButton.topAnchor, 
-                           leading: view.leadingAnchor,
-                           trailing: view.trailingAnchor,
-                           paddingBottom: 10,
-                           paddingLeading: 38,
-                           paddingTrailing: 38)
+                          leading: view.leadingAnchor,
+                          trailing: view.trailingAnchor,
+                          paddingBottom: 10,
+                          paddingLeading: 38,
+                          paddingTrailing: 38)
         nextButton.setHeight(height: 60)
 
         startButton.anchor(bottom: skipButton.topAnchor, 

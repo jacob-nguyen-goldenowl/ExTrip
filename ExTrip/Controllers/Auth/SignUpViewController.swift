@@ -74,8 +74,8 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .systemBackground
         self.hideKeyboardWhenTappedAround()
         view.addSubviews(userNameTextField,
-                                  inputTextStackView,
-                                  registerButton)
+                         inputTextStackView,
+                         registerButton)
         setupConstraintView()
         setupInputTextStackView()
     }
@@ -102,10 +102,10 @@ class SignUpViewController: UIViewController {
     // MARK: Setup input stack views
     private func setupInputTextStackView() {
         inputTextStackView.addArrangedSubviews(userNameTextField,
-                                                emailTextField,
-                                                horizontalStackView,
-                                                specialisationTextField,
-                                                passwordTextField)
+                                               emailTextField,
+                                               horizontalStackView,
+                                               specialisationTextField,
+                                               passwordTextField)
         inputTextStackView.axis = .vertical
         inputTextStackView.spacing = 50
         inputTextStackView.distribution = .equalCentering
