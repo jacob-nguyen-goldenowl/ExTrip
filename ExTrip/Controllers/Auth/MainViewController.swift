@@ -52,8 +52,8 @@ class MainViewController: UIViewController {
         view.insertSubview(backgroundImageView, at: 0)
         view.addSubview(facebookButton)
         view.addSubviews(horizontalStackView,
-                                        subtitleLabel,
-                                        googleButton)
+                         subtitleLabel,
+                         googleButton)
         setupConstraintViews()
         setupStackView()
     }
@@ -64,11 +64,11 @@ class MainViewController: UIViewController {
         
         backgroundImageView.fillAnchor(view)
         horizontalStackView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                                 leading: view.leadingAnchor,
-                                 trailing: view.trailingAnchor,
-                                 paddingBottom: 50,
-                                 paddingLeading: padding,
-                                 paddingTrailing: padding)
+                                   leading: view.leadingAnchor,
+                                   trailing: view.trailingAnchor,
+                                   paddingBottom: 50,
+                                   paddingLeading: padding,
+                                   paddingTrailing: padding)
         horizontalStackView.setHeight(height: heightButton)
         
         subtitleLabel.anchor(bottom: horizontalStackView.topAnchor,
@@ -86,18 +86,18 @@ class MainViewController: UIViewController {
         facebookButton.setHeight(height: heightButton)
         
         googleButton.anchor(bottom: facebookButton.topAnchor,
-                              leading: backgroundImageView.leadingAnchor, 
-                              trailing: backgroundImageView.trailingAnchor,
-                              paddingBottom: padding,
-                              paddingLeading: padding,
-                              paddingTrailing: padding)
+                            leading: backgroundImageView.leadingAnchor, 
+                            trailing: backgroundImageView.trailingAnchor,
+                            paddingBottom: padding,
+                            paddingLeading: padding,
+                            paddingTrailing: padding)
         googleButton.setHeight(height: heightButton)
     }
 
     // MARK: - Setup stackview
     private func setupStackView() {
         horizontalStackView.addArrangedSubviews(signInButton,
-                                              signUpButton)
+                                                signUpButton)
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .fillEqually
         horizontalStackView.spacing = 20
