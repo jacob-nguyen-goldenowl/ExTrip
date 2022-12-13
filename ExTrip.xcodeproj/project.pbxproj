@@ -10,6 +10,7 @@
 		040911FE2946E11E00C8525F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FD2946E11E00C8525F /* Observable.swift */; };
 		040912002946E15300C8525F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FF2946E15300C8525F /* SignInViewModel.swift */; };
 		040912022946E1DD00C8525F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040912012946E1DD00C8525F /* AuthManager.swift */; };
+		042A14912948B9DD00461C4D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A14902948B9DD00461C4D /* StatusCode.swift */; };
 		044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587D92942EC29009195F2 /* ETIconButton.swift */; };
 		044587DC29431728009195F2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DB29431728009195F2 /* SignInViewController.swift */; };
 		044587DE2943174B009195F2 /* ETTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DD2943174B009195F2 /* ETTextField.swift */; };
@@ -54,6 +55,7 @@
 		04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */; };
 		04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */; };
 		04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56872942438B00BCF4A5 /* MainViewController.swift */; };
+		04F504DD2948603A00A94AD0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F504DC2948603A00A94AD0 /* String+Extension.swift */; };
 		BB406546778E52C3D67DEEC9 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EA76F64DE8BE5A21D92918 /* Pods_ExTrip.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,7 @@
 		040911FD2946E11E00C8525F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		040911FF2946E15300C8525F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		040912012946E1DD00C8525F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		042A14902948B9DD00461C4D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 		044587D92942EC29009195F2 /* ETIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETIconButton.swift; sourceTree = "<group>"; };
 		044587DB29431728009195F2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		044587DD2943174B009195F2 /* ETTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTextField.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		04BF56872942438B00BCF4A5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		04F504DC2948603A00A94AD0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		7C5E109258F527B3A3A77A00 /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
 		899F57986DC6FE1A4E0DA0EA /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
 		97EA76F64DE8BE5A21D92918 /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +133,7 @@
 			children = (
 				040912012946E1DD00C8525F /* AuthManager.swift */,
 				049996EF2947235D005033C9 /* DatabaseManager.swift */,
+				042A14902948B9DD00461C4D /* StatusCode.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				04BF56712941BC8700BCF4A5 /* UIStackView+Extension.swift */,
 				044587DF294317F2009195F2 /* UIViewController+Extension.swift */,
 				044587E3294331B5009195F2 /* UINavigation+Extension.swift */,
+				04F504DC2948603A00A94AD0 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -497,11 +503,13 @@
 				04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */,
 				04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */,
 				049996FA294738E3005033C9 /* HomeViewController.swift in Sources */,
+				042A14912948B9DD00461C4D /* StatusCode.swift in Sources */,
 				044587DC29431728009195F2 /* SignInViewController.swift in Sources */,
 				04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */,
 				049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */,
 				04BF566E2941A65500BCF4A5 /* UIFont+Extension.swift in Sources */,
 				04BF567E2941E9F000BCF4A5 /* OnboardingViewController.swift in Sources */,
+				04F504DD2948603A00A94AD0 /* String+Extension.swift in Sources */,
 				04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */,
 				04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */,
 				040911FE2946E11E00C8525F /* Observable.swift in Sources */,

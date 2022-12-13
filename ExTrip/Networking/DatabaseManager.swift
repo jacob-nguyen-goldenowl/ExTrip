@@ -9,7 +9,6 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
 
-
 class DatabaseManager {
     
     static let shared = DatabaseManager()
@@ -45,13 +44,10 @@ class DatabaseManager {
         users.setData(data) { error in 
             if error == nil {
                 // success
-                print("insert success")
                 completion(true)
-                return
             } else {
                 // failed
                 completion(false)
-                return
             }
         }
     }

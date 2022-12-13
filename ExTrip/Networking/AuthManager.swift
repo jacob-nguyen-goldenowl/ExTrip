@@ -16,17 +16,20 @@ class AuthManager {
     private init() {}
     
     // MARK: - Login 
-    func login(email: String, password: String, completion: @escaping(Int, String) -> Void) {
+    func login(email: String, password: String, completion: @escaping(Result, StatusCode) -> Void) {
         Auth.auth().signIn(withEmail: email,
                            password: password) { res, error in
             guard error == nil else { 
-                completion(0, "The mail and password is incorrect")
+                completion(.failed,
+                           .loginFailed)
                 return 
             }
             if Auth.auth().currentUser != nil {
-                completion(1, "Login successful")
+                completion(.success,
+                           .loginSuccess)
             } else {
-                completion(0, "Something error when login")
+                completion(.failed,
+                           .requestFailed)
             }
         }
     }
@@ -37,7 +40,7 @@ class AuthManager {
     }
     
     // MARK: - Register
-    func register(with info: UserInfoModel, password: String , completion: @escaping (Int, String) -> Void) {
+    func register(with info: UserInfoModel, password: String , completion: @escaping (Result, StatusCode) -> Void) {
 
         // Check email existing yet
         DatabaseManager.shared.canCreateNewUser(with: info.email, username: info.name) { canCreate in
@@ -45,7 +48,8 @@ class AuthManager {
                 Auth.auth().createUser(withEmail: info.email, password: password) { result, error in 
                     
                     guard result != nil, error == nil else { 
-                        completion(0, "Creating new user failed")
+                        completion(.failed,
+                                   .registerFailed)
                         return 
                     }
                     
@@ -54,17 +58,20 @@ class AuthManager {
                     // Insert into database
                     DatabaseManager.shared.insertNewUser(with: info, uid: uid) { success in 
                         if success {
-                            completion(1, "Create user successful")
+                            completion(.success,
+                                       .registerSuccess)
                             return
                         } else {
-                            completion(0, "Insert user unsuccessful")
+                            completion(.failed,
+                                       .insertUserFailed)
                             return
                         }
                     }
                 }
             } else {
                 // email or password does not exit
-                completion(0, "Insert user unsuccessful")
+                completion(.failed,
+                           .insertUserFailed)
             }
         }
     }

@@ -15,10 +15,10 @@ class SignUpViewModel {
     func register(info: UserInfoModel, password: String) {
         AuthManager.shared.register(with: info, password: password) { status, msg in
             DispatchQueue.main.async { [weak self] in 
-                if status == 0 {
-                    self?.error.value = msg
+                if status.rawValue == 0 {
+                    self?.error.value = msg.statusDescription
                 } else {
-                    self?.success.value = msg
+                    self?.success.value = msg.statusDescription
                 }
             }
         }
