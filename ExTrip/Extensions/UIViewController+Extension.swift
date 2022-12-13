@@ -17,7 +17,8 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-        
+    
+    // MARK: - show activity indicatory
     @discardableResult
     func customActivityIndicatory(_ view: UIView,
                                   startAnimate: Bool = true) -> UIActivityIndicatorView {
@@ -66,6 +67,7 @@ extension UIViewController {
         return activityIndicatorView
     }
     
+    // MARK: - Show alert
     func showAlert(title: String? = nil,
                    message: String? = nil,
                    style: UIAlertController.Style ) {
@@ -77,5 +79,25 @@ extension UIViewController {
                                         style: .cancel)
         alert.addAction(closeAction)
         present(alert, animated: true)
+    }
+    
+    // MARK: - Check email format
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    // MARK: - Check is number
+    func isNumber(_ phone: String) -> Bool {
+        // 3 numbers, then 3 numbers, then 4 numbers
+        // The first 3 numbers may be enclosed in (), and either 
+        // " " or "-" can be used to separate number groups
+        let phonePattern = #"^\(?\d{3}\)?[ -]?\d{3}[ -]?\d{4}$"#
+        let result = phone.range(
+            of: phonePattern,
+            options: .regularExpression
+        )
+        return result != nil ? true : false
     }
 }
