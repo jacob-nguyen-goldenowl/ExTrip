@@ -1,20 +1,20 @@
 //
-//  SignInViewModel.swift
+//  SignUpViewModel.swift
 //  ExTrip
 //
 //  Created by Nguyễn Hữu Toàn on 12/12/2022.
 //
 
-import UIKit
+import Foundation
 
-class SignInViewModel {
+class SignUpViewModel {
     
     var error: Observable<String?> = Observable(nil)
     var success: Observable<String?> = Observable(nil)
-
-    func login(email: String, password: String) {
-        AuthManager.shared.login(email: email, password: password) { status, msg in
-            DispatchQueue.main.async { [weak self] in
+    
+    func register(info: UserInfoModel, password: String) {
+        AuthManager.shared.register(with: info, password: password) { status, msg in
+            DispatchQueue.main.async { [weak self] in 
                 if status == 0 {
                     self?.error.value = msg
                 } else {
@@ -23,4 +23,5 @@ class SignInViewModel {
             }
         }
     }
+    
 }
