@@ -188,7 +188,7 @@ extension SignInViewController {
                       style: .alert)
             return 
         }
-        if !isValidEmail(email) { 
+        if !email.isValidEmail() { 
             stopAnimation()
             showAlert(title: "Notify",
                       message: "Email is not valid",

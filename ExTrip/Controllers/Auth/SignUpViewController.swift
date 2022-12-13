@@ -189,12 +189,12 @@ extension SignUpViewController {
                       style: .alert)
             return 
         }
-        if !isValidEmail(email) { 
+        if !email.isValidEmail() { 
             stopAnimation()
             showAlert(title: "Notify",
                       message: "Email is not valid",
                       style: .alert)
-        } else if !isNumber(phone) {
+        } else if !phone.isNumber() {
             stopAnimation()
             showAlert(title: "Notify",
                       message: "Phone number is not valid",
