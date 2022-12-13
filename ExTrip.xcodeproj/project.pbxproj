@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040911F82946D9F200C8525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040911F72946D9F200C8525F /* GoogleService-Info.plist */; };
 		040911FE2946E11E00C8525F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FD2946E11E00C8525F /* Observable.swift */; };
 		040912002946E15300C8525F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FF2946E15300C8525F /* SignInViewModel.swift */; };
 		040912022946E1DD00C8525F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040912012946E1DD00C8525F /* AuthManager.swift */; };
@@ -17,6 +16,11 @@
 		044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DF294317F2009195F2 /* UIViewController+Extension.swift */; };
 		044587E229432BC5009195F2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587E129432BC5009195F2 /* SignUpViewController.swift */; };
 		044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587E3294331B5009195F2 /* UINavigation+Extension.swift */; };
+		049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996ED2947234E005033C9 /* SignUpViewModel.swift */; };
+		049996F02947235D005033C9 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996EF2947235D005033C9 /* DatabaseManager.swift */; };
+		049996F2294724A1005033C9 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996F1294724A1005033C9 /* UserInfoModel.swift */; };
+		049996F4294731F4005033C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049996F3294731F4005033C9 /* GoogleService-Info.plist */; };
+		049996FA294738E3005033C9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996F9294738E3005033C9 /* HomeViewController.swift */; };
 		04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562D294193B200BCF4A5 /* AppDelegate.swift */; };
 		04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562F294193B200BCF4A5 /* SceneDelegate.swift */; };
 		04BF5637294193B300BCF4A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BF5636294193B300BCF4A5 /* Assets.xcassets */; };
@@ -54,7 +58,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		040911F72946D9F200C8525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		040911FD2946E11E00C8525F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		040911FF2946E15300C8525F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		040912012946E1DD00C8525F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -64,6 +67,11 @@
 		044587DF294317F2009195F2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		044587E129432BC5009195F2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		044587E3294331B5009195F2 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
+		049996ED2947234E005033C9 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		049996EF2947235D005033C9 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		049996F1294724A1005033C9 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		049996F3294731F4005033C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		049996F9294738E3005033C9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		04BF562A294193B200BCF4A5 /* ExTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BF562D294193B200BCF4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04BF562F294193B200BCF4A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				040912012946E1DD00C8525F /* AuthManager.swift */,
+				049996EF2947235D005033C9 /* DatabaseManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -128,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				040911FF2946E15300C8525F /* SignInViewModel.swift */,
+				049996ED2947234E005033C9 /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -138,6 +148,14 @@
 				040911FD2946E11E00C8525F /* Observable.swift */,
 			);
 			path = Observable;
+			sourceTree = "<group>";
+		};
+		049996F8294738CB005033C9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				049996F9294738E3005033C9 /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		04BF5621294193B200BCF4A5 = {
@@ -173,7 +191,7 @@
 				04BF564229419AB600BCF4A5 /* Resources */,
 				04BF5638294193B300BCF4A5 /* LaunchScreen.storyboard */,
 				04BF563B294193B300BCF4A5 /* Info.plist */,
-				040911F72946D9F200C8525F /* GoogleService-Info.plist */,
+				049996F3294731F4005033C9 /* GoogleService-Info.plist */,
 			);
 			path = ExTrip;
 			sourceTree = "<group>";
@@ -291,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */,
+				049996F1294724A1005033C9 /* UserInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +317,7 @@
 		04BF56852942434000BCF4A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				049996F8294738CB005033C9 /* Home */,
 				04BF56862942434E00BCF4A5 /* Auth */,
 			);
 			path = Controllers;
@@ -410,7 +430,7 @@
 				04BF56672941A2EF00BCF4A5 /* Poppins-SemiBold.ttf in Resources */,
 				04BF563A294193B300BCF4A5 /* LaunchScreen.storyboard in Resources */,
 				04BF5637294193B300BCF4A5 /* Assets.xcassets in Resources */,
-				040911F82946D9F200C8525F /* GoogleService-Info.plist in Resources */,
+				049996F4294731F4005033C9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,15 +487,19 @@
 				04BF56722941BC8700BCF4A5 /* UIStackView+Extension.swift in Sources */,
 				04BF566B2941A30400BCF4A5 /* Theme.swift in Sources */,
 				04BF56752941D66400BCF4A5 /* ETGradientButton.swift in Sources */,
+				049996F2294724A1005033C9 /* UserInfoModel.swift in Sources */,
 				044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */,
 				04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */,
 				044587E229432BC5009195F2 /* SignUpViewController.swift in Sources */,
 				04BF567A2941DB5400BCF4A5 /* ETButtonType.swift in Sources */,
+				049996F02947235D005033C9 /* DatabaseManager.swift in Sources */,
 				040912002946E15300C8525F /* SignInViewModel.swift in Sources */,
 				04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */,
 				04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */,
+				049996FA294738E3005033C9 /* HomeViewController.swift in Sources */,
 				044587DC29431728009195F2 /* SignInViewController.swift in Sources */,
 				04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */,
+				049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */,
 				04BF566E2941A65500BCF4A5 /* UIFont+Extension.swift in Sources */,
 				04BF567E2941E9F000BCF4A5 /* OnboardingViewController.swift in Sources */,
 				04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */,
