@@ -11,6 +11,7 @@
 		040912002946E15300C8525F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FF2946E15300C8525F /* SignInViewModel.swift */; };
 		040912022946E1DD00C8525F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040912012946E1DD00C8525F /* AuthManager.swift */; };
 		042A14912948B9DD00461C4D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A14902948B9DD00461C4D /* StatusCode.swift */; };
+		042A14942948C58B00461C4D /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A14932948C58B00461C4D /* Tag.swift */; };
 		044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587D92942EC29009195F2 /* ETIconButton.swift */; };
 		044587DC29431728009195F2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DB29431728009195F2 /* SignInViewController.swift */; };
 		044587DE2943174B009195F2 /* ETTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DD2943174B009195F2 /* ETTextField.swift */; };
@@ -64,6 +65,7 @@
 		040911FF2946E15300C8525F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		040912012946E1DD00C8525F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		042A14902948B9DD00461C4D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
+		042A14932948C58B00461C4D /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		044587D92942EC29009195F2 /* ETIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETIconButton.swift; sourceTree = "<group>"; };
 		044587DB29431728009195F2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		044587DD2943174B009195F2 /* ETTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTextField.swift; sourceTree = "<group>"; };
@@ -155,6 +157,14 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
+		042A14922948C55400461C4D /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				042A14932948C58B00461C4D /* Tag.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		049996F8294738CB005033C9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +194,7 @@
 		04BF562C294193B200BCF4A5 /* ExTrip */ = {
 			isa = PBXGroup;
 			children = (
+				042A14922948C55400461C4D /* Constant */,
 				040911FC2946E0F100C8525F /* Observable */,
 				040911FA2946E0DB00C8525F /* ViewModel */,
 				040911F92946E0BE00C8525F /* Networking */,
@@ -516,6 +527,7 @@
 				044587DE2943174B009195F2 /* ETTextField.swift in Sources */,
 				040912022946E1DD00C8525F /* AuthManager.swift in Sources */,
 				044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */,
+				042A14942948C58B00461C4D /* Tag.swift in Sources */,
 				044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

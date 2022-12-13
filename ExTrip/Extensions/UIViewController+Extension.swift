@@ -26,7 +26,7 @@ extension UIViewController {
         mainView.center = view.center
         mainView.backgroundColor = UIColor.gray
         mainView.alpha = 0.7
-        mainView.tag = 1234567
+        mainView.tag = Tag.indicatoryView
         mainView.isUserInteractionEnabled = false
         
         let viewBackgroundLoading = UIView(frame: CGRect(x: 0.0,
@@ -59,7 +59,7 @@ extension UIViewController {
             activityIndicatorView.startAnimating()
         } else {
             for subview in view.subviews{
-                if subview.tag == 1234567 {
+                if subview.tag == Tag.indicatoryView {
                     subview.removeFromSuperview()
                 }
             }
