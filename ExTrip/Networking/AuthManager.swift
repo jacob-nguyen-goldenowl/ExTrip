@@ -15,17 +15,18 @@ class AuthManager {
     static let shared = AuthManager()
     private init() {}
     
-    func login(email: String, password: String, completion: @escaping(Bool) -> Void) {
+    // MARK: - Login 
+    func login(email: String, password: String, completion: @escaping(Int, String) -> Void) {
         Auth.auth().signIn(withEmail: email,
                            password: password) { res, error in
             guard error == nil else { 
-                completion(false)
+                completion(0, "The mail and password is incorrect")
                 return 
             }
             if Auth.auth().currentUser != nil {
-                completion(true)
+                completion(1, "Login successful")
             } else {
-                completion(false)
+                completion(0, "Something error when login")
             }
         }
     }
@@ -35,8 +36,37 @@ class AuthManager {
         ref.child(UIDevice.current.identifierForVendor!.uuidString).removeValue()
     }
     
-    func register(with info: RegisterModel, completion: @escaping (Bool) -> Void) {
-        
+    // MARK: - Register
+    func register(with info: UserInfoModel, password: String , completion: @escaping (Int, String) -> Void) {
+
+        // Check email existing yet
+        DatabaseManager.shared.canCreateNewUser(with: info.email, username: info.name) { canCreate in
+            if canCreate {
+                Auth.auth().createUser(withEmail: info.email, password: password) { result, error in 
+                    
+                    guard result != nil, error == nil else { 
+                        completion(0, "Creating new user failed")
+                        return 
+                    }
+                    
+                    guard let uid = result?.user.uid else { return }
+                    
+                    // Insert into database
+                    DatabaseManager.shared.insertNewUser(with: info, uid: uid) { success in 
+                        if success {
+                            completion(1, "Create user successful")
+                            return
+                        } else {
+                            completion(0, "Insert user unsuccessful")
+                            return
+                        }
+                    }
+                }
+            } else {
+                // email or password does not exit
+                completion(0, "Insert user unsuccessful")
+            }
+        }
     }
     
 }
