@@ -9,6 +9,8 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
+    private let signUpViewModel = SignUpViewModel()
+    private var user: UserInfoModel?
     // MARK: - Properties        
     private var inputTextStackView = UIStackView()
     private var horizontalStackView = UIStackView()
@@ -40,9 +42,9 @@ class SignUpViewController: UIViewController {
         return textFiled
     }()
     
-    private lazy var specialisationTextField: ETTextField = {
+    private lazy var phoneTextField: ETTextField = {
         let textFiled = ETTextField(type: .nomal)
-        textFiled.placeholder = "Phone number*"
+        textFiled.placeholder = "0x9999999*"
         textFiled.keyboardType = .decimalPad
         textFiled.textChangeColor = "*"
         return textFiled
@@ -62,6 +64,8 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupView()
+        setupErrorBinder()
+        setupSuccessBinder()
     }
     
     private func setupNavigationBar() {
@@ -78,6 +82,7 @@ class SignUpViewController: UIViewController {
                          registerButton)
         setupConstraintView()
         setupInputTextStackView()
+        registerButton.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
     }
     
     private func setupConstraintView() {
@@ -104,7 +109,7 @@ class SignUpViewController: UIViewController {
         inputTextStackView.addArrangedSubviews(userNameTextField,
                                                emailTextField,
                                                horizontalStackView,
-                                               specialisationTextField,
+                                               phoneTextField,
                                                passwordTextField)
         inputTextStackView.axis = .vertical
         inputTextStackView.spacing = 50
@@ -118,6 +123,99 @@ class SignUpViewController: UIViewController {
         horizontalStackView.axis = .horizontal
         horizontalStackView.spacing = 20
         horizontalStackView.distribution = .fillEqually
+    }
+    
+    // MARK: - Start & stop animate
+    private func startAnimation() {
+        customActivityIndicatory(self.view)
+        registerButton.isUserInteractionEnabled = false
+    }
+    
+    private func stopAnimation() {
+        customActivityIndicatory(self.view, startAnimate: false)
+        registerButton.isUserInteractionEnabled = true
+    }
+    
+    // MARK: - Binding
+    private func setupErrorBinder() {
+        signUpViewModel.error.bind { [weak self] error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                strongSelf.stopAnimation()
+                strongSelf.showAlert(title: "Notify",
+                                     message: error,
+                                     style: .alert)
+            }
+        }
+    }
+    
+    private func setupSuccessBinder() {
+        signUpViewModel.success.bind { [weak self] success in
+            guard let strongSelf = self else { return }
+            if success != nil {
+                strongSelf.stopAnimation()
+                strongSelf.goToHomePage()
+            }
+        }
+    }
+    
+    
+    // MARK: - Go to home screen
+    private func goToHomePage() {
+        let vc = HomeViewController()
+        present(vc, animated: true)
+    } 
+    
+}
+
+// MARK: - Handle action
+extension SignUpViewController {
+    @objc func handleRegisterButton() { 
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let name = userNameTextField.text,
+              let state = stateTextField.text,
+              let city = cityTextField.text,
+              let phone = phoneTextField.text,
+              !password.isEmpty,
+              !email.isEmpty,
+              !name.isEmpty,
+              !state.isEmpty,
+              !city.isEmpty,
+              !phone.isEmpty else {
+            stopAnimation()
+            showAlert(title: "Notify",
+                      message: "Please enter your information",
+                      style: .alert)
+            return 
+        }
+        if !isValidEmail(email) { 
+            stopAnimation()
+            showAlert(title: "Notify",
+                      message: "Email is not valid",
+                      style: .alert)
+        } else if !isNumber(phone) {
+            stopAnimation()
+            showAlert(title: "Notify",
+                      message: "Phone number is not valid",
+                      style: .alert)
+        } else {
+            startAnimation()
+            user = UserInfoModel(email: email,
+                                 name: name,
+                                 state: state,
+                                 city: city,
+                                 phone: phone,
+                                 image: nil) 
+            guard let user = user else {
+            stopAnimation()
+            showAlert(title: "Notify",
+                      message: "Failed to create an account. Please re-create",
+                      style: .alert)
+            return
+        }
+            signUpViewModel.register(info: user, password: password)
+        }
     }
 }
 
