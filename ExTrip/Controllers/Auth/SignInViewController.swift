@@ -62,7 +62,8 @@ class SignInViewController: UIViewController {
         setupViews()
         setupStackView()
         setupActionButton()
-        setupBinders()
+        setupErrorBinder()
+        setupSuccessBinder()
     }
     
     private func setupNavigationBar() {
@@ -144,15 +145,22 @@ class SignInViewController: UIViewController {
     }
     
     // MARK: - Binding
-    private func setupBinders() {
-        signInViewModel.errorMessage.bind { [weak self] error in
+    private func setupErrorBinder() {
+        signInViewModel.error.bind { [weak self] error in
             guard let strongSelf = self else { return }
-            if let error = error {
+            if error != nil {
                 strongSelf.stopAnimation()
                 strongSelf.showAlert(title: "Notify",
                           message: error,
                           style: .alert)
-            } else {
+            }
+        }
+    }
+    
+    private func setupSuccessBinder() {
+        signInViewModel.success.bind { [weak self] success in
+            guard let strongSelf = self else { return }
+            if success != nil {
                 strongSelf.stopAnimation()
                 strongSelf.goToHomePage()
             }
@@ -161,16 +169,9 @@ class SignInViewController: UIViewController {
     
     // MARK: - Go to home screen
     private func goToHomePage() {
-        // Code here ...
-        print("Home page")
+        let vc = HomeViewController()
+        present(vc, animated: true)
     } 
-    
-    private func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
     
 }
 
@@ -201,5 +202,7 @@ extension SignInViewController {
     @objc func handleRegisterButton() {
         let vc = SignUpViewController()
         navigationController?.pushViewController(vc, animated: true)
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
 }
