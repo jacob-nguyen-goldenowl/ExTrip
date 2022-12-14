@@ -9,6 +9,8 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
+    private let signInViewModel = SignInViewModel()
+    
     // MARK: - Properties
     private let verticalStackView = UIStackView()
     private let signUpStackView = UIStackView()
@@ -60,6 +62,8 @@ class SignInViewController: UIViewController {
         setupViews()
         setupStackView()
         setupActionButton()
+        setupErrorBinder()
+        setupSuccessBinder()
     }
     
     private func setupNavigationBar() {
@@ -128,16 +132,77 @@ class SignInViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
         registerButton.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
     }
+    
+    // MARK: - Start & stop animate
+    private func startAnimation() {
+        customActivityIndicatory(self.view)
+        loginButton.isUserInteractionEnabled = false
+    }
+    
+    private func stopAnimation() {
+        customActivityIndicatory(self.view, startAnimate: false)
+        loginButton.isUserInteractionEnabled = true
+    }
+    
+    // MARK: - Binding
+    private func setupErrorBinder() {
+        signInViewModel.error.bind { [weak self] error in
+            guard let strongSelf = self else { return }
+            if error != nil {
+                strongSelf.stopAnimation()
+                strongSelf.showAlert(title: "Notify",
+                          message: error,
+                          style: .alert)
+            }
+        }
+    }
+    
+    private func setupSuccessBinder() {
+        signInViewModel.success.bind { [weak self] success in
+            guard let strongSelf = self else { return }
+            if success != nil {
+                strongSelf.stopAnimation()
+                strongSelf.goToHomePage()
+            }
+        }
+    }
+    
+    // MARK: - Go to home screen
+    private func goToHomePage() {
+        let vc = HomeViewController()
+        present(vc, animated: true)
+    } 
+    
 }
 
 // MARK: - Handle action
 extension SignInViewController {
     @objc func handleLoginButton() {
-        // Code here ...
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              !password.isEmpty,
+              !email.isEmpty else {
+            stopAnimation()
+            showAlert(title: "Notify",
+                      message: "Please enter your email and password",
+                      style: .alert)
+            return 
+        }
+        if !email.isValidEmail() { 
+            stopAnimation()
+            showAlert(title: "Notify",
+                      message: "Email is not valid",
+                      style: .alert)
+        } else {
+            startAnimation()
+            signInViewModel.login(email: email, password: password)
+        }
     }
     
     @objc func handleRegisterButton() {
         let vc = SignUpViewController()
         navigationController?.pushViewController(vc, animated: true)
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
 }

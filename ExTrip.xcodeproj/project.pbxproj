@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040911F82946D9F200C8525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040911F72946D9F200C8525F /* GoogleService-Info.plist */; };
+		040911FE2946E11E00C8525F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FD2946E11E00C8525F /* Observable.swift */; };
+		040912002946E15300C8525F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FF2946E15300C8525F /* SignInViewModel.swift */; };
+		040912022946E1DD00C8525F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040912012946E1DD00C8525F /* AuthManager.swift */; };
+		042A14912948B9DD00461C4D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A14902948B9DD00461C4D /* StatusCode.swift */; };
+		042A14942948C58B00461C4D /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A14932948C58B00461C4D /* Tag.swift */; };
 		044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587D92942EC29009195F2 /* ETIconButton.swift */; };
 		044587DC29431728009195F2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DB29431728009195F2 /* SignInViewController.swift */; };
 		044587DE2943174B009195F2 /* ETTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DD2943174B009195F2 /* ETTextField.swift */; };
 		044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DF294317F2009195F2 /* UIViewController+Extension.swift */; };
 		044587E229432BC5009195F2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587E129432BC5009195F2 /* SignUpViewController.swift */; };
 		044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587E3294331B5009195F2 /* UINavigation+Extension.swift */; };
+		049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996ED2947234E005033C9 /* SignUpViewModel.swift */; };
+		049996F02947235D005033C9 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996EF2947235D005033C9 /* DatabaseManager.swift */; };
+		049996F2294724A1005033C9 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996F1294724A1005033C9 /* UserInfoModel.swift */; };
+		049996F4294731F4005033C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049996F3294731F4005033C9 /* GoogleService-Info.plist */; };
+		049996FA294738E3005033C9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996F9294738E3005033C9 /* HomeViewController.swift */; };
 		04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562D294193B200BCF4A5 /* AppDelegate.swift */; };
 		04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562F294193B200BCF4A5 /* SceneDelegate.swift */; };
 		04BF5637294193B300BCF4A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BF5636294193B300BCF4A5 /* Assets.xcassets */; };
@@ -47,17 +56,27 @@
 		04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */; };
 		04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */; };
 		04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56872942438B00BCF4A5 /* MainViewController.swift */; };
+		04F504DD2948603A00A94AD0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F504DC2948603A00A94AD0 /* String+Extension.swift */; };
 		BB406546778E52C3D67DEEC9 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EA76F64DE8BE5A21D92918 /* Pods_ExTrip.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		040911F72946D9F200C8525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		040911FD2946E11E00C8525F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		040911FF2946E15300C8525F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		040912012946E1DD00C8525F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		042A14902948B9DD00461C4D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
+		042A14932948C58B00461C4D /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		044587D92942EC29009195F2 /* ETIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETIconButton.swift; sourceTree = "<group>"; };
 		044587DB29431728009195F2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		044587DD2943174B009195F2 /* ETTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTextField.swift; sourceTree = "<group>"; };
 		044587DF294317F2009195F2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		044587E129432BC5009195F2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		044587E3294331B5009195F2 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
+		049996ED2947234E005033C9 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		049996EF2947235D005033C9 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		049996F1294724A1005033C9 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		049996F3294731F4005033C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		049996F9294738E3005033C9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		04BF562A294193B200BCF4A5 /* ExTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BF562D294193B200BCF4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04BF562F294193B200BCF4A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +112,7 @@
 		04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		04BF56872942438B00BCF4A5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		04F504DC2948603A00A94AD0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		7C5E109258F527B3A3A77A00 /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
 		899F57986DC6FE1A4E0DA0EA /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
 		97EA76F64DE8BE5A21D92918 /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +130,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040911F92946E0BE00C8525F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				040912012946E1DD00C8525F /* AuthManager.swift */,
+				049996EF2947235D005033C9 /* DatabaseManager.swift */,
+				042A14902948B9DD00461C4D /* StatusCode.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		040911FA2946E0DB00C8525F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				040911FF2946E15300C8525F /* SignInViewModel.swift */,
+				049996ED2947234E005033C9 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		040911FC2946E0F100C8525F /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				040911FD2946E11E00C8525F /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
+		042A14922948C55400461C4D /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				042A14932948C58B00461C4D /* Tag.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		049996F8294738CB005033C9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				049996F9294738E3005033C9 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		04BF5621294193B200BCF4A5 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +194,10 @@
 		04BF562C294193B200BCF4A5 /* ExTrip */ = {
 			isa = PBXGroup;
 			children = (
+				042A14922948C55400461C4D /* Constant */,
+				040911FC2946E0F100C8525F /* Observable */,
+				040911FA2946E0DB00C8525F /* ViewModel */,
+				040911F92946E0BE00C8525F /* Networking */,
 				04BF56852942434000BCF4A5 /* Controllers */,
 				04BF56822941EA6000BCF4A5 /* Model */,
 				04BF567B2941E9D300BCF4A5 /* Views */,
@@ -140,7 +207,7 @@
 				04BF564229419AB600BCF4A5 /* Resources */,
 				04BF5638294193B300BCF4A5 /* LaunchScreen.storyboard */,
 				04BF563B294193B300BCF4A5 /* Info.plist */,
-				040911F72946D9F200C8525F /* GoogleService-Info.plist */,
+				049996F3294731F4005033C9 /* GoogleService-Info.plist */,
 			);
 			path = ExTrip;
 			sourceTree = "<group>";
@@ -205,6 +272,7 @@
 				04BF56712941BC8700BCF4A5 /* UIStackView+Extension.swift */,
 				044587DF294317F2009195F2 /* UIViewController+Extension.swift */,
 				044587E3294331B5009195F2 /* UINavigation+Extension.swift */,
+				04F504DC2948603A00A94AD0 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */,
+				049996F1294724A1005033C9 /* UserInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +334,7 @@
 		04BF56852942434000BCF4A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				049996F8294738CB005033C9 /* Home */,
 				04BF56862942434E00BCF4A5 /* Auth */,
 			);
 			path = Controllers;
@@ -308,7 +378,7 @@
 				04BF5626294193B200BCF4A5 /* Sources */,
 				04BF5627294193B200BCF4A5 /* Frameworks */,
 				04BF5628294193B200BCF4A5 /* Resources */,
-				792F7C088F2432DA8DA31E9A /* [CP] Embed Pods Frameworks */,
+				FA0ECCDAE6DEEAE247884BFA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,30 +447,13 @@
 				04BF56672941A2EF00BCF4A5 /* Poppins-SemiBold.ttf in Resources */,
 				04BF563A294193B300BCF4A5 /* LaunchScreen.storyboard in Resources */,
 				04BF5637294193B300BCF4A5 /* Assets.xcassets in Resources */,
-				040911F82946D9F200C8525F /* GoogleService-Info.plist in Resources */,
+				049996F4294731F4005033C9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		792F7C088F2432DA8DA31E9A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A97E7919125AB99D4266F7B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -423,6 +476,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FA0ECCDAE6DEEAE247884BFA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -434,20 +504,30 @@
 				04BF56722941BC8700BCF4A5 /* UIStackView+Extension.swift in Sources */,
 				04BF566B2941A30400BCF4A5 /* Theme.swift in Sources */,
 				04BF56752941D66400BCF4A5 /* ETGradientButton.swift in Sources */,
+				049996F2294724A1005033C9 /* UserInfoModel.swift in Sources */,
 				044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */,
 				04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */,
 				044587E229432BC5009195F2 /* SignUpViewController.swift in Sources */,
 				04BF567A2941DB5400BCF4A5 /* ETButtonType.swift in Sources */,
+				049996F02947235D005033C9 /* DatabaseManager.swift in Sources */,
+				040912002946E15300C8525F /* SignInViewModel.swift in Sources */,
 				04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */,
 				04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */,
+				049996FA294738E3005033C9 /* HomeViewController.swift in Sources */,
+				042A14912948B9DD00461C4D /* StatusCode.swift in Sources */,
 				044587DC29431728009195F2 /* SignInViewController.swift in Sources */,
 				04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */,
+				049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */,
 				04BF566E2941A65500BCF4A5 /* UIFont+Extension.swift in Sources */,
 				04BF567E2941E9F000BCF4A5 /* OnboardingViewController.swift in Sources */,
+				04F504DD2948603A00A94AD0 /* String+Extension.swift in Sources */,
 				04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */,
 				04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */,
+				040911FE2946E11E00C8525F /* Observable.swift in Sources */,
 				044587DE2943174B009195F2 /* ETTextField.swift in Sources */,
+				040912022946E1DD00C8525F /* AuthManager.swift in Sources */,
 				044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */,
+				042A14942948C58B00461C4D /* Tag.swift in Sources */,
 				044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
