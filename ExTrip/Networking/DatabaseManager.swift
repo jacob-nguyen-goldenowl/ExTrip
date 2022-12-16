@@ -33,11 +33,11 @@ class DatabaseManager {
         let users = fireStore.collection("users").document(uid)
                 
         let data: [String: Any] = [
-            "email": info.email,
-            "name": info.name,
-            "state": info.state,
-            "city": info.city,
-            "phone": info.phone,
+            "email": info.email ?? "",
+            "name": info.name ?? "",
+            "state": info.state ?? "",
+            "city": info.city ?? "",
+            "phone": info.phone ?? "",
             "image": info.image ?? ""
         ]
         

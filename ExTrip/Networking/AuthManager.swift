@@ -8,11 +8,13 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseFirestore
 
 class AuthManager {
-    
+        
     // Singleton
     static let shared = AuthManager()
+
     private init() {}
     
     // MARK: - Login 
@@ -24,7 +26,8 @@ class AuthManager {
                            .loginFailed)
                 return 
             }
-            if Auth.auth().currentUser != nil {
+            if let user = Auth.auth().currentUser {
+                UserManager.shared.saveUserInfo(user.uid)
                 completion(.success,
                            .loginSuccess)
             } else {
@@ -41,11 +44,11 @@ class AuthManager {
     
     // MARK: - Register
     func register(with info: UserInfoModel, password: String , completion: @escaping (Result, StatusCode) -> Void) {
-
+        guard let email = info.email, let name = info.name else { return }
         // Check email existing yet
-        DatabaseManager.shared.canCreateNewUser(with: info.email, username: info.name) { canCreate in
+        DatabaseManager.shared.canCreateNewUser(with: email, username: name) { canCreate in
             if canCreate {
-                Auth.auth().createUser(withEmail: info.email, password: password) { result, error in 
+                Auth.auth().createUser(withEmail: email, password: password) { result, error in 
                     
                     guard result != nil, error == nil else { 
                         completion(.failed,
@@ -58,6 +61,7 @@ class AuthManager {
                     // Insert into database
                     DatabaseManager.shared.insertNewUser(with: info, uid: uid) { success in 
                         if success {
+                            UserManager.shared.saveUserInfo(uid)
                             completion(.success,
                                        .registerSuccess)
                             return
@@ -75,5 +79,5 @@ class AuthManager {
             }
         }
     }
-    
+
 }
