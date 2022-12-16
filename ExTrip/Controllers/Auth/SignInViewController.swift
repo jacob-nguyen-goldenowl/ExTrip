@@ -171,6 +171,7 @@ class SignInViewController: UIViewController {
     private func goToHomePage() {
         let vc = TabbarViewController()
         vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .flipHorizontal
         present(vc, animated: true)
     } 
     

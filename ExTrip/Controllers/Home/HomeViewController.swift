@@ -70,6 +70,7 @@ class HomeViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = .clear
+        collection.showsVerticalScrollIndicator = false
         collection.register(DestinationCollectionViewCell.self,
                             forCellWithReuseIdentifier: DestinationCollectionViewCell.identifier)
         collection.register(CategoryCollectionReusableView.self,
