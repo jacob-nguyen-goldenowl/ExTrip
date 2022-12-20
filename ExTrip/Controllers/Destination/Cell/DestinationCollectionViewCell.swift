@@ -103,21 +103,14 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     }
     
     private func changeColorLikeButton() {
-        if isSelectedLikeButton {
-            let image = UIImage(named: "favorite.fill")
-            let tintedImage = image?.withRenderingMode(.alwaysTemplate)
-            likeButton.setImage(tintedImage, for: .normal)
-            likeButton.tintColor = UIColor.theme.red ?? .red
-        } else {
-            let image = UIImage(named: "favorite")
-            let tintedImage = image?.withRenderingMode(.alwaysTemplate)
-            likeButton.setImage(tintedImage, for: .normal)
-            likeButton.tintColor = UIColor.theme.white ?? .white
-        }
+        let image = UIImage(named: isSelectedLikeButton ? "favorite.fill" : "favorite")
+        let tintedImage = image?.withRenderingMode(.alwaysTemplate)
+        likeButton.setImage(tintedImage, for: .normal)
+        likeButton.tintColor = isSelectedLikeButton ? UIColor.theme.red ?? .red : UIColor.theme.white ?? .white
     }
     
     private func setupActionButton() {
-        likeButton.addTarget(self, action: #selector(handleLikeButton), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(handleLikeAction), for: .touchUpInside)
     }
     
     func getDataItem(_ data: Photo?) {
@@ -129,7 +122,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
 }
 
 extension DestinationCollectionViewCell {
-    @objc func handleLikeButton() {
+    @objc func handleLikeAction() {
         isSelectedLikeButton = !isSelectedLikeButton
         changeColorLikeButton()
     }

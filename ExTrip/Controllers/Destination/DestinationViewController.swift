@@ -159,7 +159,7 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                       bottom: headerView.bottomAnchor,
                       trailing: headerView.trailingAnchor, 
                       paddingTrailing: padding)
-        button.addTarget(self, action: #selector(handleSeeAllButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSeeAllAction), for: .touchUpInside)
         return headerView
     }
     
@@ -191,7 +191,7 @@ extension DestinationViewController: UIScrollViewDelegate {
 
 // MARK: - Handle action button
 extension DestinationViewController {
-    @objc func handleSeeAllButton() {
+    @objc func handleSeeAllAction() {
         print("See all..")
     }
 }

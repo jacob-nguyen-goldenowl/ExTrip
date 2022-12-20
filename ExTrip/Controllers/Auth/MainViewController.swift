@@ -105,27 +105,27 @@ class MainViewController: UIViewController {
     
     // MARK: - Setup action
     fileprivate func setupActionButton() {
-        facebookButton.addTarget(self, action: #selector(handleFacebookButton), for: .touchUpInside)
-        googleButton.addTarget(self, action: #selector(handleGoogleButton), for: .touchUpInside)
-        signInButton.addTarget(self, action: #selector(handleSignInButton), for: .touchUpInside)
-        signUpButton.addTarget(self, action: #selector(handleSignUpButton), for: .touchUpInside)
+        facebookButton.addTarget(self, action: #selector(handleFacebookAction), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(handleGoogleAction), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(handleSignInAction), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(handleSignUpAction), for: .touchUpInside)
     }
 }
 
 // MARK: - Handle action
 extension MainViewController {
-    @objc func handleFacebookButton() {
+    @objc func handleFacebookAction() {
     }
 
-    @objc func handleGoogleButton() {
+    @objc func handleGoogleAction() {
     }
     
-    @objc func handleSignInButton() {
+    @objc func handleSignInAction() {
         let vc = SignInViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func handleSignUpButton() {
+    @objc func handleSignUpAction() {
         let vc = SignUpViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

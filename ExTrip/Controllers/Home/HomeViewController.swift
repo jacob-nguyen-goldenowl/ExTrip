@@ -66,7 +66,7 @@ class HomeViewController: UIViewController {
         let search = UIBarButtonItem(image: UIImage(named: "search"),
                                      style: .plain,
                                      target: self,
-                                     action: #selector(handleSearchButton))
+                                     action: #selector(handleSearchAction))
         search.tintColor = .black
         self.navigationItem.rightBarButtonItem  = search
     }
@@ -151,7 +151,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Action button
 extension HomeViewController {
-    @objc func handleSearchButton() {
+    @objc func handleSearchAction() {
         
     }
 }
