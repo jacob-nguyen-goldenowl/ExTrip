@@ -18,7 +18,7 @@
 		044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587DF294317F2009195F2 /* UIViewController+Extension.swift */; };
 		044587E229432BC5009195F2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587E129432BC5009195F2 /* SignUpViewController.swift */; };
 		044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587E3294331B5009195F2 /* UINavigation+Extension.swift */; };
-		046B7C46294A38A200777906 /* DestinationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C45294A38A200777906 /* DestinationCollectionViewCell.swift */; };
+		046B7C46294A38A200777906 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C45294A38A200777906 /* HomeCollectionViewCell.swift */; };
 		049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996ED2947234E005033C9 /* SignUpViewModel.swift */; };
 		049996F02947235D005033C9 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996EF2947235D005033C9 /* DatabaseManager.swift */; };
 		049996F2294724A1005033C9 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996F1294724A1005033C9 /* UserInfoModel.swift */; };
@@ -61,6 +61,11 @@
 		04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */; };
 		04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */; };
 		04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56872942438B00BCF4A5 /* MainViewController.swift */; };
+		04D80D8D295178EC005985ED /* StretchyTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80D8C295178EC005985ED /* StretchyTableHeaderView.swift */; };
+		04D80D902951792F005985ED /* RattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80D8F2951792F005985ED /* RattingView.swift */; };
+		04D80D93295179B9005985ED /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80D92295179B9005985ED /* DestinationViewController.swift */; };
+		04D80D9629517A30005985ED /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80D9529517A30005985ED /* DestinationTableViewCell.swift */; };
+		04D80D9829517A94005985ED /* DestinationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80D9729517A94005985ED /* DestinationCollectionViewCell.swift */; };
 		04E7E32829497C0D0072EAFE /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E32729497C0D0072EAFE /* TabbarViewController.swift */; };
 		04E7E32B29497CDC0072EAFE /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E32A29497CDC0072EAFE /* FavoriteViewController.swift */; };
 		04E7E32E29497D370072EAFE /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E32D29497D370072EAFE /* BookingViewController.swift */; };
@@ -84,7 +89,7 @@
 		044587DF294317F2009195F2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		044587E129432BC5009195F2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		044587E3294331B5009195F2 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
-		046B7C45294A38A200777906 /* DestinationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCollectionViewCell.swift; sourceTree = "<group>"; };
+		046B7C45294A38A200777906 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		049996ED2947234E005033C9 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		049996EF2947235D005033C9 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		049996F1294724A1005033C9 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
@@ -129,6 +134,11 @@
 		04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		04BF56872942438B00BCF4A5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		04D80D8C295178EC005985ED /* StretchyTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyTableHeaderView.swift; sourceTree = "<group>"; };
+		04D80D8F2951792F005985ED /* RattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RattingView.swift; sourceTree = "<group>"; };
+		04D80D92295179B9005985ED /* DestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
+		04D80D9529517A30005985ED /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
+		04D80D9729517A94005985ED /* DestinationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCollectionViewCell.swift; sourceTree = "<group>"; };
 		04E7E32729497C0D0072EAFE /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		04E7E32A29497CDC0072EAFE /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		04E7E32D29497D370072EAFE /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
@@ -205,7 +215,7 @@
 		04BF54B12949C876001176A1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				046B7C45294A38A200777906 /* DestinationCollectionViewCell.swift */,
+				046B7C45294A38A200777906 /* HomeCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -239,6 +249,7 @@
 		04BF562C294193B200BCF4A5 /* ExTrip */ = {
 			isa = PBXGroup;
 			children = (
+				04D80D8B295178C9005985ED /* Common */,
 				04E7E32629497BE20072EAFE /* Navigation */,
 				042A14922948C55400461C4D /* Constant */,
 				040911FC2946E0F100C8525F /* Observable */,
@@ -348,6 +359,8 @@
 		04BF567B2941E9D300BCF4A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04D80D8E2951791C005985ED /* Ratting */,
+				04D80D8A295178B2005985ED /* Header */,
 				04BF567C2941E9DC00BCF4A5 /* Onboarding */,
 			);
 			path = Views;
@@ -383,6 +396,7 @@
 		04BF56852942434000BCF4A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04D80D9129517997005985ED /* Destination */,
 				04E7E32F29497D4F0072EAFE /* Profile */,
 				04E7E32C29497CE90072EAFE /* Booking */,
 				04E7E32929497C9C0072EAFE /* Favorite */,
@@ -400,6 +414,47 @@
 				044587E129432BC5009195F2 /* SignUpViewController.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		04D80D8A295178B2005985ED /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				04D80D8C295178EC005985ED /* StretchyTableHeaderView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		04D80D8B295178C9005985ED /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		04D80D8E2951791C005985ED /* Ratting */ = {
+			isa = PBXGroup;
+			children = (
+				04D80D8F2951792F005985ED /* RattingView.swift */,
+			);
+			path = Ratting;
+			sourceTree = "<group>";
+		};
+		04D80D9129517997005985ED /* Destination */ = {
+			isa = PBXGroup;
+			children = (
+				04D80D9429517A1C005985ED /* Cell */,
+				04D80D92295179B9005985ED /* DestinationViewController.swift */,
+			);
+			path = Destination;
+			sourceTree = "<group>";
+		};
+		04D80D9429517A1C005985ED /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				04D80D9529517A30005985ED /* DestinationTableViewCell.swift */,
+				04D80D9729517A94005985ED /* DestinationCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		04E7E32629497BE20072EAFE /* Navigation */ = {
@@ -589,10 +644,12 @@
 				04BF56702941AAF900BCF4A5 /* UIView+Extension.swift in Sources */,
 				04BF56722941BC8700BCF4A5 /* UIStackView+Extension.swift in Sources */,
 				04BF566B2941A30400BCF4A5 /* Theme.swift in Sources */,
+				04D80D9829517A94005985ED /* DestinationCollectionViewCell.swift in Sources */,
 				04BF56752941D66400BCF4A5 /* ETGradientButton.swift in Sources */,
 				04BF54BE2949DDEA001176A1 /* DestinationModel.swift in Sources */,
 				049996F2294724A1005033C9 /* UserInfoModel.swift in Sources */,
 				044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */,
+				04D80D93295179B9005985ED /* DestinationViewController.swift in Sources */,
 				04E7E33129497D610072EAFE /* ProfileViewController.swift in Sources */,
 				04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */,
 				04BF54C3294A2394001176A1 /* CategoryCollectionReusableView.swift in Sources */,
@@ -608,10 +665,13 @@
 				04E7E3332949AD190072EAFE /* UserManager.swift in Sources */,
 				049996FA294738E3005033C9 /* HomeViewController.swift in Sources */,
 				042A14912948B9DD00461C4D /* StatusCode.swift in Sources */,
+				04D80D9629517A30005985ED /* DestinationTableViewCell.swift in Sources */,
 				044587DC29431728009195F2 /* SignInViewController.swift in Sources */,
 				04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */,
 				049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */,
 				04BF566E2941A65500BCF4A5 /* UIFont+Extension.swift in Sources */,
+				04D80D8D295178EC005985ED /* StretchyTableHeaderView.swift in Sources */,
+				04D80D902951792F005985ED /* RattingView.swift in Sources */,
 				04BF567E2941E9F000BCF4A5 /* OnboardingViewController.swift in Sources */,
 				04F504DD2948603A00A94AD0 /* String+Extension.swift in Sources */,
 				04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */,
@@ -620,7 +680,7 @@
 				040911FE2946E11E00C8525F /* Observable.swift in Sources */,
 				04E7E3372949B7F40072EAFE /* HomeViewModel.swift in Sources */,
 				044587DE2943174B009195F2 /* ETTextField.swift in Sources */,
-				046B7C46294A38A200777906 /* DestinationCollectionViewCell.swift in Sources */,
+				046B7C46294A38A200777906 /* HomeCollectionViewCell.swift in Sources */,
 				040912022946E1DD00C8525F /* AuthManager.swift in Sources */,
 				044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */,
 				042A14942948C58B00461C4D /* Tag.swift in Sources */,

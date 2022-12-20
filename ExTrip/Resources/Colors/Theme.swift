@@ -22,6 +22,7 @@ struct colorTheme {
     let pink = UIColor(named: "pink")
     let orange = UIColor(named: "orange")
     let serenade = UIColor(named: "serenade")
+    let red = UIColor(named: "red")
     let lightGray = UIColor(named: "lightGray")
     let lightBlue = UIColor(named: "lightBlue")
     let lightRed = UIColor(named: "lightRed")
