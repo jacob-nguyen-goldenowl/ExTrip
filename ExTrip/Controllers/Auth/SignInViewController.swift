@@ -147,10 +147,10 @@ class SignInViewController: UIViewController {
     // MARK: - Binding
     private func setupErrorBinder() {
         signInViewModel.error.bind { [weak self] error in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             if error != nil {
-                strongSelf.stopAnimation()
-                strongSelf.showAlert(title: "Notify",
+                self.stopAnimation()
+                self.showAlert(title: "Notify",
                           message: error,
                           style: .alert)
             }
@@ -159,17 +159,19 @@ class SignInViewController: UIViewController {
     
     private func setupSuccessBinder() {
         signInViewModel.success.bind { [weak self] success in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             if success != nil {
-                strongSelf.stopAnimation()
-                strongSelf.goToHomePage()
+                self.stopAnimation()
+                self.goToHomePage()
             }
         }
     }
     
     // MARK: - Go to home screen
     private func goToHomePage() {
-        let vc = HomeViewController()
+        let vc = TabbarViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .flipHorizontal
         present(vc, animated: true)
     } 
     

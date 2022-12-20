@@ -8,10 +8,10 @@
 import Foundation
 
 struct UserInfoModel {
-    let email: String
-    let name: String
-    let state: String
-    let city: String
-    let phone: String
+    let email: String?
+    let name: String?
+    let state: String?
+    let city: String?
+    let phone: String?
     let image: String?
 }

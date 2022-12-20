@@ -26,4 +26,5 @@ struct colorTheme {
     let lightBlue = UIColor(named: "lightBlue")
     let lightRed = UIColor(named: "lightRed")
     let lightGreen = UIColor(named: "lightGreen")
+    let tertiarySystemFill = UIColor(named: "tertiarySystemFill")
 }
