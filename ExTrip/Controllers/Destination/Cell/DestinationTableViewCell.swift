@@ -34,10 +34,6 @@ class DestinationTableViewCell: UITableViewCell {
         fatalError()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
     // MARK: - Setup UI
     private func setupSubView() {
         contentView.addSubview(collectionView)

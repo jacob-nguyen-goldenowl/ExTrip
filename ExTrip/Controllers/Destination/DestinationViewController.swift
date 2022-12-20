@@ -135,7 +135,7 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                                               y: 0,
                                               width: tableView.frame.size.width, 
                                               height: 75))
-            // create label
+        // create label
         let label = UILabel()
         label.text = sections[section].headerTitle
         label.font = .poppins(style: .bold, size: 25) 
@@ -148,7 +148,7 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                      paddingLeading: padding)
         label.setWidth(width: tableView.frame.size.width / 2)
         
-            // create button
+        // create button
         let button = UIButton()
         button.setTitle("See all".uppercased(), for: .normal)
         button.setTitleColor(.lightGray, for: .normal)
@@ -178,7 +178,7 @@ extension DestinationViewController: UIScrollViewDelegate {
         scrollActionBar(scrollView)
     }
     
-    // Show/hiden navigation bar when scrolling
+    // Show or hiden title bar when scrolling
     private func scrollActionBar(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < -20 {
             navigationItem.title = ""
