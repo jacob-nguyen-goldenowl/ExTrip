@@ -19,12 +19,17 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeViewModel.welcomTitle()
-        setupTitleBider()
-        setupNavigationBar()
+        setupTitleBinder()
         setupViews()
     }
     
-    private func setupTitleBider() {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupNavigationBar()
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    private func setupTitleBinder() {
         homeViewModel.welcomeMessage.bind {[weak self] message in
             if let message = message {
                 self?.setupLeftAlignTitleView(text: message)
@@ -61,7 +66,7 @@ class HomeViewController: UIViewController {
         let search = UIBarButtonItem(image: UIImage(named: "search"),
                                      style: .plain,
                                      target: self,
-                                     action: #selector(handleSearchButton))
+                                     action: #selector(handleSearchAction))
         search.tintColor = .black
         self.navigationItem.rightBarButtonItem  = search
     }
@@ -71,8 +76,8 @@ class HomeViewController: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = .clear
         collection.showsVerticalScrollIndicator = false
-        collection.register(DestinationCollectionViewCell.self,
-                            forCellWithReuseIdentifier: DestinationCollectionViewCell.identifier)
+        collection.register(HomeCollectionViewCell.self,
+                            forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         collection.register(CategoryCollectionReusableView.self,
                             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                             withReuseIdentifier: CategoryCollectionReusableView.identifier)
@@ -99,7 +104,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell { 
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DestinationCollectionViewCell.identifier, for: indexPath) as? DestinationCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
             cell.photo = photos[indexPath.item]
         return cell
     }
@@ -107,6 +112,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let columnWidth = (collectionView.frame.size.width / CGFloat(numberOfColumns)) - cellPadding * 1.5
         return CGSize(width: columnWidth, height: 270)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = photos[indexPath.row]
+        let vc = DestinationViewController(data: photos,
+                                           scoreDestination: item.rating,
+                                           titleDestination: item.country,
+                                           imageDestination: item.image)
+        vc.titleHeader = item.country
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -136,7 +151,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Action button
 extension HomeViewController {
-    @objc func handleSearchButton() {
+    @objc func handleSearchAction() {
         
     }
 }

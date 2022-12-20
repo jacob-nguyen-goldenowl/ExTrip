@@ -129,8 +129,8 @@ class SignInViewController: UIViewController {
     
     // MARK: - Setup action
     private func setupActionButton() {
-        loginButton.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
-        registerButton.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(handleLoginAction), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(handleRegisterAction), for: .touchUpInside)
     }
     
     // MARK: - Start & stop animate
@@ -172,14 +172,14 @@ class SignInViewController: UIViewController {
         let vc = TabbarViewController()
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
-        present(vc, animated: true)
+        present(vc, animated: false)
     } 
     
 }
 
 // MARK: - Handle action
 extension SignInViewController {
-    @objc func handleLoginButton() {
+    @objc func handleLoginAction() {
         guard let email = emailTextField.text,
               let password = passwordTextField.text,
               !password.isEmpty,
@@ -201,7 +201,7 @@ extension SignInViewController {
         }
     }
     
-    @objc func handleRegisterButton() {
+    @objc func handleRegisterAction() {
         let vc = SignUpViewController()
         navigationController?.pushViewController(vc, animated: true)
         emailTextField.text = ""

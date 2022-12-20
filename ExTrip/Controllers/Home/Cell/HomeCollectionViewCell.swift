@@ -7,11 +7,11 @@
 
 import UIKit
 
-class DestinationCollectionViewCell: UICollectionViewCell {
+class HomeCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "DestinationCollectionViewCell"
+    static let identifier = "HomeCollectionViewCell"
     
-        // MARK: - Properties
+    // MARK: - Properties
     private let containerView: UIView = {
         let view = UIView()
         view.layer.masksToBounds = true
@@ -33,31 +33,8 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let ratingView: UIView = {
-        let view = UIView()
-        view.layer.masksToBounds = true
-        view.layer.cornerRadius = 10
-        view.backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.7)
-        return view 
-    }()
+    private let ratingView = RattingView(type: .gray)
     
-    private lazy var scoreRatingLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .poppins(style: .regular)
-        label.textColor = UIColor.theme.white ?? .white
-        return label
-    }()
-    
-    private lazy var starRatingImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "star")
-        imageView.tintColor = .white
-        imageView.contentMode = .scaleAspectFit
-        imageView.sizeToFit()
-        return imageView
-    }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubViews()
@@ -67,16 +44,12 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-        // MARK: - Setup UI
+    // MARK: - Setup UI
     private func setupSubViews() {
         addSubview(containerView)
         containerView.addSubviews(imageCategory,
                                   namecountryLabel,
                                   ratingView)
-        
-        ratingView.addSubviews(scoreRatingLabel,
-                               starRatingImage)
-        
         setupConstraintSubViews()
     }
     
@@ -100,30 +73,11 @@ class DestinationCollectionViewCell: UICollectionViewCell {
                                 paddingLeading: padding)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews() 
-        let padding: CGFloat = 6
-        starRatingImage.anchor(top: ratingView.topAnchor,
-                               bottom: ratingView.bottomAnchor,
-                               trailing: ratingView.trailingAnchor, 
-                               paddingTop: padding,
-                               paddingBottom: padding,
-                               paddingLeading: padding,
-                               paddingTrailing: padding)
-        starRatingImage.setWidth(width: 25)
-        
-        scoreRatingLabel.anchor(top: ratingView.topAnchor, 
-                                bottom: ratingView.bottomAnchor,
-                                leading: ratingView.leadingAnchor,
-                                trailing: starRatingImage.leadingAnchor,
-                                paddingLeading: padding)
-    }
-    
     var photo: Photo? {
         didSet {
             if let photo = photo {
                 imageCategory.image = photo.image
-                scoreRatingLabel.text = photo.rating
+                ratingView.score = photo.rating
                 namecountryLabel.text = photo.country.uppercased()
             }
         }
