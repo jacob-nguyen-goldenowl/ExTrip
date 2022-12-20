@@ -159,11 +159,12 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    
     // MARK: - Go to home screen
     private func goToHomePage() {
-        let vc = HomeViewController()
-        present(vc, animated: true)
+        let vc = TabbarViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .flipHorizontal
+        present(vc, animated: false)
     } 
     
 }

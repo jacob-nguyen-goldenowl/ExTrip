@@ -172,7 +172,7 @@ class SignInViewController: UIViewController {
         let vc = TabbarViewController()
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
-        present(vc, animated: true)
+        present(vc, animated: false)
     } 
     
 }
