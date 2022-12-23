@@ -26,7 +26,6 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupNavigationBar()
-        tabBarController?.tabBar.isHidden = false
     }
     
     private func setupTitleBinder() {
@@ -90,7 +89,7 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                              bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                              bottom: view.bottomAnchor,
                               leading: view.leadingAnchor,
                               trailing: view.trailingAnchor)
     }
@@ -121,6 +120,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                                            titleDestination: item.country,
                                            imageDestination: item.image)
         vc.titleHeader = item.country
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -137,9 +137,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     // MARK: - Setup header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let category = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                       withReuseIdentifier: CategoryCollectionReusableView.identifier,
-                                                                       for: indexPath)
+        guard let category = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,withReuseIdentifier: CategoryCollectionReusableView.identifier, for: indexPath) as? CategoryCollectionReusableView else { return UICollectionReusableView() }
+        category.delegate  = self
         return category
     }
     
@@ -152,7 +151,26 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Action button
 extension HomeViewController {
     @objc func handleSearchAction() {
-        
     }
 }
 
+// MARK: - CategoryCollectionReusableViewDelegate
+extension HomeViewController: CategoryCollectionReusableViewDelegate {
+    func handleHotelBookingAction() {
+        let vc  = HotelBookingViewController()
+        navigationAction(vc)
+    }
+    
+    func handleFilghtBookingAction() {
+        // Code here ...
+    }
+    
+    func handleEventAction() {
+        // Code here ...
+    }
+    
+    private func navigationAction(_ viewController: UIViewController) {
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
