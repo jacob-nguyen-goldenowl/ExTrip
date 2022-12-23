@@ -173,6 +173,7 @@ class HotelBookingViewController: UIViewController {
         fastisController.doneHandler = { newValue in
             self.timeValue = newValue
         }
+        fastisController.initialValue = timeValue as? FastisRange 
         present(fastisController, animated: true)
     }
     

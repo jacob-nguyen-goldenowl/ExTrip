@@ -171,13 +171,13 @@ class FastisController<Value: FastisValue>: UIViewController {
     private func configureConstraints() {
         let padding: CGFloat = 12
         let haftView: CGFloat = view.frame.size.width / 2
-        titleLabel.anchor(top: view.topAnchor,
-                          leading: view.leadingAnchor,
+        titleLabel.anchor(top: view.topAnchor, 
+                          leading: view.leadingAnchor, 
                           trailing: view.trailingAnchor,
-                          paddingTop: padding, 
+                          paddingTop: 50,
                           paddingLeading: padding,
                           paddingTrailing: padding)
-        titleLabel.setHeight(height: 50)
+        titleLabel.setHeight(height: 30)
         
         weekView.anchor(top: titleLabel.bottomAnchor,
                         leading: view.leadingAnchor,
@@ -283,7 +283,6 @@ class FastisController<Value: FastisValue>: UIViewController {
             case .range:
                 var newValue: FastisRange!
                 if let currentValue = self.value as? FastisRange {
-                    
                     let dateRangeChangesDisabled = !allowDateRangeChanges
                     let rangeSelected = !currentValue.fromDate.isInSameDay(date: currentValue.toDate)
                     if dateRangeChangesDisabled && rangeSelected {
@@ -426,8 +425,6 @@ extension FastisController: JTACMonthViewDelegate, JTACMonthViewDataSource  {
         return self.config.monthHeader.height
     }
 }
-
-
 
 extension FastisController where Value == FastisRange {
     
