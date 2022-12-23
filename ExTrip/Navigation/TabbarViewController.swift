@@ -39,7 +39,7 @@ class TabbarViewController: UITabBarController {
     func changeRadiusOfTabbar() {
         tabBar.layer.masksToBounds = true
         tabBar.isTranslucent = true
-        tabBar.layer.cornerRadius = 30
+        tabBar.layer.cornerRadius = 15
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
@@ -50,14 +50,15 @@ class TabbarViewController: UITabBarController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        changeHeightOfTabbar()
+//        changeHeightOfTabbar()
     }
     // MARK: - Change height
     func changeHeightOfTabbar() {
         if UIDevice().userInterfaceIdiom == .phone {
+            let heightTabBar: CGFloat = 100
             var tabFrame = tabBar.frame
-            tabFrame.size.height = 100
-            tabFrame.origin.y = view.frame.size.height - 90
+            tabFrame.size.height = heightTabBar
+            tabFrame.origin.y = view.frame.size.height - heightTabBar
             tabBar.frame = tabFrame
         }
     }
