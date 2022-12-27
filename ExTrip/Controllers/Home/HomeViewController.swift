@@ -155,22 +155,24 @@ extension HomeViewController {
 }
 
 // MARK: - CategoryCollectionReusableViewDelegate
-extension HomeViewController: categoryCollectionReusableViewHandleHotelBookingDelegate {
-    func handleHotelBookingAction() {
+extension HomeViewController: CategoryCollectionReusableViewDelegate {
+    
+    func categoryCollectionReusableViewhandleHotelBooking() {
         let vc  = HotelBookingViewController()
         navigationAction(vc)
     }
     
-    func handleFilghtBookingAction() {
+    func categoryCollectionReusableViewhandleFilghtBooking() {
         // Code here ...
     }
     
-    func handleEventAction() {
-        // Code here ...
+    func categoryCollectionReusableViewhandleEvent() {
+        // Core here ...
     }
-    
+
     private func navigationAction(_ viewController: UIViewController) {
         viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
 }

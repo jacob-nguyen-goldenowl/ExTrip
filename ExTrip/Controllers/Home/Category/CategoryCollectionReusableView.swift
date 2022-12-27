@@ -6,17 +6,17 @@
     //
 import UIKit
 
-protocol categoryCollectionReusableViewHandleHotelBookingDelegate {
-    func handleHotelBookingAction() 
-    func handleFilghtBookingAction()
-    func handleEventAction()
+protocol CategoryCollectionReusableViewDelegate {
+    func categoryCollectionReusableViewhandleHotelBooking() 
+    func categoryCollectionReusableViewhandleFilghtBooking()
+    func categoryCollectionReusableViewhandleEvent()
 }
 
 class CategoryCollectionReusableView: UICollectionReusableView {
     
     static let identifier = "CategoryCollectionReusableView"
     
-    var delegate: categoryCollectionReusableViewHandleHotelBookingDelegate?
+    var delegate: CategoryCollectionReusableViewDelegate?
     
     private let categoryStackView = UIStackView()
     private let titleStackView = UIStackView()
@@ -148,14 +148,14 @@ class CategoryCollectionReusableView: UICollectionReusableView {
 
 extension CategoryCollectionReusableView {
     @objc func handleHotelAction() {
-        delegate?.handleHotelBookingAction()
+        delegate?.categoryCollectionReusableViewhandleHotelBooking()
     }
     
     @objc func handleFlightAction() {
-        delegate?.handleFilghtBookingAction()
+        delegate?.categoryCollectionReusableViewhandleFilghtBooking()
     }
     
     @objc func handleEventAction() {
-        delegate?.handleEventAction()
+        delegate?.categoryCollectionReusableViewhandleEvent()
     }
 }
