@@ -15,4 +15,7 @@ pod 'Firebase/Crashlytics'
 pod 'Firebase/Storage'
 pod 'FirebaseFirestore'
 
+# Calendar
+pod 'JTAppleCalendar'
+
 end

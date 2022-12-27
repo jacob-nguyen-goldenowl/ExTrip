@@ -783,6 +783,7 @@ PODS:
     - Libuv-gRPC (= 0.0.10)
   - gRPC-Core/Interface (1.44.0)
   - GTMSessionFetcher/Core (3.0.0)
+  - JTAppleCalendar (8.0.4)
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
@@ -805,6 +806,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - FirebaseFirestore
+  - JTAppleCalendar
 
 SPEC REPOS:
   trunk:
@@ -829,6 +831,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - JTAppleCalendar
     - leveldb-library
     - Libuv-gRPC
     - nanopb
@@ -856,11 +859,12 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
   GTMSessionFetcher: c1edebe64e9fb4e8f6415d018edf1fd3eac074a1
+  JTAppleCalendar: f95b02c64f56d6f938fbf6582a04dcab9d709ebd
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
 
-PODFILE CHECKSUM: d625afec91ca3c5d2267a7161fea1ee1117ebd5c
+PODFILE CHECKSUM: bcc16b908da396d81d7f3f546d1ae5251c55999b
 
 COCOAPODS: 1.11.3

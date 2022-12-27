@@ -1,15 +1,22 @@
-//
-//  CagegoryCollectionReusableView.swift
-//  ExTrip
-//
-//  Created by Nguyễn Hữu Toàn on 14/12/2022.
-//
-
+    //
+    //  CagegoryCollectionReusableView.swift
+    //  ExTrip
+    //
+    //  Created by Nguyễn Hữu Toàn on 14/12/2022.
+    //
 import UIKit
 
+protocol CategoryCollectionReusableViewDelegate {
+    func categoryCollectionReusableViewhandleHotelBooking() 
+    func categoryCollectionReusableViewhandleFilghtBooking()
+    func categoryCollectionReusableViewhandleEvent()
+}
+
 class CategoryCollectionReusableView: UICollectionReusableView {
-        
+    
     static let identifier = "CategoryCollectionReusableView"
+    
+    var delegate: CategoryCollectionReusableViewDelegate?
     
     private let categoryStackView = UIStackView()
     private let titleStackView = UIStackView()
@@ -21,7 +28,6 @@ class CategoryCollectionReusableView: UICollectionReusableView {
     private lazy var hotelLabel = createLabel(title: "Hotels")
     private lazy var flightLabel = createLabel(title: "Flights")
     private lazy var eventLabel = createLabel(title: "Events")
-
     
     private lazy var separatorView: UIView = {
         let view = UIView()
@@ -43,10 +49,11 @@ class CategoryCollectionReusableView: UICollectionReusableView {
         button.setTitleColor(UIColor.theme.lightGray, for: .normal)
         return button
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubViews()
+        setupActionButton()
     }
     
     required init?(coder: NSCoder) {
@@ -131,6 +138,24 @@ class CategoryCollectionReusableView: UICollectionReusableView {
         stackView.spacing = 60
         stackView.distribution = .fillEqually
     }
+    
+    private func setupActionButton() {
+        hotelButton.addTarget(self, action: #selector(handleHotelAction), for: .touchUpInside)
+        flightButton.addTarget(self, action: #selector(handleFlightAction), for: .touchUpInside)
+        eventButton.addTarget(self, action: #selector(handleEventAction), for: .touchUpInside)
+    }
 }
 
-
+extension CategoryCollectionReusableView {
+    @objc func handleHotelAction() {
+        delegate?.categoryCollectionReusableViewhandleHotelBooking()
+    }
+    
+    @objc func handleFlightAction() {
+        delegate?.categoryCollectionReusableViewhandleFilghtBooking()
+    }
+    
+    @objc func handleEventAction() {
+        delegate?.categoryCollectionReusableViewhandleEvent()
+    }
+}

@@ -78,8 +78,6 @@ class DestinationViewController: UIViewController {
     private func setupViews() {
         view.addSubviews(tableView)
         view.backgroundColor = UIColor.theme.white ?? .white
-        tabBarController?.tabBar.isHidden = true
-        
         tableView.delegate = self
         tableView.dataSource = self
         let header = StretchyTableHeaderView(frame: CGRect(x: 0,
@@ -90,10 +88,7 @@ class DestinationViewController: UIViewController {
         setupConstaintsView()
     }
     private func setupConstaintsView() {        
-        tableView.anchor(top: view.topAnchor,
-                         bottom: view.bottomAnchor,
-                         leading: view.leadingAnchor,
-                         trailing: view.trailingAnchor)
+        tableView.fillAnchor(view)
     }
     
 }
@@ -111,7 +106,6 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DestinationTableViewCell.identifier, for: indexPath) as? DestinationTableViewCell else { return UITableViewCell() }
-        cell.backgroundColor = .clear
         return cell
     }
     
