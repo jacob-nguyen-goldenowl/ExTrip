@@ -49,9 +49,9 @@ final class DayCell: JTACDayCell {
         // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configureSubviews()
-        self.configureConstraints()
-        self.applyConfig(.default)
+        configureSubviews()
+        configureConstraints()
+        applyConfig(.default)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,73 +60,69 @@ final class DayCell: JTACDayCell {
     
         // MARK: - Configurations
     public func applyConfig(_ config: FastisConfig) {
-        self.backgroundColor = config.controller.backgroundColor
+        backgroundColor = config.controller.backgroundColor
         
         let config = config.dayCell
         self.config = config
-        self.rightRangeView.backgroundColor = config.onRangeBackgroundColor
-        self.leftRangeView.backgroundColor = config.onRangeBackgroundColor
-        self.rightRangeView.layer.cornerRadius = config.rangeViewCornerRadius
-        self.leftRangeView.layer.cornerRadius = config.rangeViewCornerRadius
-        self.selectionBackgroundView.backgroundColor = config.selectedBackgroundColor
-        self.dateLabel.font = config.dateLabelFont
-        self.dateLabel.textColor = config.dateLabelColor
+        rightRangeView.backgroundColor = config.onRangeBackgroundColor
+        leftRangeView.backgroundColor = config.onRangeBackgroundColor
+        rightRangeView.layer.cornerRadius = config.rangeViewCornerRadius
+        leftRangeView.layer.cornerRadius = config.rangeViewCornerRadius
+        selectionBackgroundView.backgroundColor = config.selectedBackgroundColor
+        dateLabel.font = config.dateLabelFont
+        dateLabel.textColor = config.dateLabelColor
         if let cornerRadius = config.customSelectionViewCornerRadius {
-            self.selectionBackgroundView.layer.cornerRadius = cornerRadius
+            selectionBackgroundView.layer.cornerRadius = cornerRadius
         }
-        self.rangeViewTopAnchorConstraints.forEach({ $0.constant = config.rangedBackgroundViewVerticalInset })
-        self.rangeViewBottomAnchorConstraints.forEach({ $0.constant = -config.rangedBackgroundViewVerticalInset })
+        rangeViewTopAnchorConstraints.forEach({ $0.constant = config.rangedBackgroundViewVerticalInset })
+        rangeViewBottomAnchorConstraints.forEach({ $0.constant = -config.rangedBackgroundViewVerticalInset })
     }
     
     public func configureSubviews() {
-        self.contentView.addSubview(self.leftRangeView)
-        self.contentView.addSubview(self.rightRangeView)
-        self.contentView.addSubview(self.selectionBackgroundView)
-        self.contentView.addSubview(self.dateLabel)
-        self.selectionBackgroundView.layer.cornerRadius = 20
+        contentView.addSubview(leftRangeView)
+        contentView.addSubview(rightRangeView)
+        contentView.addSubview(selectionBackgroundView)
+        contentView.addSubview(dateLabel)
+        selectionBackgroundView.layer.cornerRadius = 20
     }
     
     public func configureConstraints() {
         let inset = self.config.rangedBackgroundViewVerticalInset
+        dateLabel.fillAnchor(contentView.self)
+
         NSLayoutConstraint.activate([
-            self.dateLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-            self.dateLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
-            self.dateLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.dateLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
+            leftRangeView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            leftRangeView.rightAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
         NSLayoutConstraint.activate([
-            self.leftRangeView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-            self.leftRangeView.rightAnchor.constraint(equalTo: self.contentView.centerXAnchor)
-        ])
-        NSLayoutConstraint.activate([
-            self.rightRangeView.leftAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.rightRangeView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 1) // Add small offset to prevent spacing between cells
+            rightRangeView.leftAnchor.constraint(equalTo: contentView.centerXAnchor),
+            rightRangeView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 1) // Add small offset to prevent spacing between cells
         ])
 
         NSLayoutConstraint.activate([
             {
-                let constraint = self.selectionBackgroundView.heightAnchor.constraint(equalToConstant: 70)
+                let constraint = selectionBackgroundView.heightAnchor.constraint(equalToConstant: 70)
                 constraint.priority = .defaultLow
                 return constraint
             }(),
-            self.selectionBackgroundView.leftAnchor.constraint(greaterThanOrEqualTo: self.contentView.leftAnchor),
-            self.selectionBackgroundView.topAnchor.constraint(greaterThanOrEqualTo: self.contentView.topAnchor),
-            self.selectionBackgroundView.rightAnchor.constraint(lessThanOrEqualTo: self.contentView.rightAnchor),
-            self.selectionBackgroundView.bottomAnchor.constraint(lessThanOrEqualTo: self.contentView.bottomAnchor),
-            self.selectionBackgroundView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.selectionBackgroundView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.selectionBackgroundView.widthAnchor.constraint(equalTo: self.selectionBackgroundView.heightAnchor)
+            selectionBackgroundView.leftAnchor.constraint(greaterThanOrEqualTo: contentView.leftAnchor),
+            selectionBackgroundView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
+            selectionBackgroundView.rightAnchor.constraint(lessThanOrEqualTo: contentView.rightAnchor),
+            selectionBackgroundView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
+            selectionBackgroundView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            selectionBackgroundView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            selectionBackgroundView.widthAnchor.constraint(equalTo: selectionBackgroundView.heightAnchor)
         ])  
-        self.rangeViewTopAnchorConstraints = [
-            self.leftRangeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: inset),
-            self.rightRangeView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: inset)
+        rangeViewTopAnchorConstraints = [
+            leftRangeView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
+            rightRangeView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset)
         ]
-        self.rangeViewBottomAnchorConstraints = [
-            self.leftRangeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -inset),
-            self.rightRangeView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -inset)
+        rangeViewBottomAnchorConstraints = [
+            leftRangeView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
+            rightRangeView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset)
         ]
-        NSLayoutConstraint.activate(self.rangeViewTopAnchorConstraints)
-        NSLayoutConstraint.activate(self.rangeViewBottomAnchorConstraints)
+        NSLayoutConstraint.activate(rangeViewTopAnchorConstraints)
+        NSLayoutConstraint.activate(rangeViewBottomAnchorConstraints)
     }
     
     public static func makeViewConfig(
@@ -249,7 +245,7 @@ final class DayCell: JTACDayCell {
         var rightSideState: RangeSideState = .hidden
         
         var isHidden: Bool {
-            return self.leftSideState == .hidden && self.rightSideState == .hidden
+            return leftSideState == .hidden && rightSideState == .hidden
         }
         
     }
@@ -263,47 +259,47 @@ final class DayCell: JTACDayCell {
     
     internal func configure(for config: ViewConfig) {
         
-        self.selectionBackgroundView.isHidden = config.isSelectedViewHidden
-        self.isUserInteractionEnabled = config.dateLabelText != nil && config.isDateEnabled
-        self.clipsToBounds = config.dateLabelText == nil
+        selectionBackgroundView.isHidden = config.isSelectedViewHidden
+        isUserInteractionEnabled = config.dateLabelText != nil && config.isDateEnabled
+        clipsToBounds = config.dateLabelText == nil
         
         if let dateLabelText = config.dateLabelText {
-            self.dateLabel.isHidden = false
-            self.dateLabel.text = dateLabelText
+            dateLabel.isHidden = false
+            dateLabel.text = dateLabelText
             if !config.isDateEnabled {
-                self.dateLabel.textColor = self.config.dateLabelUnavailableColor
+                dateLabel.textColor = self.config.dateLabelUnavailableColor
             } else if !config.isSelectedViewHidden {
-                self.dateLabel.textColor = self.config.selectedLabelColor
+                dateLabel.textColor = self.config.selectedLabelColor
             } else if !config.rangeView.isHidden {
-                self.dateLabel.textColor = self.config.onRangeLabelColor
+                dateLabel.textColor = self.config.onRangeLabelColor
             } else {
-                self.dateLabel.textColor = self.config.dateLabelColor
+                dateLabel.textColor = self.config.dateLabelColor
             }
             
         } else {
-            self.dateLabel.isHidden = true
+            dateLabel.isHidden = true
         }
         
         switch config.rangeView.rightSideState {
             case .squared:
-                self.rightRangeView.isHidden = false
-                self.rightRangeView.layer.maskedCorners = []
+                rightRangeView.isHidden = false
+                rightRangeView.layer.maskedCorners = []
             case .rounded:
-                self.rightRangeView.isHidden = false
-                self.rightRangeView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+                rightRangeView.isHidden = false
+                rightRangeView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
             case .hidden:
-                self.rightRangeView.isHidden = true
+                rightRangeView.isHidden = true
         }
         
         switch config.rangeView.leftSideState {
             case .squared:
-                self.leftRangeView.isHidden = false
-                self.leftRangeView.layer.maskedCorners = []
+                leftRangeView.isHidden = false
+                leftRangeView.layer.maskedCorners = []
             case .rounded:
-                self.leftRangeView.isHidden = false
-                self.leftRangeView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+                leftRangeView.isHidden = false
+                leftRangeView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
             case .hidden:
-                self.leftRangeView.isHidden = true
+                leftRangeView.isHidden = true
         }
         
     }

@@ -13,7 +13,7 @@ class FastisController<Value: FastisValue>: UIViewController {
     private lazy var calendarView: JTACMonthView = {
         let monthView = JTACMonthView()
         monthView.translatesAutoresizingMaskIntoConstraints = false
-        monthView.backgroundColor = self.appearance.backgroundColor
+        monthView.backgroundColor = appearance.backgroundColor
         monthView.ibCalendarDelegate = self
         monthView.ibCalendarDataSource = self
         monthView.minimumInteritemSpacing = 0
@@ -38,20 +38,20 @@ class FastisController<Value: FastisValue>: UIViewController {
     private lazy var doneButton = ETGradientButton(title: .done, style: .mysticBlue)
     
     private lazy var weekView: WeekView = {
-        let view = WeekView(calendar: self.config.calendar, config: self.config.weekView)
+        let view = WeekView(calendar: config.calendar, config: config.weekView)
         return view
     }()
     
     private lazy var currentCheckInView: CurrentValueView<Value> = {
-        let view = CurrentValueView<Value>(config: self.config.currentValueView)
-        view.currentValue = self.value
+        let view = CurrentValueView<Value>(config: config.currentValueView)
+        view.currentValue = value
         view.isCheckIn = false
         return view
     }()
     
     private lazy var currentCheckOutView: CurrentValueView<Value> = {
-        let view = CurrentValueView<Value>(config: self.config.currentValueView)
-        view.currentValue = self.value
+        let view = CurrentValueView<Value>(config: config.currentValueView)
+        view.currentValue = value
         view.isCheckIn = true
         return view
     }()
@@ -85,9 +85,9 @@ class FastisController<Value: FastisValue>: UIViewController {
     private var privateSelectMonthOnHeaderTap: Bool = false
     private var value: Value? {
         didSet {
-            self.currentCheckInView.currentValue = self.value
-            self.currentCheckOutView.currentValue = self.value
-            self.doneButton.isEnabled = self.allowToChooseNilDate || self.value != nil
+            currentCheckInView.currentValue = value
+            currentCheckOutView.currentValue = value
+            doneButton.isEnabled = allowToChooseNilDate || value != nil
         }
     }
 
@@ -101,10 +101,10 @@ class FastisController<Value: FastisValue>: UIViewController {
 
     public var minimumDate: Date? {
         get {
-            return self.privateMinimumDate
+            return privateMinimumDate
         }
         set {
-            self.privateMinimumDate = newValue?.startOfDay()
+            privateMinimumDate = newValue?.startOfDay()
         }
     }
 
@@ -112,17 +112,17 @@ class FastisController<Value: FastisValue>: UIViewController {
 
     public var maximumDate: Date? {
         get {
-            return self.privateMaximumDate
+            return privateMaximumDate
         }
         set {
-            self.privateMaximumDate = newValue?.endOfDay()
+            privateMaximumDate = newValue?.endOfDay()
         }
     }
     
     // MARK: - Initialization
     public init(config: FastisConfig = .default) {
         self.config = config
-        self.appearance = config.controller
+        appearance = config.controller
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -133,28 +133,28 @@ class FastisController<Value: FastisValue>: UIViewController {
     // MARK: Life cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureUI()
-        self.configureSubviews()
-        self.configureConstraints()
-        self.configureInitialState()
+        configureUI()
+        configureSubviews()
+        configureConstraints()
+        configureInitialState()
     }
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        self.view.frame.size.height = UIScreen.main.bounds.height - 15
-        self.view.frame.origin.y = 15
-        self.view.roundCorners(corners: [.topLeft, .topRight], radius: 25.0)
+        view.frame.size.height = UIScreen.main.bounds.height - 15
+        view.frame.origin.y = 15
+        view.roundCorners(corners: [.topLeft, .topRight], radius: 25.0)
     }
     
     // MARK: - Configuration
     private func configureUI() {
-        self.view.backgroundColor = self.appearance.backgroundColor
+        view.backgroundColor = appearance.backgroundColor
     }
     
     private func configureSubviews() {
         
-        self.calendarView.register(DayCell.self, forCellWithReuseIdentifier: self.dayCellReuseIdentifier)
-        self.calendarView.register(MonthHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: self.monthHeaderReuseIdentifier)
+        calendarView.register(DayCell.self, forCellWithReuseIdentifier: dayCellReuseIdentifier)
+        calendarView.register(MonthHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: monthHeaderReuseIdentifier)
         
         doneButton.addTarget(self, action: #selector(done), for: .touchUpInside)
         
@@ -221,36 +221,36 @@ class FastisController<Value: FastisValue>: UIViewController {
     }
     
     private func configureInitialState() {
-        self.value = self.initialValue
-        if let date = self.value as? Date {
-            self.calendarView.selectDates([date])
-            self.calendarView.scrollToHeaderForDate(date)
-        } else if let rangeValue = self.value as? FastisRange {
-            self.selectRange(rangeValue, in: self.calendarView)
-            self.calendarView.scrollToHeaderForDate(rangeValue.fromDate)
+        value = initialValue
+        if let date = value as? Date {
+            calendarView.selectDates([date])
+            calendarView.scrollToHeaderForDate(date)
+        } else if let rangeValue = value as? FastisRange {
+            selectRange(rangeValue, in: calendarView)
+            calendarView.scrollToHeaderForDate(rangeValue.fromDate)
         } else {
             let nowDate = Date()
-            let targetDate = self.privateMaximumDate ?? nowDate
+            let targetDate = privateMaximumDate ?? nowDate
             if targetDate < nowDate {
-                self.calendarView.scrollToHeaderForDate(targetDate)
+                calendarView.scrollToHeaderForDate(targetDate)
             } else {
-                self.calendarView.scrollToHeaderForDate(Date())
+                calendarView.scrollToHeaderForDate(Date())
             }
         }
     }
     
     private func configureCell(_ cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         guard let cell = cell as? DayCell else { return }
-        if let cachedConfig = self.viewConfigs[indexPath] {
+        if let cachedConfig = viewConfigs[indexPath] {
             cell.configure(for: cachedConfig)
         } else {
             let newConfig = DayCell.makeViewConfig(for: cellState,
-                                                   minimumDate: self.privateMinimumDate,
-                                                   maximumDate: self.privateMaximumDate,
-                                                   rangeValue: self.value as? FastisRange,
-                                                   calendar: self.config.calendar)
-            self.viewConfigs[indexPath] = newConfig
-            cell.applyConfig(self.config)
+                                                   minimumDate: privateMinimumDate,
+                                                   maximumDate: privateMaximumDate,
+                                                   rangeValue: value as? FastisRange,
+                                                   calendar: config.calendar)
+            viewConfigs[indexPath] = newConfig
+            cell.applyConfig(config)
             cell.configure(for: newConfig)
         }
     }
@@ -260,15 +260,15 @@ class FastisController<Value: FastisValue>: UIViewController {
     }
     
     @objc private func done() {
-        self.doneHandler?(self.value)
-        self.cancel()
+        doneHandler?(value)
+        cancel()
     }
     
     private func selectValue(_ value: Value?, in calendar: JTACMonthView) {
         if let date = value as? Date {
             calendar.selectDates([date])
         } else if let range = value as? FastisRange {
-            self.selectRange(range, in: calendar)
+            selectRange(range, in: calendar)
         }
     }
     
@@ -276,37 +276,37 @@ class FastisController<Value: FastisValue>: UIViewController {
         
         switch Value.mode {
             case .single:
-                self.value = date as? Value
-                self.selectValue(date as? Value, in: calendar)
+                value = date as? Value
+                selectValue(date as? Value, in: calendar)
                 return
                 
             case .range:
                 var newValue: FastisRange!
-                if let currentValue = self.value as? FastisRange {
+                if let currentValue = value as? FastisRange {
                     let dateRangeChangesDisabled = !allowDateRangeChanges
                     let rangeSelected = !currentValue.fromDate.isInSameDay(date: currentValue.toDate)
                     if dateRangeChangesDisabled && rangeSelected {
-                        newValue = .from(date.startOfDay(in: self.config.calendar), to: date.endOfDay(in: self.config.calendar))
-                    } else if date.isInSameDay(in: self.config.calendar, date: currentValue.fromDate) {
-                        let newToDate = date.endOfDay(in: self.config.calendar)
+                        newValue = .from(date.startOfDay(in: config.calendar), to: date.endOfDay(in: config.calendar))
+                    } else if date.isInSameDay(in: config.calendar, date: currentValue.fromDate) {
+                        let newToDate = date.endOfDay(in: config.calendar)
                         newValue = .from(currentValue.fromDate, to: newToDate)
-                    } else if date.isInSameDay(in: self.config.calendar, date: currentValue.toDate) {
-                        let newFromDate = date.startOfDay(in: self.config.calendar)
+                    } else if date.isInSameDay(in: config.calendar, date: currentValue.toDate) {
+                        let newFromDate = date.startOfDay(in: config.calendar)
                         newValue = .from(newFromDate, to: currentValue.toDate)
                     } else if date < currentValue.fromDate {
-                        let newFromDate = date.startOfDay(in: self.config.calendar)
+                        let newFromDate = date.startOfDay(in: config.calendar)
                         newValue = .from(newFromDate, to: currentValue.toDate)
                     } else {
-                        let newToDate = date.endOfDay(in: self.config.calendar)
+                        let newToDate = date.endOfDay(in: config.calendar)
                         newValue = .from(currentValue.fromDate, to: newToDate)
                     }
                     
                 } else {
-                    newValue = .from(date.startOfDay(in: self.config.calendar), to: date.endOfDay(in: self.config.calendar))
+                    newValue = .from(date.startOfDay(in: config.calendar), to: date.endOfDay(in: config.calendar))
                 }
                 
-                self.value = newValue as? Value
-                self.selectValue(newValue as? Value, in: calendar)
+                value = newValue as? Value
+                selectValue(newValue as? Value, in: calendar)
                 
         }
     }
@@ -330,27 +330,27 @@ extension FastisController: JTACMonthViewDelegate, JTACMonthViewDataSource  {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy MM dd"
-        dateFormatter.timeZone = self.config.calendar.timeZone
-        dateFormatter.locale = self.config.calendar.locale
+        dateFormatter.timeZone = config.calendar.timeZone
+        dateFormatter.locale = config.calendar.locale
         var startDate = dateFormatter.date(from: "2000 01 01")!
         var endDate = dateFormatter.date(from: "2030 12 01")!
         
-        if let maximumDate = self.privateMaximumDate,
-           let endOfNextMonth = self.config.calendar.date(byAdding: .month, value: 2, to: maximumDate)?
-            .endOfMonth(in: self.config.calendar) {
+        if let maximumDate = privateMaximumDate,
+           let endOfNextMonth = config.calendar.date(byAdding: .month, value: 2, to: maximumDate)?
+            .endOfMonth(in: config.calendar) {
             endDate = endOfNextMonth
         }
         
-        if let minimumDate = self.privateMinimumDate,
-           let startOfPreviousMonth = self.config.calendar.date(byAdding: .month, value: -2, to: minimumDate)?
-            .startOfMonth(in: self.config.calendar) {
+        if let minimumDate = privateMinimumDate,
+           let startOfPreviousMonth = config.calendar.date(byAdding: .month, value: -2, to: minimumDate)?
+            .startOfMonth(in: config.calendar) {
             startDate = startOfPreviousMonth
         }
         
         let parameters = ConfigurationParameters(startDate: startDate,
                                                  endDate: endDate,
                                                  numberOfRows: 6,
-                                                 calendar: self.config.calendar,
+                                                 calendar: config.calendar,
                                                  generateInDates: .forAllMonths,
                                                  generateOutDates: .tillEndOfGrid,
                                                  firstDayOfWeek: .monday,
@@ -360,10 +360,10 @@ extension FastisController: JTACMonthViewDelegate, JTACMonthViewDataSource  {
     
     // Header
     public func calendar(_ calendar: JTACMonthView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTACMonthReusableView {
-        let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: self.monthHeaderReuseIdentifier, for: indexPath) as! MonthHeader
-        header.applyConfig(self.config.monthHeader)
+        let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: monthHeaderReuseIdentifier, for: indexPath) as! MonthHeader
+        header.applyConfig(config.monthHeader)
         header.configure(for: range.start)
-        if self.privateSelectMonthOnHeaderTap, Value.mode == .range {
+        if privateSelectMonthOnHeaderTap, Value.mode == .range {
             header.tapHandler = {
                 var fromDate = range.start.startOfMonth(in: self.config.calendar)
                 var toDate = range.start.endOfMonth(in: self.config.calendar)
@@ -386,43 +386,43 @@ extension FastisController: JTACMonthViewDelegate, JTACMonthViewDataSource  {
     }
     
     public func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
-        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: self.dayCellReuseIdentifier, for: indexPath)
-        self.configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
+        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellReuseIdentifier, for: indexPath)
+        configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         return cell
     }
     
     public func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        self.configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
+        configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
     }
     
     public func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         if cellState.selectionType == .some(.userInitiated) {
-            self.handleDateTap(in: calendar, date: date)
+            handleDateTap(in: calendar, date: date)
         } else if let cell = cell {
-            self.configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
+            configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         }
     }
     
     public func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         if cellState.selectionType == .some(.userInitiated) && Value.mode == .range {
-            self.handleDateTap(in: calendar, date: date)
+            handleDateTap(in: calendar, date: date)
         } else if let cell = cell {
-            self.configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
+            configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         }
     }
     
     public func calendar(_ calendar: JTACMonthView, shouldSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) -> Bool {
-        self.viewConfigs.removeAll()
+        viewConfigs.removeAll()
         return true
     }
     
     public func calendar(_ calendar: JTACMonthView, shouldDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) -> Bool {
-        self.viewConfigs.removeAll()
+        viewConfigs.removeAll()
         return true
     }
     
     public func calendarSizeForMonths(_ calendar: JTACMonthView?) -> MonthSize? {
-        return self.config.monthHeader.height
+        return config.monthHeader.height
     }
 }
 
@@ -434,7 +434,7 @@ extension FastisController where Value == FastisRange {
         ///   - config: Custom configuration parameters. Default value is equal to `FastisConfig.default`
     internal convenience init(mode: FastisModeRange, config: FastisConfig = .default) {
         self.init(config: config)
-        self.selectMonthOnHeaderTap = true
+        selectMonthOnHeaderTap = true
     }
     
     /**
@@ -442,10 +442,10 @@ extension FastisController where Value == FastisRange {
      */
     internal var selectMonthOnHeaderTap: Bool {
         get {
-            return self.privateSelectMonthOnHeaderTap
+            return privateSelectMonthOnHeaderTap
         }
         set {
-            self.privateSelectMonthOnHeaderTap = newValue
+            privateSelectMonthOnHeaderTap = newValue
         }
     }
 }

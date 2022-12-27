@@ -32,11 +32,11 @@ final class MonthHeader: JTACMonthReusableView {
         // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configureSubviews()
-        self.configureConstraints()
-        self.applyConfig(FastisConfig.default.monthHeader)
+        configureSubviews()
+        configureConstraints()
+        applyConfig(FastisConfig.default.monthHeader)
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped))
-        self.addGestureRecognizer(tapRecognizer)
+        addGestureRecognizer(tapRecognizer)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -45,39 +45,39 @@ final class MonthHeader: JTACMonthReusableView {
     
         // MARK: - Configuration
     private func configureSubviews() {
-        self.addSubview(self.monthLabel)
+        addSubview(monthLabel)
     }
     
     private func configureConstraints() {
-        self.leftAnchorConstraint = self.monthLabel.leftAnchor.constraint(equalTo: self.leftAnchor)
-        self.rightAnchorConstraint = self.monthLabel.rightAnchor.constraint(equalTo: self.rightAnchor)
-        self.topAnchorConstraint = self.monthLabel.topAnchor.constraint(equalTo: self.topAnchor)
-        self.bottomAnchorConstraint = self.monthLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        leftAnchorConstraint = monthLabel.leftAnchor.constraint(equalTo: leftAnchor)
+        rightAnchorConstraint = monthLabel.rightAnchor.constraint(equalTo: rightAnchor)
+        topAnchorConstraint = monthLabel.topAnchor.constraint(equalTo: topAnchor)
+        bottomAnchorConstraint = monthLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         NSLayoutConstraint.activate([
-            self.leftAnchorConstraint, self.rightAnchorConstraint, self.topAnchorConstraint, self.bottomAnchorConstraint
+            leftAnchorConstraint, rightAnchorConstraint, topAnchorConstraint, bottomAnchorConstraint
         ].compactMap({ $0 }))
         
     }
     
     internal func configure(for date: Date) {
-        self.monthLabel.text = self.monthFormatter.string(from: date).capitalizingFirstLetter()
+        monthLabel.text = monthFormatter.string(from: date).capitalizingFirstLetter()
     }
     
-        // MARK: - Actions
+    // MARK: - Actions
     internal func applyConfig(_ config: FastisConfig.MonthHeader) {
-        self.monthFormatter.dateFormat = config.monthFormat
-        self.monthFormatter.locale = config.monthLocale
-        self.monthLabel.font = config.labelFont
-        self.monthLabel.textColor = config.labelColor
-        self.monthLabel.textAlignment = config.labelAlignment
-        self.leftAnchorConstraint?.constant = config.insets.left
-        self.rightAnchorConstraint?.constant = -config.insets.right
-        self.topAnchorConstraint?.constant = config.insets.top
-        self.bottomAnchorConstraint?.constant = -config.insets.bottom
+        monthFormatter.dateFormat = config.monthFormat
+        monthFormatter.locale = config.monthLocale
+        monthLabel.font = config.labelFont
+        monthLabel.textColor = config.labelColor
+        monthLabel.textAlignment = config.labelAlignment
+        leftAnchorConstraint?.constant = config.insets.left
+        rightAnchorConstraint?.constant = -config.insets.right
+        topAnchorConstraint?.constant = config.insets.top
+        bottomAnchorConstraint?.constant = -config.insets.bottom
     }
     
     @objc private func viewTapped() {
-        self.tapHandler?()
+        tapHandler?()
     }
     
 }

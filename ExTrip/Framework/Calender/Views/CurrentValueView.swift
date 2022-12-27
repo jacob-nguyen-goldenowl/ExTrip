@@ -10,7 +10,8 @@ import UIKit
 final class CurrentValueView<Value: FastisValue>: UILabel {
     
     var isCheckIn: Bool = false
-        // MARK: - Outlets
+    
+    // MARK: - Outlets
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textColor = .red
@@ -20,7 +21,7 @@ final class CurrentValueView<Value: FastisValue>: UILabel {
         return label
     }()
     
-        // MARK: - Variables
+    // MARK: - Variables
     private let config: FastisConfig.CurrentValueView
     
         /// Clear button tap handler
@@ -43,10 +44,10 @@ final class CurrentValueView<Value: FastisValue>: UILabel {
     internal init(config: FastisConfig.CurrentValueView) {
         self.config = config
         super.init(frame: .zero)
-        self.configureUI()
-        self.configureSubviews()
-        self.configureConstraints()
-        self.updateStateForCurrentValue()
+        configureUI()
+        configureSubviews()
+        configureConstraints()
+        updateStateForCurrentValue()
     }
     
     required init?(coder: NSCoder) {
@@ -55,11 +56,11 @@ final class CurrentValueView<Value: FastisValue>: UILabel {
     
         // MARK: - Configuration
     private func configureUI() {
-        self.backgroundColor = .clear
+        backgroundColor = .clear
     }
     
     private func configureSubviews() {
-        self.addSubview(label)
+        addSubview(label)
     }
     
     private func configureConstraints() {
@@ -68,31 +69,31 @@ final class CurrentValueView<Value: FastisValue>: UILabel {
     
     private func updateStateForCurrentValue() {
         
-        if let value = self.currentValue as? Date {
+        if let value = currentValue as? Date {
             
-            self.label.text = self.dateFormatter.string(from: value)
-            self.label.textColor = self.config.textColor
+            label.text = dateFormatter.string(from: value)
+            label.textColor = config.textColor
             
-        } else if let value = self.currentValue as? FastisRange {
+        } else if let value = currentValue as? FastisRange {
             
-            self.label.textColor = self.config.textColor
+            label.textColor = config.textColor
             
             if isCheckIn {
-                self.label.text = self.dateFormatter.string(from: value.toDate)
+                label.text = dateFormatter.string(from: value.toDate)
             } else {
-                self.label.text = self.dateFormatter.string(from: value.fromDate)
+                label.text = dateFormatter.string(from: value.fromDate)
             }
             
         } else {
             
-            self.label.textColor = self.config.placeholderTextColor
+            label.textColor = config.placeholderTextColor
             
             switch Value.mode {
                 case .range:
-                    self.label.text = self.config.placeholderTextForRanges
+                    label.text = config.placeholderTextForRanges
                     
                 case .single:
-                    self.label.text = self.config.placeholderTextForSingle
+                    label.text = config.placeholderTextForSingle
                     
             }
             
@@ -102,7 +103,7 @@ final class CurrentValueView<Value: FastisValue>: UILabel {
     
         // MARK: - Actions
     @objc private func clear() {
-        self.onClear?()
+        onClear?()
     }
     
 }

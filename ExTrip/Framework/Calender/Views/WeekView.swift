@@ -30,9 +30,9 @@ final class WeekView: UIView {
         self.config = config
         self.calendar = calendar
         super.init(frame: .zero)
-        self.configureUI()
-        self.configureSubviews()
-        self.configureConstraints()
+        configureUI()
+        configureSubviews()
+        configureConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -42,39 +42,40 @@ final class WeekView: UIView {
         // MARK: - Configuration
     private func configureUI() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = self.config.backgroundColor
-        self.layer.cornerRadius = self.config.cornerRadius
+        backgroundColor = self.config.backgroundColor
+        layer.cornerRadius = self.config.cornerRadius
     }
     
     private func configureSubviews() {
-        let numDays = self.calendar.shortStandaloneWeekdaySymbols.count
-        let first = self.calendar.firstWeekday - 1
+        let numDays = calendar.shortStandaloneWeekdaySymbols.count
+        let first = calendar.firstWeekday - 1
         let end = first + numDays - 1
-        let days = (first...end).map({ self.calendar.shortStandaloneWeekdaySymbols[$0 % numDays] })
+        let days = (first...end).map({ calendar.shortStandaloneWeekdaySymbols[$0 % numDays] })
         for weekdaySymbol in days {
-            self.stackView.addArrangedSubview(self.makeWeekLabel(for: weekdaySymbol))
+            self.stackView.addArrangedSubview(makeWeekLabel(for: weekdaySymbol))
         }
         self.addSubview(self.stackView)
     }
     
     func makeWeekLabel(for symbol: String) -> UILabel {
         let label = UILabel()
-        label.text = self.config.uppercaseWeekName ? symbol.uppercased() : symbol
-        label.font = self.config.textFont
-        label.textColor = self.config.textColor
+        label.text = config.uppercaseWeekName ? symbol.uppercased() : symbol
+        label.font = config.textFont
+        label.textColor = config.textColor
         label.textAlignment = .center
         return label
     }
     
     private func configureConstraints() {
+        stackView.anchor(top: topAnchor,
+                         bottom: bottomAnchor,
+                         leading: leadingAnchor,
+                         trailing: trailingAnchor,
+                         paddingLeading: 4,
+                         paddingTrailing: 4)
+
         NSLayoutConstraint.activate([
-            self.stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4),
-            self.stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4),
-            self.stackView.topAnchor.constraint(equalTo: self.topAnchor),
-            self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
-        NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: self.config.height)
+            heightAnchor.constraint(equalToConstant: config.height)
         ])
     }
     
