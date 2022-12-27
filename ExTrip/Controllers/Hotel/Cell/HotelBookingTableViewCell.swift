@@ -27,9 +27,9 @@ class HotelBookingTableViewCell: UITableViewCell {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
             if let rangeValue = self.timeValue as? FastisRange {
-                stepResultLabel.text = formatter.string(from: rangeValue.fromDate) + " - " + formatter.string(from: rangeValue.toDate)
+                stepResultLabel.text = rangeValue.fromDate.dateString + " - " + rangeValue.toDate.dateString
             } else if let date = self.timeValue as? Date {
-                stepResultLabel.text = formatter.string(from: date)
+                stepResultLabel.text = date.dateString
             } else {
                 stepResultLabel.text = "Enter your date"
             }
