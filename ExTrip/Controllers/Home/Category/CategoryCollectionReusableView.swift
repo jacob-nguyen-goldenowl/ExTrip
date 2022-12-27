@@ -6,7 +6,7 @@
     //
 import UIKit
 
-protocol CategoryCollectionReusableViewDelegate {
+protocol categoryCollectionReusableViewHandleHotelBookingDelegate {
     func handleHotelBookingAction() 
     func handleFilghtBookingAction()
     func handleEventAction()
@@ -16,7 +16,7 @@ class CategoryCollectionReusableView: UICollectionReusableView {
     
     static let identifier = "CategoryCollectionReusableView"
     
-    var delegate: CategoryCollectionReusableViewDelegate?
+    var delegate: categoryCollectionReusableViewHandleHotelBookingDelegate?
     
     private let categoryStackView = UIStackView()
     private let titleStackView = UIStackView()

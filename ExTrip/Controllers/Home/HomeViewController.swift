@@ -155,7 +155,7 @@ extension HomeViewController {
 }
 
 // MARK: - CategoryCollectionReusableViewDelegate
-extension HomeViewController: CategoryCollectionReusableViewDelegate {
+extension HomeViewController: categoryCollectionReusableViewHandleHotelBookingDelegate {
     func handleHotelBookingAction() {
         let vc  = HotelBookingViewController()
         navigationAction(vc)
