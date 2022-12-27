@@ -156,7 +156,6 @@ extension HomeViewController {
 
 // MARK: - CategoryCollectionReusableViewDelegate
 extension HomeViewController: CategoryCollectionReusableViewDelegate {
-    
     func categoryCollectionReusableViewhandleHotelBooking() {
         let vc  = HotelBookingViewController()
         navigationAction(vc)
@@ -169,10 +168,9 @@ extension HomeViewController: CategoryCollectionReusableViewDelegate {
     func categoryCollectionReusableViewhandleEvent() {
         // Core here ...
     }
-
+    
     private func navigationAction(_ viewController: UIViewController) {
         viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
 }
