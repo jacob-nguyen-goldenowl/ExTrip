@@ -40,7 +40,8 @@ class ETSearchTextField: UITextField {
         if placeholder == nil {
             placeholder = " "
         }
-        attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.theme.lightGray ?? .lightGray])
+        attributedPlaceholder = NSAttributedString(string: placeholder ?? "",
+                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.theme.lightGray ?? .lightGray])
     }
     
     private func setSearchIcon(_ textField: UITextField) {
