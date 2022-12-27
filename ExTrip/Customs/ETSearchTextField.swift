@@ -19,6 +19,7 @@ class ETSearchTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupTextField()
+        setPlaceholderColor()
     }
     
     required init?(coder: NSCoder) {
@@ -30,12 +31,16 @@ class ETSearchTextField: UITextField {
         backgroundColor = .systemGray6
         font = .poppins(style: .light, size: 16)
         tintColor = UIColor.theme.black ?? .black
-        attributedPlaceholder = NSAttributedString(
-        string: "Search ...",
-        attributes: [
-            NSAttributedString.Key.foregroundColor: UIColor.theme.lightGray ?? .lightGray   ])
+        placeholder = "Search ..."
         clearButtonMode = .whileEditing
         setSearchIcon(self)
+    }
+    
+    private func setPlaceholderColor() {
+        if placeholder == nil {
+            placeholder = " "
+        }
+        attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.theme.lightGray ?? .lightGray])
     }
     
     private func setSearchIcon(_ textField: UITextField) {
