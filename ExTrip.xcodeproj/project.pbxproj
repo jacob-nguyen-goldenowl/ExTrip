@@ -69,7 +69,6 @@
 		04D80DA22951B9D0005985ED /* HotelBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80DA12951B9D0005985ED /* HotelBookingViewController.swift */; };
 		04D80DA52951BE81005985ED /* HotelBookingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80DA42951BE81005985ED /* HotelBookingTableViewCell.swift */; };
 		04D80DAF2951FCB2005985ED /* StepBookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80DAE2951FCB2005985ED /* StepBookingModel.swift */; };
-		04D80DB629520429005985ED /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80DB529520429005985ED /* RoomViewController.swift */; };
 		04D80DB829520441005985ED /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80DB729520441005985ED /* LocationViewController.swift */; };
 		04D80DBD295215FE005985ED /* CategoryCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80DBC295215FE005985ED /* CategoryCollectionReusableView.swift */; };
 		04E7E32829497C0D0072EAFE /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E32729497C0D0072EAFE /* TabbarViewController.swift */; };
@@ -158,7 +157,6 @@
 		04D80DA12951B9D0005985ED /* HotelBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelBookingViewController.swift; sourceTree = "<group>"; };
 		04D80DA42951BE81005985ED /* HotelBookingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelBookingTableViewCell.swift; sourceTree = "<group>"; };
 		04D80DAE2951FCB2005985ED /* StepBookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBookingModel.swift; sourceTree = "<group>"; };
-		04D80DB529520429005985ED /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		04D80DB729520441005985ED /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		04D80DBC295215FE005985ED /* CategoryCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionReusableView.swift; sourceTree = "<group>"; };
 		04E7E32729497C0D0072EAFE /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
@@ -506,7 +504,6 @@
 		04D80DB029520314005985ED /* Step */ = {
 			isa = PBXGroup;
 			children = (
-				04D80DB529520429005985ED /* RoomViewController.swift */,
 				04D80DB729520441005985ED /* LocationViewController.swift */,
 			);
 			path = Step;
@@ -789,7 +786,6 @@
 				04D80D9629517A30005985ED /* DestinationTableViewCell.swift in Sources */,
 				044587DC29431728009195F2 /* SignInViewController.swift in Sources */,
 				04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */,
-				04D80DB629520429005985ED /* RoomViewController.swift in Sources */,
 				04F7DE09295452320020494F /* Date+Utilities.swift in Sources */,
 				04F7DE0D295452320020494F /* CurrentValueView.swift in Sources */,
 				049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */,
