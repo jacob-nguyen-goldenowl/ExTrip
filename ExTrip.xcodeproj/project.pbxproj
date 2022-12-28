@@ -24,6 +24,9 @@
 		049996F2294724A1005033C9 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996F1294724A1005033C9 /* UserInfoModel.swift */; };
 		049996F4294731F4005033C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049996F3294731F4005033C9 /* GoogleService-Info.plist */; };
 		049996FA294738E3005033C9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996F9294738E3005033C9 /* HomeViewController.swift */; };
+		049F2823295AA473002257B9 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2822295AA473002257B9 /* RoomViewController.swift */; };
+		049F2825295AA532002257B9 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2824295AA532002257B9 /* RoomModel.swift */; };
+		049F2827295ACC4A002257B9 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2826295ACC4A002257B9 /* RoomTableViewCell.swift */; };
 		04AB54322952A810005D5C31 /* ETSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB54312952A810005D5C31 /* ETSearchTextField.swift */; };
 		04BF54BB2949DA7B001176A1 /* Photos.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04BF54B92949DA7B001176A1 /* Photos.plist */; };
 		04BF54BC2949DA7B001176A1 /* Photos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BF54BA2949DA7B001176A1 /* Photos.xcassets */; };
@@ -110,6 +113,9 @@
 		049996F1294724A1005033C9 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		049996F3294731F4005033C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		049996F9294738E3005033C9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		049F2822295AA473002257B9 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
+		049F2824295AA532002257B9 /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
+		049F2826295ACC4A002257B9 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		04AB54312952A810005D5C31 /* ETSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETSearchTextField.swift; sourceTree = "<group>"; };
 		04BF54B92949DA7B001176A1 /* Photos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Photos.plist; sourceTree = "<group>"; };
 		04BF54BA2949DA7B001176A1 /* Photos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Photos.xcassets; sourceTree = "<group>"; };
@@ -414,6 +420,7 @@
 				049996F1294724A1005033C9 /* UserInfoModel.swift */,
 				04BF54BD2949DDEA001176A1 /* DestinationModel.swift */,
 				04D80DAE2951FCB2005985ED /* StepBookingModel.swift */,
+				049F2824295AA532002257B9 /* RoomModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -497,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				04D80DA42951BE81005985ED /* HotelBookingTableViewCell.swift */,
+				049F2826295ACC4A002257B9 /* RoomTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -505,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				04D80DB729520441005985ED /* LocationViewController.swift */,
+				049F2822295AA473002257B9 /* RoomViewController.swift */,
 			);
 			path = Step;
 			sourceTree = "<group>";
@@ -750,9 +759,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049F2825295AA532002257B9 /* RoomModel.swift in Sources */,
 				04BF56702941AAF900BCF4A5 /* UIView+Extension.swift in Sources */,
 				04BF56722941BC8700BCF4A5 /* UIStackView+Extension.swift in Sources */,
 				04BF566B2941A30400BCF4A5 /* Theme.swift in Sources */,
+				049F2823295AA473002257B9 /* RoomViewController.swift in Sources */,
 				04D80D9829517A94005985ED /* DestinationCollectionViewCell.swift in Sources */,
 				04BF56752941D66400BCF4A5 /* ETGradientButton.swift in Sources */,
 				04F7DE08295452320020494F /* Value.swift in Sources */,
@@ -764,6 +775,7 @@
 				04E7E33129497D610072EAFE /* ProfileViewController.swift in Sources */,
 				04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */,
 				04D80DA22951B9D0005985ED /* HotelBookingViewController.swift in Sources */,
+				049F2827295ACC4A002257B9 /* RoomTableViewCell.swift in Sources */,
 				04E7E3352949AD490072EAFE /* UserDefaultKey.swift in Sources */,
 				04F7DE0E295452320020494F /* Controller.swift in Sources */,
 				04E7E32E29497D370072EAFE /* BookingViewController.swift in Sources */,
