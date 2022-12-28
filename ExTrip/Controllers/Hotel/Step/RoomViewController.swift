@@ -123,13 +123,13 @@ extension RoomViewController: UITableViewDelegate, UITableViewDataSource {
         let row = indexPath.row
         if row == 0 {
             cell.quantityGuests = roomModel.room
-            cell.title = "Rooms"
+            cell.title = "Room"
             cell.getValue = { value in
                 self.roomModel.room = value ?? 0
             }
         } else if row == 1{
             cell.quantityGuests = roomModel.adults
-            cell.title = "Adults"
+            cell.title = "Adult"
             cell.getValue = { value in 
                 self.roomModel.adults = value ?? 0
             }
@@ -141,7 +141,7 @@ extension RoomViewController: UITableViewDelegate, UITableViewDataSource {
                 self.roomModel.children = value ?? 0
             }
         } else {
-            cell.title = "Infants"
+            cell.title = "Infant"
             cell.quantityGuests = roomModel.infants
             cell.subTitle = "Under 2"
             cell.getValue = { value in 
