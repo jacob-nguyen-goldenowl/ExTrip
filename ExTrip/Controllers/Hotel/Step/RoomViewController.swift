@@ -10,9 +10,9 @@ import UIKit
 class RoomViewController: UIViewController {
 
     var roomModel: RoomModel = RoomModel(room: 1,
-                                             adults: 2, 
-                                             children: 0,
-                                             infants: 0) 
+                                         adults: 2,
+                                         children: 0,
+                                         infants: 0) 
     
     var doneHandler:((RoomModel) -> Void)?
     var initialValue: RoomModel?
@@ -111,7 +111,6 @@ class RoomViewController: UIViewController {
 }
 
 extension RoomViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
@@ -156,10 +155,6 @@ extension RoomViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
-    
 }
 extension RoomViewController {
     @objc func handleDoneAction() {
