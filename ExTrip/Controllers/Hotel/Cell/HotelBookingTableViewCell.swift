@@ -24,8 +24,6 @@ class HotelBookingTableViewCell: UITableViewCell {
     
     var timeValue: FastisValue? {
         didSet {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
             if let rangeValue = self.timeValue as? FastisRange {
                 stepResultLabel.text = rangeValue.fromDate.dateString + " - " + rangeValue.toDate.dateString
             } else if let date = self.timeValue as? Date {
@@ -36,10 +34,13 @@ class HotelBookingTableViewCell: UITableViewCell {
         }
     }
     
-    var roomValue: String? {
+    var roomValue: RoomModel? {
         didSet {
             if roomValue != nil {
-                stepResultLabel.text = roomValue 
+                let guest = roomValue?.numberOfGuest(adults: roomValue?.adults ?? 0, 
+                                                     children: roomValue?.children ?? 0,
+                                                     infants: roomValue?.infants ?? 0)
+                stepResultLabel.text = "\(roomValue?.room ?? 0) room, \(guest ?? 0) guest" 
             } else {
                 stepResultLabel.text = "Enter your room" 
             }
