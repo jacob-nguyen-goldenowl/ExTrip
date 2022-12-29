@@ -67,8 +67,8 @@ class RoomTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private let decrementButton = configureButton("minus", color: UIColor.theme.lightBlue)
-    private let incrementButton = configureButton("plus",color: UIColor.theme.lightBlue)
+    private lazy var decrementButton = configureButton("minus", color: UIColor.theme.lightBlue)
+    private lazy var incrementButton = configureButton("plus",color: UIColor.theme.lightBlue)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -101,12 +101,13 @@ class RoomTableViewCell: UITableViewCell {
                              leading: leadingAnchor)
         
         horizontalStackView.center(centerY: contentView.centerYAnchor)
-        horizontalStackView.anchor(trailing: contentView.trailingAnchor, paddingTrailing: 10)
+        horizontalStackView.anchor(trailing: contentView.trailingAnchor,
+                                   paddingTrailing: 10)
         horizontalStackView.setHeight(height: frame.size.height)
         horizontalStackView.setWidth(width: frame.size.width / 2.5)
     }
     
-    static func configureButton(_ nameImage: String, color: UIColor?) -> UIButton {
+    private func configureButton(_ nameImage: String, color: UIColor?) -> UIButton {
         let button = UIButton()
         let minusImage = UIImage(named: nameImage)
         let tintedImage = minusImage?.withRenderingMode(.alwaysTemplate)
@@ -123,13 +124,15 @@ class RoomTableViewCell: UITableViewCell {
     private func setupDecrementQuantity() {
         guard let row = indexPath?.row else { return }
         if row == 0 || row == 1 {
-            if quantityGuests <= 1 {
-                quantityGuests = 1
-            } else {
-                quantityGuests = quantityGuests - 1
-            }
-        } else if quantityGuests <= 0 {
-            quantityGuests = 0
+            checkQuantity(1)
+        } else {
+            checkQuantity(0)
+        }
+    }
+
+    private func checkQuantity(_ number: Int) {
+        if quantityGuests <= number {
+            quantityGuests = number
         } else {
             quantityGuests = quantityGuests - 1
         }
