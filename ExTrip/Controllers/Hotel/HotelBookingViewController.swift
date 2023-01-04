@@ -33,7 +33,7 @@ class HotelBookingViewController: UIViewController {
         }
     }
     
-    var roomValue: String? {
+    var roomValue: RoomModel? {
         didSet {
             tableView.reloadData()
         }
@@ -179,6 +179,7 @@ class HotelBookingViewController: UIViewController {
     
     private func configChooseDestination() {
         let vc = LocationViewController()
+        
         vc.doneHandler = { newValue in
             self.destinationValue = newValue
         }
@@ -187,6 +188,10 @@ class HotelBookingViewController: UIViewController {
     
     private func configChooseRoom() {
         let vc = RoomViewController()
+        vc.doneHandler = { newValue in
+            self.roomValue = newValue
+        }
+        vc.initialValue = roomValue
         present(vc, animated: true)
     }
     
