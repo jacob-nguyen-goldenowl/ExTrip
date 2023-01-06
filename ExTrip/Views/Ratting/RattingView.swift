@@ -20,6 +20,12 @@ class RattingView: UIView {
         }
     }
     
+    var color: UIColor? {
+        didSet {
+            starRatingImage.tintColor = color
+        }
+    }
+    
     private lazy var scoreRatingLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
