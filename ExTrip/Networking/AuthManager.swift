@@ -18,7 +18,7 @@ class AuthManager {
     private init() {}
     
     // MARK: - Login 
-    func login(email: String, password: String, completion: @escaping(Result, StatusCode) -> Void) {
+    func login(email: String, password: String, completion: @escaping(ResultInt, StatusCode) -> Void) {
         Auth.auth().signIn(withEmail: email,
                            password: password) { res, error in
             guard error == nil else { 
@@ -43,7 +43,7 @@ class AuthManager {
     }
     
     // MARK: - Register
-    func register(with info: UserInfoModel, password: String , completion: @escaping (Result, StatusCode) -> Void) {
+    func register(with info: UserInfoModel, password: String , completion: @escaping (ResultInt, StatusCode) -> Void) {
         guard let email = info.email, let name = info.name else { return }
         // Check email existing yet
         DatabaseManager.shared.canCreateNewUser(with: email, username: name) { canCreate in

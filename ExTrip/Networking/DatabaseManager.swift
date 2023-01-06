@@ -31,17 +31,8 @@ class DatabaseManager {
     // Insert new user
     public func insertNewUser(with info: UserInfoModel, uid: String , completion: @escaping(Bool) -> Void) {
         let users = fireStore.collection("users").document(uid)
-                
-        let data: [String: Any] = [
-            "email": info.email ?? "",
-            "name": info.name ?? "",
-            "state": info.state ?? "",
-            "city": info.city ?? "",
-            "phone": info.phone ?? "",
-            "image": info.image ?? ""
-        ]
         
-        users.setData(data) { error in 
+        users.setData(info.dictionary) { error in 
             if error == nil {
                 // success
                 completion(true)
@@ -50,6 +41,54 @@ class DatabaseManager {
                 completion(false)
             }
         }
+    }
+    
+    // MARK: Fetch destination data
+    public func fetchDataDestination(completion: @escaping([Destination]) -> Void) {
+        fireStore.collection("destinations").getDocuments { (snapshot, error) in
+            var destinations = [Destination]()
+            snapshot?.documents.forEach({ (document) in
+                let dictionary = document.data() 
+                if let destination = Destination(dictionary: dictionary) {
+                    destinations.append(destination) 
+                }
+            })
+            completion(destinations)
+        }
+    }
+    
+    // MARK: Fetch hotels data
+    public func fetchLimitOfHotels(_ countryID: String?, completion: @escaping([HotelModel]) -> Void) {
+        guard let id = countryID else { return }
+        fireStore.collection("hotels")
+            .whereField("destination_id", isEqualTo: id).limit(to: 2)
+            .getDocuments { (snapshot, error) in
+                var hotels = [HotelModel]()
+                snapshot?.documents.forEach({ (document) in
+                    let dictionary = document.data() 
+                    if let hotel = HotelModel(dictionary: dictionary) {
+                        hotels.append(hotel) 
+                    }
+                })
+                completion(hotels)
+            }
+    }
+    
+    // MARK: Fetch hotels data
+    public func fetchAllHotels(_ countryID: String?, completion: @escaping([HotelModel]) -> Void) {
+        guard let id = countryID else { return }
+        fireStore.collection("hotels")
+            .whereField("destination_id", isEqualTo: id)
+            .getDocuments { (snapshot, error) in
+                var hotels = [HotelModel]()
+                snapshot?.documents.forEach({ (document) in
+                    let dictionary = document.data() 
+                    if let hotel = HotelModel(dictionary: dictionary) {
+                        hotels.append(hotel) 
+                    }
+                })
+                completion(hotels)
+            }
     }
 }
 
