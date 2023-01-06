@@ -137,7 +137,6 @@ class FilterViewController: UIViewController {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filtes.count
     }
@@ -155,7 +154,6 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
-        
         switch row {
             case Filter.price.rawValue:
                 guard let  cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier, for: indexPath) as? PriceTableViewCell else { return PriceTableViewCell() }
