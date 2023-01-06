@@ -7,39 +7,33 @@
 
 import UIKit
 
-struct Photo {
+struct Destination {
     
+    var id: String
     var country: String
     var rating: String
-    var image: UIImage
+    var image: String
     
-    
-    init(country: String, rating: String, image: UIImage) {
+    init(id: String, country: String, rating: String, image: String) {
+        self.id = id
         self.country = country
         self.rating = rating
         self.image = image
     }
     
-    init?(dictionary: [String: String]) {
-        guard let country = dictionary["Country"], let rating = dictionary["Rating"], let photo = dictionary["Photo"],
-              let image = UIImage(named: photo) else {
+    init?(dictionary: [String: Any]) {
+        guard let id = dictionary["id"],
+              let country = dictionary["country"],
+              let rating = dictionary["rating"],
+              let image = dictionary["image"] else {
             return nil
         }
-        self.init(country: country, rating: rating, image: image)
-    }
-    
-    static func allPhotos() -> [Photo] {
-        var photos = [Photo]()
-        guard let URL = Bundle.main.url(forResource: "Photos", withExtension: "plist"),
-              let photosFromPlist = NSArray(contentsOf: URL) as? [[String:String]] else {
-            return photos
-        }
-        for dictionary in photosFromPlist {
-            if let photo = Photo(dictionary: dictionary) {
-                photos.append(photo)
-            }
-        }
-        return photos
+        
+        self.init(id: id as! String,
+                  country: country as! String,
+                  rating: rating as! String,
+                  image: image as! String)
     }
     
 }
+
