@@ -11,9 +11,14 @@ class DestinationTableViewCell: UITableViewCell {
     
     static let identifier = "DestinationTableViewCell"
     
+    var model: [HotelModel] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     private var numberOfColumns = 2
     private var cellPadding: CGFloat = 10
-    private let dataDestination = Photo.allPhotos()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -48,14 +53,14 @@ class DestinationTableViewCell: UITableViewCell {
 extension DestinationTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DestinationCollectionViewCell.identifier, for: indexPath) as? DestinationCollectionViewCell else { return UICollectionViewCell()
         }
-        // code here ....
-        let item = dataDestination[indexPath.item]
+        let item = model[indexPath.item]
+        cell.isSelectedLikeButton = item.like
         cell.getDataItem(item)
         return cell 
     }

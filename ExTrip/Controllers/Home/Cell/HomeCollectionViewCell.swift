@@ -19,8 +19,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         return view 
     }()
     
-    private lazy var imageCategory: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var imageCategory: AsyncImageView = {
+        let imageView = AsyncImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -73,12 +73,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
                                 paddingLeading: padding)
     }
     
-    var photo: Photo? {
+    var destination: Destination? {
         didSet {
-            if let photo = photo {
-                imageCategory.image = photo.image
-                ratingView.score = photo.rating
-                namecountryLabel.text = photo.country.uppercased()
+            if let destination = destination {
+                imageCategory.loadImage(url: destination.image)
+                ratingView.score = destination.rating
+                namecountryLabel.text = destination.country.uppercased()
             }
         }
     }
