@@ -38,11 +38,11 @@ class CheckBox: UIButton {
     var isChecked: Bool = false {
         didSet {
             if isChecked == true {
-                self.backgroundColor = UIColor.theme.yellow
+                backgroundColor = UIColor.theme.yellow
                 starImage.tintColor = UIColor.theme.white
                 
             } else {
-                self.backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.6)
+                backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.6)
                 starImage.tintColor = UIColor.theme.yellow
             }
         }
@@ -60,10 +60,10 @@ class CheckBox: UIButton {
     private func setup() {
         addSubviews(numberOfStarLabel,
                     starImage)
-        self.addTarget(self, action:#selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
-        self.isChecked = false
-        self.backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.6)
-        self.layer.cornerRadius = 5
+        addTarget(self, action:#selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
+        isChecked = false
+        backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.6)
+        layer.cornerRadius = 5
         setupConstraints()
         
     }
