@@ -14489,7 +14489,7 @@
 		3F2290B04176314AAD13A5C9DEBCB424 /* FIRDependency.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRDependency.h; path = FirebaseCore/Extension/FIRDependency.h; sourceTree = "<group>"; };
 		3F4C43CFC7D82E3B64F98714AB685360 /* byte_buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = byte_buffer.h; path = include/grpc/impl/codegen/byte_buffer.h; sourceTree = "<group>"; };
 		3F5BE6C2D38A4B8DC93321D788EE30FD /* nanopb-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "nanopb-dummy.m"; sourceTree = "<group>"; };
-		3F5CFC0234A0C3D710123E39E86D4287 /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F5CFC0234A0C3D710123E39E86D4287 /* Pods-ExTrip */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ExTrip"; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5D9FA7B55C42A5D11E252656C73127 /* binder_credentials.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = binder_credentials.h; path = include/grpcpp/security/binder_credentials.h; sourceTree = "<group>"; };
 		3F6191199015606AC0A34163A4EC2F77 /* FLLRBNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FLLRBNode.h; path = FirebaseDatabase/Sources/third_party/FImmutableSortedDictionary/FImmutableSortedDictionary/FLLRBNode.h; sourceTree = "<group>"; };
 		3F68F8D65EE76D2309ACB63BB1C75222 /* ev_apple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ev_apple.h; path = src/core/lib/iomgr/ev_apple.h; sourceTree = "<group>"; };
@@ -22631,7 +22631,7 @@
 				0A9F46A999C47653013D3AD854352507 /* leveldb-library */,
 				6BC54C3D03DEBF9C3A40965E69CAE039 /* Libuv-gRPC */,
 				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb */,
-				3F5CFC0234A0C3D710123E39E86D4287 /* Pods_ExTrip.framework */,
+				3F5CFC0234A0C3D710123E39E86D4287 /* Pods-ExTrip */,
 				3347A1AB6546F0A3977529B8F199DC41 /* PromisesObjC */,
 			);
 			name = Products;
@@ -28247,7 +28247,7 @@
 			);
 			name = "Pods-ExTrip";
 			productName = Pods_ExTrip;
-			productReference = 3F5CFC0234A0C3D710123E39E86D4287 /* Pods_ExTrip.framework */;
+			productReference = 3F5CFC0234A0C3D710123E39E86D4287 /* Pods-ExTrip */;
 			productType = "com.apple.product-type.framework";
 		};
 		FE1DE31D91C32501251AE9687CDC2E0F /* FirebaseCoreExtension */ = {

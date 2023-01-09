@@ -7,8 +7,10 @@
 
 import UIKit
 
-fileprivate enum Section {
-    case hotel, event, flight
+fileprivate enum Section: Int {
+    case hotel = 0
+    case flight = 1
+    case event = 2 
     
     var headerTitle: String {
         switch self {
@@ -26,13 +28,17 @@ fileprivate enum Section {
 
 class DestinationViewController: UIViewController {
     
+    private let hotelViewModel = HotelViewModel()
+    
     private let sections = Section.sections
+    private var allHotels: [HotelModel] = []
+    private var countryID: String?
+    
     var isSeletedLike: Bool = false
-    private var data = [Photo]()
     var titleHeader: String = ""
     var scoreDestination: String?
     var titleDestination: String?
-    var imageDestination: UIImage?
+    var imageDestination: String?
     
     // MARK: - Properties
     private let tableView: UITableView = {
@@ -48,30 +54,45 @@ class DestinationViewController: UIViewController {
         return table
     }()
     
+    // MARK: - Initialization
+    init(destinationID: String?,
+         scoreDestination: String?,
+         titleDestination: String?, 
+         imageDestination: String?) {
+        self.countryID = destinationID
+        self.scoreDestination = scoreDestination
+        self.titleDestination = titleDestination
+        self.imageDestination = imageDestination
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    // MARK: -Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupNavigationBar()
+        setupBinder()
     }
     
     private func setupNavigationBar() {
         navigationController?.configBackButton()
     }
     
-    // MARK: - Initialization
-    init(data: [Photo], 
-         scoreDestination: String?,
-         titleDestination: String?, 
-         imageDestination: UIImage?) {
-        self.data = data
-        self.scoreDestination = scoreDestination
-        self.titleDestination = titleDestination
-        self.imageDestination = imageDestination
-        super.init(nibName: nil, bundle: nil)
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Setup binder
+    private func setupBinder() {
+        hotelViewModel.fetchLimitData(destinationID: countryID)
+        hotelViewModel.fetchAllData(destinationID: countryID)
+        
+        hotelViewModel.hotels.bind { [weak self] value in 
+            guard let self = self else { return }
+            if let value = value {
+                self.allHotels = value
+            }
+        }
     }
     
     // MARK: - Setup UI
@@ -106,6 +127,26 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DestinationTableViewCell.identifier, for: indexPath) as? DestinationTableViewCell else { return UITableViewCell() }
+        switch indexPath.section {
+            case Section.hotel.rawValue: 
+                hotelViewModel.limitHotels.bind { value in
+                    if let value = value {
+                        cell.model = value
+                    }
+                }
+            case Section.flight.rawValue:
+                // Just test data
+                DatabaseManager.shared.fetchLimitOfHotels(countryID) { hotels in
+                    cell.model = hotels
+                }
+            case Section.event.rawValue:
+                // Just test data
+                DatabaseManager.shared.fetchLimitOfHotels(countryID) { hotels in
+                    cell.model = hotels
+                }
+            default:
+                return DestinationTableViewCell()
+        }
         return cell
     }
     
@@ -153,7 +194,18 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                       bottom: headerView.bottomAnchor,
                       trailing: headerView.trailingAnchor, 
                       paddingTrailing: padding)
-        button.addTarget(self, action: #selector(handleSeeAllAction), for: .touchUpInside)
+        
+        switch section {
+            case Section.hotel.rawValue:
+                button.addTarget(self, action: #selector(handleSeeAllHotelAction), for: .touchUpInside)
+            case Section.flight.rawValue: 
+                button.addTarget(self, action: #selector(handleSeeAllFlightAction), for: .touchUpInside)
+            case Section.event.rawValue: 
+                button.addTarget(self, action: #selector(handleSeeAllEventAction), for: .touchUpInside)  
+            default:
+                fatalError("error clicked button")
+        }
+        
         return headerView
     }
     
@@ -165,10 +217,13 @@ extension DestinationViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let header = tableView.tableHeaderView as? StretchyTableHeaderView else { return }
         header.scrollViewDidScroll(tableView)
-        header.getDataForHeader(image: imageDestination,
-                                score: scoreDestination,
-                                title: titleDestination)
-        
+        if let image = imageDestination,
+           let score = scoreDestination,
+           let title = titleDestination {
+            header.setDataForHeader(image: image,
+                                    score: score,
+                                    title: title)
+        }
         scrollActionBar(scrollView)
     }
     
@@ -185,7 +240,21 @@ extension DestinationViewController: UIScrollViewDelegate {
 
 // MARK: - Handle action button
 extension DestinationViewController {
-    @objc func handleSeeAllAction() {
-        print("See all..")
+    @objc func handleSeeAllHotelAction() {
+        let vc = HotelViewController(allHotels)
+        vc.title = "Hotels".uppercased()
+        navigationAction(vc)
+    }
+    
+    @objc func handleSeeAllFlightAction() {
+        print("click see all flights")
+    }
+    
+    @objc func handleSeeAllEventAction() {
+        print("click see all event")
+    }
+    
+    private func navigationAction(_ viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

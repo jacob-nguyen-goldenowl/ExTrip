@@ -12,11 +12,14 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     static let identifier = "DestinationCollectionViewCell"
     
     private var cellPadding: CGFloat = 10
-    var isSelectedLikeButton: Bool = false
+    var isSelectedLikeButton: Bool = false {
+        didSet {
+            changeColorLikeButton()
+        }
+    }
     
-    private let posterImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .systemBlue
+    private let posterImageView: AsyncImageView = {
+        let imageView = AsyncImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 20
@@ -113,11 +116,11 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         likeButton.addTarget(self, action: #selector(handleLikeAction), for: .touchUpInside)
     }
     
-    func getDataItem(_ data: Photo?) {
-        posterImageView.image = data?.image ?? UIImage(named: "background")
-        titleLabel.text = data?.country ?? "___"
-        priceLabel.text = "Start From $0.00"
-        ratingView.score = data?.rating ?? "0.0"
+    func setDataForDestination(_ data: HotelModel) {
+        posterImageView.loadImage(url: data.image[0])
+        titleLabel.text = data.name
+        priceLabel.text = "Start From $\(data.price)"
+        ratingView.score = data.rating
     }
 }
 

@@ -14,4 +14,13 @@ struct UserInfoModel {
     let city: String?
     let phone: String?
     let image: String?
+    
+    var dictionary: [String: Any] {
+        return ["email": name ?? "",
+                "name": name ?? "",
+                "state": state ?? "",
+                "city": city ?? "",
+                "phone": phone ?? "",
+                "image": image ?? ""]
+    }
 }

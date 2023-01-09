@@ -9,8 +9,12 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var photos = Photo.allPhotos()
-
+    var destinations: [Destination] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     private var numberOfColumns = 2
     private var cellPadding: CGFloat = 10
     
@@ -19,7 +23,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeViewModel.welcomTitle()
+        homeViewModel.fetchData()
         setupTitleBinder()
+        setupDataBinder()
         setupViews()
     }
     
@@ -32,6 +38,16 @@ class HomeViewController: UIViewController {
         homeViewModel.welcomeMessage.bind {[weak self] message in
             if let message = message {
                 self?.setupLeftAlignTitleView(text: message)
+            }
+        }
+    }
+    
+    private func setupDataBinder() {
+        homeViewModel.destination.bind { [weak self] data in
+            if let data = data {
+                self?.destinations = data
+            } else {
+                print("error when get data")
             }
         }
     }
@@ -99,12 +115,13 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return destinations.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell { 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-            cell.photo = photos[indexPath.item]
+        let item = destinations[indexPath.item]
+        cell.setDataOfHome(item)
         return cell
     }
     
@@ -114,8 +131,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = photos[indexPath.row]
-        let vc = DestinationViewController(data: photos,
+        let item = destinations[indexPath.row]
+        let vc = DestinationViewController(destinationID: item.id,
                                            scoreDestination: item.rating,
                                            titleDestination: item.country,
                                            imageDestination: item.image)

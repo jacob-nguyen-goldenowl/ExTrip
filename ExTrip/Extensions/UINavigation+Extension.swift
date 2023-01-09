@@ -8,14 +8,13 @@
 import UIKit
 
 extension UINavigationController {
-    
     func configBackButton() {
         let backImage = UIImage(named: "back")
         let nav = self.navigationBar
         nav.backIndicatorImage = backImage
-        nav.backIndicatorTransitionMaskImage = backImage
-        nav.tintColor = .gray
+        nav.backIndicatorTransitionMaskImage = backImage    
+        nav.tintColor = UIColor.theme.black ?? .black
         nav.topItem?.backButtonTitle = ""
-        nav.titleTextAttributes = [NSAttributedString.Key.font: UIFont.poppins(style: .bold)]
+        nav.titleTextAttributes = [NSAttributedString.Key.font: UIFont.poppins(style: .bold, size: 16)]
     }
 }

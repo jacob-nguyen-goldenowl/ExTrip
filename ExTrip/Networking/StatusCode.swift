@@ -36,7 +36,7 @@ enum StatusCode {
     }
 }
 
-enum Result: Int {
+enum ResultInt: Int {
     case success = 1
     case failed = 0
 }
