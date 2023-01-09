@@ -108,7 +108,7 @@ class StretchyTableHeaderView: UIView {
         headerImageHeight.constant = max(offsetY + scrollView.contentInset.top, scrollView.contentInset.top)
     } 
     
-    func getDataForHeader(image: String,score: String, title: String) {
+    func setDataForHeader(image: String, score: String, title: String) {
         loadImage(image)
         ratingView.score = score
         countryLabel.text = title.uppercased()

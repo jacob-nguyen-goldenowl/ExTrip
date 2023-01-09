@@ -73,15 +73,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
                                 paddingLeading: padding)
     }
     
-    var destination: Destination? {
-        didSet {
-            if let destination = destination {
-                imageCategory.loadImage(url: destination.image)
-                ratingView.score = destination.rating
-                namecountryLabel.text = destination.country.uppercased()
-            }
-        }
+    func setDataOfHome(_ data: Destination) {
+        imageCategory.loadImage(url: data.image)
+        ratingView.score = data.rating
+        let upperCaseNameOfCountry = data.country.uppercased()
+        namecountryLabel.text = upperCaseNameOfCountry
     }
-
+    
 }
 
