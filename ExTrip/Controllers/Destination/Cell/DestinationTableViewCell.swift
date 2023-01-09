@@ -61,7 +61,7 @@ extension DestinationTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         }
         let item = model[indexPath.item]
         cell.isSelectedLikeButton = item.like
-        cell.getDataItem(item)
+        cell.setDataForDestination(item)
         return cell 
     }
     

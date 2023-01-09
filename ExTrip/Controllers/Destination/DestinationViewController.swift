@@ -199,7 +199,7 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
             case Section.hotel.rawValue:
                 button.addTarget(self, action: #selector(handleSeeAllHotelAction), for: .touchUpInside)
             case Section.flight.rawValue: 
-                button.addTarget(self, action: #selector(handleSeeAllFlighAction), for: .touchUpInside)
+                button.addTarget(self, action: #selector(handleSeeAllFlightAction), for: .touchUpInside)
             case Section.event.rawValue: 
                 button.addTarget(self, action: #selector(handleSeeAllEventAction), for: .touchUpInside)  
             default:
@@ -220,7 +220,7 @@ extension DestinationViewController: UIScrollViewDelegate {
         if let image = imageDestination,
            let score = scoreDestination,
            let title = titleDestination {
-            header.getDataForHeader(image: image,
+            header.setDataForHeader(image: image,
                                     score: score,
                                     title: title)
         }
@@ -246,7 +246,7 @@ extension DestinationViewController {
         navigationAction(vc)
     }
     
-    @objc func handleSeeAllFlighAction() {
+    @objc func handleSeeAllFlightAction() {
         print("click see all flights")
     }
     

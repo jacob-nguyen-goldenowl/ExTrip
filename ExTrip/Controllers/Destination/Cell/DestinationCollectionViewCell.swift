@@ -116,7 +116,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         likeButton.addTarget(self, action: #selector(handleLikeAction), for: .touchUpInside)
     }
     
-    func getDataItem(_ data: HotelModel) {
+    func setDataForDestination(_ data: HotelModel) {
         posterImageView.loadImage(url: data.image[0])
         titleLabel.text = data.name
         priceLabel.text = "Start From $\(data.price)"
