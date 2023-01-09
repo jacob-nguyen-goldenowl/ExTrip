@@ -21,7 +21,6 @@ class ETTableViewCell: UITableViewCell {
 
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Chillax Heritage"
         label.textColor = UIColor.theme.black ?? .black
         label.font = .poppins(style: .medium)
         return label
@@ -30,7 +29,6 @@ class ETTableViewCell: UITableViewCell {
     public lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.theme.black ?? .black
-        label.text = "US $424"
         label.font = .poppins(style: .bold, size: 16)
         return label
     }()
@@ -38,7 +36,6 @@ class ETTableViewCell: UITableViewCell {
     public lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.theme.black ?? .black
-        label.text = "Orchard Road | 5.5km from center"
         label.font = .poppins(style: .light, size: 11)
         return label
     }()
