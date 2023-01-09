@@ -9,11 +9,11 @@ import UIKit
 
 class TypeViewController: UIViewController {
     
-    var allTypesArr: [String] = []
+    var setValueOfType: [String] = []
     var selectedRows:[IndexPath] = []
     var doneHandler: (([String]) -> Void)?
-    var savePositionsInitial: (([IndexPath]) -> Void)?
-    var value: [String] = []
+    var saveCheckBoxPosition: (([IndexPath]) -> Void)?
+    var currentValue: [String] = []
     
     var text: String? {
         didSet {
@@ -86,7 +86,7 @@ class TypeViewController: UIViewController {
 
 extension TypeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allTypesArr.count
+        return setValueOfType.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,7 +94,7 @@ extension TypeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TypeTableViewCell.identifier) as! TypeTableViewCell
-        cell.textLabel?.text = allTypesArr[indexPath.row]
+        cell.textLabel?.text = setValueOfType[indexPath.row]
         if selectedRows.contains(indexPath)
         {
             cell.checkBox = UIImage(named: "checked")
@@ -108,20 +108,19 @@ extension TypeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    @objc func checkBoxSelection(_ sender: UIButton)
-    {
+    @objc func checkBoxSelection(_ sender: UIButton) {
         let selectedIndexPath = IndexPath(row: sender.tag, section: 0)
         
         if self.selectedRows.contains(selectedIndexPath)
         {
             let index = selectedRows.firstIndex(of: selectedIndexPath) ?? 0
             self.selectedRows.remove(at: index)
-            value.remove(at: index)
+            currentValue.remove(at: index)
         }
         else
         {
             self.selectedRows.append(selectedIndexPath)
-            value.append(allTypesArr[selectedIndexPath.row])
+            currentValue.append(setValueOfType[selectedIndexPath.row])
         }
         self.tableView.reloadData()
     }
@@ -130,8 +129,8 @@ extension TypeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TypeViewController {
     @objc func doneButtonAction() {
-        doneHandler?(value)
-        savePositionsInitial?(selectedRows)
+        doneHandler?(currentValue)
+        saveCheckBoxPosition?(selectedRows)
         cancel() 
     }
 }
