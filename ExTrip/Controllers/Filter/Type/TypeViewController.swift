@@ -9,7 +9,7 @@ import UIKit
 
 class TypeViewController: UIViewController {
     
-    var setValueOfType: [String] = []
+    var valueAllTypes: [String] = []
     var selectedRows:[IndexPath] = []
     var doneHandler: (([String]) -> Void)?
     var saveCheckBoxPosition: (([IndexPath]) -> Void)?
@@ -86,7 +86,7 @@ class TypeViewController: UIViewController {
 
 extension TypeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return setValueOfType.count
+        return valueAllTypes.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,7 +94,7 @@ extension TypeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TypeTableViewCell.identifier) as! TypeTableViewCell
-        cell.textLabel?.text = setValueOfType[indexPath.row]
+        cell.textLabel?.text = valueAllTypes[indexPath.row]
         if selectedRows.contains(indexPath)
         {
             cell.checkBox = UIImage(named: "checked")
@@ -120,7 +120,7 @@ extension TypeViewController: UITableViewDelegate, UITableViewDataSource {
         else
         {
             self.selectedRows.append(selectedIndexPath)
-            currentValue.append(setValueOfType[selectedIndexPath.row])
+            currentValue.append(valueAllTypes[selectedIndexPath.row])
         }
         self.tableView.reloadData()
     }

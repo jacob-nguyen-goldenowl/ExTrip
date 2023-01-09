@@ -192,7 +192,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         vc.text = filtes[row].title
         switch row {
             case Filter.sevice.rawValue:
-                vc.setValueOfType = service
+                vc.valueAllTypes = service
                 vc.saveCheckBoxPosition = { [weak self] position in
                     self?.positionService = position
                 }
@@ -205,7 +205,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 present(vc, animated: true)
             case Filter.type.rawValue:
-                vc.setValueOfType = property
+                vc.valueAllTypes = property
                 vc.saveCheckBoxPosition = { [weak self] position in
                     self?.positionProperty = position
                 }
@@ -218,7 +218,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 present(vc, animated: true)
             case Filter.bed.rawValue:
-                vc.setValueOfType = bed
+                vc.valueAllTypes = bed
                 vc.saveCheckBoxPosition = { [weak self] position in
                     self?.positionBed = position
                 }
@@ -230,7 +230,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                 vc.currentValue = currentValueBed
                 present(vc, animated: true)
             case Filter.payment.rawValue:
-                vc.setValueOfType = payment
+                vc.valueAllTypes = payment
                 vc.saveCheckBoxPosition = { [weak self] position in
                     self?.positionsPayment = position
                 }
