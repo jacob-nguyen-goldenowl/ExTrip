@@ -36,7 +36,6 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     
     private func setupSubView() {
         addSubviews(headerView)
-        contentView.addSubview(seeAllImageLabel)
         setupConstraintSubView()
     }
     
