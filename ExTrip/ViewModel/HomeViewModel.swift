@@ -10,7 +10,7 @@ import Foundation
 class HomeViewModel {
     
     var welcomeMessage: Observable<String?> = Observable(nil)
-    var destination: Observable<[Destination]?> = Observable(nil)
+    var destination: Observable<[DestinationModel]?> = Observable(nil)
     
     func welcomTitle() {
         let user = UserManager.shared.getUserInfo()
@@ -22,7 +22,7 @@ class HomeViewModel {
     }
     
     func fetchData() {
-        DatabaseManager.shared.fetchDataDestination { result in
+        DatabaseResponse.shared.fetchData("destinations") { (result: [DestinationModel]) in
             DispatchQueue.main.async { [weak self] in
                 self?.destination.value = result
             }
