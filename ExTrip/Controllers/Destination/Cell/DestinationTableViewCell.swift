@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol DestinationTableViewCellDelegate {
+    func destinationTableViewCellhandleHotelNavigation(_ data: HotelModel, row: Int) 
+}
+
 class DestinationTableViewCell: UITableViewCell {
     
     static let identifier = "DestinationTableViewCell"
+    
+    var delegate: DestinationTableViewCellDelegate?
+    
+    var sectionOfCell: Int = 0
     
     var model: [HotelModel] = [] {
         didSet {
@@ -66,7 +74,15 @@ extension DestinationTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let row = indexPath.row
+        if sectionOfCell == 0 {
+            delegate?.destinationTableViewCellhandleHotelNavigation(model[row], row: row) 
+        } else if sectionOfCell == 1 {
+            print("section 1")
+        } else {
+            print("section 2")
+        }        
     }
 }
 

@@ -21,6 +21,8 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     private let posterImageView: AsyncImageView = {
         let imageView = AsyncImageView()
         imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 0.7
+        imageView.layer.borderColor = UIColor.theme.lightGray?.cgColor ?? UIColor.lightGray.cgColor
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 20
         return imageView
