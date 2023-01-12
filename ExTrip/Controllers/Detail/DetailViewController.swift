@@ -261,7 +261,7 @@ extension DetailViewController {
 
 extension DetailViewController: LocationTableViewCellDelegate {
     func locationTableViewCellHandleSeeMap() {
-        let vc = MapViewController()
+        let vc = MapViewController(locationHotel: data.location)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -269,7 +269,6 @@ extension DetailViewController: LocationTableViewCellDelegate {
 extension DetailViewController: DescriptionTableViewCellDelegate {
     func descriptionTableViewCellHandleSeeDetails() {
         let vc = ViewDetailsViewController(description: data.description, title: data.name)
-        vc.title = "Hotel Information"
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -277,7 +276,6 @@ extension DetailViewController: DescriptionTableViewCellDelegate {
 extension DetailViewController: HeaderCollectionTableViewCellDelegate {
     func headerCollectionTableViewCellHandleViewAllImage(_ allImage: [String]) {
         let vc = ViewAllViewController(allImage: allImage)
-        vc.title = "All Images"
         navigationController?.pushViewController(vc, animated: true)
     }
 }

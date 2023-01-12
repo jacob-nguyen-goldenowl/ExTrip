@@ -47,6 +47,7 @@ class ViewDetailsViewController: UIViewController {
     
     private func setupNavigation() {
         navigationController?.configBackButton()
+        title = "Hotel Information"
     }    
     private func setupUI() {
         view.backgroundColor = .systemBackground
