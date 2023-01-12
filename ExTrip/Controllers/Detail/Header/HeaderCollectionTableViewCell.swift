@@ -53,10 +53,7 @@ class HeaderCollectionTableViewCell: UITableViewCell {
     }
     
     private func setupConstraintSubView() {
-        collectionView.anchor(top: contentView.topAnchor,
-                              bottom: contentView.bottomAnchor, 
-                              leading: contentView.leadingAnchor,
-                              trailing: contentView.trailingAnchor)
+        collectionView.fillAnchor(contentView)
     }
     
 }

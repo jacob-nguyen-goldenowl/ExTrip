@@ -48,10 +48,7 @@ class ViewAllCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupConstraintSubView() {
-        hotelImageView.anchor(top: topAnchor,
-                              bottom: bottomAnchor,
-                              leading: leadingAnchor, 
-                              trailing: trailingAnchor)
+        hotelImageView.fillAnchor(self)
     }
     
     private func noReceiveData() {
