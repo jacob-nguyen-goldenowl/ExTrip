@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HotelModel {
+struct HotelModel: Codable {
     
     var id: String
     var name: String
@@ -19,51 +19,15 @@ struct HotelModel {
     var like: Bool
     var numberOfRoom: String
     var star: String
-    
-    init(id: String,
-         name: String,
-         description: String,
-         price: String,
-         image: [String],
-         rating: String,
-         review: String,
-         like: Bool,
-         numberOfRoom: String,
-         star: String) {
-        self.id = id
-        self.name = name
-        self.description = description
-        self.price = price
-        self.image = image
-        self.rating = rating
-        self.review = review
-        self.like = like
-        self.numberOfRoom = numberOfRoom
-        self.star = star
-    }
-    
-    init?(dictionary: [String: Any]) {
-        guard let id = dictionary["id"],
-              let name = dictionary["name"],
-              let description = dictionary["description"],
-              let price = dictionary["price"],
-              let image = dictionary["image"],
-              let rating = dictionary["rating"],
-              let review = dictionary["review"],
-              let like = dictionary["like"],
-              let numberOfRoom = dictionary["numberOfRoom"],
-              let star = dictionary["star"] else { return nil }
-        
-        self.init(id: id as! String,
-                  name: name as! String,
-                  description: description as! String,
-                  price: price as! String,
-                  image: image as! [String],
-                  rating: rating as! String,
-                  review: review as! String,
-                  like: like as! Bool,
-                  numberOfRoom: numberOfRoom as! String,
-                  star: star as! String)
-    }
+    var thumbnail: String
+    var location: Location
+    var type: String
+    var address: String
+
 }
 
+struct Location: Codable {
+    var description: String
+    var longitude: String
+    var latitude: String
+}
