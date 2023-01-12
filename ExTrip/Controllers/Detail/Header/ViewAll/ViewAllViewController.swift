@@ -9,7 +9,7 @@ import UIKit
 
 class ViewAllViewController: UIViewController {
     
-    private var allImage: [String] = []
+    private var linkURLAllImage: [String] = []
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -23,7 +23,7 @@ class ViewAllViewController: UIViewController {
     }()
     
     init(allImage: [String]) {
-        self.allImage = allImage
+        self.linkURLAllImage = allImage
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,6 +39,7 @@ class ViewAllViewController: UIViewController {
     
     private func setupNavigation() {
         navigationController?.configBackButton()
+        title = "All Images"
     }
     
     private func setupViews() {
@@ -60,11 +61,11 @@ class ViewAllViewController: UIViewController {
 extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allImage.count
+        return linkURLAllImage.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewAllCollectionViewCell.identifier, for: indexPath) as? ViewAllCollectionViewCell else { return ViewAllCollectionViewCell() }
-        cell.image = allImage[indexPath.row]
+        cell.image = linkURLAllImage[indexPath.row]
         return cell
     }
     
