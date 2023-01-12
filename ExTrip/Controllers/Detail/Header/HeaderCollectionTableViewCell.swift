@@ -65,7 +65,7 @@ class HeaderCollectionTableViewCell: UITableViewCell {
 extension HeaderCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listImage.count
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,7 +94,7 @@ extension HeaderCollectionTableViewCell: UICollectionViewDelegateFlowLayout {
             return CGSize(width: itemWidth, height: itemWidth)
         } else {
             let itemWidth: CGFloat = (width - 2 * padding) / 3.0
-            return CGSize(width: itemWidth, height: itemWidth / 2)
+            return CGSize(width: itemWidth, height: itemWidth / 2.0)
         }
     }
     

@@ -203,9 +203,10 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let row = indexPath.row 
+        let padding: CGFloat = 4
         switch row {
             case DetailType.header.rawValue:
-                return 280
+                return (view.frame.size.width / 1.5) + padding
             case DetailType.overview.rawValue:
                 return 110
             case DetailType.information.rawValue:

@@ -11,17 +11,10 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "HeaderCollectionViewCell"
 
-    var checkIsHiden: Bool = true {
-        didSet {
-            
-        }
-    }
-    
     private let headerView: AsyncImageView = {
         let imageView = AsyncImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .systemRed
         return imageView
     }()
     
@@ -41,6 +34,10 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     
     private func setupConstraintSubView() {
         headerView.fillAnchor(self)
+    }
+    
+    func setImageForHeader(_ urlString: String) {
+        headerView.loadImage(url: urlString)
     }
     
 }
