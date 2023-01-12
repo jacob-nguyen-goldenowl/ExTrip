@@ -21,6 +21,8 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     private let posterImageView: AsyncImageView = {
         let imageView = AsyncImageView()
         imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 0.7
+        imageView.layer.borderColor = UIColor.theme.lightGray?.cgColor ?? UIColor.lightGray.cgColor
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 20
         return imageView
@@ -117,7 +119,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     }
     
     func setDataForDestination(_ data: HotelModel) {
-        posterImageView.loadImage(url: data.image[0])
+        posterImageView.loadImage(url: data.thumbnail)
         titleLabel.text = data.name
         priceLabel.text = "Start From $\(data.price)"
         ratingView.score = data.rating

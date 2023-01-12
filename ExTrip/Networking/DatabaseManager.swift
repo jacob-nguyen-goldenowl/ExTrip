@@ -43,53 +43,6 @@ class DatabaseManager {
         }
     }
     
-    // MARK: Fetch destination data
-    public func fetchDataDestination(completion: @escaping([Destination]) -> Void) {
-        fireStore.collection("destinations").getDocuments { (snapshot, error) in
-            var destinations = [Destination]()
-            snapshot?.documents.forEach({ (document) in
-                let dictionary = document.data() 
-                if let destination = Destination(dictionary: dictionary) {
-                    destinations.append(destination) 
-                }
-            })
-            completion(destinations)
-        }
-    }
-    
-    // MARK: Fetch hotels data
-    public func fetchLimitOfHotels(_ countryID: String?, completion: @escaping([HotelModel]) -> Void) {
-        guard let id = countryID else { return }
-        fireStore.collection("hotels")
-            .whereField("destination_id", isEqualTo: id).limit(to: 2)
-            .getDocuments { (snapshot, error) in
-                var hotels = [HotelModel]()
-                snapshot?.documents.forEach({ (document) in
-                    let dictionary = document.data() 
-                    if let hotel = HotelModel(dictionary: dictionary) {
-                        hotels.append(hotel) 
-                    }
-                })
-                completion(hotels)
-            }
-    }
-    
-    // MARK: Fetch hotels data
-    public func fetchAllHotels(_ countryID: String?, completion: @escaping([HotelModel]) -> Void) {
-        guard let id = countryID else { return }
-        fireStore.collection("hotels")
-            .whereField("destination_id", isEqualTo: id)
-            .getDocuments { (snapshot, error) in
-                var hotels = [HotelModel]()
-                snapshot?.documents.forEach({ (document) in
-                    let dictionary = document.data() 
-                    if let hotel = HotelModel(dictionary: dictionary) {
-                        hotels.append(hotel) 
-                    }
-                })
-                completion(hotels)
-            }
-    }
 }
 
 fileprivate extension String {

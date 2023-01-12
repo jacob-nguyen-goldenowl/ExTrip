@@ -127,8 +127,10 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DestinationTableViewCell.identifier, for: indexPath) as? DestinationTableViewCell else { return UITableViewCell() }
+        cell.delegate = self
         switch indexPath.section {
             case Section.hotel.rawValue: 
+                cell.sectionOfCell  = indexPath.section
                 hotelViewModel.limitHotels.bind { value in
                     if let value = value {
                         cell.model = value
@@ -136,14 +138,10 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                 }
             case Section.flight.rawValue:
                 // Just test data
-                DatabaseManager.shared.fetchLimitOfHotels(countryID) { hotels in
-                    cell.model = hotels
-                }
+                print("none")
             case Section.event.rawValue:
                 // Just test data
-                DatabaseManager.shared.fetchLimitOfHotels(countryID) { hotels in
-                    cell.model = hotels
-                }
+                print("none")
             default:
                 return DestinationTableViewCell()
         }
@@ -256,5 +254,12 @@ extension DestinationViewController {
     
     private func navigationAction(_ viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension DestinationViewController: DestinationTableViewCellDelegate {
+    func destinationTableViewCellhandleHotelNavigation(_ data: HotelModel, row: Int) {
+        let vc = DetailViewController(data: data)
+        navigationAction(vc)
     }
 }

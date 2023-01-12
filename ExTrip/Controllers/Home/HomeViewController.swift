@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var destinations: [Destination] = [] {
+    var destinations: [DestinationModel] = [] {
         didSet {
             collectionView.reloadData()
         }

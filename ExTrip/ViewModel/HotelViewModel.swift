@@ -13,19 +13,23 @@ class HotelViewModel {
     var limitHotels: Observable<[HotelModel]?> = Observable(nil)
     
     func fetchLimitData(destinationID: String?) {
-        DatabaseManager.shared.fetchLimitOfHotels(destinationID) { hotels in
+        DatabaseResponse.shared.fetchLimitDataById(collection: "hotels",
+                                                   filed: "destination_id",
+                                                   documentId: destinationID) { (result: [HotelModel]) in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.limitHotels.value = hotels
+                self.limitHotels.value = result
             }
         }
     }
     
     func fetchAllData(destinationID: String?) {
-        DatabaseManager.shared.fetchAllHotels(destinationID) { hotels in
+        DatabaseResponse.shared.fetchLimitDataById(collection: "hotels",
+                                                   filed: "destination_id",
+                                                   documentId: destinationID) { (result: [HotelModel]) in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.hotels.value = hotels
+                self.hotels.value = result
             }
         }
     }

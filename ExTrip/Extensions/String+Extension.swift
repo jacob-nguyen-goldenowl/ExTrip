@@ -27,4 +27,8 @@ extension String {
         )
         return result != nil ? true : false
     }
+    
+    func newLineString() -> String {
+        return self.replacingOccurrences(of: "\\n", with: "\n")
+    }
 }
