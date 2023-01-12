@@ -73,7 +73,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
                                 paddingLeading: padding)
     }
     
-    func setDataOfHome(_ data: Destination) {
+    func setDataOfHome(_ data: DestinationModel) {
         imageCategory.loadImage(url: data.image)
         ratingView.score = data.rating
         let upperCaseNameOfCountry = data.country.uppercased()
