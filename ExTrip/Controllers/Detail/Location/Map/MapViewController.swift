@@ -10,7 +10,17 @@ import MapKit
 
 class MapViewController: UIViewController {
     
-    private let location = LocationTableViewCell.valueLocation
+    private var location: Location
+    
+    init(locationHotel: Location) {
+        self.location = locationHotel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public lazy var mapView: MKMapView = {
         let map = MKMapView()
         map.overrideUserInterfaceStyle = .light

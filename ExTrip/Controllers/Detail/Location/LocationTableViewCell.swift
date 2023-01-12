@@ -31,9 +31,7 @@ class LocationTableViewCell: DetailTableViewCell {
             }
         }
     }
-    
-    static var valueLocation: Location?
-        
+            
     var location: Location? {
         didSet {
             renderLocation(location)
@@ -172,7 +170,6 @@ class LocationTableViewCell: DetailTableViewCell {
     }
     
     private func renderLocation(_ location: Location?) {
-        LocationTableViewCell.valueLocation = location
         if let lat = Double(location?.latitude ?? ""), 
             let lon = Double(location?.longitude ?? "") {
             getAddressFromLocation(latitude: lat, longitude: lon) { (address, error) in
