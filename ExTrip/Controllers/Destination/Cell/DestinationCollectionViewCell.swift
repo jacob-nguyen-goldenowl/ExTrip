@@ -119,7 +119,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     }
     
     func setDataForDestination(_ data: HotelModel) {
-        posterImageView.loadImage(url: data.image[0])
+        posterImageView.loadImage(url: data.thumbnail)
         titleLabel.text = data.name
         priceLabel.text = "Start From $\(data.price)"
         ratingView.score = data.rating

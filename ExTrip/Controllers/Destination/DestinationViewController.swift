@@ -138,20 +138,10 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                 }
             case Section.flight.rawValue:
                 // Just test data
-                cell.sectionOfCell  = indexPath.section
-                hotelViewModel.limitHotels.bind { value in
-                    if let value = value {
-                        cell.model = value
-                    }
-                }
+                print("none")
             case Section.event.rawValue:
                 // Just test data
-                cell.sectionOfCell  = indexPath.section
-                hotelViewModel.limitHotels.bind { value in
-                    if let value = value {
-                        cell.model = value
-                    }
-                }
+                print("none")
             default:
                 return DestinationTableViewCell()
         }
