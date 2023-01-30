@@ -18,13 +18,18 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.theme.tertiarySystemFill
+        view.layer.cornerRadius = 15
+        return view
+    }()
+    
     private let posterImageView: AsyncImageView = {
         let imageView = AsyncImageView()
         imageView.clipsToBounds = true
-        imageView.layer.borderWidth = 0.7
-        imageView.layer.borderColor = UIColor.theme.lightGray?.cgColor ?? UIColor.lightGray.cgColor
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = 15
         return imageView
     }()
     
@@ -36,9 +41,9 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Chillax Heritage"
         label.textColor = UIColor.theme.black ?? .black
-        label.font = .poppins(style: .medium)
+        label.numberOfLines = 2
+        label.font = .poppins(style: .bold, size: 13)
         return label
     }()
     
@@ -63,45 +68,54 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupSubViews() {
-        contentView.addSubviews(posterImageView,
-                                likeButton, 
-                                titleLabel,
-                                priceLabel, 
-                                ratingView)
+        contentView.addSubview(containerView)
+        containerView.addSubviews(posterImageView,
+                                  likeButton, 
+                                  titleLabel,
+                                  priceLabel, 
+                                  ratingView)
         setupConstraintSubViews()
     }
     
     private func setupConstraintSubViews() {
         let paddingLike: CGFloat = 15
-        let padding: CGFloat = 5
-        posterImageView.anchor(top: topAnchor,
-                               leading: leadingAnchor,
-                               trailing: trailingAnchor)
-        posterImageView.setHeight(height: frame.size.width)
+        let padding: CGFloat = 8
+        let paddingTop: CGFloat = 3
         
-        likeButton.anchor(top: topAnchor, 
-                          trailing: trailingAnchor,
+        containerView.fillAnchor(contentView)
+        
+        posterImageView.anchor(top: containerView.topAnchor,
+                               leading: containerView.leadingAnchor,
+                               trailing: containerView.trailingAnchor,
+                               paddingTop: padding, 
+                               paddingLeading: padding,
+                               paddingTrailing: padding)
+        posterImageView.setHeight(height: frame.size.width - padding*2)
+        
+        likeButton.anchor(top: containerView.topAnchor, 
+                          trailing: containerView.trailingAnchor,
                           paddingTop: paddingLike,
                           paddingTrailing: paddingLike)
         likeButton.setHeight(height: 30)
         likeButton.setWidth(width: 30)
         
         titleLabel.anchor(top: posterImageView.bottomAnchor,
-                          leading: leadingAnchor, 
-                          trailing: trailingAnchor, 
-                          paddingTop: padding,
-                          paddingLeading: padding)
-        titleLabel.setHeight(height: 20)
+                          leading: containerView.leadingAnchor, 
+                          trailing: containerView.trailingAnchor, 
+                          paddingTop: paddingTop,
+                          paddingLeading: padding,
+                          paddingTrailing: padding)
+        titleLabel.setHeight(height: 30)
         
         priceLabel.anchor(top: titleLabel.bottomAnchor,
-                          leading: leadingAnchor, 
-                          trailing: trailingAnchor, 
-                          paddingTop: padding,
+                          leading: containerView.leadingAnchor, 
+                          trailing: containerView.trailingAnchor, 
+                          paddingTop: paddingTop,
                           paddingLeading: padding)
-        priceLabel.setHeight(height: 20)
+        priceLabel.setHeight(height: 15)
         
         ratingView.anchor(top: priceLabel.bottomAnchor,
-                          leading: leadingAnchor,
+                          leading: containerView.leadingAnchor,
                           paddingLeading: padding)
         ratingView.setWidth(width: 65)
         ratingView.setHeight(height: 30)        
@@ -120,7 +134,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     
     func setDataForDestination(_ data: HotelModel) {
         posterImageView.loadImage(url: data.thumbnail)
-        titleLabel.text = data.name
+        titleLabel.text = data.name.capitalizeFirstLetter()
         priceLabel.text = "Start From $\(data.price)"
         ratingView.score = data.rating
     }

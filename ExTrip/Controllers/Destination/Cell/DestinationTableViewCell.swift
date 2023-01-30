@@ -33,7 +33,7 @@ class DestinationTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout )
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(DestinationCollectionViewCell.self, forCellWithReuseIdentifier: DestinationCollectionViewCell.identifier)
         return collectionView
     }()
@@ -90,7 +90,7 @@ extension DestinationTableViewCell: UICollectionViewDelegate, UICollectionViewDa
 extension DestinationTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let columnWidth = (collectionView.frame.size.width / CGFloat(numberOfColumns)) - cellPadding * 1.5
+        let columnWidth = (collectionView.frame.size.width / CGFloat(numberOfColumns)) - cellPadding * 3.0
         return CGSize(width: columnWidth, height: collectionView.frame.size.height)
     }
     
