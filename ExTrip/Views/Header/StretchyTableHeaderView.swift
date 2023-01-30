@@ -17,14 +17,6 @@ class StretchyTableHeaderView: UIView {
         return imageView
     }()
     
-    private lazy var cornerView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 20
-        view.backgroundColor = UIColor.theme.white ?? .white
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        return view
-    }()
-    
     private lazy var countryLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -53,8 +45,7 @@ class StretchyTableHeaderView: UIView {
     
     // MARK: - Setup UI
     private func setupViews() {
-        addSubviews(containerView,
-                    cornerView)
+        addSubviews(containerView)
         containerView.addSubviews(headerImage,
                                   countryLabel,
                                   ratingView)
@@ -85,12 +76,7 @@ class StretchyTableHeaderView: UIView {
         ratingView.center(centerX: containerView.centerXAnchor)
         ratingView.setWidth(width: 65)
         ratingView.setHeight(height: 30)
-        
-        cornerView.anchor(bottom: bottomAnchor,
-                          leading: leadingAnchor,
-                          trailing: trailingAnchor)
-        cornerView.setHeight(height: 40)
-        
+
         // Make constraint header image 
         headerImage.translatesAutoresizingMaskIntoConstraints = false
         headerImageBottom = headerImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)

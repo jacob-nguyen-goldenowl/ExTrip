@@ -13,7 +13,7 @@ class DetailTableViewCell: UITableViewCell {
     
     var title: String? {
         didSet {
-            headerTitle.text = title
+            headerTitle.text = title?.capitalizeFirstLetter()
         }
     }
     

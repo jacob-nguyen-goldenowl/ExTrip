@@ -80,4 +80,9 @@ extension UIViewController {
         alert.addAction(closeAction)
         present(alert, animated: true)
     }
+    
+    func navigationAction(_ viewController: UIViewController) {
+        viewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }

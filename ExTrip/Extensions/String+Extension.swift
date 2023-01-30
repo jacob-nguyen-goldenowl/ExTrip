@@ -31,4 +31,8 @@ extension String {
     func newLineString() -> String {
         return self.replacingOccurrences(of: "\\n", with: "\n")
     }
+    
+    func capitalizeFirstLetter() -> String {
+        return self.capitalized
+    }
 }

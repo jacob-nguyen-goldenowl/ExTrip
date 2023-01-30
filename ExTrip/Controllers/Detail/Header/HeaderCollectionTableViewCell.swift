@@ -17,11 +17,7 @@ class HeaderCollectionTableViewCell: UITableViewCell {
     
     var delegate: HeaderCollectionTableViewCellDelegate?
     
-    var listImage: [String] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var listImage: [String] = []
 
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

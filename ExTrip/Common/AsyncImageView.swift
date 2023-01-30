@@ -18,7 +18,7 @@ class AsyncImageView: UIView {
         return image
     }()
 
-    private lazy var activityIndicator = UIActivityIndicatorView(style: .large)
+    private lazy var activityIndicator = UIActivityIndicatorView(style: .medium)
     
     var newImage: UIImage? {
         didSet {
@@ -59,7 +59,7 @@ class AsyncImageView: UIView {
         self.startIndicator()
         loading.loadImage(url) { [weak self] status in
             guard let self = self else { return }
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 switch status {
                     case .success(let image):
                         self.stopIndicator()
