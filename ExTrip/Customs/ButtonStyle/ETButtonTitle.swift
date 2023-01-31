@@ -25,4 +25,5 @@ enum ETButtonTitle: String {
     case gotIt = "got it"
     case paymentMethod = "use payment method"
     case payNow = "pay now"
+    case viewAll = "View All"
 }

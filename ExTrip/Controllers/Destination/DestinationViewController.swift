@@ -45,13 +45,21 @@ class DestinationViewController: UIViewController {
         let table = UITableView(frame: .zero, style: .grouped)
         table.showsVerticalScrollIndicator = false
         table.separatorStyle = .none
-        table.backgroundColor = .clear
+        table.backgroundColor = .systemBackground
         if #available(iOS 15.0, *) {
             table.sectionHeaderTopPadding = 0
         }
         table.register(DestinationTableViewCell.self,
                        forCellReuseIdentifier: DestinationTableViewCell.identifier)
         return table
+    }()
+    
+    private lazy var cornerView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 20
+        view.backgroundColor = .systemBackground
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        return view
     }()
     
     // MARK: - Initialization
@@ -70,8 +78,8 @@ class DestinationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        setupNavigationBar()
         setupBinder()
+        setupNavigationBar()
     }
     
     private func setupNavigationBar() {
@@ -98,7 +106,7 @@ class DestinationViewController: UIViewController {
     // MARK: - Setup UI
     private func setupViews() {
         view.addSubviews(tableView)
-        view.backgroundColor = UIColor.theme.white ?? .white
+        view.backgroundColor = .systemBackground
         tableView.delegate = self
         tableView.dataSource = self
         let header = StretchyTableHeaderView(frame: CGRect(x: 0,
@@ -168,11 +176,12 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                                               y: 0,
                                               width: tableView.frame.size.width, 
                                               height: 75))
+        headerView.backgroundColor = .systemBackground
+        
         // create label
         let label = UILabel()
         label.text = sections[section].headerTitle
         label.font = .poppins(style: .bold, size: 25) 
-        label.textColor = UIColor.theme.black ?? .black
         headerView.addSubview(label)
         
         label.anchor(top: headerView.topAnchor,
@@ -183,15 +192,25 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
         
         // create button
         let button = UIButton()
-        button.setTitle("See all".uppercased(), for: .normal)
+        let title = ETButtonTitle.viewAll.rawValue
+        button.setTitle(title, for: .normal)
         button.setTitleColor(.lightGray, for: .normal)
-        button.titleLabel?.font = .poppins(style: .regular)
+        button.titleLabel?.font = .poppins(style: .medium, size: 12)
         headerView.addSubview(button)
         
         button.anchor(top: headerView.topAnchor,
                       bottom: headerView.bottomAnchor,
                       trailing: headerView.trailingAnchor, 
                       paddingTrailing: padding)
+        
+        if section == Section.hotel.rawValue {
+            headerView.addSubview(cornerView)
+            cornerView.anchor(bottom: headerView.topAnchor,
+                              leading: headerView.leadingAnchor,
+                              trailing: headerView.trailingAnchor,
+                              paddingBottom: -5)
+            cornerView.setHeight(height: 40)
+        }
         
         switch section {
             case Section.hotel.rawValue:
@@ -203,7 +222,6 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
             default:
                 fatalError("error clicked button")
         }
-        
         return headerView
     }
     
@@ -228,7 +246,7 @@ extension DestinationViewController: UIScrollViewDelegate {
     // Show or hiden title bar when scrolling
     private func scrollActionBar(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < -20 {
-            navigationItem.title = ""
+            navigationItem.title = nil
         } else {
             navigationItem.title = titleHeader
         }
@@ -250,10 +268,6 @@ extension DestinationViewController {
     
     @objc func handleSeeAllEventAction() {
         print("click see all event")
-    }
-    
-    private func navigationAction(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

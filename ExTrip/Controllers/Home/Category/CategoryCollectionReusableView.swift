@@ -44,9 +44,10 @@ class CategoryCollectionReusableView: UICollectionReusableView {
     
     private lazy var seeAllButton: UIButton = {
         let button = UIButton()
-        button.setTitle("see all".uppercased(), for: .normal)
-        button.titleLabel?.font = .poppins(style: .medium, size: 13)
-        button.setTitleColor(UIColor.theme.lightGray, for: .normal)
+        let title = ETButtonTitle.viewAll.rawValue
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.lightGray, for: .normal)
+        button.titleLabel?.font = .poppins(style: .medium, size: 12)
         return button
     }()
     

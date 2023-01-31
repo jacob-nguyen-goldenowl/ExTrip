@@ -9,17 +9,32 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    private var numberOfColumns = 2
+    private var cellPadding: CGFloat = 10
+    
+    private let homeViewModel = HomeViewModel()
+    
     var destinations: [DestinationModel] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
     
-    private var numberOfColumns = 2
-    private var cellPadding: CGFloat = 10
+    private lazy var searchBar: ETSearchBar = {
+        let searchBar = ETSearchBar()
+        searchBar.delegate = self 
+        searchBar.setLeftImage(isLoading: false)
+        return searchBar
+    }()
     
-    private let homeViewModel = HomeViewModel()
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.showsVerticalScrollIndicator = false
+        return collection
+    }()
     
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         homeViewModel.welcomTitle()
@@ -27,13 +42,25 @@ class HomeViewController: UIViewController {
         setupTitleBinder()
         setupDataBinder()
         setupViews()
+        registerCell()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupNavigationBar()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar(UIColor.theme.primary)
+
     }
     
+    // MARK: - Register cell
+    private func registerCell() {
+        collectionView.register(HomeCollectionViewCell.self,
+                            forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        collectionView.register(CategoryCollectionReusableView.self,
+                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                            withReuseIdentifier: CategoryCollectionReusableView.identifier)
+    }
+
+    // MARK: - Setup Binder
     private func setupTitleBinder() {
         homeViewModel.welcomeMessage.bind {[weak self] message in
             if let message = message {
@@ -77,36 +104,29 @@ class HomeViewController: UIViewController {
         parentView.addSubview(label)
     }
     
-    private func setupNavigationBar() {
-        let search = UIBarButtonItem(image: UIImage(named: "search"),
+    // MARK: - Setup navigation bar
+    private func setupNavigationBar(_ color: UIColor?) {
+        guard let navigationBar = navigationController?.navigationBar else { return }
+        let notification = UIBarButtonItem(image: UIImage(systemName: "bell"),
                                      style: .plain,
                                      target: self,
                                      action: #selector(handleSearchAction))
-        search.tintColor = .black
-        self.navigationItem.rightBarButtonItem  = search
+        notification.tintColor = .white
+        self.navigationItem.rightBarButtonItem  = notification
+        navigationItem.titleView = searchBar
+        navigationBar.barTintColor = color
     }
-    
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.backgroundColor = .clear
-        collection.showsVerticalScrollIndicator = false
-        collection.register(HomeCollectionViewCell.self,
-                            forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
-        collection.register(CategoryCollectionReusableView.self,
-                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                            withReuseIdentifier: CategoryCollectionReusableView.identifier)
-        return collection
-    }()
     
     // MARK: - Setup UI
     private func setupViews() {
+        view.backgroundColor = UIColor.theme.primary
         view.addSubview(collectionView)
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                               bottom: view.bottomAnchor,
-                              leading: view.leadingAnchor,
+                              leading: view.leadingAnchor, 
                               trailing: view.trailingAnchor)
     }
     
@@ -185,9 +205,14 @@ extension HomeViewController: CategoryCollectionReusableViewDelegate {
     func categoryCollectionReusableViewhandleEvent() {
         // Core here ...
     }
-    
-    private func navigationAction(_ viewController: UIViewController) {
-        viewController.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(viewController, animated: true)
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        let vc = SearchViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: false)
+        return false
     }
 }
