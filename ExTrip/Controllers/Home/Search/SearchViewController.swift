@@ -72,7 +72,7 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         
         searchBar.becomeFirstResponder()
-        self.hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround()
         
         setupConstraintViews() 
     }
@@ -94,12 +94,10 @@ class SearchViewController: UIViewController {
     }
     
     private func registerCell() {
-        tableView.register(UITableViewCell.self, 
-                                 forCellReuseIdentifier: "cell")
         tableView.register(SearchTableViewCell.self,
-                                 forCellReuseIdentifier: SearchTableViewCell.identifier)
+                           forCellReuseIdentifier: SearchTableViewCell.identifier)
         tableView.register(HotelsRelatedTableViewCell.self,
-                                 forCellReuseIdentifier: HotelsRelatedTableViewCell.identifier)
+                           forCellReuseIdentifier: HotelsRelatedTableViewCell.identifier)
     }
     
     private func setupNavigationBar() {
@@ -193,11 +191,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if currentResultText.isEmpty {
             return 0
         } else {
-            if data.count > 0 {
-                return 2
-            } else {
-                 return 1
-            }
+            return data.count > 0 ? 2 : 1
         }
  
     }

@@ -33,25 +33,6 @@ class DatabaseRequest {
         }
     }
     
-    func searchDestination(query: String, completion: @escaping ([DestinationModel]) -> Void) {
-        db.collection("destinations").whereField("country", isGreaterThanOrEqualTo: query).getDocuments { querySnapshot, error in
-            var data: [DestinationModel] = []
-            if let querySnapshot = querySnapshot {
-                data = querySnapshot.documents.compactMap { document in
-                    do {
-                        return try document.data(as: DestinationModel.self)
-                    }
-                    catch { print(error) }
-                    return nil
-                }
-            }
-            let filter = data.filter { data in
-                data.country.contains(query)
-            }
-            completion(filter)
-        }
-    }
-    
     func searchHotelRelatedKeyWord(_ query: String, completion: @escaping ([HotelModel]) -> Void) {
         DatabaseResponse.shared.fetchData("hotels") { (data: [HotelModel]) in
             let filter = data.filter { data in
