@@ -11,8 +11,8 @@ class SearchTableViewCell: UITableViewCell {
 
     static let identifier = "SearchTableViewCell"
     
-    private let image = UIImage(named: "right")
-    private let color = UIColor.theme.primary ?? .blue
+    private let rightImage = UIImage(named: "right")
+    private let primaryColor = UIColor.theme.primary ?? .blue
     
     var resultText: String = "" {
         didSet {
@@ -25,7 +25,7 @@ class SearchTableViewCell: UITableViewCell {
         let view = UIView()
         view.clipsToBounds = true
         view.layer.cornerRadius = 3
-        view.backgroundColor = color.withAlphaComponent(0.2)
+        view.backgroundColor = primaryColor.withAlphaComponent(0.2)
         return view
     }()
     
@@ -40,15 +40,15 @@ class SearchTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .poppins(style: .bold, size: 13)
         label.numberOfLines = 2
-        label.textColor = color
+        label.textColor = primaryColor
         return label
     }()
     
     private lazy var rightIconButton: UIButton = {
         let button = UIButton()
-        let tintedImage = image?.withRenderingMode(.alwaysTemplate)
+        let tintedImage = rightImage?.withRenderingMode(.alwaysTemplate)
         button.setImage(tintedImage, for: .normal)
-        button.tintColor = color
+        button.tintColor = primaryColor
         button.backgroundColor = .clear
         return button
     }()
@@ -69,7 +69,7 @@ class SearchTableViewCell: UITableViewCell {
                                 textSearchLabel, 
                                 rightIconButton)
         containerView.addSubview(seachIconImageView)
-        createIconStep(image: UIImage(named: "search"), color: color)
+        createIconStep(image: UIImage(named: "search"), color: primaryColor)
         setupConstraintSubView()
     }
     

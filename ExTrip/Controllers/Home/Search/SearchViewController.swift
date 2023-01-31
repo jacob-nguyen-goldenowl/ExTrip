@@ -190,10 +190,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if currentResultText.isEmpty {
             return 0
-        } else {
-            return data.count > 0 ? 2 : 1
         }
- 
+        return data.count > 0 ? 2 : 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tableSection = SearchType(rawValue: section) {
