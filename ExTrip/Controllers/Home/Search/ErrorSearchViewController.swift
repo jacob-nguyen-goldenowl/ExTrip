@@ -9,8 +9,8 @@ import UIKit
 
 class ErrorSearchViewController: UIViewController {
     
-    let cryImage = UIImage(named: "cry")
-    let errorText = "Sorry, we couldn't find any result"
+    private let cryImage = UIImage(named: "cry")
+    private let errorText = "Sorry, we couldn't find any result"
     
     private lazy var searchBar: ETSearchBar = {
         let searchBar = ETSearchBar()
