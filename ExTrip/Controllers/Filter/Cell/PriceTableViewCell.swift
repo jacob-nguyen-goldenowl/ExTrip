@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import AORangeSlider
 
 struct Price {
-    var maximun: Float
-    var minimun: Float
+    var maximun: Double
+    var minimun: Double
 }
 
 class PriceTableViewCell: FilterTableViewCell {
@@ -22,14 +23,27 @@ class PriceTableViewCell: FilterTableViewCell {
         }
     }
     
-    private lazy var doubledSlider: DoubledSlider = {
-        let slider = DoubledSlider()
-        slider.minimumValue = 0.0
-        slider.maximumValue = 1000.0
+    var priceValue: ((Price) -> Void)?
+    
+    var rangePrice: Price? {
+        didSet {
+            initialValue()
+        }
+    }
+    
+    let thumbImage = UIImage(named: "thumb")?.resized(to: CGSize(width: 27, height: 27))
+
+    private lazy var rangeSlider: AORangeSlider = {
+        let slider = AORangeSlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 1000
+        slider.trackColor = UIColor.theme.primary
+        slider.highHandleImageNormal = thumbImage
+        slider.lowHandleImageNormal = thumbImage
         slider.addTarget(self, action: #selector(handleSliderAction(_:)), for: .valueChanged)
         return slider
     }()
-    
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupInit()
@@ -41,12 +55,15 @@ class PriceTableViewCell: FilterTableViewCell {
     }
     
     func initialValue() {
+        rangeSlider.setValue(low: rangePrice?.minimun ?? 0.0,
+                             high: rangePrice?.maximun ?? 1000.0,
+                             animated: false)
         showValue.text = "US $\(value.minimun) - US $\(value.maximun)"
     }
 
     private func setupInit() {
-        addSubviews(doubledSlider, 
-                    headerTitle,
+        contentView.addSubview(rangeSlider)
+        addSubviews(headerTitle,
                     showValue)
         setupConstraintSubView()
     }
@@ -60,11 +77,12 @@ class PriceTableViewCell: FilterTableViewCell {
                            paddingLeading: padding)
         headerTitle.setHeight(height: 20)
         
-        doubledSlider.center(centerY: centerYAnchor)
-        doubledSlider.anchor(leading: leadingAnchor,
-                             trailing: trailingAnchor,
-                             paddingLeading: padding,
-                             paddingTrailing: padding)
+        rangeSlider.center(centerY: contentView.centerYAnchor)
+        rangeSlider.anchor(leading: contentView.leadingAnchor,
+                           trailing: contentView.trailingAnchor,
+                           paddingLeading: padding,
+                           paddingTrailing: padding)
+        rangeSlider.setHeight(height: 30)
         
         showValue.anchor(top: topAnchor, 
                          trailing: trailingAnchor,
@@ -74,10 +92,12 @@ class PriceTableViewCell: FilterTableViewCell {
 }
 
 extension PriceTableViewCell {
-    @objc func handleSliderAction(_ slider: DoubledSlider) {
-        let priceMinimun = round(slider.values.minimum * 10) / 10.0
-        let priceMaximun = round(slider.values.maximum * 10) / 10.0
+    @objc func handleSliderAction(_ slider: AORangeSlider) {
+        let priceMinimun = round(slider.lowValue * 10) / 10.0
+        let priceMaximun = round(slider.highValue * 10) / 10.0
         value.minimun = priceMinimun
         value.maximun = priceMaximun
+        priceValue?(Price(maximun: priceMaximun,
+                          minimun: priceMinimun))
     }
 }

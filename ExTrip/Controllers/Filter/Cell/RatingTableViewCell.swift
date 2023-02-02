@@ -10,14 +10,15 @@ import UIKit
 class RatingTableViewCell: FilterTableViewCell {
     
     static let identifier = "RatingTableViewCell"
+    
+    let thumbImage = UIImage(named: "thumb")?.resized(to: CGSize(width: 27, height: 27))
 
-    private lazy var slider: UISlider = {
-        let slider = UISlider()
-        slider.tintColor = UIColor.theme.lightBlue
+    private lazy var slider: ETHeightSlider = {
+        let slider = ETHeightSlider()
         slider.minimumValue = 0
         slider.maximumValue = 10
-        slider.isContinuous = true
-        slider.thumbTintColor = UIColor.theme.lightBlue
+        slider.tintColor = UIColor.theme.primary
+        slider.setThumbImage(thumbImage, for: .normal)
         return slider
     }()
     
@@ -27,10 +28,15 @@ class RatingTableViewCell: FilterTableViewCell {
         }
     }
     
+    var ratingValue: Float = 0.0 {
+        didSet {
+            initialValue()
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubViews()
-        initialValue()
     }
     
     required init?(coder: NSCoder) {
@@ -46,7 +52,8 @@ class RatingTableViewCell: FilterTableViewCell {
     }
     
     func initialValue() {
-        showValue.text = "\(value) +"
+        showValue.text = "\(ratingValue) +"
+        slider.setValue(ratingValue, animated: false)
     }
     
     private func setupConstraintSubViews() {
@@ -60,6 +67,7 @@ class RatingTableViewCell: FilterTableViewCell {
         
         slider.anchor(leading: leadingAnchor,
                       trailing: trailingAnchor,
+                      paddingTop: paddingTop,
                       paddingLeading: padding,
                       paddingTrailing: padding)
         slider.center(centerY: centerYAnchor)
@@ -75,6 +83,6 @@ extension RatingTableViewCell {
     @objc func handleSliderAction(_ slider: UISlider) {
         let roundValue = round(slider.value * 10) / 10.0
         self.value = roundValue
-        currentValue?(roundValue)
+        currentValue?(Double(roundValue))
     }
 }

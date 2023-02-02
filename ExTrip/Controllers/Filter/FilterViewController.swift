@@ -42,16 +42,21 @@ class FilterViewController: UIViewController {
     
     // MARK: - Properties
     private let filtes = Filter.filtes
+    
+    private var rangePrice: Price? 
+    private var currentRating: Double?
+    private var currentStar: Int?
+    
     private var positionService: [IndexPath] = []
     private var currentValueService: [String] = []
     private var positionProperty: [IndexPath] = []
     private var currentValueProperty: [String] = []
     private var positionBed: [IndexPath] = []
     private var currentValueBed: [String] = []
-    private var positionsPayment: [IndexPath] = []
+    private var positionPayment: [IndexPath] = []
     private var currentValuePayment: [String] = []
     
-    private let service = ["Car Paking",
+    private let service = ["Car Parking",
                            "Car Retail", 
                            "Pets Allowed", 
                            "Fitness Center",
@@ -83,6 +88,21 @@ class FilterViewController: UIViewController {
     }()
     
     private lazy var filterButton = ETGradientButton(title: .result, style: .mysticBlue)
+    
+    convenience init(_ initialValue: FilterModel) {
+        self.init()
+        rangePrice = initialValue.price
+        currentRating = initialValue.rating
+        currentStar = initialValue.star
+        currentValueService = initialValue.service
+        positionService = initialValue.positionService
+        positionProperty = initialValue.positionProperty
+        currentValueProperty = initialValue.property
+        positionBed = initialValue.positionBed
+        currentValueBed = initialValue.bed
+        positionPayment = initialValue.positionPayment
+        currentValuePayment = initialValue.payment
+    }
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -90,11 +110,12 @@ class FilterViewController: UIViewController {
         setupNavigation()
         setupViews()
         registerCell()
+        setupAction()
     }
     
     private func registerCell() {
         tableView.register(PriceTableViewCell.self,
-                       forCellReuseIdentifier: PriceTableViewCell.identifier)
+                           forCellReuseIdentifier: PriceTableViewCell.identifier)
         tableView.register(RatingTableViewCell.self,
                            forCellReuseIdentifier: RatingTableViewCell.identifier)
         tableView.register(HotelClassTableViewCell.self,
@@ -105,13 +126,38 @@ class FilterViewController: UIViewController {
     
     private func setupNavigation() {
         navigationController?.configBackButton()
+        
+        let clearButton = UIButton(type: .custom)
+        clearButton.setTitle("CLEAR", for: .normal)
+        clearButton.setTitleColor(.label, for: .normal)
+        clearButton.titleLabel?.font = .poppins(style: .bold, size: 16)
+        clearButton.addTarget(self, action: #selector(handleClearAction), for: .touchUpInside)
+        let item = UIBarButtonItem(customView: clearButton)
+        
+        self.navigationItem.setRightBarButton(item, animated: true)
     }
     
+    @objc func handleClearAction() {
+        rangePrice = Price(maximun: 1000.0, minimun: 0.0)
+        currentRating = 0.0
+        currentStar = 0
+        currentValueService.removeAll()
+        positionService.removeAll()
+        positionProperty.removeAll()
+        currentValueProperty.removeAll()
+        positionBed.removeAll()
+        currentValueBed.removeAll()
+        positionPayment.removeAll()
+        currentValuePayment.removeAll()
+        tableView.reloadData()
+    }
+        
     // MARK: - Setup views
     private func setupViews() {
+        title = "filters".uppercased()
         view.backgroundColor = .systemBackground
         view.addSubviews(tableView,
-                        filterButton)
+                         filterButton)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -132,7 +178,15 @@ class FilterViewController: UIViewController {
                             paddingTrailing: 30)
         filterButton.setHeight(height: 50)
     }
-
+    
+    private func setupAction() {
+        filterButton.addTarget(self, action: #selector(handleFilterAction), for: .touchUpInside)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(UserDefaultKey.loadingNotify), object: nil)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -157,19 +211,31 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         switch row {
             case Filter.price.rawValue:
                 guard let  cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier, for: indexPath) as? PriceTableViewCell else { return PriceTableViewCell() }
+                cell.priceValue = { [weak self] value in
+                    self?.rangePrice = value
+                }
+                cell.rangePrice = rangePrice
                 cell.title = "Price Range"
                 return cell
                 
             case Filter.rating.rawValue:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.identifier, for: indexPath) as? RatingTableViewCell else { return RatingTableViewCell() }
+                cell.currentValue = { [weak self] value in
+                    self?.currentRating = value
+                }
+                cell.ratingValue = Float(currentRating ?? 0.0)
                 cell.title = "Guest Rating"
                 return cell
                 
             case Filter.hotel.rawValue:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: HotelClassTableViewCell.identifier, for: indexPath) as? HotelClassTableViewCell else { return HotelClassTableViewCell() }
+                cell.currentStar = { [weak self] star in
+                    self?.currentStar = star
+                }
+                cell.starIndex = currentStar
                 cell.title = "Hotel Class"
                 return cell
-                
+                	
             case Filter.sevice.rawValue,
                  Filter.type.rawValue,
                  Filter.bed.rawValue,
@@ -232,9 +298,9 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             case Filter.payment.rawValue:
                 vc.valueAllTypes = payment
                 vc.saveCheckBoxPosition = { [weak self] position in
-                    self?.positionsPayment = position
+                    self?.positionPayment = position
                 }
-                vc.selectedRows = positionsPayment
+                vc.selectedRows = positionPayment
                 
                 vc.doneHandler = { [weak self] value in 
                     self?.currentValuePayment = value
@@ -244,6 +310,33 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             default:
                 print("nil")
         }
+    }
+}
+
+extension FilterViewController {
+    @objc func handleFilterAction() {
+        sentNotificationCenter()
+        navigationController?.popViewController(animated: false)
+    }
+}
+
+
+// MARK: - Setup notification
+extension FilterViewController {
+    private func sentNotificationCenter() {
+        let dataNeedFilter = FilterModel(price: rangePrice ?? Price(maximun: 1000.0, minimun: 0.0),
+                                         star: currentStar ?? 5, 
+                                         service: currentValueService,
+                                         rating: currentRating ?? 0.0,
+                                         positionService: positionService,
+                                         property: currentValueProperty,
+                                         positionProperty: positionProperty,
+                                         bed: currentValueBed,
+                                         positionBed: positionBed,
+                                         payment: currentValuePayment,
+                                         positionPayment: positionPayment)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(UserDefaultKey.loadingNotify), object: dataNeedFilter)
     }
 }
 

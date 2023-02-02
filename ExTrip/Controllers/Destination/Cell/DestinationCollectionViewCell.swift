@@ -136,7 +136,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         posterImageView.loadImage(url: data.thumbnail)
         titleLabel.text = data.name.capitalizeFirstLetter()
         priceLabel.text = "Start From $\(data.price)"
-        ratingView.score = data.rating
+        ratingView.score = "\(data.rating)"
     }
 }
 

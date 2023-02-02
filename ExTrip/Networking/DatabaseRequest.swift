@@ -42,14 +42,48 @@ class DatabaseRequest {
         }
     }
     
-    func filterByCategory(price: String, rating: String) {
+    func checkSelectedService(_ service: [String]) -> [String] {
+        var newSerview: [String] = []
+        if service.isEmpty {
+            newSerview = ["Car Parking"]
+        } else {
+            newSerview = service
+        }
+        return newSerview
+    }
+    
+    func filterHotel(_ filter: FilterModel, completion: @escaping (Result<[HotelModel], Error>) -> Void) {
         db.collection("hotels")
-            .whereField("price", isEqualTo: price)
-            .whereField("city", isEqualTo: rating).getDocuments { snapshot, error in
-                snapshot?.documents.forEach({ document in
-                    let document = document.data()
-                    print(document)
-                })
+            .whereField("price", isGreaterThan: filter.price.minimun)
+            .whereField("price", isLessThan: filter.price.maximun)
+            .whereField("service", arrayContainsAny: checkSelectedService(filter.service))
+            .whereField("star", isEqualTo: filter.star ?? "5")
+            .getDocuments { querySnapshot, error in
+                var currentData: [HotelModel]?
+                var newData: [HotelModel] = []
+                if let querySnapshot = querySnapshot {
+                    currentData = querySnapshot.documents.compactMap { document in
+                        do {
+                            let result = try document.data(as: HotelModel.self)
+                            return result
+                        }
+                        catch { completion(.failure(error)) }
+                        return nil
+                    }
+                }
+                
+                guard let currentData = currentData else {
+                    completion(.failure("Not found" as! Error))
+                    return
+                }
+                
+                currentData.forEach { hotel in
+                    if hotel.rating <= filter.rating {
+                        newData.append(hotel)
+                    }
+                }
+                completion(.success(newData))
+
             }
     }
         
