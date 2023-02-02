@@ -15,4 +15,5 @@ struct UserDefaultKey {
     static let userState = "com.extrip.userState"
     static let userCity = "com.extrip.userCity"
     static let userPhone = "com.extrip.userPhone"
+    static let loadingNotify = "com.loading.notification.center"
 }
