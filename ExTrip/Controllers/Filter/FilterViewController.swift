@@ -224,8 +224,8 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         switch row {
             case Filter.price.rawValue:
                 guard let  cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier, for: indexPath) as? PriceTableViewCell else { return PriceTableViewCell() }
-                cell.priceValue = { value in
-                    self.rangePrice = value
+                cell.priceValue = { [weak self] value in
+                    self?.rangePrice = value
                 }
                 cell.rangePrice = rangePrice
                 cell.title = "Price Range"
@@ -233,8 +233,8 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                 
             case Filter.rating.rawValue:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.identifier, for: indexPath) as? RatingTableViewCell else { return RatingTableViewCell() }
-                cell.currentValue = { value in
-                    self.currentRating = value
+                cell.currentValue = { [weak self] value in
+                    self?.currentRating = value
                 }
                 cell.ratingValue = Float(currentRating ?? 0.0)
                 cell.title = "Guest Rating"
@@ -242,8 +242,8 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                 
             case Filter.hotel.rawValue:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: HotelClassTableViewCell.identifier, for: indexPath) as? HotelClassTableViewCell else { return HotelClassTableViewCell() }
-                cell.currentStar = { star in
-                    self.currentStar = star
+                cell.currentStar = { [weak self] star in
+                    self?.currentStar = star
                 }
                 cell.starIndex = currentStar
                 cell.title = "Hotel Class"
