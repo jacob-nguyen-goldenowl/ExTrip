@@ -19,4 +19,7 @@ pod 'FirebaseFirestoreSwift'
 # Calendar
 pod 'JTAppleCalendar'
 
+# Star rating
+pod 'Cosmos', '~> 23.0'
+
 end
