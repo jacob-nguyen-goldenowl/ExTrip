@@ -56,18 +56,6 @@ class FilterViewController: UIViewController {
     private var positionPayment: [IndexPath] = []
     private var currentValuePayment: [String] = []
     
-    private var valueDefault = FilterModel(price: Price(maximun: 1000.0, minimun: 0.0),
-                                           star: 0,
-                                           service: [],
-                                           rating: 0,
-                                           positionService: [],
-                                           property: [], 
-                                           positionProperty: [],
-                                           bed: [],
-                                           positionBed: [],
-                                           payment: [],
-                                           positionPayment: [])
-    
     private let service = ["Car Parking",
                            "Car Retail", 
                            "Pets Allowed", 
@@ -150,21 +138,20 @@ class FilterViewController: UIViewController {
     }
     
     @objc func handleClearAction() {
-        rangePrice = valueDefault.price
-        currentRating = valueDefault.rating
-        currentStar = valueDefault.star
-        currentValueService = valueDefault.service
-        positionService = valueDefault.positionService
-        positionProperty = valueDefault.positionProperty
-        currentValueProperty = valueDefault.property
-        positionBed = valueDefault.positionBed
-        currentValueBed = valueDefault.bed
-        positionPayment = valueDefault.positionPayment
-        currentValuePayment = valueDefault.payment
+        rangePrice = Price(maximun: 1000.0, minimun: 0.0)
+        currentRating = 0.0
+        currentStar = 0
+        currentValueService.removeAll()
+        positionService.removeAll()
+        positionProperty.removeAll()
+        currentValueProperty.removeAll()
+        positionBed.removeAll()
+        currentValueBed.removeAll()
+        positionPayment.removeAll()
+        currentValuePayment.removeAll()
         tableView.reloadData()
     }
-    
-    
+        
     // MARK: - Setup views
     private func setupViews() {
         title = "filters".uppercased()
