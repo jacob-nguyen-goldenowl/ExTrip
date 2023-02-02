@@ -11,6 +11,8 @@ class HotelClassTableViewCell: FilterTableViewCell {
 
     static let identifier = "HotelClassTableViewCell"
     
+    var currentStar: ((Int) -> Void)?
+        
     private lazy var horizontalStackView: UIStackView = {
         let stack = UIStackView()
         stack.distribution = .fillEqually
@@ -55,7 +57,10 @@ class HotelClassTableViewCell: FilterTableViewCell {
         let numberOfViews = 5
         for i in 1...numberOfViews {
             let button = CheckBox()
-            button.numberOfStar = "\(i)"
+            button.currentStar = { star in
+                self.currentStar?(star)
+            }
+            button.numberOfStar = i
             horizontalStackView.addArrangedSubview(button)
         }
     }

@@ -75,6 +75,6 @@ extension RatingTableViewCell {
     @objc func handleSliderAction(_ slider: UISlider) {
         let roundValue = round(slider.value * 10) / 10.0
         self.value = roundValue
-        currentValue?(roundValue)
+        currentValue?(Double(roundValue))
     }
 }

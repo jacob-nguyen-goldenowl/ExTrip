@@ -17,7 +17,7 @@ class FilterTableViewCell: UITableViewCell {
         }
     }
     
-    public var currentValue: ((Float?) -> Void)?
+    public var currentValue: ((Double) -> Void)?
     
     public lazy var headerTitle: UILabel = {
         let label = UILabel()

@@ -163,7 +163,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             case DetailType.overview.rawValue:
                 guard let overviewCell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier,
                                                                     for: indexPath) as? OverviewTableViewCell else { return OverviewTableViewCell() }
-                overviewCell.scoreRatting = data.rating
+                overviewCell.scoreRatting = "\(data.rating)"
                 overviewCell.title = data.name
                 overviewCell.typeHotel = data.type
                 overviewCell.addressHotel = data.address

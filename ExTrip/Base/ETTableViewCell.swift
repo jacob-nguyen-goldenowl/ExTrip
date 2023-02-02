@@ -49,27 +49,12 @@ class ETTableViewCell: UITableViewCell {
     
     public lazy var reviewLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
         label.textColor = UIColor.theme.lightGray
         label.font = .poppins(style: .light, size: 12)
         return label
     }()
-    
-    public lazy var starHorizontalStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 3
-        stack.distribution = .fillEqually
-        return stack
-    }()
-
-    public lazy var start1 = setupStartView()
-    public lazy var start2 = setupStartView()
-    public lazy var start3 = setupStartView()
-    public lazy var start4 = setupStartView()
-    public lazy var start5 = setupStartView()
-    
-    private let ratingView = RattingView(type: .yellow)
-    
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -77,15 +62,5 @@ class ETTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setupStartView(_ color: UIColor? = UIColor.theme.yellow) -> UIImageView {
-        let imageView = UIImageView()
-        let image = UIImage(named: "star")
-        imageView.image = image
-        imageView.tintColor = color ?? .yellow
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .clear
-        return imageView
-    }
-    
+
 }

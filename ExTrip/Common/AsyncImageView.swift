@@ -59,7 +59,7 @@ class AsyncImageView: UIView {
         self.startIndicator()
         loading.loadImage(url) { [weak self] status in
             guard let self = self else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.async {
                 switch status {
                     case .success(let image):
                         self.stopIndicator()

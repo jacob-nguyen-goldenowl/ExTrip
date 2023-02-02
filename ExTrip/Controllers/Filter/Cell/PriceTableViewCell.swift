@@ -22,6 +22,8 @@ class PriceTableViewCell: FilterTableViewCell {
         }
     }
     
+    var priceValue: ((Price) -> Void)?
+        
     private lazy var doubledSlider: DoubledSlider = {
         let slider = DoubledSlider()
         slider.minimumValue = 0.0
@@ -79,5 +81,7 @@ extension PriceTableViewCell {
         let priceMaximun = round(slider.values.maximum * 10) / 10.0
         value.minimun = priceMinimun
         value.maximun = priceMaximun
+        priceValue?(Price(maximun: priceMaximun,
+                          minimun: priceMinimun))
     }
 }
