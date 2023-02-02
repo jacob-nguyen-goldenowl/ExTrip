@@ -44,7 +44,7 @@ class FilterViewController: UIViewController {
     private let filtes = Filter.filtes
     
     private var rangePrice: Price? 
-    private var currentRating: Double? 
+    private var currentRating: Double?
     private var currentStar: Int?
     
     private var positionService: [IndexPath] = []
@@ -53,8 +53,20 @@ class FilterViewController: UIViewController {
     private var currentValueProperty: [String] = []
     private var positionBed: [IndexPath] = []
     private var currentValueBed: [String] = []
-    private var positionsPayment: [IndexPath] = []
+    private var positionPayment: [IndexPath] = []
     private var currentValuePayment: [String] = []
+    
+    private var valueDefault = FilterModel(price: Price(maximun: 1000.0, minimun: 0.0),
+                                           star: 0,
+                                           service: [],
+                                           rating: 0,
+                                           positionService: [],
+                                           property: [], 
+                                           positionProperty: [],
+                                           bed: [],
+                                           positionBed: [],
+                                           payment: [],
+                                           positionPayment: [])
     
     private let service = ["Car Parking",
                            "Car Retail", 
@@ -88,6 +100,21 @@ class FilterViewController: UIViewController {
     }()
     
     private lazy var filterButton = ETGradientButton(title: .result, style: .mysticBlue)
+    
+    convenience init(_ initialValue: FilterModel) {
+        self.init()
+        rangePrice = initialValue.price
+        currentRating = initialValue.rating
+        currentStar = initialValue.star
+        currentValueService = initialValue.service
+        positionService = initialValue.positionService
+        positionProperty = initialValue.positionProperty
+        currentValueProperty = initialValue.property
+        positionBed = initialValue.positionBed
+        currentValueBed = initialValue.bed
+        positionPayment = initialValue.positionPayment
+        currentValuePayment = initialValue.payment
+    }
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -111,7 +138,32 @@ class FilterViewController: UIViewController {
     
     private func setupNavigation() {
         navigationController?.configBackButton()
+        
+        let clearButton = UIButton(type: .custom)
+        clearButton.setTitle("CLEAR", for: .normal)
+        clearButton.setTitleColor(.label, for: .normal)
+        clearButton.titleLabel?.font = .poppins(style: .bold, size: 16)
+        clearButton.addTarget(self, action: #selector(handleClearAction), for: .touchUpInside)
+        let item = UIBarButtonItem(customView: clearButton)
+        
+        self.navigationItem.setRightBarButton(item, animated: true)
     }
+    
+    @objc func handleClearAction() {
+        rangePrice = valueDefault.price
+        currentRating = valueDefault.rating
+        currentStar = valueDefault.star
+        currentValueService = valueDefault.service
+        positionService = valueDefault.positionService
+        positionProperty = valueDefault.positionProperty
+        currentValueProperty = valueDefault.property
+        positionBed = valueDefault.positionBed
+        currentValueBed = valueDefault.bed
+        positionPayment = valueDefault.positionPayment
+        currentValuePayment = valueDefault.payment
+        tableView.reloadData()
+    }
+    
     
     // MARK: - Setup views
     private func setupViews() {
@@ -175,6 +227,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.priceValue = { value in
                     self.rangePrice = value
                 }
+                cell.rangePrice = rangePrice
                 cell.title = "Price Range"
                 return cell
                 
@@ -183,6 +236,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.currentValue = { value in
                     self.currentRating = value
                 }
+                cell.ratingValue = Float(currentRating ?? 0.0)
                 cell.title = "Guest Rating"
                 return cell
                 
@@ -191,6 +245,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.currentStar = { star in
                     self.currentStar = star
                 }
+                cell.starIndex = currentStar
                 cell.title = "Hotel Class"
                 return cell
                 	
@@ -256,9 +311,9 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             case Filter.payment.rawValue:
                 vc.valueAllTypes = payment
                 vc.saveCheckBoxPosition = { [weak self] position in
-                    self?.positionsPayment = position
+                    self?.positionPayment = position
                 }
-                vc.selectedRows = positionsPayment
+                vc.selectedRows = positionPayment
                 
                 vc.doneHandler = { [weak self] value in 
                     self?.currentValuePayment = value
@@ -278,13 +333,23 @@ extension FilterViewController {
     }
 }
 
+
 // MARK: - Setup notification
 extension FilterViewController {
     private func sentNotificationCenter() {
         let dataNeedFilter = FilterModel(price: rangePrice ?? Price(maximun: 1000.0, minimun: 0.0),
-                                         star: currentStar ?? 5,
+                                         star: currentStar ?? 5, 
                                          service: currentValueService,
-                                         rating: currentRating ?? 0.0)
+                                         rating: currentRating ?? 0.0,
+                                         positionService: positionService,
+                                         property: currentValueProperty,
+                                         positionProperty: positionProperty,
+                                         bed: currentValueBed,
+                                         positionBed: positionBed,
+                                         payment: currentValuePayment,
+                                         positionPayment: positionPayment)
+        
         NotificationCenter.default.post(name: NSNotification.Name(UserDefaultKey.loadingNotify), object: dataNeedFilter)
     }
 }
+

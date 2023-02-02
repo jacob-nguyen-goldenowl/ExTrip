@@ -12,6 +12,12 @@ class HotelClassTableViewCell: FilterTableViewCell {
     static let identifier = "HotelClassTableViewCell"
     
     var currentStar: ((Int) -> Void)?
+    
+    var starIndex: Int? {
+        didSet {
+            addViewsToStackView()
+        }
+    }
         
     private lazy var horizontalStackView: UIStackView = {
         let stack = UIStackView()
@@ -19,7 +25,7 @@ class HotelClassTableViewCell: FilterTableViewCell {
         stack.spacing = 10
         return stack
     }()
-        
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubViews()
@@ -54,11 +60,15 @@ class HotelClassTableViewCell: FilterTableViewCell {
     }
     
     private func addViewsToStackView() {
+        horizontalStackView.removeAllArrangedSubviews()
         let numberOfViews = 5
         for i in 1...numberOfViews {
             let button = CheckBox()
             button.currentStar = { star in
                 self.currentStar?(star)
+            }
+            if i == starIndex {
+                button.isChecked = true
             }
             button.numberOfStar = i
             horizontalStackView.addArrangedSubview(button)

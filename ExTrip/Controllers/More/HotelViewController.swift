@@ -11,6 +11,17 @@ class HotelViewController: UIViewController {
     
     private let errorView = FilterErrorView()
     private let filterViewModel = FilterViewModel()
+    var valueFilter = FilterModel(price: Price(maximun: 1000.0, minimun: 0.0),
+                                  star: 0,
+                                  service: [],
+                                  rating: 0,
+                                  positionService: [],
+                                  property: [], 
+                                  positionProperty: [],
+                                  bed: [],
+                                  positionBed: [],
+                                  payment: [],
+                                  positionPayment: [])
     
     private var hotels: [HotelModel] = [] {
         didSet {
@@ -164,7 +175,7 @@ extension HotelViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HotelViewController {
     @objc func handleFilterButton() {
-        let vc = FilterViewController()
+        let vc = FilterViewController(valueFilter)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -181,6 +192,7 @@ extension HotelViewController {
     @objc func handleLoadingAction(_ notification: Notification) {
         guard let data = notification.object else { return }
         fetchFilterDatabase(filter: data as! FilterModel)
+        valueFilter = data as! FilterModel
         starLoading()
         setupBinder()
         setupErrorBinder()

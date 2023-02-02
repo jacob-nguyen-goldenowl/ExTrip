@@ -53,7 +53,6 @@ class DatabaseRequest {
     }
     
     func filterHotel(_ filter: FilterModel, completion: @escaping (Result<[HotelModel], Error>) -> Void) {
-        print(filter)
         db.collection("hotels")
             .whereField("price", isGreaterThan: filter.price.minimun)
             .whereField("price", isLessThan: filter.price.maximun)
