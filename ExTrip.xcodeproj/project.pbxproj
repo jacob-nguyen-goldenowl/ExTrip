@@ -810,6 +810,7 @@
 		04D80DB029520314005985ED /* Step */ = {
 			isa = PBXGroup;
 			children = (
+				04EC5A5E298BB00700B6D80D /* Cell */,
 				04D80DB729520441005985ED /* LocationViewController.swift */,
 				049F2822295AA473002257B9 /* RoomViewController.swift */,
 			);
@@ -879,6 +880,13 @@
 				04EC5A5B298B9CCC00B6D80D /* ETHeightSlider.swift */,
 			);
 			path = Slider;
+			sourceTree = "<group>";
+		};
+		04EC5A5E298BB00700B6D80D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		04F7DDF5295452010020494F /* Framework */ = {

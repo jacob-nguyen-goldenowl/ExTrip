@@ -79,9 +79,9 @@ class PriceTableViewCell: FilterTableViewCell {
         
         rangeSlider.center(centerY: contentView.centerYAnchor)
         rangeSlider.anchor(leading: contentView.leadingAnchor,
-                             trailing: contentView.trailingAnchor,
-                             paddingLeading: padding,
-                             paddingTrailing: padding)
+                           trailing: contentView.trailingAnchor,
+                           paddingLeading: padding,
+                           paddingTrailing: padding)
         rangeSlider.setHeight(height: 30)
         
         showValue.anchor(top: topAnchor, 
