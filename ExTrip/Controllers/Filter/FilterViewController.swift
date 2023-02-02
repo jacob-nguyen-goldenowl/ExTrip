@@ -42,6 +42,11 @@ class FilterViewController: UIViewController {
     
     // MARK: - Properties
     private let filtes = Filter.filtes
+    
+    private var rangePrice: Price? 
+    private var currentRating: Double? 
+    private var currentStar: Int?
+    
     private var positionService: [IndexPath] = []
     private var currentValueService: [String] = []
     private var positionProperty: [IndexPath] = []
@@ -51,7 +56,7 @@ class FilterViewController: UIViewController {
     private var positionsPayment: [IndexPath] = []
     private var currentValuePayment: [String] = []
     
-    private let service = ["Car Paking",
+    private let service = ["Car Parking",
                            "Car Retail", 
                            "Pets Allowed", 
                            "Fitness Center",
@@ -90,11 +95,12 @@ class FilterViewController: UIViewController {
         setupNavigation()
         setupViews()
         registerCell()
+        setupAction()
     }
     
     private func registerCell() {
         tableView.register(PriceTableViewCell.self,
-                       forCellReuseIdentifier: PriceTableViewCell.identifier)
+                           forCellReuseIdentifier: PriceTableViewCell.identifier)
         tableView.register(RatingTableViewCell.self,
                            forCellReuseIdentifier: RatingTableViewCell.identifier)
         tableView.register(HotelClassTableViewCell.self,
@@ -109,9 +115,10 @@ class FilterViewController: UIViewController {
     
     // MARK: - Setup views
     private func setupViews() {
+        title = "filters".uppercased()
         view.backgroundColor = .systemBackground
         view.addSubviews(tableView,
-                        filterButton)
+                         filterButton)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -132,7 +139,15 @@ class FilterViewController: UIViewController {
                             paddingTrailing: 30)
         filterButton.setHeight(height: 50)
     }
-
+    
+    private func setupAction() {
+        filterButton.addTarget(self, action: #selector(handleFilterAction), for: .touchUpInside)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(UserDefaultKey.loadingNotify), object: nil)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -157,19 +172,28 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         switch row {
             case Filter.price.rawValue:
                 guard let  cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier, for: indexPath) as? PriceTableViewCell else { return PriceTableViewCell() }
+                cell.priceValue = { value in
+                    self.rangePrice = value
+                }
                 cell.title = "Price Range"
                 return cell
                 
             case Filter.rating.rawValue:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.identifier, for: indexPath) as? RatingTableViewCell else { return RatingTableViewCell() }
+                cell.currentValue = { value in
+                    self.currentRating = value
+                }
                 cell.title = "Guest Rating"
                 return cell
                 
             case Filter.hotel.rawValue:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: HotelClassTableViewCell.identifier, for: indexPath) as? HotelClassTableViewCell else { return HotelClassTableViewCell() }
+                cell.currentStar = { star in
+                    self.currentStar = star
+                }
                 cell.title = "Hotel Class"
                 return cell
-                
+                	
             case Filter.sevice.rawValue,
                  Filter.type.rawValue,
                  Filter.bed.rawValue,
@@ -247,3 +271,20 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension FilterViewController {
+    @objc func handleFilterAction() {
+        sentNotificationCenter()
+        navigationController?.popViewController(animated: false)
+    }
+}
+
+// MARK: - Setup notification
+extension FilterViewController {
+    private func sentNotificationCenter() {
+        let dataNeedFilter = FilterModel(price: rangePrice ?? Price(maximun: 1000.0, minimun: 0.0),
+                                         star: currentStar ?? 5,
+                                         service: currentValueService,
+                                         rating: currentRating ?? 0.0)
+        NotificationCenter.default.post(name: NSNotification.Name(UserDefaultKey.loadingNotify), object: dataNeedFilter)
+    }
+}
