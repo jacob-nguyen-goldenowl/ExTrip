@@ -12,4 +12,11 @@ struct FilterModel {
     let star: Int?
     let service: [String]
     let rating: Double
+    let positionService: [IndexPath]
+    let property: [String]
+    let positionProperty: [IndexPath]
+    let bed: [String]
+    let positionBed: [IndexPath]
+    let payment: [String]
+    let positionPayment: [IndexPath]
 }
