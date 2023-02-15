@@ -14,3 +14,12 @@ extension UIImage {
         }
     }
 }
+
+extension UIImageView {
+    func changeColorImage(image: UIImage?, color: UIColor) {
+        let image = image?.withRenderingMode(.alwaysTemplate)
+        self.image = image
+        self.tintColor = color
+    }
+}
+
