@@ -39,12 +39,12 @@ extension UIView {
     }
     
     // MARK: - Setup fill constraints
-    func fillAnchor(_ view: UIView) {
+    func fillAnchor(_ view: UIView, padding: CGFloat = 0.0) {
         translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: view.topAnchor, constant: padding).isActive = true
+        bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding).isActive = true
+        leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding).isActive = true
+        trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding).isActive = true
     }
     
     // MARK: - Setup width + height
@@ -84,4 +84,9 @@ extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
+    
+    func removeAllFromSubView(_ view: [UIView]) {
+        view.forEach { $0.removeFromSuperview() }
+    }
+    
 }

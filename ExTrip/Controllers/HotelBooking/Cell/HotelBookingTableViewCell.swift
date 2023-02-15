@@ -34,7 +34,7 @@ class HotelBookingTableViewCell: UITableViewCell {
         }
     }
     
-    var roomValue: RoomModel? {
+    var roomValue: RoomBookingModel? {
         didSet {
             if roomValue != nil {
                 let guest = roomValue?.numberOfGuest(adults: roomValue?.adults ?? 0, 

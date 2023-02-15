@@ -23,6 +23,7 @@ class ETTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = UIColor.theme.black ?? .black
         label.font = .poppins(style: .medium)
+        label.numberOfLines = 2
         return label
     }()
     
@@ -36,6 +37,7 @@ class ETTableViewCell: UITableViewCell {
     public lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.theme.black ?? .black
+        label.numberOfLines = 2
         label.font = .poppins(style: .light, size: 11)
         return label
     }()
@@ -49,11 +51,33 @@ class ETTableViewCell: UITableViewCell {
     
     public lazy var reviewLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
         label.textColor = UIColor.theme.lightGray
-        label.font = .poppins(style: .light, size: 12)
+        label.font = .poppins(style: .light, size: 11)
         return label
     }()
+    
+    public lazy var ratingLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.theme.lightGreen
+        label.font = .poppins(style: .medium, size: 12)
+        return label
+    }()
+    
+    public lazy var defaultPriceLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.theme.lightGray ?? .gray
+        label.font = .poppins(style: .medium, size: 13)
+        return label
+    }()
+    
+    public lazy var soldOutPriceLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.theme.lightGray ?? .gray
+        label.font = .poppins(style: .bold, size: 13)
+        label.textAlignment = .center
+        return label
+    }()
+
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

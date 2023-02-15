@@ -192,7 +192,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as? DetailTableViewCell else { return DetailTableViewCell() }
                 cell.textLabel?.text = "\(data.rating)/5 - Good"
                 cell.accessoryType = .disclosureIndicator
-                cell.numberOfReview = data.review
+                cell.numberOfReview = "\(data.review)"
                 return cell
         }
     }

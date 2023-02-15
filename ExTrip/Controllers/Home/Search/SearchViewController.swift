@@ -121,7 +121,9 @@ class SearchViewController: UIViewController {
     }
     
     private func searchQueryDatabase() {
-        DatabaseRequest.shared.searchByDestination(query: currentResultText) { destination in
+        DatabaseRequest.shared.searchEqualToFiled(collection: "destinations",
+                                                  field: "country",
+                                                  query: currentResultText) { (destination: [DestinationModel]) in
             if let item = destination.first {
                 let vc = DestinationViewController(destinationID: item.id,
                                                    scoreDestination: item.rating,

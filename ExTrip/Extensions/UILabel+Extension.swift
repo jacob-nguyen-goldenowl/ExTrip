@@ -18,4 +18,10 @@ extension UILabel {
         attributedText.addAttributes(highlightedAttributes, range: range) 
         self.attributedText = attributedText
     }
+    
+    func setStrikeThroughText(_ text: String) {
+        let attributeString = NSMutableAttributedString(string: text)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributeString.length))
+        self.attributedText = attributeString
+    }
 }
