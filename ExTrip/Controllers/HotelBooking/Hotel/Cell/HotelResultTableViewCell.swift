@@ -271,20 +271,14 @@ class HotelResultTableViewCell: ETTableViewCell {
     }
     
     // MARK: - Get data
-    func setupDataInfoHotelBooking(image urlString: String,
-                                   title: String,
-                                   star numberOfStar: Double,
-                                   service scoreService: Double,
-                                   review: Int,
-                                   address: String,
-                                   soldOutPrice: Double) {
-        posterImageView.loadImage(url: urlString)
-        titleLabel.text = title.capitalizeFirstLetter()
-        starView.rating = numberOfStar
-        ratingLabel.text = calculatorScoreService(scoreService)
-        reviewLabel.text = calculatorReview(review)
-        addressLabel.text = address.capitalizeFirstLetter()
-        soldOutPriceLabel.text = "$ \(soldOutPrice)"
+    func setupDataInfoHotelBooking(hotel: HotelModel) {
+        posterImageView.loadImage(url: hotel.thumbnail)
+        titleLabel.text = hotel.name.capitalizeFirstLetter()
+        starView.rating = hotel.star
+        ratingLabel.text = calculatorScoreService(hotel.rating)
+        reviewLabel.text = calculatorReview(hotel.review)
+        addressLabel.text = hotel.address.capitalizeFirstLetter()
+        soldOutPriceLabel.text = "$ \(hotel.price)"
     }
     
     func setupDataInfoRoomBooking(room roomLeft: Int,
