@@ -8,16 +8,15 @@
 import Foundation
 
 struct HotelModel: Codable {
-    
     var id: String
     var name: String
     var description: String
     var price: Double
     var image: [String]
     var rating: Double
-    var review: String
+    var review: Int
     var like: Bool
-    var numberOfRoom: String
+    var numberOfRoom: Int
     var star: Double
     var thumbnail: String
     var location: Location
@@ -25,7 +24,6 @@ struct HotelModel: Codable {
     var address: String
     var road: String
     var kmFromCenter: Double
-
 }
 
 struct Location: Codable {

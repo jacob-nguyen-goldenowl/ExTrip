@@ -2,23 +2,24 @@
 //  RoomModel.swift
 //  ExTrip
 //
-//  Created by Nguyễn Hữu Toàn on 27/12/2022.
+//  Created by Nguyễn Hữu Toàn on 07/02/2023.
 //
 
 import Foundation
 
-struct RoomModel {
-    var room: Int
-    var adults: Int
-    var children: Int
-    var infants: Int
-
-    func room(room: Int, adults: Int, children: Int, infants: Int) -> RoomModel {
-        return RoomModel(room: room, adults: adults, children: children, infants: infants)
-    }
-    
-    func numberOfGuest(adults: Int, children: Int, infants: Int) -> Int {
-        return adults + children + infants
-    }
+struct RoomModel: Codable {
+    var id: String
+    var hotelID: String
+    var description: Description?
+    var image: [String]
+    var price: Double
+    var defaultPrice: Double
+    var occupancy: Int
 }
 
+struct Description: Codable {
+    var bed: Int?
+    var bedroom: Int?
+    var bathroom: Int?
+    var kitchen: Int?
+}
