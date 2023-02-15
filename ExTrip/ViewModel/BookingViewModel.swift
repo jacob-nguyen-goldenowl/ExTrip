@@ -37,6 +37,24 @@ class BookingViewModel {
         }
     }
     
+    func dataRoomByOneHotel(_ hotelID: String, time: BookingTime) {
+        print(time)
+        DatabaseBooking.shared.fetchAllRoomByHotel(hotelId: hotelID) { status in
+            var newRooms: [RoomModel] = []
+            switch status {
+                case .success(let rooms):
+                    self.checkRoomHasBooking(with: rooms, time: time) { roomAvailable in 
+                        newRooms.append(roomAvailable)
+                        DispatchQueue.main.async { [weak self] in 
+                            self?.roomAvailible.value = newRooms
+                        }
+                    }
+                case .failure(let error):
+                    print(error)    
+            }
+        }
+    }
+    
     // MARK: - ROOM
     func checkHotelHasRooms(with hotels: [HotelModel], 
                             time: BookingTime,

@@ -192,8 +192,15 @@ extension HotelResultViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let hotel = hotels?[indexPath.item] {
-            let vc = DetailViewController(data: hotel)
-            navigationController?.pushViewController(vc, animated: true)
+            if let room = hotelDataBooking?.room,
+               let date = hotelDataBooking?.date as? FastisRange {
+                let bookingTime = HotelBookingModel(destination: nil,
+                                                    date: date,
+                                                    room: room)
+                let vc = DetailViewController(data: hotel,
+                                              bookingTime: bookingTime)
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

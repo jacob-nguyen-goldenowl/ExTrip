@@ -69,5 +69,13 @@ extension Date {
             return dateFormatter.string(from: self)
         }
     }
+    
+    var displayMonthString: String {
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "d, MMM"
+            return dateFormatter.string(from: self)
+        }
+    }
 
 }
