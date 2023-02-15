@@ -10,6 +10,12 @@ import Foundation
 
 internal extension Date {
 
+    static var tomorrow:  Date { return Date().dayAfter }
+    static var today: Date { return Date() }
+    var dayAfter: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    }
+    
     func startOfMonth(in calendar: Calendar = .current) -> Date {
         let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: calendar.startOfDay(for: self))) ?? Date()
         return startOfMonth.startOfDay(in: calendar)
@@ -59,7 +65,7 @@ extension Date {
     var displayDateString: String {
         get {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "EEE M/dd/yy"
+            dateFormatter.dateFormat = "E, d MMM"
             return dateFormatter.string(from: self)
         }
     }
