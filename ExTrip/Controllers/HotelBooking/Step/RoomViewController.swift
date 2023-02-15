@@ -9,13 +9,13 @@ import UIKit
 
 class RoomViewController: UIViewController {
 
-    var roomModel: RoomModel = RoomModel(room: 1,
+    var roomModel: RoomBookingModel = RoomBookingModel(room: 1,
                                          adults: 2,
                                          children: 0,
                                          infants: 0) 
     
-    var doneHandler:((RoomModel) -> Void)?
-    var initialValue: RoomModel?
+    var doneHandler:((RoomBookingModel) -> Void)?
+    var initialValue: RoomBookingModel?
 
     // MARK: - Properties
     private lazy var titleLabel: UILabel = {
@@ -101,7 +101,7 @@ class RoomViewController: UIViewController {
     }
 
     private func configureInitialState() {
-        roomModel = initialValue ?? RoomModel(room: 1, adults: 2, children: 0, infants: 0)
+        roomModel = initialValue ?? RoomBookingModel(room: 1, adults: 2, children: 0, infants: 0)
     }
     
     private func cancel() {

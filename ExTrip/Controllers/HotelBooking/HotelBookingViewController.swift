@@ -21,22 +21,38 @@ class HotelBookingViewController: UIViewController {
                          color: UIColor.theme.lightBlue ?? .blue)
     ]
     
-    var destinationValue: String? {
+    var hotel: HotelModel?
+        
+    var destinationValue: String {
         didSet {
             tableView.reloadData()
         }
     }
     
-    var timeValue: FastisValue? {
+    var timeValue: FastisValue {
         didSet {
             tableView.reloadData()
         }
     }
     
-    var roomValue: RoomModel? {
+    var roomValue: RoomBookingModel {
         didSet {
             tableView.reloadData()
         }
+    }
+    
+    // Initialization
+    init(destinationValue: String = "Tokyo",
+         timeValue: FastisValue = FastisRange(from: Date.today, to: Date.tomorrow),
+         roomValue: RoomBookingModel = RoomBookingModel(room: 1, adults: 2, children: 0, infants: 0)) {
+        self.destinationValue = destinationValue
+        self.timeValue = timeValue
+        self.roomValue = roomValue
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Properties 
@@ -120,6 +136,7 @@ class HotelBookingViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         setupConstraintViews()
+        searchHotelButton.addTarget(self, action: #selector(handleSearchHotelAction), for: .touchUpInside)
     }
     
     private func setupConstraintViews() {
@@ -171,17 +188,19 @@ class HotelBookingViewController: UIViewController {
         fastisController.maximumDate = Calendar.current.date(byAdding: .month, value: 6, to: Date())
         fastisController.allowToChooseNilDate = true
         fastisController.doneHandler = { newValue in
-            self.timeValue = newValue
+            self.timeValue = newValue!
         }
         fastisController.initialValue = timeValue as? FastisRange 
         present(fastisController, animated: true)
     }
     
     private func configChooseDestination() {
-        let vc = LocationViewController()
-        
-        vc.doneHandler = { newValue in
-            self.destinationValue = newValue
+        let vc = SearchDestinationViewController()
+        vc.doneHandler = { [weak self] newValue in
+            self?.destinationValue = newValue.localizedCapitalized
+        }
+        vc.hotelInfomation = { [weak self] hotel in 
+            self?.hotel = hotel
         }
         present(vc, animated: true)
     }
@@ -194,7 +213,7 @@ class HotelBookingViewController: UIViewController {
         vc.initialValue = roomValue
         present(vc, animated: true)
     }
-    
+
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -236,4 +255,20 @@ extension HotelBookingViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
     
+}
+
+// MARK: - Handle action
+extension HotelBookingViewController {
+    @objc func handleSearchHotelAction() {
+        if let hotel = hotel {
+            let vc = DetailViewController(data: hotel)
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let data = HotelBookingModel(destination: destinationValue,
+                                         date: timeValue, 
+                                         room: roomValue)
+            let vc = HotelResultViewController(data: data)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
