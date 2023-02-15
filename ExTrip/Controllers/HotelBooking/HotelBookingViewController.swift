@@ -260,13 +260,13 @@ extension HotelBookingViewController: UITableViewDelegate, UITableViewDataSource
 // MARK: - Handle action
 extension HotelBookingViewController {
     @objc func handleSearchHotelAction() {
+        let data = HotelBookingModel(destination: destinationValue,
+                                     date: timeValue, 
+                                     room: roomValue)
         if let hotel = hotel {
-            let vc = DetailViewController(data: hotel)
+            let vc = DetailViewController(data: hotel, bookingTime: data)
             navigationController?.pushViewController(vc, animated: true)
         } else {
-            let data = HotelBookingModel(destination: destinationValue,
-                                         date: timeValue, 
-                                         room: roomValue)
             let vc = HotelResultViewController(data: data)
             navigationController?.pushViewController(vc, animated: true)
         }
