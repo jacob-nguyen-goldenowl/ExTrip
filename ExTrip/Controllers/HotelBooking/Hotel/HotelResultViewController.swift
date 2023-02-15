@@ -24,7 +24,7 @@ class HotelResultViewController: UIViewController {
     
     // MARK: - Properties
     private lazy var loadingView : CustomLoadingView = {
-        let image : UIImage = UIImage(named: "loading")!
+        let image : UIImage = UIImage(named: "loading") ?? UIImage()
         return CustomLoadingView(image: image)
     }()
     
@@ -178,13 +178,7 @@ extension HotelResultViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.numberRoomAvailable = room.count
             
-            cell.setupDataInfoHotelBooking(image: hotel.thumbnail,
-                                           title: hotel.name,
-                                           star: hotel.star,
-                                           service: hotel.rating,
-                                           review: hotel.review,
-                                           address: hotel.address, 
-                                           soldOutPrice: hotel.price)
+            cell.setupDataInfoHotelBooking(hotel: hotel)
             
             cell.setupDataInfoRoomBooking(room: room.count,
                                           defaultPrice: room.first?.defaultPrice ?? 0.0,

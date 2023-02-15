@@ -10,8 +10,8 @@ import UIKit
 class ETFavoriteButton: UIButton {
     
     // Images
-    let likedImage = UIImage(named: "favorite.fill")! as UIImage
-    let likeImage = UIImage(named: "favorite")! as UIImage
+    let likedImage = UIImage(named: "favorite.fill")
+    let likeImage = UIImage(named: "favorite")
     let likeColor = UIColor.theme.red ?? .red
     let unlikeColor = UIColor.theme.lightGray ?? .gray
 

@@ -29,7 +29,7 @@ class HotelBookingViewController: UIViewController {
         }
     }
     
-    var timeValue: FastisValue {
+    var timeValue: FastisValue? {
         didSet {
             tableView.reloadData()
         }
@@ -188,7 +188,7 @@ class HotelBookingViewController: UIViewController {
         fastisController.maximumDate = Calendar.current.date(byAdding: .month, value: 6, to: Date())
         fastisController.allowToChooseNilDate = true
         fastisController.doneHandler = { newValue in
-            self.timeValue = newValue!
+            self.timeValue = newValue
         }
         fastisController.initialValue = timeValue as? FastisRange 
         present(fastisController, animated: true)
