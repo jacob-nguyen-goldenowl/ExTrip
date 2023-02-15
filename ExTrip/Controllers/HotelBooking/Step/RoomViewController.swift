@@ -10,9 +10,9 @@ import UIKit
 class RoomViewController: UIViewController {
 
     var roomModel: RoomBookingModel = RoomBookingModel(room: 1,
-                                         adults: 2,
-                                         children: 0,
-                                         infants: 0) 
+                                                       adults: 2,
+                                                       children: 0,
+                                                       infants: 0) 
     
     var doneHandler:((RoomBookingModel) -> Void)?
     var initialValue: RoomBookingModel?
