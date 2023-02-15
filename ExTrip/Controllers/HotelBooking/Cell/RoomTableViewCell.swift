@@ -2,7 +2,7 @@
 //  RoomTableViewCell.swift
 //  ExTrip
 //
-//  Created by Nguyễn Hữu Toàn on 27/12/2022.
+//  Created by Nguyễn Hữu Toàn on 15/02/2023.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ class RoomTableViewCell: UITableViewCell {
     static let identifier = "RoomTableViewCell"
     
     var indexPath: IndexPath?
-        
+    
     var quantityGuests: Int = 0 {
         didSet {
             quantityLabel.text = "\(quantityGuests)"
@@ -20,7 +20,7 @@ class RoomTableViewCell: UITableViewCell {
     }
     
     public var getValue: ((Int?) -> Void)?
-
+    
     var title: String? {
         didSet {
             if let text = title, !text.isEmpty {
@@ -129,7 +129,7 @@ class RoomTableViewCell: UITableViewCell {
             checkQuantity(0)
         }
     }
-
+    
     private func checkQuantity(_ number: Int) {
         if quantityGuests <= number {
             quantityGuests = number
@@ -150,3 +150,4 @@ extension RoomTableViewCell {
         getValue?(quantityGuests)
     }
 }
+
