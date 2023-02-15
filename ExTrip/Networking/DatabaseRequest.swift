@@ -16,13 +16,14 @@ class DatabaseRequest {
     
     private let db = Firestore.firestore()
     
-    func searchByDestination(query: String, completion: @escaping ([DestinationModel]) -> Void) {
-        db.collection("destinations").whereField("country", isEqualTo: query).getDocuments { querySnapshot, error in
-            var data: [DestinationModel] = []
+    // MARK: Search
+    func searchEqualToFiled<T: Codable>(collection: String, field: String, query: String, completion: @escaping ([T]) -> Void) {
+        db.collection(collection).whereField(field, isEqualTo: query.lowercased()).getDocuments { querySnapshot, error in
+            var data: [T] = []
             if let querySnapshot = querySnapshot {
                 data = querySnapshot.documents.compactMap { document in
                     do {
-                        let result = try document.data(as: DestinationModel.self)
+                        let result = try document.data(as: T.self)
                         return result
                     }
                     catch { print(error) }
@@ -30,6 +31,15 @@ class DatabaseRequest {
                 }
             }
             completion(data)
+        }
+    }
+
+    func searchHotelRelatedAddress(_ query: String, completion: @escaping ([HotelModel]) -> Void) {
+        DatabaseResponse.shared.fetchData("hotels") { (data: [HotelModel]) in
+            let filter = data.filter { data in
+                data.address.contains(query)
+            }
+            completion(filter)
         }
     }
     
@@ -42,6 +52,7 @@ class DatabaseRequest {
         }
     }
     
+    // MARK: - Filter
     func checkSelectedService(_ service: [String]) -> [String] {
         var newSerview: [String] = []
         if service.isEmpty {
