@@ -54,7 +54,7 @@ class HotelResultTableViewCell: ETTableViewCell {
         return imageView
     }()
 
-    private lazy var favouriteButton = ETFavouriteButton()
+    private lazy var favouriteButton = ETFavoriteButton()
     
     // MARK: - Room info properties
     private lazy var separatorLine: UIView = {
