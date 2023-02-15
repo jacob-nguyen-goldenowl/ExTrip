@@ -63,7 +63,7 @@
 		049F2825295AA532002257B9 /* RoomBookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F2824295AA532002257B9 /* RoomBookingModel.swift */; };
 		04A8112F2974DDD9000D8D3A /* ErrorSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8112E2974DDD9000D8D3A /* ErrorSearchViewController.swift */; };
 		04A9D832298CFEA900C25D73 /* HotelResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9D831298CFEA900C25D73 /* HotelResultTableViewCell.swift */; };
-		04A9D835298D096600C25D73 /* ETFavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9D834298D096600C25D73 /* ETFavouriteButton.swift */; };
+		04A9D835298D096600C25D73 /* ETFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9D834298D096600C25D73 /* ETFavoriteButton.swift */; };
 		04AB54322952A810005D5C31 /* ETSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB54312952A810005D5C31 /* ETSearchTextField.swift */; };
 		04AC7E62298CAF3200689EB2 /* SearchDestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC7E61298CAF3200689EB2 /* SearchDestinationTableViewCell.swift */; };
 		04AC7E6A298CC99C00689EB2 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AC7E69298CC99C00689EB2 /* BookingViewController.swift */; };
@@ -203,7 +203,7 @@
 		049F2824295AA532002257B9 /* RoomBookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomBookingModel.swift; sourceTree = "<group>"; };
 		04A8112E2974DDD9000D8D3A /* ErrorSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSearchViewController.swift; sourceTree = "<group>"; };
 		04A9D831298CFEA900C25D73 /* HotelResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelResultTableViewCell.swift; sourceTree = "<group>"; };
-		04A9D834298D096600C25D73 /* ETFavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFavouriteButton.swift; sourceTree = "<group>"; };
+		04A9D834298D096600C25D73 /* ETFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFavoriteButton.swift; sourceTree = "<group>"; };
 		04AB54312952A810005D5C31 /* ETSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETSearchTextField.swift; sourceTree = "<group>"; };
 		04AC7E61298CAF3200689EB2 /* SearchDestinationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDestinationTableViewCell.swift; sourceTree = "<group>"; };
 		04AC7E69298CC99C00689EB2 /* BookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
@@ -458,7 +458,7 @@
 		04A9D833298D092C00C25D73 /* Like */ = {
 			isa = PBXGroup;
 			children = (
-				04A9D834298D096600C25D73 /* ETFavouriteButton.swift */,
+				04A9D834298D096600C25D73 /* ETFavoriteButton.swift */,
 			);
 			path = Like;
 			sourceTree = "<group>";
@@ -1207,7 +1207,7 @@
 				0486B8F529658BA800940B40 /* FilterTableViewCell.swift in Sources */,
 				04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */,
 				040DEAF92971D33D0044E24F /* HotelsRelatedTableViewCell.swift in Sources */,
-				04A9D835298D096600C25D73 /* ETFavouriteButton.swift in Sources */,
+				04A9D835298D096600C25D73 /* ETFavoriteButton.swift in Sources */,
 				04F7DE09295452320020494F /* Date+Utilities.swift in Sources */,
 				0429EDFC2966CC920067F906 /* TypeViewController.swift in Sources */,
 				0486B8DB29653E6800940B40 /* HotelModel.swift in Sources */,
