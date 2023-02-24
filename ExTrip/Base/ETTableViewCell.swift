@@ -10,6 +10,8 @@ import UIKit
 class ETTableViewCell: UITableViewCell {
     
     public var isSelectedLikeButton: Bool = false
+    let lightGrayColor = UIColor.theme.lightGray ?? .lightGray
+    let primaryColor = UIColor.theme.primary ?? .blue
     
     public let posterImageView: AsyncImageView = {
         let imageView = AsyncImageView()

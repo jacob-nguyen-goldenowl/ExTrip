@@ -63,6 +63,7 @@ class DetailViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = .poppins(style: .medium, size: 13)
+        button.addTarget(self, action: #selector(handleSelectRoomAction), for: .touchUpInside)
         return button
     }()
     
@@ -198,6 +199,11 @@ class DetailViewController: UIViewController {
         } else {   
             navigationItem.titleView?.isHidden = true
         }   
+    }
+    
+    @objc func handleSelectRoomAction() {
+        let vc = RoomResultViewController(rooms, time: bookingTime)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

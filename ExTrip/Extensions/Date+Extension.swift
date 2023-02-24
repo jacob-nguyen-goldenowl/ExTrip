@@ -29,6 +29,10 @@ extension Date {
     func isLessThanOrEqualTo(_ date: Date) -> Bool {
         return self <= date
     }
+    
+    func dateToTimestamp() -> Timestamp {
+        return Timestamp(date: self)
+    }
 }
 
 extension Timestamp {
