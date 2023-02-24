@@ -8,6 +8,7 @@
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 extension Date {
     func isEqualTo(_ date: Date) -> Bool {
@@ -28,6 +29,10 @@ extension Date {
     
     func isLessThanOrEqualTo(_ date: Date) -> Bool {
         return self <= date
+    }
+    
+    func dateToTimestamp() -> Timestamp {
+        return Timestamp(date: self)
     }
 }
 

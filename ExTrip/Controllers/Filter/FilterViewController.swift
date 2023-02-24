@@ -215,6 +215,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
                     self?.rangePrice = value
                 }
                 cell.rangePrice = rangePrice
+                cell.value = rangePrice ?? Price(maximun: 1000.0, minimun: 0.0)
                 cell.title = "Price Range"
                 return cell
                 

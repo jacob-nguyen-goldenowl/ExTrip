@@ -215,6 +215,9 @@ extension ETTextField {
         if isHighlightedOnEdit {
             separatorLineView.backgroundColor = separatorLineViewColor
         }
+        if !text!.isEmpty {
+            separatorLineViewColor = .lightGray
+        }
         setPlaceholderColor(with: placeholderColor)
         attributeStringWithPlaceholder(textChangedColor: textChangeColor)
     }

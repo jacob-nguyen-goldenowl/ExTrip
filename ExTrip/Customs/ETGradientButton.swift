@@ -82,7 +82,7 @@ final class ETGradientButton: UIButton {
         let titleUpcase = title.rawValue.uppercased()
         
         setTitle(titleUpcase, for: .normal)
-        titleLabel?.font = UIFont.poppins(style: .regular)
+        titleLabel?.font = UIFont.poppins(style: .bold, size: 13)
         self.titleColor = UIColor.theme.black ?? .black
         cornerRadius = 20
 
@@ -97,6 +97,7 @@ final class ETGradientButton: UIButton {
                 self.backgroundColor = backgroundColor ?? .white
                 self.titleColor = titleColor ?? .black
             case .mysticBlue:
+                self.titleColor = titleColor ?? .black
                 topColor = UIColor.theme.lightBlue
                 bottomColor = UIColor.theme.lightGreen
             case .dreamyPurple:

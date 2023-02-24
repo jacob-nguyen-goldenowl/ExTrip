@@ -49,6 +49,7 @@ class MainViewController: UIViewController {
     // MARK: - Setup UI
     private func setupViews() {
         view.backgroundColor = .systemBackground
+        navigationController?.configBackButton()
         view.insertSubview(backgroundImageView, at: 0)
         view.addSubview(facebookButton)
         view.addSubviews(horizontalStackView,

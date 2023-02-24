@@ -11,6 +11,9 @@ class ETTableViewCell: UITableViewCell {
     
     public var isSelectedLikeButton: Bool = false
     
+    public let primaryColor = UIColor.theme.primary ?? .blue
+    public let lightGrayColor = UIColor.theme.lightGray ?? .gray
+    
     public let posterImageView: AsyncImageView = {
         let imageView = AsyncImageView()
         imageView.clipsToBounds = true

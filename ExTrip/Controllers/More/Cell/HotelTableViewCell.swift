@@ -72,13 +72,12 @@ class HotelTableViewCell: ETTableViewCell {
                                    paddingTop: 5, 
                                    paddingLeading: paddingLeft)
         starView.setHeight(height: 15)
+        starView.setWidth(width: 100)
         
         reviewLabel.anchor(top: addressLabel.bottomAnchor,
                            leading: starView.trailingAnchor,
-                           trailing: trailingAnchor,
                            paddingTop: 6,
-                           paddingLeading: paddingLeft,
-                           paddingTrailing: padding)
+                           paddingLeading: paddingLeft)
         reviewLabel.setHeight(height: 15)
         reviewLabel.setWidth(width: 120)
         

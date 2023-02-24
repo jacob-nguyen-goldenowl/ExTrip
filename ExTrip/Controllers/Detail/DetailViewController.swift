@@ -168,6 +168,7 @@ class DetailViewController: UIViewController {
                          bottom: containerPriceView.topAnchor, 
                          leading: view.leadingAnchor,
                          trailing: view.trailingAnchor)
+        selectRoomButton.addTarget(self, action: #selector(handleSelectRoomAction), for: .touchUpInside)
     }
     
     private func registerCell() {
@@ -335,6 +336,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 extension DetailViewController {
     @objc func handleLikeAction() {
         
+    }
+    
+    @objc func handleSelectRoomAction() {
+        let vc = RoomResultViewController(rooms, time: bookingTime)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

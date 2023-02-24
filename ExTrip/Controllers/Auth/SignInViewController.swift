@@ -67,7 +67,7 @@ class SignInViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Sign Up"
+        navigationItem.title = "Sign In"
         navigationController?.configBackButton()
     }
     
