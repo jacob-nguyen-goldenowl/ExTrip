@@ -10,7 +10,7 @@ import UIKit
 class ChooseRoomViewController: UIViewController {
     
     var valueAllTypes: [String] = []
-    var selectedRows:IndexPath = IndexPath(item: 0, section: 0)
+    var selectedRows = IndexPath(item: 0, section: 0)
     var doneHandler: ((Int) -> Void)?
     var saveCheckBoxPosition: ((IndexPath) -> Void)?
     var currentValue: Int = 0
