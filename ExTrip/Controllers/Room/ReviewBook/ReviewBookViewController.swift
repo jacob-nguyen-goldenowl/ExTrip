@@ -15,8 +15,8 @@ enum BookType: Int {
 
 class ReviewBookViewController: UIViewController {
     
-    var room: RoomModel? 
-    var bookingTime: HotelBookingModel?
+    private var room: RoomModel? 
+    private var bookingTime: HotelBookingModel?
     var fullName: String?
     var phoneNumber: String?
     var email: String?
@@ -242,16 +242,6 @@ extension ReviewBookViewController: UITableViewDelegate, UITableViewDataSource {
                                                                for: indexPath) as? InfoUserTableViewCell else { return UITableViewCell() }
                 infoCell.indexPath = indexPath
                 infoCell.numberOfRoom = numberOfRoom
-                
-                infoCell.fullNameCallBack = {[weak self] fullName in
-                    self?.fullName = fullName
-                }
-                infoCell.emailCallBack = {[weak self] email in
-                    self?.email = email
-                }
-                infoCell.phoneCallBack = {[weak self] phone in
-                    self?.phoneNumber = phone
-                }
                 infoCell.delegate = self
                 return infoCell
             default:
@@ -261,6 +251,18 @@ extension ReviewBookViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ReviewBookViewController: InfoUserTableViewCellDelegate {
+    func infoUserTableViewCellHandelSaveEmailUser(_ email: String?) {
+        self.email = email
+    }
+    
+    func infoUserTableViewCellHandelSaveFullNameUser(_ fullname: String?) {
+        self.fullName = fullname
+    }
+    
+    func infoUserTableViewCellHandelSavePhoneUser(_ phone: String?) {
+        self.phoneNumber = phone
+    }
+    
     func infoUserTableViewCellHandleChooseRoomNavigation(_ data: InfoUserTableViewCell) {
         presentBottomSheet()
     }

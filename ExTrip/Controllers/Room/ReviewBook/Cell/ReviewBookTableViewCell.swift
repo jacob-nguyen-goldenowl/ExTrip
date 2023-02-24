@@ -92,6 +92,12 @@ class ReviewBookTableViewCell: ETTableViewCell {
                 titleLabel.text = room.type.capitalizeFirstLetter()
                 refuldLabel.text = "Non-refulable"
                 paymentMethodLabel.text = "Booking without credit card"
+            } else {
+                boxView.removeFromSuperview()
+                removeAllFromSubView([posterImageView,
+                                      titleLabel, 
+                                      paymentMethodLabel, 
+                                      refuldLabel])
             }
         }
     }

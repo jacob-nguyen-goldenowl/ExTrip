@@ -11,11 +11,7 @@ class RoomResultViewController: UIViewController {
         
     var bookingTime: HotelBookingModel?
     
-    var rooms: [RoomModel]? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var rooms: [RoomModel]?
 
     init(_ data: [RoomModel]?, time: HotelBookingModel) {
         self.rooms = data
@@ -85,13 +81,23 @@ class RoomResultViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension RoomResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rooms?.count ?? 0
+        if let numberOfRoom = rooms?.count {
+            return numberOfRoom
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RoomResultTableViewCell.identifier, for: indexPath) as? RoomResultTableViewCell else { return UITableViewCell() }
         cell.backgroundColor = .clear
-        cell.room = rooms?[indexPath.row]
+        if let rooms = rooms {
+            let room = rooms[indexPath.item]
+            cell.getDataForRoom(room: room) 
+        } else {
+            
+        }
+        
         cell.delegate = self
         return cell
     }

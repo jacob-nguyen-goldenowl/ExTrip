@@ -16,21 +16,8 @@ class ETRoomButton: UIButton {
     }
 
     // MARK: - Properties    
-    private lazy var nameButtonLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .blue
-        label.font = .poppins(style: .bold, size: 14)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private lazy var roomLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .blue
-        label.font = .poppins(style: .bold, size: 14)
-        label.textAlignment = .center
-        return label
-    }()
+    private lazy var nameButtonLabel = ETLabel(style: .small, textAlignment: .center, size: 14)
+    private lazy var roomLabel = ETLabel(style: .small, textAlignment: .center, size: 14)
         
     private lazy var expandArrowImageView: UIImageView = {
         let imageView = UIImageView()
@@ -55,11 +42,14 @@ class ETRoomButton: UIButton {
     }
 
     private func setupUI() {
+        roomLabel.textColor = .blue
         roomLabel.anchor(top: topAnchor,
                          bottom: bottomAnchor,
                          leading: leadingAnchor,
                          trailing: nameButtonLabel.leadingAnchor)
+        
         nameButtonLabel.text = "Room"
+        nameButtonLabel.textColor = .blue
         nameButtonLabel.anchor(top: topAnchor,
                                bottom: bottomAnchor,
                                leading: roomLabel.trailingAnchor,
