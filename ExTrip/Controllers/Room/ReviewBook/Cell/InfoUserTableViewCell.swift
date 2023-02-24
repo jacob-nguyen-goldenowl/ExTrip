@@ -7,8 +7,11 @@
 
 import UIKit
 
-protocol InfoUserTableViewCellDelegate {
+protocol InfoUserTableViewCellDelegate: AnyObject {
     func infoUserTableViewCellHandleChooseRoomNavigation(_ data: InfoUserTableViewCell) 
+    func infoUserTableViewCellHandelSaveEmailUser(_ email: String?)
+    func infoUserTableViewCellHandelSaveFullNameUser(_ fullname: String?)
+    func infoUserTableViewCellHandelSavePhoneUser(_ phone: String?)
 }
 
 class InfoUserTableViewCell: ETTableViewCell {
@@ -19,7 +22,7 @@ class InfoUserTableViewCell: ETTableViewCell {
     var emailCallBack: ((String?) -> Void)?
     var phoneCallBack: ((String?) -> Void)?
 
-    let countries = ["VietNam": "+84", "English": "+44"]
+    let countries = ["VietNam": "+84", "UK": "+44"]
     lazy var countriesKeys = Array(countries.keys)
     lazy var countriesValues = Array(countries.values)
     
@@ -34,7 +37,7 @@ class InfoUserTableViewCell: ETTableViewCell {
         }
     }
 
-    var delegate: InfoUserTableViewCellDelegate?
+    weak var delegate: InfoUserTableViewCellDelegate?
     
     // Header
     private lazy var headerStackView: UIStackView = {
@@ -225,15 +228,15 @@ extension InfoUserTableViewCell {
     }
     
     @objc func handleFullNameAction() {
-        fullNameCallBack?(userNameTextField.text)
+        delegate?.infoUserTableViewCellHandelSaveFullNameUser(userNameTextField.text)
     }
     
     @objc func handleEmailAction() {
-        emailCallBack?(emailTextField.text)
+        delegate?.infoUserTableViewCellHandelSaveEmailUser(emailTextField.text)
     }
     
     @objc func handlePhoneAction() {
-        phoneCallBack?(phoneTextField.text)
+        delegate?.infoUserTableViewCellHandelSavePhoneUser(phoneTextField.text)
     }  
     
     // MARK: - Notification center
