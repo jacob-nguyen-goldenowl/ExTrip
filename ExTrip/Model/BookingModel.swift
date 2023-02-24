@@ -10,7 +10,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct BookingModel: Codable {
-    var id: String
     var hotelID: String
     var roomID: String
     var guestID: String

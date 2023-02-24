@@ -32,8 +32,6 @@
 		045D031F29891F910071EFB7 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D031E29891F910071EFB7 /* FilterViewModel.swift */; };
 		045D0321298927040071EFB7 /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D0320298927040071EFB7 /* FilterModel.swift */; };
 		045D0324298A28030071EFB7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D0323298A28030071EFB7 /* LoadingView.swift */; };
-		0465568129A71DAC009DCFD8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465568029A71DAC009DCFD8 /* PaymentViewController.swift */; };
-		0465568329A721C4009DCFD8 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465568229A721C4009DCFD8 /* PaymentTableViewCell.swift */; };
 		046B7C46294A38A200777906 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C45294A38A200777906 /* HomeCollectionViewCell.swift */; };
 		046D3898296FB2E6000DE1AB /* HeaderCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D3897296FB2E6000DE1AB /* HeaderCollectionTableViewCell.swift */; };
 		046D389A296FB2F4000DE1AB /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D3899296FB2F4000DE1AB /* HeaderCollectionViewCell.swift */; };
@@ -184,8 +182,6 @@
 		045D031E29891F910071EFB7 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		045D0320298927040071EFB7 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		045D0323298A28030071EFB7 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		0465568029A71DAC009DCFD8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
-		0465568229A721C4009DCFD8 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
 		046B7C45294A38A200777906 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		046D3897296FB2E6000DE1AB /* HeaderCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		046D3899296FB2F4000DE1AB /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -394,15 +390,6 @@
 				045D0323298A28030071EFB7 /* LoadingView.swift */,
 			);
 			path = Loading;
-			sourceTree = "<group>";
-		};
-		0465567F29A71D8E009DCFD8 /* Payment */ = {
-			isa = PBXGroup;
-			children = (
-				0465568029A71DAC009DCFD8 /* PaymentViewController.swift */,
-				0465568229A721C4009DCFD8 /* PaymentTableViewCell.swift */,
-			);
-			path = Payment;
 			sourceTree = "<group>";
 		};
 		046D389F296FB88A000DE1AB /* Cell */ = {
@@ -870,7 +857,6 @@
 		04BF56852942434000BCF4A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0465567F29A71D8E009DCFD8 /* Payment */,
 				0476EBD1299CE3C300000189 /* Room */,
 				04AC7E68298CC99000689EB2 /* Booking */,
 				04BB31BE296FAA1D002AA9E1 /* Detail */,
@@ -1253,7 +1239,6 @@
 				0486B8EA296576A200940B40 /* HotelViewController.swift in Sources */,
 				0476EBD3299CE3DA00000189 /* RoomResultViewController.swift in Sources */,
 				049996F2294724A1005033C9 /* UserInfoModel.swift in Sources */,
-				0465568129A71DAC009DCFD8 /* PaymentViewController.swift in Sources */,
 				0476EC11299F7DD200000189 /* InfoUserTableViewCell.swift in Sources */,
 				04BB31D4296FAABF002AA9E1 /* InformationTableViewCell.swift in Sources */,
 				044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */,
@@ -1320,7 +1305,6 @@
 				0486B8D92965328400940B40 /* AsyncImageView.swift in Sources */,
 				04D80D8D295178EC005985ED /* StretchyTableHeaderView.swift in Sources */,
 				04AC7E6A298CC99C00689EB2 /* BookingViewController.swift in Sources */,
-				0465568329A721C4009DCFD8 /* PaymentTableViewCell.swift in Sources */,
 				04D80D902951792F005985ED /* RattingView.swift in Sources */,
 				04F7DE0A295452320020494F /* Calendar+LastWeekday.swift in Sources */,
 				0443CC9A299354A70014E557 /* Date+Extension.swift in Sources */,

@@ -17,4 +17,5 @@ struct UserDefaultKey {
     static let userPhone = "com.extrip.userPhone"
     static let loadingNotify = "com.loading.notification.center"
     static let filterNotity = "com.filter.notication.center"
+    static let checkEmptyNotify = "com.extrip.empty.notication.center"
 }

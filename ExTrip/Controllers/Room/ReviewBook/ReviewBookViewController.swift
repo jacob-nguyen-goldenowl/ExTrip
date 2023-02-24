@@ -294,9 +294,7 @@ extension ReviewBookViewController {
                                            numAdults: bookingRoom.adults,
                                            numChildren: bookingRoom.children,
                                            specialReq: "No")
-            
-            let vc = PaymentViewController(booking: dataBooking)
-            navigationController?.pushViewController(vc, animated: true)
+            print("success")
         }
     }
 }

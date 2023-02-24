@@ -18,9 +18,7 @@ class HotelResultTableViewCell: ETTableViewCell {
     private let commonSize: CGFloat = 15
     
     private let locationImage = UIImage(named: "clock")
-    private let primaryColor = UIColor.theme.primary ?? .blue
-    private let lightGrayColor = UIColor.theme.lightGray ?? .gray
-    
+
     var numberRoomAvailable: Int = 0 {
         didSet {
             setupNeedsUpdateConstraint()
