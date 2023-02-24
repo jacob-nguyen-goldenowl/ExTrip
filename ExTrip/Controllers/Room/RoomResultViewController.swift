@@ -93,7 +93,7 @@ extension RoomResultViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         if let rooms = rooms {
             let room = rooms[indexPath.item]
-            cell.getDataForRoom(room: room) 
+            cell.setDataForRoom(room: room) 
         } else {
             
         }
