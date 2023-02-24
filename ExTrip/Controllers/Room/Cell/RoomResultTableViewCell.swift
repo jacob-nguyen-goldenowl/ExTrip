@@ -175,7 +175,7 @@ class RoomResultTableViewCell: ETTableViewCell {
         bookButton.addTarget(self, action: #selector(handleBookButton), for: .touchUpInside)
     }
     
-    func getDataForRoom(room: RoomModel) {
+    func setDataForRoom(room: RoomModel) {
         self.room = room
         posterImageView.loadImage(url: room.image.first ?? "")
         titleLabel.text = room.type.capitalizeFirstLetter()
