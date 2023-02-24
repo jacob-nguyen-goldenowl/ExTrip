@@ -124,7 +124,7 @@ final class DayCell: JTACDayCell {
         NSLayoutConstraint.activate(rangeViewTopAnchorConstraints)
         NSLayoutConstraint.activate(rangeViewBottomAnchorConstraints)
     }
-    
+    // swiftlint:disable cyclomatic_complexity
     public static func makeViewConfig(
         for state: CellState,
         minimumDate: Date?,

@@ -94,8 +94,8 @@ class DestinationViewController: UIViewController {
     private func setupBinder() {
         hotelViewModel.fetchLimitData(destinationID: countryID)
         hotelViewModel.fetchAllData(destinationID: countryID)
-        
-        hotelViewModel.hotels.bind { [weak self] value in 
+
+        hotelViewModel.hotels.bind { [weak self] value in
             guard let self = self else { return }
             if let value = value {
                 self.allHotels = value

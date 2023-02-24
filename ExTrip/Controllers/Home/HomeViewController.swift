@@ -174,7 +174,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     // MARK: - Setup header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let category = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,withReuseIdentifier: CategoryCollectionReusableView.identifier, for: indexPath) as? CategoryCollectionReusableView else { return UICollectionReusableView() }
+        guard let category = collectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: CategoryCollectionReusableView.identifier,
+            for: indexPath) as? CategoryCollectionReusableView else {
+            return UICollectionReusableView()
+        }
         category.delegate  = self
         return category
     }

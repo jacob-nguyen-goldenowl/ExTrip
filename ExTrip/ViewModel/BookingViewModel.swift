@@ -24,7 +24,7 @@ class BookingViewModel {
         DatabaseBooking.shared.filterHotelByCity(city: city, numberOfRoom: numberOfRoom) { status in
             switch status {
                 case .success(let hotels):
-                    DispatchQueue.main.async { [weak self] in 
+                    DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         self.checkHotelHasRooms(with: hotels, time: time) { listRoom in
                             self.hotelsRelatedCity.value = hotels
