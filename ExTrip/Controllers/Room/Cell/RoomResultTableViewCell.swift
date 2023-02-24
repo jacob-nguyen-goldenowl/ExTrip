@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol RoomResultTableViewCellDelegate {
+protocol RoomResultTableViewCellDelegate: AnyObject {
     func roomSelectTableViewCellhandleBookNavigation(_ data: RoomResultTableViewCell) 
 }
 
@@ -15,8 +15,10 @@ class RoomResultTableViewCell: ETTableViewCell {
 
     static let identifier = "RoomTableViewCell"
     
-    var delegate: RoomResultTableViewCellDelegate?
-            
+    weak var delegate: RoomResultTableViewCellDelegate?
+    
+    var room: RoomModel?
+    
     private let padding: CGFloat = 15
     private let paddingTop: CGFloat = 5
     private let paddingSize: CGFloat = 10
@@ -41,7 +43,7 @@ class RoomResultTableViewCell: ETTableViewCell {
     private lazy var numberOfBedLabel  = ETLabel(style: .nomal)
     private lazy var afftercashbackLabel  = ETLabel(style: .small)
     
-    private lazy var horizontalStackView: UIStackView = {
+    private lazy var roomDetailHorizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.layer.borderWidth = 1
@@ -52,7 +54,7 @@ class RoomResultTableViewCell: ETTableViewCell {
         return stackView
     }()
                                                         
-    private lazy var verticalStackView: UIStackView = {
+    private lazy var roomPriceVerticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -87,8 +89,8 @@ class RoomResultTableViewCell: ETTableViewCell {
                             titleLabel, 
                             paymentMethodLabel, 
                             refuldLabel,
-                            horizontalStackView,
-                            verticalStackView,
+                            roomDetailHorizontalStackView,
+                            roomPriceVerticalStackView,
                             bookButton)
         setupHorizontalStackView()
         setupVeticalStackView()
@@ -130,19 +132,19 @@ class RoomResultTableViewCell: ETTableViewCell {
                                   paddingLeading: padding,
                                   paddingTrailing: paddingSize)
         
-        horizontalStackView.anchor(top: posterImageView.bottomAnchor,
+        roomDetailHorizontalStackView.anchor(top: posterImageView.bottomAnchor,
                                    leading: boxView.leadingAnchor, 
                                    trailing: boxView.trailingAnchor,
                                    paddingTop: paddingSize,
                                    paddingBottom: paddingSize) 
-        horizontalStackView.setHeight(height: 30)
+        roomDetailHorizontalStackView.setHeight(height: 30)
         
-        verticalStackView.anchor(top: horizontalStackView.bottomAnchor,
+        roomPriceVerticalStackView.anchor(top: roomDetailHorizontalStackView.bottomAnchor,
                                  trailing: boxView.trailingAnchor,
                                  paddingTop: paddingTop,
                                  paddingTrailing: padding)
         
-        bookButton.anchor(top: verticalStackView.bottomAnchor,
+        bookButton.anchor(top: roomPriceVerticalStackView.bottomAnchor,
                           bottom: boxView.bottomAnchor,
                           leading: boxView.leadingAnchor,
                           trailing: boxView.trailingAnchor,
@@ -153,15 +155,15 @@ class RoomResultTableViewCell: ETTableViewCell {
     }
     
     private func setupHorizontalStackView() {
-        horizontalStackView.removeAllArrangedSubviews()
-        horizontalStackView.addArrangedSubviews(roomSizeLabel,
+        roomDetailHorizontalStackView.removeAllArrangedSubviews()
+        roomDetailHorizontalStackView.addArrangedSubviews(roomSizeLabel,
                                                 occupancyLabel,
                                                 numberOfBedLabel)
     }
     
     private func setupVeticalStackView() {
-        verticalStackView.removeAllArrangedSubviews()
-        verticalStackView.addArrangedSubviews(defaultPriceLabel,
+        roomPriceVerticalStackView.removeAllArrangedSubviews()
+        roomPriceVerticalStackView.addArrangedSubviews(defaultPriceLabel,
                                               afftercashbackLabel,
                                               priceLabel)
         defaultPriceLabel.textColor = .red
@@ -173,21 +175,18 @@ class RoomResultTableViewCell: ETTableViewCell {
         bookButton.addTarget(self, action: #selector(handleBookButton), for: .touchUpInside)
     }
     
-    var room: RoomModel? {
-        didSet {
-            if let room = room {
-                posterImageView.loadImage(url: room.image.first ?? "")
-                titleLabel.text = room.type.capitalizeFirstLetter()
-                refuldLabel.text = "Non-refulable"
-                paymentMethodLabel.text = "Booking without credit card"
-                roomSizeLabel.setSuperScripts(bigText: "\(room.roomSize)m", smallText: "2")
-                occupancyLabel.text = "Max \(room.occupancy) adults"
-                numberOfBedLabel.text = "\(room.description?.bed ?? 1) Bed"
-                defaultPriceLabel.setStrikeThroughText("$\(room.defaultPrice)")
-                afftercashbackLabel.text = "Affter Cashback"
-                priceLabel.text = "$\(room.price)"
-            }
-        }
+    func getDataForRoom(room: RoomModel) {
+        self.room = room
+        posterImageView.loadImage(url: room.image.first ?? "")
+        titleLabel.text = room.type.capitalizeFirstLetter()
+        refuldLabel.text = "Non-refulable"
+        paymentMethodLabel.text = "Booking without credit card"
+        roomSizeLabel.setSuperScripts(bigText: "\(room.roomSize)m", smallText: "2")
+        occupancyLabel.text = "Max \(room.occupancy) adults"
+        numberOfBedLabel.text = "\(room.description?.bed ?? 1) Bed"
+        defaultPriceLabel.setStrikeThroughText("$\(room.defaultPrice)")
+        afftercashbackLabel.text = "Affter Cashback"
+        priceLabel.text = "$\(room.price)"
     }
     
 }
