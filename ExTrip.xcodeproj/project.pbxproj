@@ -41,6 +41,15 @@
 		046D38A8296FFEE8000DE1AB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D38A7296FFEE8000DE1AB /* SearchViewController.swift */; };
 		0476EBC3299C77CD00000189 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */; };
 		0476EBCA299CCABF00000189 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */; };
+		0476EBD3299CE3DA00000189 /* RoomResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */; };
+		0476EBD6299CE3EF00000189 /* RoomResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBD5299CE3EF00000189 /* RoomResultTableViewCell.swift */; };
+		0476EBD9299DC91A00000189 /* ETLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBD8299DC91A00000189 /* ETLabel.swift */; };
+		0476EBDD299DE78B00000189 /* ETRoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBDC299DE78B00000189 /* ETRoomButton.swift */; };
+		0476EBE5299E0EF600000189 /* ChooseRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBE4299E0EF600000189 /* ChooseRoomViewController.swift */; };
+		0476EC0A299F758F00000189 /* ReviewBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC09299F758F00000189 /* ReviewBookViewController.swift */; };
+		0476EC0D299F782200000189 /* ReviewBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC0C299F782200000189 /* ReviewBookTableViewCell.swift */; };
+		0476EC0F299F7C9000000189 /* BookingTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC0E299F7C9000000189 /* BookingTimeTableViewCell.swift */; };
+		0476EC11299F7DD200000189 /* InfoUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */; };
 		0481D4002973FC8E00EACB93 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481D3FF2973FC8E00EACB93 /* UILabel+Extension.swift */; };
 		0486B8D72965208200940B40 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8D62965208200940B40 /* ImageCache.swift */; };
 		0486B8D92965328400940B40 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8D82965328400940B40 /* AsyncImageView.swift */; };
@@ -182,6 +191,15 @@
 		046D38A7296FFEE8000DE1AB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
+		0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResultViewController.swift; sourceTree = "<group>"; };
+		0476EBD5299CE3EF00000189 /* RoomResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResultTableViewCell.swift; sourceTree = "<group>"; };
+		0476EBD8299DC91A00000189 /* ETLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETLabel.swift; sourceTree = "<group>"; };
+		0476EBDC299DE78B00000189 /* ETRoomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRoomButton.swift; sourceTree = "<group>"; };
+		0476EBE4299E0EF600000189 /* ChooseRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRoomViewController.swift; sourceTree = "<group>"; };
+		0476EC09299F758F00000189 /* ReviewBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBookViewController.swift; sourceTree = "<group>"; };
+		0476EC0C299F782200000189 /* ReviewBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBookTableViewCell.swift; sourceTree = "<group>"; };
+		0476EC0E299F7C9000000189 /* BookingTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTimeTableViewCell.swift; sourceTree = "<group>"; };
+		0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserTableViewCell.swift; sourceTree = "<group>"; };
 		0481D3FF2973FC8E00EACB93 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		0486B8D62965208200940B40 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0486B8D82965328400940B40 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
@@ -398,6 +416,52 @@
 				0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */,
 			);
 			path = Time;
+			sourceTree = "<group>";
+		};
+		0476EBD1299CE3C300000189 /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				0476EC08299F756600000189 /* ReviewBook */,
+				0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */,
+				0476EBD4299CE3DE00000189 /* Cell */,
+				0476EBE4299E0EF600000189 /* ChooseRoomViewController.swift */,
+			);
+			path = Room;
+			sourceTree = "<group>";
+		};
+		0476EBD4299CE3DE00000189 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0476EBD5299CE3EF00000189 /* RoomResultTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0476EBD7299DC8F800000189 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				0476EBD8299DC91A00000189 /* ETLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		0476EC08299F756600000189 /* ReviewBook */ = {
+			isa = PBXGroup;
+			children = (
+				0476EC09299F758F00000189 /* ReviewBookViewController.swift */,
+				0476EC0B299F780B00000189 /* Cell */,
+			);
+			path = ReviewBook;
+			sourceTree = "<group>";
+		};
+		0476EC0B299F780B00000189 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0476EC0C299F782200000189 /* ReviewBookTableViewCell.swift */,
+				0476EC0E299F7C9000000189 /* BookingTimeTableViewCell.swift */,
+				0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		0486B8E2296572F100940B40 /* More */ = {
@@ -721,6 +785,7 @@
 		04BF56732941D64300BCF4A5 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				0476EBD7299DC8F800000189 /* Label */,
 				04A9D833298D092C00C25D73 /* Like */,
 				04EC5A5D298B9CF900B6D80D /* Slider */,
 				04BF56782941DB3600BCF4A5 /* ButtonStyle */,
@@ -728,6 +793,7 @@
 				044587D92942EC29009195F2 /* ETIconButton.swift */,
 				044587DD2943174B009195F2 /* ETTextField.swift */,
 				04AB54312952A810005D5C31 /* ETSearchTextField.swift */,
+				0476EBDC299DE78B00000189 /* ETRoomButton.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -791,6 +857,7 @@
 		04BF56852942434000BCF4A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0476EBD1299CE3C300000189 /* Room */,
 				04AC7E68298CC99000689EB2 /* Booking */,
 				04BB31BE296FAA1D002AA9E1 /* Detail */,
 				0486B8EE29657F0B00940B40 /* Filter */,
@@ -1161,6 +1228,8 @@
 				0429EDF0296676160067F906 /* RatingTableViewCell.swift in Sources */,
 				04AC7E62298CAF3200689EB2 /* SearchDestinationTableViewCell.swift in Sources */,
 				04BF566B2941A30400BCF4A5 /* Theme.swift in Sources */,
+				0476EC0D299F782200000189 /* ReviewBookTableViewCell.swift in Sources */,
+				0476EBD6299CE3EF00000189 /* RoomResultTableViewCell.swift in Sources */,
 				049F2823295AA473002257B9 /* RoomViewController.swift in Sources */,
 				046D38A8296FFEE8000DE1AB /* SearchViewController.swift in Sources */,
 				04D80D9829517A94005985ED /* DestinationCollectionViewCell.swift in Sources */,
@@ -1168,18 +1237,23 @@
 				04F7DE08295452320020494F /* Value.swift in Sources */,
 				04BF54BE2949DDEA001176A1 /* DestinationModel.swift in Sources */,
 				0486B8EA296576A200940B40 /* HotelViewController.swift in Sources */,
+				0476EBD3299CE3DA00000189 /* RoomResultViewController.swift in Sources */,
 				049996F2294724A1005033C9 /* UserInfoModel.swift in Sources */,
+				0476EC11299F7DD200000189 /* InfoUserTableViewCell.swift in Sources */,
 				04BB31D4296FAABF002AA9E1 /* InformationTableViewCell.swift in Sources */,
 				044587E0294317F2009195F2 /* UIViewController+Extension.swift in Sources */,
 				04D80D93295179B9005985ED /* DestinationViewController.swift in Sources */,
 				0486B8DF2965615A00940B40 /* DatabaseRequest.swift in Sources */,
 				0443CC96299340130014E557 /* DatabaseBooking.swift in Sources */,
+				0476EBDD299DE78B00000189 /* ETRoomButton.swift in Sources */,
 				04D80DBD295215FE005985ED /* CategoryCollectionReusableView.swift in Sources */,
 				04E7E33129497D610072EAFE /* ProfileViewController.swift in Sources */,
 				04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */,
 				046D3898296FB2E6000DE1AB /* HeaderCollectionTableViewCell.swift in Sources */,
 				04D80DA22951B9D0005985ED /* HotelBookingViewController.swift in Sources */,
+				0476EC0A299F758F00000189 /* ReviewBookViewController.swift in Sources */,
 				045D0324298A28030071EFB7 /* LoadingView.swift in Sources */,
+				0476EBE5299E0EF600000189 /* ChooseRoomViewController.swift in Sources */,
 				04E7E3352949AD490072EAFE /* UserDefaultKey.swift in Sources */,
 				04F7DE0E295452320020494F /* Controller.swift in Sources */,
 				046D38A1296FB8A0000DE1AB /* ViewAllCollectionViewCell.swift in Sources */,
@@ -1195,6 +1269,7 @@
 				040912002946E15300C8525F /* SignInViewModel.swift in Sources */,
 				0476EBCA299CCABF00000189 /* TimeTableViewCell.swift in Sources */,
 				04D80DB829520441005985ED /* SearchDestinationViewController.swift in Sources */,
+				0476EC0F299F7C9000000189 /* BookingTimeTableViewCell.swift in Sources */,
 				046D389E296FB7B6000DE1AB /* ViewAllViewController.swift in Sources */,
 				04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */,
 				04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */,
@@ -1256,6 +1331,7 @@
 				04BB31BD296FA85F002AA9E1 /* DatabaseResponse.swift in Sources */,
 				044587DE2943174B009195F2 /* ETTextField.swift in Sources */,
 				0443CC98299346F20014E557 /* BookingViewModel.swift in Sources */,
+				0476EBD9299DC91A00000189 /* ETLabel.swift in Sources */,
 				046B7C46294A38A200777906 /* HomeCollectionViewCell.swift in Sources */,
 				040912022946E1DD00C8525F /* AuthManager.swift in Sources */,
 				04AC7E6D298CC9EB00689EB2 /* HotelResultViewController.swift in Sources */,

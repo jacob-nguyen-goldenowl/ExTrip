@@ -24,4 +24,12 @@ extension UILabel {
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributeString.length))
         self.attributedText = attributeString
     }
+    
+    func setSuperScripts(bigText: String, smallText: String) {
+        let bigFont = UIFont.poppins(style: .bold, size: 12)
+        let smallFont = UIFont.poppins(style: .bold, size: 10)
+        let attributeString = NSMutableAttributedString(string: bigText, attributes: [.font: bigFont])
+        attributeString.append(NSMutableAttributedString(string: smallText, attributes: [.font: smallFont, .baselineOffset: 5]))
+        self.attributedText = attributeString
+    }
 }
