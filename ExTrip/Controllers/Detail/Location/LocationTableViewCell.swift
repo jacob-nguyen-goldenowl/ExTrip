@@ -196,7 +196,7 @@ class LocationTableViewCell: DetailTableViewCell {
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
             if error != nil {
                 completion(nil, error)
-            } else if let pm = placemarks, pm.count > 0 {
+            } else if let pm = placemarks, !pm.isEmpty {
                 let pm = placemarks![0]
                 var address: String = ""
                 if pm.subThoroughfare != nil {

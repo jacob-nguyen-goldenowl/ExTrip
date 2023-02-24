@@ -123,7 +123,7 @@ class HotelResultViewController: UIViewController {
     
     private func setupBinder() {
         bookingViewModel.hotelsRelatedCity.bind { [weak self] hotels in
-            if let hotels = hotels, hotels.count > 0 {
+            if let hotels = hotels, !hotels.isEmpty {
                 self?.hotels = hotels
             } else {
                 self?.stopLoading() 

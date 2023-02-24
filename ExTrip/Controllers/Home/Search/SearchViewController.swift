@@ -193,7 +193,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if currentResultText.isEmpty {
             return 0
         }
-        return data.count > 0 ? 2 : 1
+        return !data.isEmpty ? 2 : 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tableSection = SearchType(rawValue: section) {
@@ -235,7 +235,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 case .recent:
                     height = 50.0
                 case .suggest: 
-                    if data.count > 0 {
+                    if !data.isEmpty {
                         height = 55.0
                     } else {
                         height = 0.0
@@ -252,14 +252,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             switch tableSection {
                 case .recent:
                     searchQueryDatabase()
-                case .suggest:
+                case.suggest:
                     let hotelData = data[item]
                     let vc = DetailViewController(data: hotelData)
                     navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel(frame: CGRect(x: 25, 

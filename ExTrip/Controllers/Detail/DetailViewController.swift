@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
     
     private var rooms: [RoomModel]? {
         didSet {
-            if let rooms = rooms, rooms.count > 0 {
+            if let rooms = rooms, !rooms.isEmpty {
                 checkRoomAvailable(true)
             } else {
                 checkRoomAvailable(false)

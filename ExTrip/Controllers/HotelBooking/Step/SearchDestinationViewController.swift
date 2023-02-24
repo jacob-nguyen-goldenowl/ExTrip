@@ -96,7 +96,7 @@ class SearchDestinationViewController: UIViewController {
     private func setupBinder() {
         searchViewModel.hotelsRelatedAddress.bind { [weak self] (hotels) in
             guard let self = self else { return }
-            if let hotels = hotels, hotels.count > 0 {
+            if let hotels = hotels, !hotels.isEmpty {
                 self.hotels = hotels
             }
         }
