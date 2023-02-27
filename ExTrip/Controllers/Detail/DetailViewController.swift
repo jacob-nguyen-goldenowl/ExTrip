@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
     
     private var rooms: [RoomModel]? {
         didSet {
-            if let rooms = rooms, rooms.count > 0 {
+            if let rooms = rooms, !rooms.isEmpty {
                 checkRoomAvailable(true)
             } else {
                 checkRoomAvailable(false)
@@ -85,8 +85,8 @@ class DetailViewController: UIViewController {
     }()
             
     init(data: HotelModel, bookingTime: HotelBookingModel = HotelBookingModel(destination: nil, 
-                                                                             date: FastisRange(from: Date.today, to: Date.tomorrow),
-                                                                             room: RoomBookingModel(room: 1, adults: 2, children: 0, infants: 0))) {
+                                                                              date: FastisRange(from: Date.today, to: Date.tomorrow),
+                                                                              room: RoomBookingModel(room: 1, adults: 2, children: 0, infants: 0))) {
         self.data = data
         self.bookingTime = bookingTime
         super.init(nibName: nil, bundle: nil)
@@ -194,7 +194,7 @@ class DetailViewController: UIViewController {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y > 0) { //20
+        if scrollView.contentOffset.y > 0 { 
             navigationItem.titleView?.isHidden = false
         } else {   
             navigationItem.titleView?.isHidden = true
@@ -217,50 +217,52 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         switch row {
-            case DetailType.header.rawValue:
-                guard let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCollectionTableViewCell.identifier, for: indexPath) as? HeaderCollectionTableViewCell else { return HeaderCollectionTableViewCell() }
-                headerCell.listImage = data.image
-                headerCell.delegate = self
-                return headerCell   
-            case DetailType.overview.rawValue:
-                guard let overviewCell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier,
-                                                                    for: indexPath) as? OverviewTableViewCell else { return OverviewTableViewCell() }
-                overviewCell.scoreRatting = "\(data.rating)"
-                overviewCell.title = data.name
-                overviewCell.typeHotel = data.type
-                overviewCell.addressHotel = data.address
-                return overviewCell
-            case DetailType.information.rawValue:
-                guard let infoCell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier,
-                                                                   for: indexPath) as? InformationTableViewCell else { return InformationTableViewCell() }
-                infoCell.title = "Hotel Information"
-                return infoCell  
-            case DetailType.location.rawValue:
+        case DetailType.header.rawValue:
+            guard let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCollectionTableViewCell.identifier,
+                                                                 for: indexPath) as? HeaderCollectionTableViewCell else { return HeaderCollectionTableViewCell() }
+            headerCell.listImage = data.image
+            headerCell.delegate = self
+            return headerCell   
+        case DetailType.overview.rawValue:
+            guard let overviewCell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier,
+                                                                   for: indexPath) as? OverviewTableViewCell else { return OverviewTableViewCell() }
+            overviewCell.scoreRatting = "\(data.rating)"
+            overviewCell.title = data.name
+            overviewCell.typeHotel = data.type
+            overviewCell.addressHotel = data.address
+            return overviewCell
+        case DetailType.information.rawValue:
+            guard let infoCell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier,
+                                                               for: indexPath) as? InformationTableViewCell else { return InformationTableViewCell() }
+            infoCell.title = "Hotel Information"
+            return infoCell  
+        case DetailType.location.rawValue:
                 guard let locationCell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier,
                                                                        for: indexPath) as? LocationTableViewCell else { return LocationTableViewCell() }
-                locationCell.title = "Location"
-                locationCell.descriptionLocation = data.location.description
-                locationCell.location = data.location
-                locationCell.delegate = self
-                return locationCell 
-            case DetailType.description.rawValue:
-                guard let descriptionCell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.identifier,
-                                                                   for: indexPath) as? DescriptionTableViewCell else { return DescriptionTableViewCell() }
-                descriptionCell.title = "Description"
-                descriptionCell.descriptionHotel = data.description
-                descriptionCell.delegate = self
-                return descriptionCell 
-            case DetailType.time.rawValue:
-                guard let timeCell = tableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.identifier,
-                                                                   for: indexPath) as? TimeTableViewCell else { return TimeTableViewCell() }
-                timeCell.infoBooking = bookingTime
-                return timeCell 
-            default:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as? DetailTableViewCell else { return DetailTableViewCell() }
-                cell.textLabel?.text = "\(data.rating)/5 - Good"
-                cell.accessoryType = .disclosureIndicator
-                cell.numberOfReview = "\(data.review)"
-                return cell
+            locationCell.title = "Location"
+            locationCell.descriptionLocation = data.location.description
+            locationCell.location = data.location
+            locationCell.delegate = self
+            return locationCell 
+        case DetailType.description.rawValue:
+            guard let descriptionCell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.identifier,
+                                                                      for: indexPath) as? DescriptionTableViewCell else { return DescriptionTableViewCell() }
+            descriptionCell.title = "Description"
+            descriptionCell.descriptionHotel = data.description
+            descriptionCell.delegate = self
+            return descriptionCell 
+        case DetailType.time.rawValue:
+            guard let timeCell = tableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.identifier,
+                                                               for: indexPath) as? TimeTableViewCell else { return TimeTableViewCell() }
+            timeCell.infoBooking = bookingTime
+            return timeCell 
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell",
+                                                           for: indexPath) as? DetailTableViewCell else { return DetailTableViewCell() }
+            cell.textLabel?.text = "\(data.rating)/5 - Good"
+            cell.accessoryType = .disclosureIndicator
+            cell.numberOfReview = "\(data.review)"
+            return cell
         }
     }
     
@@ -272,20 +274,20 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         let row = indexPath.row 
         let padding: CGFloat = 4
         switch row {
-            case DetailType.header.rawValue:
-                return (view.frame.size.width / 1.5) + padding
-            case DetailType.overview.rawValue:
-                return 110
-            case DetailType.information.rawValue:
-                return 200
-            case DetailType.location.rawValue:
-                return 300
-            case DetailType.description.rawValue:
-                return 300
-            case DetailType.time.rawValue:
-                return 80
-            default:
-                return 60   
+        case DetailType.header.rawValue:
+            return (view.frame.size.width / 1.5) + padding
+        case DetailType.overview.rawValue:
+            return 110
+        case DetailType.information.rawValue:
+            return 200
+        case DetailType.location.rawValue:
+            return 300
+        case DetailType.description.rawValue:
+            return 300
+        case DetailType.time.rawValue:
+            return 80
+        default:
+            return 60   
         }
     }
     

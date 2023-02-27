@@ -26,7 +26,7 @@ class ETFavoriteButton: UIButton {
     // Bool property
     var isChecked: Bool = false {
         didSet {
-            if isChecked == true {
+            if isChecked {
                 starImage.changeColorImage(image: likedImage, color: likeColor)
                 createAnimationWhenSelectItem(starImage)
             } else {
@@ -47,7 +47,7 @@ class ETFavoriteButton: UIButton {
     
     private func setup() {
         addSubview(starImage)
-        addTarget(self, action:#selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
+        addTarget(self, action: #selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
         isChecked = false
     }
     
@@ -56,7 +56,7 @@ class ETFavoriteButton: UIButton {
         let propertyAnimator = UIViewPropertyAnimator(duration: timeInterval, dampingRatio: 0.6) {
             item.transform = CGAffineTransform.identity.scaledBy(x: 0.8, y: 0.8)
         }
-        propertyAnimator.addAnimations({item.transform = CGAffineTransform.identity }, delayFactor: timeInterval)
+        propertyAnimator.addAnimations({ item.transform = CGAffineTransform.identity }, delayFactor: timeInterval)
         propertyAnimator.startAnimation()
     }
 

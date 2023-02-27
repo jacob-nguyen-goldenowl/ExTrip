@@ -1099,6 +1099,7 @@
 				04BF5627294193B200BCF4A5 /* Frameworks */,
 				04BF5628294193B200BCF4A5 /* Resources */,
 				9C8F2F6DBB4FD01970051A92 /* [CP] Embed Pods Frameworks */,
+				9FB8296529A880AD00DBD6B5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1212,6 +1213,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9FB8296529A880AD00DBD6B5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -66,9 +66,8 @@ extension ChooseRoomViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = valueAllTypes[indexPath.row]
         if selectedRows == indexPath {
             cell.checkBox = UIImage(named: "select")
-        }
-        else
-        {
+            
+        } else {
             cell.checkBox = UIImage(named: "unselect")
         }
         cell.checkBoxButton.tag = indexPath.row
@@ -85,7 +84,4 @@ extension ChooseRoomViewController: UITableViewDelegate, UITableViewDataSource {
         saveCheckBoxPosition?(selectedRows)
         cancel()
     }
-    
 }
-
-

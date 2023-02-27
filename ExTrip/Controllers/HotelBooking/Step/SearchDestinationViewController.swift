@@ -96,7 +96,7 @@ class SearchDestinationViewController: UIViewController {
     private func setupBinder() {
         searchViewModel.hotelsRelatedAddress.bind { [weak self] (hotels) in
             guard let self = self else { return }
-            if let hotels = hotels, hotels.count > 0 {
+            if let hotels = hotels, !hotels.isEmpty {
                 self.hotels = hotels
             }
         }
@@ -154,7 +154,8 @@ extension SearchDestinationViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchDestinationTableViewCell.indentifier, for: indexPath) as? SearchDestinationTableViewCell else { return SearchDestinationTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchDestinationTableViewCell.indentifier, 
+                                                       for: indexPath) as? SearchDestinationTableViewCell else { return SearchDestinationTableViewCell() }
         let hotel = hotels[indexPath.item]
         cell.titleText = hotel.name
         cell.addressText = hotel.address

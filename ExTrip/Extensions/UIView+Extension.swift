@@ -69,7 +69,7 @@ extension UIView {
             centerXAnchor.constraint(equalTo: centerX, constant: paddingX).isActive = true
         }
         if let centerY = centerY {
-            centerYAnchor.constraint(equalTo: centerY,constant: paddingY).isActive = true
+            centerYAnchor.constraint(equalTo: centerY, constant: paddingY).isActive = true
         }
     }
     

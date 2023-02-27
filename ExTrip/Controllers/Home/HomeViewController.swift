@@ -43,6 +43,10 @@ class HomeViewController: UIViewController {
         setupDataBinder()
         setupViews()
         registerCell()
+        
+        let library_path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
+        print("libray path \(library_path)")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,10 +58,10 @@ class HomeViewController: UIViewController {
     // MARK: - Register cell
     private func registerCell() {
         collectionView.register(HomeCollectionViewCell.self,
-                            forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+                                forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         collectionView.register(CategoryCollectionReusableView.self,
-                            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                            withReuseIdentifier: CategoryCollectionReusableView.identifier)
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: CategoryCollectionReusableView.identifier)
     }
 
     // MARK: - Setup Binder
@@ -80,7 +84,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setupLeftAlignTitleView(text: String) {
-        guard let frame = navigationController?.navigationBar.frame else{
+        guard let frame = navigationController?.navigationBar.frame else {
             return
         }
         
@@ -108,9 +112,9 @@ class HomeViewController: UIViewController {
     private func setupNavigationBar(_ color: UIColor?) {
         guard let navigationBar = navigationController?.navigationBar else { return }
         let notification = UIBarButtonItem(image: UIImage(systemName: "bell"),
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(handleSearchAction))
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(handleSearchAction))
         notification.tintColor = .white
         self.navigationItem.rightBarButtonItem  = notification
         navigationItem.titleView = searchBar
@@ -174,7 +178,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     // MARK: - Setup header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let category = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,withReuseIdentifier: CategoryCollectionReusableView.identifier, for: indexPath) as? CategoryCollectionReusableView else { return UICollectionReusableView() }
+        guard let category = collectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: CategoryCollectionReusableView.identifier,
+            for: indexPath) as? CategoryCollectionReusableView else {
+            return UICollectionReusableView()
+        }
         category.delegate  = self
         return category
     }

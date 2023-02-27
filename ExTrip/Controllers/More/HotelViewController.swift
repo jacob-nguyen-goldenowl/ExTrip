@@ -30,11 +30,11 @@ class HotelViewController: UIViewController {
         }
     }
     
-    private lazy var activityIndicator : CustomLoadingView = {
-        let image : UIImage = UIImage(named: "loading")!
+    private lazy var activityIndicator: CustomLoadingView = {
+        let image: UIImage = UIImage(named: "loading")!
         return CustomLoadingView(image: image)
     }()
-
+    
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.register(HotelTableViewCell.self,

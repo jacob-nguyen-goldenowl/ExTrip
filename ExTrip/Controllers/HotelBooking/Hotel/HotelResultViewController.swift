@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class HotelResultViewController: UIViewController {
 
     private let bookingViewModel = BookingViewModel()
@@ -23,8 +22,8 @@ class HotelResultViewController: UIViewController {
     }
     
     // MARK: - Properties
-    private lazy var loadingView : CustomLoadingView = {
-        let image : UIImage = UIImage(named: "loading") ?? UIImage()
+    private lazy var loadingView: CustomLoadingView = {
+        let image: UIImage = UIImage(named: "loading") ?? UIImage()
         return CustomLoadingView(image: image)
     }()
     
@@ -108,8 +107,7 @@ class HotelResultViewController: UIViewController {
                                              numberOfRoom: room, 
                                              time: BookingTime(arrivalDate: date.fromDate,
                                                                departureDate: date.toDate)) 
-        }
-        else {
+        } else {
             stopLoading()
             // Show something ...
             print("error when fetching")
@@ -123,7 +121,7 @@ class HotelResultViewController: UIViewController {
     
     private func setupBinder() {
         bookingViewModel.hotelsRelatedCity.bind { [weak self] hotels in
-            if let hotels = hotels, hotels.count > 0 {
+            if let hotels = hotels, !hotels.isEmpty {
                 self?.hotels = hotels
             } else {
                 self?.stopLoading() 

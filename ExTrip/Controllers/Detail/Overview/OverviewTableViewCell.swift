@@ -118,6 +118,4 @@ class OverviewTableViewCell: DetailTableViewCell {
     private func noReceiveData() {
         addressLabel.text = "No result"
     }
-    
 }
-

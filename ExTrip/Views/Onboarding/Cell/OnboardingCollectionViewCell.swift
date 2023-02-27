@@ -126,4 +126,3 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         backgroundImage.image = UIImage(named: data.backgroundImage)
     }
 }
-

@@ -124,13 +124,8 @@ final class DayCell: JTACDayCell {
         NSLayoutConstraint.activate(rangeViewTopAnchorConstraints)
         NSLayoutConstraint.activate(rangeViewBottomAnchorConstraints)
     }
-    
-    public static func makeViewConfig(
-        for state: CellState,
-        minimumDate: Date?,
-        maximumDate: Date?,
-        rangeValue: FastisRange?,
-        calendar: Calendar
+    // swiftlint:disable cyclomatic_complexity
+    public static func makeViewConfig( for state: CellState, minimumDate: Date? = nil, maximumDate: Date? = nil, rangeValue: FastisRange?, calendar: Calendar
     ) -> ViewConfig {
         
         var config = ViewConfig()
@@ -159,7 +154,6 @@ final class DayCell: JTACDayCell {
                 }
                 
                 if showRangeView {
-                    
                     if state.day.rawValue == calendar.firstWeekday {
                         config.rangeView.leftSideState = .rounded
                         config.rangeView.rightSideState = .squared
@@ -192,40 +186,30 @@ final class DayCell: JTACDayCell {
             let position = state.selectedPosition()
             
             switch position {
-                    
-                case .full:
-                    config.isSelectedViewHidden = false
-                    
-                case .left, .right, .middle:
-                    config.isSelectedViewHidden = position == .middle
-                    
-                    if position == .right && state.day.rawValue == calendar.firstWeekday {
-                        config.rangeView.leftSideState = .rounded
-                        
-                    } else if position == .left && state.day.rawValue == calendar.lastWeekday {
-                        config.rangeView.rightSideState = .squared
-                        
-                    } else if position == .left {
-                        config.rangeView.rightSideState = .squared
-                        
-                    } else if position == .right {
-                        config.rangeView.leftSideState = .squared
-                        
-                    } else if state.day.rawValue == calendar.firstWeekday {
-                        config.rangeView.leftSideState = .squared
-                        config.rangeView.rightSideState = .squared
-                        
-                    } else if state.day.rawValue == calendar.lastWeekday {
-                        config.rangeView.leftSideState = .squared
-                        config.rangeView.rightSideState = .rounded
-                        
-                    } else {
-                        config.rangeView.leftSideState = .squared
-                        config.rangeView.rightSideState = .squared
-                    }
-                    
-                default:
-                    break
+            case .full:
+                config.isSelectedViewHidden = false
+            case .left, .right, .middle:
+                config.isSelectedViewHidden = position == .middle
+                if position == .right && state.day.rawValue == calendar.firstWeekday {
+                    config.rangeView.leftSideState = .rounded
+                } else if position == .left && state.day.rawValue == calendar.lastWeekday {
+                    config.rangeView.rightSideState = .squared
+                } else if position == .left {
+                    config.rangeView.rightSideState = .squared
+                } else if position == .right {
+                    config.rangeView.leftSideState = .squared
+                } else if state.day.rawValue == calendar.firstWeekday {
+                    config.rangeView.leftSideState = .squared
+                    config.rangeView.rightSideState = .squared
+                } else if state.day.rawValue == calendar.lastWeekday {
+                    config.rangeView.leftSideState = .squared
+                    config.rangeView.rightSideState = .rounded
+                } else {
+                    config.rangeView.leftSideState = .squared
+                    config.rangeView.rightSideState = .squared
+                }
+            default:
+                break
             }
             
         }
@@ -281,25 +265,25 @@ final class DayCell: JTACDayCell {
         }
         
         switch config.rangeView.rightSideState {
-            case .squared:
-                rightRangeView.isHidden = false
-                rightRangeView.layer.maskedCorners = []
-            case .rounded:
-                rightRangeView.isHidden = false
-                rightRangeView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-            case .hidden:
-                rightRangeView.isHidden = true
+        case .squared:
+            rightRangeView.isHidden = false
+            rightRangeView.layer.maskedCorners = []
+        case .rounded:
+            rightRangeView.isHidden = false
+            rightRangeView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        case .hidden:
+            rightRangeView.isHidden = true
         }
         
         switch config.rangeView.leftSideState {
-            case .squared:
-                leftRangeView.isHidden = false
-                leftRangeView.layer.maskedCorners = []
-            case .rounded:
-                leftRangeView.isHidden = false
-                leftRangeView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-            case .hidden:
-                leftRangeView.isHidden = true
+        case .squared:
+            leftRangeView.isHidden = false
+            leftRangeView.layer.maskedCorners = []
+        case .rounded:
+            leftRangeView.isHidden = false
+            leftRangeView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        case .hidden:
+            leftRangeView.isHidden = true
         }
         
     }
@@ -385,6 +369,4 @@ extension FastisConfig {
          */
         public var customSelectionViewCornerRadius: CGFloat?
     }
-    
 }
-

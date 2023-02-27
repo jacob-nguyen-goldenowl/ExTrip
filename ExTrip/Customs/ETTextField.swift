@@ -130,15 +130,15 @@ class ETTextField: UITextField {
     
     private func setupTypeTextField(type: ETTextFieldType) {
         switch type {
-            case .email:
-                setupTextField()
-                setupImageView()
-            case .password:
-                setupTextField()
-                setupToggleButton()
-            case .nomal:
-                setupTextField()
-                setupNomalTextField()
+        case .email:
+            setupTextField()
+            setupImageView()
+        case .password:
+            setupTextField()
+            setupToggleButton()
+        case .nomal:
+            setupTextField()
+            setupNomalTextField()
         }
     }
     
@@ -149,12 +149,12 @@ class ETTextField: UITextField {
     }
     
     private func setupToggleButton() {
-        rightButton.setImage(UIImage(systemName: "eye.circle.fill") , for: .normal)
+        rightButton.setImage(UIImage(systemName: "eye.circle.fill"), for: .normal)
         rightButton.addTarget(self, action: #selector(toggleShowHide), for: .touchUpInside)
-        rightButton.frame = CGRect(x:0,
-                                   y:0,
-                                   width:40,
-                                   height:40)
+        rightButton.frame = CGRect(x: 0,
+                                   y: 0,
+                                   width: 40,
+                                   height: 40)
         rightViewMode = .always
         rightView = rightButton
         isSecureTextEntry = true
@@ -167,9 +167,9 @@ class ETTextField: UITextField {
     private func toggle() {
         isSecureTextEntry = !isSecureTextEntry
         if isSecureTextEntry {
-            rightButton.setImage(UIImage(systemName: "eye.circle.fill") , for: .normal)
+            rightButton.setImage(UIImage(systemName: "eye.circle.fill"), for: .normal)
         } else {
-            rightButton.setImage(UIImage(systemName: "eye.slash.circle.fill") , for: .normal)
+            rightButton.setImage(UIImage(systemName: "eye.slash.circle.fill"), for: .normal)
         }
     }
     
@@ -198,8 +198,8 @@ class ETTextField: UITextField {
     private func attributeStringWithPlaceholder(textChangedColor: String) {
         guard let placeholder = self.placeholder else { return }
         let range = (placeholder as NSString).range(of: textChangedColor)
-        let attributedText = NSMutableAttributedString.init(string: placeholder)
-        attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red , range: range)
+        let attributedText = NSMutableAttributedString(string: placeholder)
+        attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: range)
         self.attributedPlaceholder = attributedText
     }
     
@@ -211,7 +211,7 @@ class ETTextField: UITextField {
 extension ETTextField {
     
     // MARK: - TextField Editing Observer
-    @objc func textFieldTextDidEndEditing(notification : NSNotification) {
+    @objc func textFieldTextDidEndEditing(notification: NSNotification) {
         if isHighlightedOnEdit {
             separatorLineView.backgroundColor = separatorLineViewColor
         }
@@ -222,7 +222,7 @@ extension ETTextField {
         attributeStringWithPlaceholder(textChangedColor: textChangeColor)
     }
     
-    @objc func textFieldTextDidBeginEditing(notification : NSNotification) {
+    @objc func textFieldTextDidBeginEditing(notification: NSNotification) {
         setPlaceholderColor(with: .clear)
         if isHighlightedOnEdit {
             separatorLineView.backgroundColor = highlightedColor

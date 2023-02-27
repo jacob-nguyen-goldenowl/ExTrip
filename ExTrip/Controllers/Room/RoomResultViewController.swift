@@ -127,6 +127,4 @@ extension RoomResultViewController: RoomResultTableViewCellDelegate {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
 }
-

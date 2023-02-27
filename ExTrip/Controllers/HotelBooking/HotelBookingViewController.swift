@@ -98,7 +98,7 @@ class HotelBookingViewController: UIViewController {
         return view
     }()
     
-    private let searchHotelButton = ETGradientButton(title: .searchHotel , style: .mysticBlue)
+    private let searchHotelButton = ETGradientButton(title: .searchHotel, style: .mysticBlue)
     
     private let tableView: UITableView = {
         let table = UITableView()

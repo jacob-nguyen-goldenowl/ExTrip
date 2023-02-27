@@ -80,16 +80,16 @@ class ETIconButton: UIButton {
         textLabel.font = .poppins(style: .regular)
         cornerRadius = 10
         switch style {
-            case .facebook:
-                textLabel.text = "Login with Facebook"
-                iconImageView.image = UIImage(named: "facebook")
-                textLabel.textColor = UIColor.theme.black ?? .black
-                backgroundColor = UIColor.theme.lightBlue
-            case .google:
-                textLabel.text = "Login with Google"
-                iconImageView.image = UIImage(named: "google")
-                textLabel.textColor = UIColor.theme.black
-                backgroundColor = UIColor.theme.white ?? .white
+        case .facebook:
+            textLabel.text = "Login with Facebook"
+            iconImageView.image = UIImage(named: "facebook")
+            textLabel.textColor = UIColor.theme.black ?? .black
+            backgroundColor = UIColor.theme.lightBlue
+        case .google:
+            textLabel.text = "Login with Google"
+            iconImageView.image = UIImage(named: "google")
+            textLabel.textColor = UIColor.theme.black
+            backgroundColor = UIColor.theme.white ?? .white
         }
     }
 }

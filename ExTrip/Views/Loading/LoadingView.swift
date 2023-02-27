@@ -10,19 +10,19 @@ import QuartzCore
 
 class CustomLoadingView: UIView {
     
-        // MARK - Variables
+    // MARK: - Variables
     
-    lazy private var animationLayer : CALayer = {
+    lazy private var animationLayer: CALayer = {
         return CALayer()
     }()
     
-    var isAnimating : Bool = false
-    var hidesWhenStopped : Bool = true
+    var isAnimating: Bool = false
+    var hidesWhenStopped: Bool = true
     
-        // MARK - Init
+    // MARK: - Init
     
-    init(image : UIImage) {
-        let frame : CGRect = CGRectMake(0.0, 0.0, image.size.width, image.size.height)
+    init(image: UIImage) {
+        let frame: CGRect = .init(x: 0.0, y: 0.0, width: image.size.width, height: image.size.height)
         
         super.init(frame: frame)
         
@@ -40,11 +40,9 @@ class CustomLoadingView: UIView {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-        // MARK - Func
-    
-    func addRotation(forLayer layer : CALayer) {
-        let rotation : CABasicAnimation = CABasicAnimation(keyPath:"transform.rotation.z")
+        
+    func addRotation(forLayer layer: CALayer) {
+        let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         
         rotation.duration = 1.0
         rotation.isRemovedOnCompletion = false
@@ -56,7 +54,7 @@ class CustomLoadingView: UIView {
         layer.add(rotation, forKey: "rotate")
     }
     
-    func pause(layer : CALayer) {
+    func pause(layer: CALayer) {
         let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
         
         layer.speed = 0.0
@@ -65,8 +63,8 @@ class CustomLoadingView: UIView {
         isAnimating = false
     }
     
-    func resume(layer : CALayer) {
-        let pausedTime : CFTimeInterval = layer.timeOffset
+    func resume(layer: CALayer) {
+        let pausedTime: CFTimeInterval = layer.timeOffset
         
         layer.speed = 1.0
         layer.timeOffset = 0.0
@@ -97,4 +95,3 @@ class CustomLoadingView: UIView {
         pause(layer: animationLayer)
     }
 }
-

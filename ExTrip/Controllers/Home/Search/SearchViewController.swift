@@ -13,10 +13,10 @@ enum SearchType: Int {
     
     var titleHeader: String {
         switch self {
-            case .recent:
-                return "your current searches"
-            case .suggest:
-                return "suggestion for you"
+        case .recent:
+            return "your current searches"
+        case .suggest:
+            return "suggestion for you"
         }
     }
 }
@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
     private let searchViewModel = SearchViewModel()
     private let hotelViewModel = HotelViewModel()
     
-    private var currentResultText: String = ""  {
+    private var currentResultText: String = "" {
         didSet {
             tableView.reloadData()
         }
@@ -88,9 +88,9 @@ class SearchViewController: UIViewController {
 
     private func setupConstraintViews() {
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, 
-                               bottom: view.bottomAnchor,
-                               leading: view.leadingAnchor,
-                               trailing: view.trailingAnchor)
+                         bottom: view.bottomAnchor,
+                         leading: view.leadingAnchor,
+                         trailing: view.trailingAnchor)
     }
     
     private func registerCell() {
@@ -193,15 +193,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if currentResultText.isEmpty {
             return 0
         }
-        return data.count > 0 ? 2 : 1
+        return !data.isEmpty ? 2 : 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tableSection = SearchType(rawValue: section) {
             switch tableSection {
-                case .recent:
-                    return 1
-                case .suggest: 
-                    return data.count
+            case .recent:
+                return 1
+            case .suggest: 
+                return data.count
             }
         }
         return 0
@@ -210,19 +210,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let tableSection = SearchType(rawValue: indexPath.section) {
             switch tableSection {
-                case .recent:
-                    guard let searchCell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell else { return SearchTableViewCell() }
-                    searchCell.resultText = currentResultText
-                    return searchCell
-                case .suggest:
-                    guard let hotelsCell = tableView.dequeueReusableCell(withIdentifier: HotelsRelatedTableViewCell.identifier, for: indexPath) as? HotelsRelatedTableViewCell else { return HotelsRelatedTableViewCell() }
-                    let hotelData = data[indexPath.item]
-                    let image = hotelData.thumbnail
-                    let name = hotelData.name
-                    hotelsCell.setDataOfHotel(text: name,
-                                              query: currentResultText,
-                                              image: image)     
-                    return hotelsCell
+            case .recent:
+                guard let searchCell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
+                                                                     for: indexPath) as? SearchTableViewCell else { return SearchTableViewCell() }
+                searchCell.resultText = currentResultText
+                return searchCell
+            case .suggest:
+                guard let hotelsCell = tableView.dequeueReusableCell(withIdentifier: HotelsRelatedTableViewCell.identifier, 
+                                                                     for: indexPath) as? HotelsRelatedTableViewCell else { return HotelsRelatedTableViewCell() }
+                let hotelData = data[indexPath.item]
+                let image = hotelData.thumbnail
+                let name = hotelData.name
+                hotelsCell.setDataOfHotel(text: name,
+                                          query: currentResultText,
+                                          image: image)     
+                return hotelsCell
             }
         }
         return UITableViewCell()
@@ -232,14 +234,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         var height: CGFloat = 0.0
         if let tableSection = SearchType(rawValue: indexPath.section) {
             switch tableSection {
-                case .recent:
-                    height = 50.0
-                case .suggest: 
-                    if data.count > 0 {
-                        height = 55.0
-                    } else {
-                        height = 0.0
-                    }
+            case .recent:
+                height = 50.0
+            case .suggest: 
+                if !data.isEmpty {
+                    height = 55.0
+                } else {
+                    height = 0.0
+                }
             }
         }
         return height
@@ -250,16 +252,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let item = indexPath.item
         if let tableSection = SearchType(rawValue: indexPath.section) {
             switch tableSection {
-                case .recent:
-                    searchQueryDatabase()
-                case .suggest:
-                    let hotelData = data[item]
-                    let vc = DetailViewController(data: hotelData)
-                    navigationController?.pushViewController(vc, animated: true)
+            case .recent:
+                searchQueryDatabase()
+            case.suggest:
+                let hotelData = data[item]
+                let vc = DetailViewController(data: hotelData)
+                navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel(frame: CGRect(x: 25, 

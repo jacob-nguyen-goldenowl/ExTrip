@@ -63,7 +63,7 @@ class SearchTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Setup UI
+    // MARK: - Setup UI
     private func setupSubView() {
         contentView.addSubviews(containerView,
                                 textSearchLabel, 
@@ -114,7 +114,4 @@ class SearchTableViewCell: UITableViewCell {
         seachIconImageView.image = image
         seachIconImageView.tintColor = color
     }
-    
 }
-
-

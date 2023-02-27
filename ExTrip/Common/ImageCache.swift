@@ -37,7 +37,7 @@ final class ImageCache {
         request.timeoutInterval = 3.0
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data , error == nil, let httpResponse = response as? HTTPURLResponse else {
+            guard let data = data, error == nil, let httpResponse = response as? HTTPURLResponse else {
                 completion(.failure(APIError.errorImage))
                 return
             }

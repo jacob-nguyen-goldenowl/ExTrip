@@ -103,14 +103,14 @@ class StretchyTableHeaderView: UIView {
     private func loadImage(_ image: String, defaultImage: UIImage? = UIImage(named: "background")) {
         ImageCache.shared.loadImage(image) { status in
             switch status {
-                case .success(let image):
-                    DispatchQueue.main.async {
-                        self.headerImage.image = image
-                    }
-                case .failure:
-                    DispatchQueue.main.async {
-                        self.headerImage.image = defaultImage
-                    }
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.headerImage.image = image
+                }
+            case .failure:
+                DispatchQueue.main.async {
+                    self.headerImage.image = defaultImage
+                }
             }
         }
     }

@@ -19,8 +19,7 @@ class AuthManager {
     
     // MARK: - Login 
     func login(email: String, password: String, completion: @escaping(ResultInt, StatusCode) -> Void) {
-        Auth.auth().signIn(withEmail: email,
-                           password: password) { res, error in
+        Auth.auth().signIn(withEmail: email, password: password) { (_, error)in
             guard error == nil else { 
                 completion(.failed,
                            .loginFailed)
@@ -37,13 +36,8 @@ class AuthManager {
         }
     }
     
-    func removeChild(completion:@escaping()->()){
-        let ref = Database.database().reference()
-        ref.child(UIDevice.current.identifierForVendor!.uuidString).removeValue()
-    }
-    
     // MARK: - Register
-    func register(with info: UserInfoModel, password: String , completion: @escaping (ResultInt, StatusCode) -> Void) {
+    func register(with info: UserInfoModel, password: String, completion: @escaping (ResultInt, StatusCode) -> Void) {
         guard let email = info.email, let name = info.name else { return }
         // Check email existing yet
         DatabaseManager.shared.canCreateNewUser(with: email, username: name) { canCreate in
@@ -73,7 +67,7 @@ class AuthManager {
                     }
                 }
             } else {
-                // email or password does not exit
+                    // Email or password does not exit
                 completion(.failed,
                            .insertUserFailed)
             }

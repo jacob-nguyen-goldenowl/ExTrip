@@ -37,7 +37,7 @@ class HotelsRelatedTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Setup UI
+    // MARK: Setup UI
     private func setupSubView() {
         contentView.addSubviews(hotelImageView, 
                                 hotelLabel)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol DestinationTableViewCellDelegate {
+protocol DestinationTableViewCellDelegate: AnyObject {
     func destinationTableViewCellhandleHotelNavigation(_ data: HotelModel, row: Int) 
 }
 
@@ -15,7 +15,7 @@ class DestinationTableViewCell: UITableViewCell {
     
     static let identifier = "DestinationTableViewCell"
     
-    var delegate: DestinationTableViewCellDelegate?
+    weak var delegate: DestinationTableViewCellDelegate?
     
     var sectionOfCell: Int = 0
     
@@ -44,7 +44,7 @@ class DestinationTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError()
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Setup UI
@@ -57,7 +57,7 @@ class DestinationTableViewCell: UITableViewCell {
     
 }
 
-// MARK: -  UICollectionViewDelegate, UICollectionViewDataSource
+// MARK: UICollectionViewDelegate, UICollectionViewDataSource
 extension DestinationTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,8 +65,8 @@ extension DestinationTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DestinationCollectionViewCell.identifier, for: indexPath) as? DestinationCollectionViewCell else { return UICollectionViewCell()
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DestinationCollectionViewCell.identifier,
+                                                            for: indexPath) as? DestinationCollectionViewCell else { return UICollectionViewCell() }
         let item = model[indexPath.item]
         cell.isSelectedLikeButton = item.like
         cell.setDataForDestination(item)

@@ -64,7 +64,8 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
         return linkURLAllImage.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewAllCollectionViewCell.identifier, for: indexPath) as? ViewAllCollectionViewCell else { return ViewAllCollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewAllCollectionViewCell.identifier,
+                                                            for: indexPath) as? ViewAllCollectionViewCell else { return ViewAllCollectionViewCell() }
         cell.image = linkURLAllImage[indexPath.row]
         return cell
     }
@@ -76,6 +77,4 @@ extension ViewAllViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
 }
-

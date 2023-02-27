@@ -68,7 +68,7 @@ class RoomTableViewCell: UITableViewCell {
     }()
     
     private lazy var decrementButton = configureButton("minus", color: UIColor.theme.lightBlue)
-    private lazy var incrementButton = configureButton("plus",color: UIColor.theme.lightBlue)
+    private lazy var incrementButton = configureButton("plus", color: UIColor.theme.lightBlue)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -150,4 +150,3 @@ extension RoomTableViewCell {
         getValue?(quantityGuests)
     }
 }
-

@@ -89,19 +89,15 @@ final class CurrentValueView<Value: FastisValue>: UILabel {
             label.textColor = config.placeholderTextColor
             
             switch Value.mode {
-                case .range:
-                    label.text = config.placeholderTextForRanges
-                    
-                case .single:
-                    label.text = config.placeholderTextForSingle
-                    
+            case .range:
+                label.text = config.placeholderTextForRanges
+            case .single:
+                label.text = config.placeholderTextForSingle
             }
-            
         }
-        
     }
     
-        // MARK: - Actions
+    // MARK: - Actions
     @objc private func clear() {
         onClear?()
     }

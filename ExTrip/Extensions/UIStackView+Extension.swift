@@ -16,4 +16,3 @@ extension UIStackView {
         arrangedSubviews.forEach { $0.removeFromSuperview() }
     }
 }
-

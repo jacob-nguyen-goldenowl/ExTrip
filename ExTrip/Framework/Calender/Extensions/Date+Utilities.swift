@@ -10,7 +10,7 @@ import Foundation
 
 internal extension Date {
 
-    static var tomorrow:  Date { return Date().dayAfter }
+    static var tomorrow: Date { return Date().dayAfter }
     static var today: Date { return Date() }
     var dayAfter: Date {
         return Calendar.current.date(byAdding: .day, value: 1, to: Date())!
@@ -47,35 +47,27 @@ internal extension Date {
 extension Date {
     
     var monthString: String {
-        get {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMMM"
-            return dateFormatter.string(from: self)
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: self)
     }
     
     var dateString: String {
-        get {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy"
-            return dateFormatter.string(from: self)
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.string(from: self)
     }
     
     var displayDateString: String {
-        get {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "E, d MMM"
-            return dateFormatter.string(from: self)
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, d MMM"
+        return dateFormatter.string(from: self)
     }
     
     var displayMonthString: String {
-        get {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "d, MMM"
-            return dateFormatter.string(from: self)
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d, MMM"
+        return dateFormatter.string(from: self)
     }
 
 }

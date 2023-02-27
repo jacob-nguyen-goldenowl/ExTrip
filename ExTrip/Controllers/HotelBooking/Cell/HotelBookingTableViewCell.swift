@@ -14,7 +14,7 @@ class HotelBookingTableViewCell: UITableViewCell {
     // Variables
     var destinationValue: String? {
         didSet {
-            if let value = destinationValue , !value.isEmpty {
+            if let value = destinationValue, !value.isEmpty {
                 stepResultLabel.text = value
             } else {
                 stepResultLabel.text = "Enter your destination"
@@ -91,7 +91,7 @@ class HotelBookingTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Setup UI
+    // MARK: - Setup UI
     private func setupSubView() {
         contentView.addSubviews(destinationView,
                                 stepTitleLabel,
@@ -112,13 +112,13 @@ class HotelBookingTableViewCell: UITableViewCell {
         destinationView.setHeight(height: 60)
                 
         stepImageView.anchor(top: destinationView.topAnchor, 
-                         bottom: destinationView.bottomAnchor,
-                         leading: destinationView.leadingAnchor,
-                         trailing: destinationView.trailingAnchor,
-                         paddingTop: padding,
-                         paddingBottom: padding,
-                         paddingLeading: padding,
-                         paddingTrailing: padding)
+                             bottom: destinationView.bottomAnchor,
+                             leading: destinationView.leadingAnchor,
+                             trailing: destinationView.trailingAnchor,
+                             paddingTop: padding,
+                             paddingBottom: padding,
+                             paddingLeading: padding,
+                             paddingTrailing: padding)
         
         stepTitleLabel.anchor(top: destinationView.topAnchor, 
                               leading: destinationView.trailingAnchor,
@@ -153,6 +153,4 @@ class HotelBookingTableViewCell: UITableViewCell {
         stepTitleLabel.text = data.title.uppercased()
         createIconStep(image: data.icon, color: data.color)
     }
-    
 }
-

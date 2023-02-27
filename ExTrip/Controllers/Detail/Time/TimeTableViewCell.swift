@@ -133,8 +133,6 @@ class TimeTableViewCell: UITableViewCell {
                              paddingTrailing: paddingBorder)
     }
     
-    
-    
     func setupVerticalStackView(title: UILabel, info: UILabel) -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = .vertical

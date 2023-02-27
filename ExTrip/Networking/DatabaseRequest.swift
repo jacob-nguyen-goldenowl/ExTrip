@@ -25,8 +25,7 @@ class DatabaseRequest {
                     do {
                         let result = try document.data(as: T.self)
                         return result
-                    }
-                    catch { print(error) }
+                    } catch { print(error) }
                     return nil
                 }
             }
@@ -77,8 +76,7 @@ class DatabaseRequest {
                         do {
                             let result = try document.data(as: HotelModel.self)
                             return result
-                        }
-                        catch { completion(.failure(error)) }
+                        } catch { completion(.failure(error)) }
                         return nil
                     }
                 }

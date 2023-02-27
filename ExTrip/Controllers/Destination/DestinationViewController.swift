@@ -7,19 +7,19 @@
 
 import UIKit
 
-fileprivate enum Section: Int {
+enum Section: Int {
     case hotel = 0
     case flight = 1
     case event = 2 
     
     var headerTitle: String {
         switch self {
-            case .hotel: 
-                return "Best Hotels"
-            case .event:
-                return "Best Events"
-            case .flight: 
-                return "Best Flights"
+        case .hotel: 
+            return "Best Hotels"
+        case .event:
+            return "Best Events"
+        case .flight: 
+            return "Best Flights"
         }
     }
     
@@ -74,7 +74,7 @@ class DestinationViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    // MARK: -Life cycle
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -94,8 +94,8 @@ class DestinationViewController: UIViewController {
     private func setupBinder() {
         hotelViewModel.fetchLimitData(destinationID: countryID)
         hotelViewModel.fetchAllData(destinationID: countryID)
-        
-        hotelViewModel.hotels.bind { [weak self] value in 
+
+        hotelViewModel.hotels.bind { [weak self] value in
             guard let self = self else { return }
             if let value = value {
                 self.allHotels = value
@@ -137,21 +137,21 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DestinationTableViewCell.identifier, for: indexPath) as? DestinationTableViewCell else { return UITableViewCell() }
         cell.delegate = self
         switch indexPath.section {
-            case Section.hotel.rawValue: 
-                cell.sectionOfCell  = indexPath.section
-                hotelViewModel.limitHotels.bind { value in
-                    if let value = value {
-                        cell.model = value
-                    }
+        case Section.hotel.rawValue: 
+            cell.sectionOfCell  = indexPath.section
+            hotelViewModel.limitHotels.bind { value in
+                if let value = value {
+                    cell.model = value
                 }
-            case Section.flight.rawValue:
-                // Just test data
-                print("none")
-            case Section.event.rawValue:
-                // Just test data
-                print("none")
-            default:
-                return DestinationTableViewCell()
+            }
+        case Section.flight.rawValue:
+            // Just test data
+            print("none")
+        case Section.event.rawValue:
+            // Just test data
+            print("none")
+        default:
+            return DestinationTableViewCell()
         }
         return cell
     }
@@ -178,7 +178,7 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                                               height: 75))
         headerView.backgroundColor = .systemBackground
         
-        // create label
+        // Create label
         let label = UILabel()
         label.text = sections[section].headerTitle
         label.font = .poppins(style: .bold, size: 25) 
@@ -190,7 +190,7 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                      paddingLeading: padding)
         label.setWidth(width: tableView.frame.size.width / 2)
         
-        // create button
+        // Create button
         let button = UIButton()
         let title = ETButtonTitle.viewAll.rawValue
         button.setTitle(title, for: .normal)
@@ -213,14 +213,14 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         switch section {
-            case Section.hotel.rawValue:
-                button.addTarget(self, action: #selector(handleSeeAllHotelAction), for: .touchUpInside)
-            case Section.flight.rawValue: 
-                button.addTarget(self, action: #selector(handleSeeAllFlightAction), for: .touchUpInside)
-            case Section.event.rawValue: 
-                button.addTarget(self, action: #selector(handleSeeAllEventAction), for: .touchUpInside)  
-            default:
-                fatalError("error clicked button")
+        case Section.hotel.rawValue:
+            button.addTarget(self, action: #selector(handleSeeAllHotelAction), for: .touchUpInside)
+        case Section.flight.rawValue: 
+            button.addTarget(self, action: #selector(handleSeeAllFlightAction), for: .touchUpInside)
+        case Section.event.rawValue: 
+            button.addTarget(self, action: #selector(handleSeeAllEventAction), for: .touchUpInside)  
+        default:
+            fatalError("error clicked button")
         }
         return headerView
     }

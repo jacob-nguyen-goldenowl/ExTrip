@@ -10,7 +10,7 @@ import UIKit
 class TypeViewController: UIViewController {
     
     var valueAllTypes: [String] = []
-    var selectedRows:[IndexPath] = []
+    var selectedRows: [IndexPath] = []
     var doneHandler: (([String]) -> Void)?
     var saveCheckBoxPosition: (([IndexPath]) -> Void)?
     var currentValue: [String] = []
@@ -95,12 +95,9 @@ extension TypeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TypeTableViewCell.identifier) as! TypeTableViewCell
         cell.textLabel?.text = valueAllTypes[indexPath.row]
-        if selectedRows.contains(indexPath)
-        {
+        if selectedRows.contains(indexPath) {
             cell.checkBox = UIImage(named: "checked")
-        }
-        else
-        {
+        } else {
             cell.checkBox = UIImage(named: "unchecked")
         }
         cell.checkBoxButton.tag = indexPath.row
@@ -111,14 +108,11 @@ extension TypeViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func checkBoxSelection(_ sender: UIButton) {
         let selectedIndexPath = IndexPath(row: sender.tag, section: 0)
         
-        if self.selectedRows.contains(selectedIndexPath)
-        {
+        if self.selectedRows.contains(selectedIndexPath) {
             let index = selectedRows.firstIndex(of: selectedIndexPath) ?? 0
             self.selectedRows.remove(at: index)
             currentValue.remove(at: index)
-        }
-        else
-        {
+        } else {
             self.selectedRows.append(selectedIndexPath)
             currentValue.append(valueAllTypes[selectedIndexPath.row])
         }

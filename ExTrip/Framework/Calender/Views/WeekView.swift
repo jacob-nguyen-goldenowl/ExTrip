@@ -138,7 +138,5 @@ extension FastisConfig {
          Default value — `true`
          */
         public var uppercaseWeekName: Bool = true
-        
     }
 }
-

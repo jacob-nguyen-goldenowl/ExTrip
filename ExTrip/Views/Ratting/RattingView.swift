@@ -61,12 +61,12 @@ class RattingView: UIView {
         let paddingRight: CGFloat?
         
         switch type {
-            case .gray: 
-                paddingLeft = 6
-                paddingRight = 6
-            case .yellow:
-                paddingLeft = 0
-                paddingRight = 15
+        case .gray: 
+            paddingLeft = 6
+            paddingRight = 6
+        case .yellow:
+            paddingLeft = 0
+            paddingRight = 15
         }
         
         starRatingImage.anchor(top: topAnchor,
@@ -87,15 +87,15 @@ class RattingView: UIView {
     
     private func setupRatingView(_ type: RatingType) {
         switch type {
-            case .gray:
-                self.layer.masksToBounds = true
-                self.layer.cornerRadius = 10
-                self.backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.7)
-                starRatingImage.tintColor = UIColor.theme.white ?? .white
-            case .yellow:
-                self.backgroundColor = .clear
-                scoreRatingLabel.textColor = UIColor.theme.black ?? .black
-                starRatingImage.tintColor = UIColor.theme.yellow ?? .yellow
+        case .gray:
+            self.layer.masksToBounds = true
+            self.layer.cornerRadius = 10
+            self.backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.7)
+            starRatingImage.tintColor = UIColor.theme.white ?? .white
+        case .yellow:
+            self.backgroundColor = .clear
+            scoreRatingLabel.textColor = UIColor.theme.black ?? .black
+            starRatingImage.tintColor = UIColor.theme.yellow ?? .yellow
         }
     }
     

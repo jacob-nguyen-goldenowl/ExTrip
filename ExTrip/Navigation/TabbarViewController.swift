@@ -54,7 +54,8 @@ class TabbarViewController: UITabBarController {
     }
     // MARK: - Change height
     func changeHeightOfTabbar() {
-        if UIDevice().userInterfaceIdiom == .phone {
+        let device = UIDevice.current
+        if device == .current {
             let heightTabBar: CGFloat = 100
             var tabFrame = tabBar.frame
             tabFrame.size.height = heightTabBar
@@ -74,7 +75,7 @@ class TabbarViewController: UITabBarController {
         let propertyAnimator = UIViewPropertyAnimator(duration: timeInterval, dampingRatio: 0.6) {
             barItemView.transform = CGAffineTransform.identity.scaledBy(x: 1.1, y: 1.1)
         }
-        propertyAnimator.addAnimations({barItemView.transform = CGAffineTransform.identity }, delayFactor: timeInterval)
+        propertyAnimator.addAnimations({ barItemView.transform = CGAffineTransform.identity }, delayFactor: timeInterval)
         propertyAnimator.startAnimation()
     }
     
