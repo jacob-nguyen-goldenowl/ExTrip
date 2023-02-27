@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol DescriptionTableViewCellDelegate {
+protocol DescriptionTableViewCellDelegate: AnyObject {
     func descriptionTableViewCellHandleSeeDetails() 
 }
 
@@ -15,7 +15,7 @@ class DescriptionTableViewCell: DetailTableViewCell {
     
     static let identifier = "DescriptionTableViewCell"
     
-    var delegate: DescriptionTableViewCellDelegate?
+    weak var delegate: DescriptionTableViewCellDelegate?
     
     var descriptionHotel: String? {
         didSet {
@@ -75,12 +75,12 @@ class DescriptionTableViewCell: DetailTableViewCell {
         seeDetailButton.setWidth(width: 100)
         
         descriptionTextField.anchor(top: headerTitle.bottomAnchor,
-                                bottom: seeDetailButton.topAnchor,
-                                leading: leadingAnchor, 
-                                trailing: trailingAnchor,
-                                paddingTop: padding,
-                                paddingLeading: padding,
-                                paddingTrailing: padding)
+                                    bottom: seeDetailButton.topAnchor,
+                                    leading: leadingAnchor, 
+                                    trailing: trailingAnchor,
+                                    paddingTop: padding,
+                                    paddingLeading: padding,
+                                    paddingTrailing: padding)
     }
     
     private func noReceiveData() {

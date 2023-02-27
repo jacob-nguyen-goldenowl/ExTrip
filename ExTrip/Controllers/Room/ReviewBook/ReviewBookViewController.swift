@@ -139,11 +139,11 @@ class ReviewBookViewController: UIViewController {
         containerPriceView.setHeight(height: view.frame.size.height / 9.0)
         
         paymentButton.anchor(top: containerPriceView.topAnchor, 
-                                bottom: containerPriceView.bottomAnchor, 
-                                trailing: containerPriceView.trailingAnchor,
-                                paddingTop: padding,
-                                paddingBottom: padding,
-                                paddingTrailing: padding)
+                             bottom: containerPriceView.bottomAnchor, 
+                             trailing: containerPriceView.trailingAnchor,
+                             paddingTop: padding,
+                             paddingBottom: padding,
+                             paddingTrailing: padding)
         paymentButton.setWidth(width: 140)
         
         titlePriceHeaderLabel.anchor(top: containerPriceView.topAnchor,
@@ -226,26 +226,26 @@ extension ReviewBookViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.item {
-            case BookType.time.rawValue:
-                guard let timeCell = tableView.dequeueReusableCell(withIdentifier: BookingTimeTableViewCell.identifier, 
-                                                                   for: indexPath) as? BookingTimeTableViewCell else { return UITableViewCell() }
-                timeCell.infoBooking = bookingTime
-                timeCell.numberOfRoom = numberOfRoom
-                return timeCell
-            case BookType.room.rawValue:
-                guard let roomCell = tableView.dequeueReusableCell(withIdentifier: ReviewBookTableViewCell.identifier, 
+        case BookType.time.rawValue:
+            guard let timeCell = tableView.dequeueReusableCell(withIdentifier: BookingTimeTableViewCell.identifier, 
+                                                               for: indexPath) as? BookingTimeTableViewCell else { return UITableViewCell() }
+            timeCell.infoBooking = bookingTime
+            timeCell.numberOfRoom = numberOfRoom
+            return timeCell
+        case BookType.room.rawValue:
+            guard let roomCell = tableView.dequeueReusableCell(withIdentifier: ReviewBookTableViewCell.identifier, 
                                                                for: indexPath) as? ReviewBookTableViewCell else { return UITableViewCell() }
-                roomCell.room = room
-                return roomCell
-            case BookType.info.rawValue:
-                guard let infoCell = tableView.dequeueReusableCell(withIdentifier: InfoUserTableViewCell.identifier, 
+            roomCell.room = room
+            return roomCell
+        case BookType.info.rawValue:
+            guard let infoCell = tableView.dequeueReusableCell(withIdentifier: InfoUserTableViewCell.identifier, 
                                                                for: indexPath) as? InfoUserTableViewCell else { return UITableViewCell() }
-                infoCell.indexPath = indexPath
-                infoCell.numberOfRoom = numberOfRoom
-                infoCell.delegate = self
-                return infoCell
-            default:
-                return UITableViewCell()
+            infoCell.indexPath = indexPath
+            infoCell.numberOfRoom = numberOfRoom
+            infoCell.delegate = self
+            return infoCell
+        default:
+            return UITableViewCell()
         }
     }
 }
@@ -287,15 +287,15 @@ extension ReviewBookViewController {
             let arrivalDate = booking.fromDate.dateToTimestamp()
             let departureDate = booking.toDate.dateToTimestamp()
             
-            let dataBooking = BookingModel(hotelID: room.hotelID, 
-                                           roomID: room.id,
-                                           guestID: currentUserID ?? "",
-                                           bookingDate: arrivalDate,
-                                           arrivalDate: arrivalDate,
-                                           departureDate: departureDate,
-                                           numAdults: bookingRoom.adults,
-                                           numChildren: bookingRoom.children,
-                                           specialReq: "No")
+            _ = BookingModel(hotelID: room.hotelID, 
+                             roomID: room.id,
+                             guestID: currentUserID ?? "",
+                             bookingDate: arrivalDate,
+                             arrivalDate: arrivalDate,
+                             departureDate: departureDate,
+                             numAdults: bookingRoom.adults,
+                             numChildren: bookingRoom.children,
+                             specialReq: "No")
             print("success")
         }
     }

@@ -50,13 +50,13 @@ class AsyncImageView: UIImageView {
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch status {
-                    case .success(let image):
-                        self.stopIndicator()
-                        self.image = image
-                    case .failure(let error):
-                        self.stopIndicator()
-                        self.backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.6)
-                        print(error.localizedDescription)
+                case .success(let image):
+                    self.stopIndicator()
+                    self.image = image
+                case .failure(let error):
+                    self.stopIndicator()
+                    self.backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.6)
+                    print(error.localizedDescription)
                 }
             }
         }

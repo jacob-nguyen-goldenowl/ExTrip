@@ -275,39 +275,35 @@ class FastisController<Value: FastisValue>: UIViewController {
     private func handleDateTap(in calendar: JTACMonthView, date: Date) {
         
         switch Value.mode {
-            case .single:
-                value = date as? Value
-                selectValue(date as? Value, in: calendar)
-                return
-                
-            case .range:
-                var newValue: FastisRange!
-                if let currentValue = value as? FastisRange {
-                    let dateRangeChangesDisabled = !allowDateRangeChanges
-                    let rangeSelected = !currentValue.fromDate.isInSameDay(date: currentValue.toDate)
-                    if dateRangeChangesDisabled && rangeSelected {
-                        newValue = .from(date.startOfDay(in: config.calendar), to: date.endOfDay(in: config.calendar))
-                    } else if date.isInSameDay(in: config.calendar, date: currentValue.fromDate) {
-                        let newToDate = date.endOfDay(in: config.calendar)
-                        newValue = .from(currentValue.fromDate, to: newToDate)
-                    } else if date.isInSameDay(in: config.calendar, date: currentValue.toDate) {
-                        let newFromDate = date.startOfDay(in: config.calendar)
-                        newValue = .from(newFromDate, to: currentValue.toDate)
-                    } else if date < currentValue.fromDate {
-                        let newFromDate = date.startOfDay(in: config.calendar)
-                        newValue = .from(newFromDate, to: currentValue.toDate)
-                    } else {
-                        let newToDate = date.endOfDay(in: config.calendar)
-                        newValue = .from(currentValue.fromDate, to: newToDate)
-                    }
-                    
+        case .single:
+            value = date as? Value
+            selectValue(date as? Value, in: calendar)
+            return
+        case .range:
+            var newValue: FastisRange!
+            if let currentValue = value as? FastisRange {
+                let dateRangeChangesDisabled = !allowDateRangeChanges
+                let rangeSelected = !currentValue.fromDate.isInSameDay(date: currentValue.toDate)
+                if dateRangeChangesDisabled && rangeSelected {
+                    newValue = .from(date.startOfDay(in: config.calendar), to: date.endOfDay(in: config.calendar))
+                } else if date.isInSameDay(in: config.calendar, date: currentValue.fromDate) {
+                    let newToDate = date.endOfDay(in: config.calendar)
+                    newValue = .from(currentValue.fromDate, to: newToDate)
+                } else if date.isInSameDay(in: config.calendar, date: currentValue.toDate) {
+                    let newFromDate = date.startOfDay(in: config.calendar)
+                    newValue = .from(newFromDate, to: currentValue.toDate)
+                } else if date < currentValue.fromDate {
+                    let newFromDate = date.startOfDay(in: config.calendar)
+                    newValue = .from(newFromDate, to: currentValue.toDate)
+                } else {
+                    let newToDate = date.endOfDay(in: config.calendar)
+                    newValue = .from(currentValue.fromDate, to: newToDate)
+                }
                 } else {
                     newValue = .from(date.startOfDay(in: config.calendar), to: date.endOfDay(in: config.calendar))
                 }
-                
                 value = newValue as? Value
                 selectValue(newValue as? Value, in: calendar)
-                
         }
     }
     
@@ -324,8 +320,7 @@ class FastisController<Value: FastisValue>: UIViewController {
 }
 
 // MARK: - JTACMonthViewDelegate
-extension FastisController: JTACMonthViewDelegate, JTACMonthViewDataSource  {
-    
+extension FastisController: JTACMonthViewDelegate, JTACMonthViewDataSource {
     public func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
         
         let dateFormatter = DateFormatter()
@@ -385,17 +380,20 @@ extension FastisController: JTACMonthViewDelegate, JTACMonthViewDataSource  {
         return header
     }
     
-    public func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
+    public func calendar(_ calendar: JTACMonthView,
+                         cellForItemAt date: Date,
+                         cellState: CellState,
+                         indexPath: IndexPath) -> JTACDayCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: dayCellReuseIdentifier, for: indexPath)
         configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         return cell
     }
     
-    public func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+    func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         configureCell(cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
     }
-    
-    public func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
+
+    public func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell? = nil, cellState: CellState, indexPath: IndexPath) {
         if cellState.selectionType == .some(.userInitiated) {
             handleDateTap(in: calendar, date: date)
         } else if let cell = cell {
@@ -403,7 +401,7 @@ extension FastisController: JTACMonthViewDelegate, JTACMonthViewDataSource  {
         }
     }
     
-    public func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
+    public func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell? = nil, cellState: CellState, indexPath: IndexPath) {
         if cellState.selectionType == .some(.userInitiated) && Value.mode == .range {
             handleDateTap(in: calendar, date: date)
         } else if let cell = cell {
@@ -411,12 +409,12 @@ extension FastisController: JTACMonthViewDelegate, JTACMonthViewDataSource  {
         }
     }
     
-    public func calendar(_ calendar: JTACMonthView, shouldSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) -> Bool {
+    public func calendar(_ calendar: JTACMonthView, shouldSelectDate date: Date, cell: JTACDayCell? = nil, cellState: CellState, indexPath: IndexPath) -> Bool {
         viewConfigs.removeAll()
         return true
     }
     
-    public func calendar(_ calendar: JTACMonthView, shouldDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) -> Bool {
+    public func calendar(_ calendar: JTACMonthView, shouldDeselectDate date: Date, cell: JTACDayCell? = nil, cellState: CellState, indexPath: IndexPath) -> Bool {
         viewConfigs.removeAll()
         return true
     }

@@ -135,7 +135,8 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
         return dataOnboarding.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.identifier, for: indexPath) as? OnboardingCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.identifier,
+                                                            for: indexPath) as? OnboardingCollectionViewCell else { return UICollectionViewCell() }
         let data = dataOnboarding[indexPath.row]
         cell.configOnboarding(data)
         return cell

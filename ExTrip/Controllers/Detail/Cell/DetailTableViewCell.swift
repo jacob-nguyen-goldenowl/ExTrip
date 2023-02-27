@@ -66,10 +66,10 @@ class DetailTableViewCell: UITableViewCell {
         reviewButton.setTitle("\(numberOfReview ?? "0") Reviews", for: .normal)
         addSubview(reviewButton)
         reviewButton.anchor(top: topAnchor, 
-                           bottom: bottomAnchor,
-                           trailing: trailingAnchor,
-                           paddingTop: padding,
-                           paddingBottom: padding, 
-                           paddingTrailing: 40)
+                            bottom: bottomAnchor,
+                            trailing: trailingAnchor,
+                            paddingTop: padding,
+                            paddingBottom: padding, 
+                            paddingTrailing: 40)
     }
 }

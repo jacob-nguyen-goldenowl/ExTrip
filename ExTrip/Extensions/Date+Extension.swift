@@ -40,4 +40,3 @@ extension Timestamp {
         return Date(timeIntervalSince1970: TimeInterval(self.seconds))
     } 
 }
-

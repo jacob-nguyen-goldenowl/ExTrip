@@ -23,16 +23,16 @@ class BookingViewModel {
                          time: BookingTime) {
         DatabaseBooking.shared.filterHotelByCity(city: city, numberOfRoom: numberOfRoom) { status in
             switch status {
-                case .success(let hotels):
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self else { return }
-                        self.checkHotelHasRooms(with: hotels, time: time) { listRoom in
-                            self.hotelsRelatedCity.value = hotels
-                            self.roomAvailible.value = listRoom
-                        }
+            case .success(let hotels):
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.checkHotelHasRooms(with: hotels, time: time) { listRoom in
+                        self.hotelsRelatedCity.value = hotels
+                        self.roomAvailible.value = listRoom
                     }
-                case .failure(let error):
-                    print(error)
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -42,15 +42,15 @@ class BookingViewModel {
         DatabaseBooking.shared.fetchAllRoomByHotel(hotelId: hotelID) { status in
             var newRooms: [RoomModel] = []
             switch status {
-                case .success(let rooms):
-                    self.checkRoomHasBooking(with: rooms, time: time) { roomAvailable in 
-                        newRooms.append(roomAvailable)
-                        DispatchQueue.main.async { [weak self] in 
-                            self?.roomAvailible.value = newRooms
-                        }
-                    }
-                case .failure(let error):
-                    print(error)    
+            case .success(let rooms):
+                self.checkRoomHasBooking(with: rooms, time: time) { roomAvailable in 
+                    newRooms.append(roomAvailable)
+                DispatchQueue.main.async { [weak self] in 
+                            self?.roomAvailible.value = newRooms 
+                }
+                }
+            case .failure(let error):
+                print(error)    
             }
         }
     }
@@ -63,13 +63,13 @@ class BookingViewModel {
         hotels.forEach {
             DatabaseBooking.shared.fetchAllRoomByHotel(hotelId: $0.id) { status in
                 switch status {
-                    case .success(let rooms):
-                        self.checkRoomHasBooking(with: rooms, time: time) { roomAvailable in 
-                            newRooms.append(roomAvailable)
-                            completion(newRooms)
-                        }
-                    case .failure(let error):
-                        print(error)    
+                case .success(let rooms):
+                    self.checkRoomHasBooking(with: rooms, time: time) { roomAvailable in 
+                        newRooms.append(roomAvailable)
+                        completion(newRooms)
+                    }
+                case .failure(let error):
+                    print(error)    
                 }
             }
         }
@@ -77,7 +77,7 @@ class BookingViewModel {
     
     func checkRoomHasBooking(with rooms: [RoomModel], 
                              time: BookingTime,
-                             completion: @escaping ((RoomModel)-> Void)) {
+                             completion: @escaping ((RoomModel) -> Void)) {
         rooms.forEach {
             self.dataBookingByRoom(room: $0, 
                                    time: time) { (room, isRoomNotAvailable)  in
@@ -93,14 +93,14 @@ class BookingViewModel {
                            completion: @escaping (RoomModel, Bool) -> Void) {
         DatabaseBooking.shared.fetchAllBookingByRoom(roomId: room.id) { status in 
             switch status {
-                case .success(let booking):
-                    if self.checkListBookingDuplicate(time: time, booking: booking) {
-                        completion(room, true)
-                    } else {
-                        completion(room, false)
-                    }
-                case .failure(let error):
-                    print(error)
+            case .success(let booking):
+                if self.checkListBookingDuplicate(time: time, booking: booking) {
+                    completion(room, true)
+                } else {
+                    completion(room, false)
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -139,4 +139,3 @@ extension BookingViewModel {
         return false
     }
 }
-

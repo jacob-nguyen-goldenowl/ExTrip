@@ -119,7 +119,7 @@ class SignUpViewController: UIViewController {
     
     private func setupHorizontalStackView() {
         horizontalStackView.addArrangedSubviews(stateTextField,
-                                                 cityTextField)
+                                                cityTextField)
         horizontalStackView.axis = .horizontal
         horizontalStackView.spacing = 20
         horizontalStackView.distribution = .fillEqually
@@ -219,4 +219,3 @@ extension SignUpViewController {
         }
     }
 }
-

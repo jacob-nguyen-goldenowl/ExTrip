@@ -18,15 +18,14 @@ class DatabaseResponse {
     private let db = Firestore.firestore()
 
     // MARK: Fetch destination data
-    public func fetchData<T: Codable>(_ collection: String,completion: @escaping([T]) -> Void) {
+    public func fetchData<T: Codable>(_ collection: String, completion: @escaping([T]) -> Void) {
         db.collection(collection).addSnapshotListener { (querySnapshot, error) in
             var data = [T]()
             if let querySnapshot = querySnapshot {
                 data = querySnapshot.documents.compactMap { document in
                     do {
                         return try document.data(as: T.self)
-                    }
-                    catch { print(error) }
+                    } catch { print(error) }
                     return nil
                 }
             }
@@ -45,8 +44,7 @@ class DatabaseResponse {
                     data = querySnapshot.documents.compactMap { document in
                         do {
                             return try document.data(as: T.self)
-                        }
-                        catch { print("Error of fetch limit data \(error)") }
+                        } catch { print("Error of fetch limit data \(error)") }
                         return nil
                     }
                     completion(data)
@@ -65,14 +63,12 @@ class DatabaseResponse {
                     data = querySnapshot.documents.compactMap { document in
                         do {
                             return try document.data(as: T.self)
-                        }
-                        catch { print(error) }
+                        } catch { print(error) }
                         return nil
                     }
                     completion(data)
                 }
             }
     } 
-    
     
 }

@@ -58,10 +58,8 @@ extension UIViewController {
             view.addSubview(mainView)
             activityIndicatorView.startAnimating()
         } else {
-            for subview in view.subviews{
-                if subview.tag == Tag.indicatoryView {
-                    subview.removeFromSuperview()
-                }
+            for subview in view.subviews where subview.tag == Tag.indicatoryView {
+                subview.removeFromSuperview()
             }
         }
         return activityIndicatorView
@@ -87,8 +85,8 @@ extension UIViewController {
     }
     
     // Set navigation with subtitle
-    func setTitle(title:String, subtitle:String) -> UIView {
-        let titleLabel = UILabel(frame: CGRectMake(0, -2, 0, 0))
+    func setTitle(title: String, subtitle: String) -> UIView {
+        let titleLabel = UILabel(frame: .init(x: 0, y: -2, width: 0, height: 0))
         
         titleLabel.backgroundColor = UIColor.clear
         titleLabel.textColor = UIColor.gray
@@ -96,14 +94,14 @@ extension UIViewController {
         titleLabel.text = title
         titleLabel.sizeToFit()
         
-        let subtitleLabel = UILabel(frame: CGRectMake(0, 18, 0, 0))
+        let subtitleLabel = UILabel(frame: .init(x: 0, y: 18, width: 0, height: 0))
         subtitleLabel.backgroundColor = UIColor.clear
         subtitleLabel.textColor = UIColor.black
         subtitleLabel.font = UIFont.boldSystemFont(ofSize: 11)
         subtitleLabel.text = subtitle
         subtitleLabel.sizeToFit()
         
-        let titleView = UIView(frame: CGRectMake(0, 0, max(titleLabel.frame.size.width, subtitleLabel.frame.size.width), 30))
+        let titleView = UIView(frame: .init(x: 0, y: 0, width: max(titleLabel.frame.size.width, subtitleLabel.frame.size.width), height: 30))
         titleView.addSubview(titleLabel)
         titleView.addSubview(subtitleLabel)
         

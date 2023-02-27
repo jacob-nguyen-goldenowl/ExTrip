@@ -151,8 +151,8 @@ class SignInViewController: UIViewController {
             if error != nil {
                 self.stopAnimation()
                 self.showAlert(title: "Notify",
-                          message: error,
-                          style: .alert)
+                               message: error,
+                               style: .alert)
             }
         }
     }

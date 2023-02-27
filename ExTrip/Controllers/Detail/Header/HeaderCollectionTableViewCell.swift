@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HeaderCollectionTableViewCellDelegate {
+protocol HeaderCollectionTableViewCellDelegate: AnyObject {
     func headerCollectionTableViewCellHandleViewAllImage(_ allImage: [String])
 }
 
@@ -15,7 +15,7 @@ class HeaderCollectionTableViewCell: UITableViewCell {
     
     static let identifier = "HeaderCollectionTableViewCell"
     
-    var delegate: HeaderCollectionTableViewCellDelegate?
+    weak var delegate: HeaderCollectionTableViewCellDelegate?
     
     var listImage: [String] = []
 
@@ -54,7 +54,7 @@ class HeaderCollectionTableViewCell: UITableViewCell {
     
 }
 
-// MARK: -  UICollectionViewDelegate, UICollectionViewDataSource
+// MARK: UICollectionViewDelegate, UICollectionViewDataSource
 extension HeaderCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -62,7 +62,8 @@ extension HeaderCollectionTableViewCell: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.identifier, for: indexPath) as? HeaderCollectionViewCell else { return HeaderCollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.identifier, 
+                                                            for: indexPath) as? HeaderCollectionViewCell else { return HeaderCollectionViewCell() }
         let index = indexPath.item
         let item = listImage[index]
         cell.setImageForHeader(item)
@@ -81,7 +82,7 @@ extension HeaderCollectionTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = indexPath.item
         let width = collectionView.bounds.size.width
-        let padding:CGFloat = 3
+        let padding: CGFloat = 3
         if item < 2 {
             let itemWidth: CGFloat = (width - padding) / 2.0
             return CGSize(width: itemWidth, height: itemWidth)
@@ -92,4 +93,3 @@ extension HeaderCollectionTableViewCell: UICollectionViewDelegateFlowLayout {
     }
     
 }
-

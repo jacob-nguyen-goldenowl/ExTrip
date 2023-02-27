@@ -133,16 +133,16 @@ class RoomResultTableViewCell: ETTableViewCell {
                                   paddingTrailing: paddingSize)
         
         roomDetailHorizontalStackView.anchor(top: posterImageView.bottomAnchor,
-                                   leading: boxView.leadingAnchor, 
-                                   trailing: boxView.trailingAnchor,
-                                   paddingTop: paddingSize,
-                                   paddingBottom: paddingSize) 
+                                             leading: boxView.leadingAnchor, 
+                                             trailing: boxView.trailingAnchor,
+                                             paddingTop: paddingSize,
+                                             paddingBottom: paddingSize) 
         roomDetailHorizontalStackView.setHeight(height: 30)
         
         roomPriceVerticalStackView.anchor(top: roomDetailHorizontalStackView.bottomAnchor,
-                                 trailing: boxView.trailingAnchor,
-                                 paddingTop: paddingTop,
-                                 paddingTrailing: padding)
+                                          trailing: boxView.trailingAnchor,
+                                          paddingTop: paddingTop,
+                                          paddingTrailing: padding)
         
         bookButton.anchor(top: roomPriceVerticalStackView.bottomAnchor,
                           bottom: boxView.bottomAnchor,
@@ -157,15 +157,15 @@ class RoomResultTableViewCell: ETTableViewCell {
     private func setupHorizontalStackView() {
         roomDetailHorizontalStackView.removeAllArrangedSubviews()
         roomDetailHorizontalStackView.addArrangedSubviews(roomSizeLabel,
-                                                occupancyLabel,
-                                                numberOfBedLabel)
+                                                          occupancyLabel,
+                                                          numberOfBedLabel)
     }
     
     private func setupVeticalStackView() {
         roomPriceVerticalStackView.removeAllArrangedSubviews()
         roomPriceVerticalStackView.addArrangedSubviews(defaultPriceLabel,
-                                              afftercashbackLabel,
-                                              priceLabel)
+                                                       afftercashbackLabel,
+                                                       priceLabel)
         defaultPriceLabel.textColor = .red
         defaultPriceLabel.textAlignment = .right
         priceLabel.textAlignment = .right

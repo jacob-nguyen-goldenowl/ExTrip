@@ -18,20 +18,20 @@ enum Filter: Int {
     
     var title: String {
         switch self {
-            case .price:
-                return "Price Range"
-            case .rating:
-                return "Guest rating"
-            case .hotel:
-                return "Hotel Class"
-            case .sevice:
-                return "Service & Facilities"
-            case .type: 
-                return "Property Type"
-            case .bed:
-                return "Bed Type"
-            case .payment: 
-                return "Payment"
+        case .price:
+            return "Price Range"
+        case .rating:
+            return "Guest rating"
+        case .hotel:
+            return "Hotel Class"
+        case .sevice:
+            return "Service & Facilities"
+        case .type: 
+            return "Property Type"
+        case .bed:
+            return "Bed Type"
+        case .payment: 
+            return "Payment"
         }
     }
     
@@ -197,57 +197,57 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
-            case Filter.price.rawValue,
-                 Filter.rating.rawValue,
-                 Filter.hotel.rawValue:
-                return 100
-            default:
-                return 60
+        case Filter.price.rawValue,
+                Filter.rating.rawValue,
+                Filter.hotel.rawValue:
+            return 100
+        default:
+            return 60
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         switch row {
-            case Filter.price.rawValue:
-                guard let  cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier, for: indexPath) as? PriceTableViewCell else { return PriceTableViewCell() }
-                cell.priceValue = { [weak self] value in
-                    self?.rangePrice = value
-                }
-                cell.rangePrice = rangePrice
-                cell.title = "Price Range"
-                return cell
-                
-            case Filter.rating.rawValue:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.identifier, for: indexPath) as? RatingTableViewCell else { return RatingTableViewCell() }
-                cell.currentValue = { [weak self] value in
-                    self?.currentRating = value
-                }
-                cell.ratingValue = Float(currentRating ?? 0.0)
-                cell.title = "Guest Rating"
-                return cell
-                
-            case Filter.hotel.rawValue:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: HotelClassTableViewCell.identifier, for: indexPath) as? HotelClassTableViewCell else { return HotelClassTableViewCell() }
-                cell.currentStar = { [weak self] star in
-                    self?.currentStar = star
-                }
-                cell.starIndex = currentStar
-                cell.title = "Hotel Class"
-                return cell
-                	
-            case Filter.sevice.rawValue,
-                 Filter.type.rawValue,
-                 Filter.bed.rawValue,
-                 Filter.payment.rawValue:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: FilterTableViewCell.mainIdentifier, for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
-                cell.accessoryType  = .disclosureIndicator
-                cell.selectionStyle = .default
-                cell.textLabel?.text = filtes[row].title
-                return cell
-                
-            default:  
-                return UITableViewCell()
+        case Filter.price.rawValue:
+            guard let  cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier,
+                                                            for: indexPath) as? PriceTableViewCell else { return PriceTableViewCell() }
+            cell.priceValue = { [weak self] value in
+                self?.rangePrice = value
+            }
+            cell.rangePrice = rangePrice
+            cell.title = "Price Range"
+            return cell
+        case Filter.rating.rawValue:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.identifier,
+                                                           for: indexPath) as? RatingTableViewCell else { return RatingTableViewCell() }
+            cell.currentValue = { [weak self] value in
+                self?.currentRating = value
+            }
+            cell.ratingValue = Float(currentRating ?? 0.0)
+            cell.title = "Guest Rating"
+            return cell
+        case Filter.hotel.rawValue:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HotelClassTableViewCell.identifier,
+                                                           for: indexPath) as? HotelClassTableViewCell else { return HotelClassTableViewCell() }
+            cell.currentStar = { [weak self] star in
+                self?.currentStar = star
+            }
+            cell.starIndex = currentStar
+            cell.title = "Hotel Class"
+            return cell
+        case Filter.sevice.rawValue,
+             Filter.type.rawValue,
+             Filter.bed.rawValue,
+             Filter.payment.rawValue:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FilterTableViewCell.mainIdentifier,
+                                                           for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
+            cell.accessoryType  = .disclosureIndicator
+            cell.selectionStyle = .default
+            cell.textLabel?.text = filtes[row].title
+            return cell
+        default:  
+            return UITableViewCell()
         }
     }
     
@@ -257,58 +257,56 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = TypeViewController()
         vc.text = filtes[row].title
         switch row {
-            case Filter.sevice.rawValue:
-                vc.valueAllTypes = service
-                vc.saveCheckBoxPosition = { [weak self] position in
-                    self?.positionService = position
-                }
-                vc.selectedRows = positionService
+        case Filter.sevice.rawValue:
+            vc.valueAllTypes = service
+            vc.saveCheckBoxPosition = { [weak self] position in
+                self?.positionService = position
+            }
+            vc.selectedRows = positionService
                 
-                vc.doneHandler = { [weak self] value in 
-                    self?.currentValueService = value
-                }
-                vc.currentValue = currentValueService
+            vc.doneHandler = { [weak self] value in 
+                self?.currentValueService = value
+            }
+            vc.currentValue = currentValueService
+            present(vc, animated: true)
+        case Filter.type.rawValue:
+            vc.valueAllTypes = property
+            vc.saveCheckBoxPosition = { [weak self] position in
+                self?.positionProperty = position
+            }
+            vc.selectedRows = positionProperty
+            
+            vc.doneHandler = { [weak self] value in 
+                self?.currentValueProperty = value
+            }
+            vc.currentValue = currentValueProperty
+            present(vc, animated: true)
+        case Filter.bed.rawValue:
+            vc.valueAllTypes = bed
+            vc.saveCheckBoxPosition = { [weak self] position in
+                self?.positionBed = position
+            }
+            vc.selectedRows = positionBed
                 
-                present(vc, animated: true)
-            case Filter.type.rawValue:
-                vc.valueAllTypes = property
-                vc.saveCheckBoxPosition = { [weak self] position in
-                    self?.positionProperty = position
-                }
-                vc.selectedRows = positionProperty
+            vc.doneHandler = { [weak self] value in 
+                self?.currentValueBed = value
+            }
+            vc.currentValue = currentValueBed
+            present(vc, animated: true)
+        case Filter.payment.rawValue:
+            vc.valueAllTypes = payment
+            vc.saveCheckBoxPosition = { [weak self] position in
+                self?.positionPayment = position
+            }
+            vc.selectedRows = positionPayment
                 
-                vc.doneHandler = { [weak self] value in 
-                    self?.currentValueProperty = value
-                }
-                vc.currentValue = currentValueProperty
-                
-                present(vc, animated: true)
-            case Filter.bed.rawValue:
-                vc.valueAllTypes = bed
-                vc.saveCheckBoxPosition = { [weak self] position in
-                    self?.positionBed = position
-                }
-                vc.selectedRows = positionBed
-                
-                vc.doneHandler = { [weak self] value in 
-                    self?.currentValueBed = value
-                }
-                vc.currentValue = currentValueBed
-                present(vc, animated: true)
-            case Filter.payment.rawValue:
-                vc.valueAllTypes = payment
-                vc.saveCheckBoxPosition = { [weak self] position in
-                    self?.positionPayment = position
-                }
-                vc.selectedRows = positionPayment
-                
-                vc.doneHandler = { [weak self] value in 
-                    self?.currentValuePayment = value
-                }
-                vc.currentValue = currentValuePayment
-                present(vc, animated: true)
-            default:
-                print("nil")
+            vc.doneHandler = { [weak self] value in 
+                self?.currentValuePayment = value
+            }
+            vc.currentValue = currentValuePayment
+            present(vc, animated: true)
+        default:
+            print("nil")
         }
     }
 }
@@ -319,7 +317,6 @@ extension FilterViewController {
         navigationController?.popViewController(animated: false)
     }
 }
-
 
 // MARK: - Setup notification
 extension FilterViewController {
@@ -339,4 +336,3 @@ extension FilterViewController {
         NotificationCenter.default.post(name: NSNotification.Name(UserDefaultKey.loadingNotify), object: dataNeedFilter)
     }
 }
-

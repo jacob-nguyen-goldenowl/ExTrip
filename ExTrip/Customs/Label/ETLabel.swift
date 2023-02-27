@@ -32,20 +32,18 @@ class ETLabel: UILabel {
         self.backgroundColor = .clear
         self.font = .poppins(style: .bold, size: size ?? 11)
         switch style {
-            case .small: 
-                self.textAlignment = textAlignment
-            case .nomal: 
-                self.textAlignment = textAlignment
-                self.font = .poppins(style: .bold, size: 12)
-                self.backgroundColor = UIColor.theme.tertiarySystemFill
-            case .medium:
-                self.textAlignment = textAlignment
-                self.textColor = UIColor.theme.lightGreen ?? .green
-            case .large:
-                self.textAlignment = textAlignment
-                self.font = .poppins(style: .bold, size: 15)
+        case .small: 
+            self.textAlignment = textAlignment
+        case .nomal: 
+            self.textAlignment = textAlignment
+            self.font = .poppins(style: .bold, size: 12)
+            self.backgroundColor = UIColor.theme.tertiarySystemFill
+        case .medium:
+            self.textAlignment = textAlignment
+            self.textColor = UIColor.theme.lightGreen ?? .green
+        case .large:
+            self.textAlignment = textAlignment
+            self.font = .poppins(style: .bold, size: 15)
         } 
     }
 }
-
-

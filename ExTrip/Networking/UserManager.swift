@@ -20,7 +20,7 @@ class UserManager {
     func saveUserInfo(_ uid: String) {
         let docRef = db.collection("users").document(uid)
         
-        docRef.getDocument { [self] (document, error) in
+        docRef.getDocument { [self] (document, _) in
             if let document = document?.data() {
                 userDefault.set(uid, forKey: UserDefaultKey.userId)
                 userDefault.set(document["email"], forKey: UserDefaultKey.userEmail)

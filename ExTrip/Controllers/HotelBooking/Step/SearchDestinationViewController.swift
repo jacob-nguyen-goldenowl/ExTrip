@@ -154,7 +154,8 @@ extension SearchDestinationViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchDestinationTableViewCell.indentifier, for: indexPath) as? SearchDestinationTableViewCell else { return SearchDestinationTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchDestinationTableViewCell.indentifier, 
+                                                       for: indexPath) as? SearchDestinationTableViewCell else { return SearchDestinationTableViewCell() }
         let hotel = hotels[indexPath.item]
         cell.titleText = hotel.name
         cell.addressText = hotel.address

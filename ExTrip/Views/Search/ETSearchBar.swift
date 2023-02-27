@@ -43,7 +43,7 @@ class ETSearchBar: UISearchBar {
     
     private func changeColorOfCancelButton() {
         let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
     }
     
     func setLeftImage(_ image: UIImage? = UIImage(named: "search"), with padding: CGFloat = 0, isLoading: Bool) {
@@ -69,7 +69,12 @@ class ETSearchBar: UISearchBar {
         } else {
             self.searchTextField.leftView = isLoading ? activityIndicator : iconImageView
         }
-        isLoading ? startIndicator() : stopIndicator()
+//        isLoading ? startIndicator() : stopIndicator()
+        if isLoading {
+            startIndicator()
+        } else {
+            stopIndicator()
+        }
     }
     
     private func startIndicator() {
@@ -80,6 +85,4 @@ class ETSearchBar: UISearchBar {
         activityIndicator.stopAnimating()
         activityIndicator.hidesWhenStopped = true
     }
-
 }
-

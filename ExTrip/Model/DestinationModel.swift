@@ -13,4 +13,3 @@ struct DestinationModel: Codable {
     var rating: String
     var image: String
 }
-

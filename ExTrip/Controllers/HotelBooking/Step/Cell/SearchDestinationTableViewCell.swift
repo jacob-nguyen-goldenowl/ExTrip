@@ -92,7 +92,7 @@ class SearchDestinationTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-        //MARK: - Setup UI
+    // MARK: - Setup UI
     private func setupSubView() {
         addSubview(boxView)
         boxView.addSubviews(containerView,

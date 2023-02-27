@@ -28,7 +28,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private lazy var namecountryLabel: UILabel = {
         let label = UILabel()
-        label.font = .poppins(style: .bold,size: 17)
+        label.font = .poppins(style: .bold, size: 17)
         label.textColor = UIColor.theme.white ?? .white
         return label
     }()
@@ -81,4 +81,3 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
 }
-

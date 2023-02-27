@@ -32,7 +32,6 @@ class ViewAllCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubView()

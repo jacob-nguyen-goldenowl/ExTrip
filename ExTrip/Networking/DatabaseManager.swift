@@ -29,15 +29,15 @@ class DatabaseManager {
     }
     
     // Insert new user
-    public func insertNewUser(with info: UserInfoModel, uid: String , completion: @escaping(Bool) -> Void) {
+    public func insertNewUser(with info: UserInfoModel, uid: String, completion: @escaping(Bool) -> Void) {
         let users = fireStore.collection("users").document(uid)
         
         users.setData(info.dictionary) { error in 
             if error == nil {
-                // success
+                // Success
                 completion(true)
             } else {
-                // failed
+                // Failed
                 completion(false)
             }
         }
@@ -50,4 +50,3 @@ fileprivate extension String {
         return self.replacingOccurrences(of: "@", with: "-").replacingOccurrences(of: ".", with: "-")
     }
 }
-

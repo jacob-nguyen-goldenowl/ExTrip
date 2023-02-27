@@ -14,7 +14,7 @@ class RoomViewController: UIViewController {
                                                        children: 0,
                                                        infants: 0) 
     
-    var doneHandler:((RoomBookingModel) -> Void)?
+    var doneHandler: ((RoomBookingModel) -> Void)?
     var initialValue: RoomBookingModel?
 
     // MARK: - Properties
@@ -122,34 +122,34 @@ extension RoomViewController: UITableViewDelegate, UITableViewDataSource {
         let row = indexPath.row
 
         switch row {
-            case 0:
-                cell.title = "Room"
-                cell.quantityGuests = roomModel.room
-                cell.getValue = { value in
-                    self.roomModel.room = value ?? 0
-                }
-            case 1:
-                cell.title = "Adult"
-                cell.quantityGuests = roomModel.adults
-                cell.getValue = { value in 
-                    self.roomModel.adults = value ?? 0
-                }
-            case 2:
-                cell.title = "Children"
-                cell.quantityGuests = roomModel.children
-                cell.subTitle = "Ages 2 - 15"
-                cell.getValue = { value in 
-                    self.roomModel.children = value ?? 0
-                }
-            case 3:
-                cell.title = "Infant"
-                cell.quantityGuests = roomModel.infants
-                cell.subTitle = "Under 2"
-                cell.getValue = { value in 
-                    self.roomModel.infants = value ?? 0
-                }
-            default:
-                return cell
+        case 0:
+            cell.title = "Room"
+            cell.quantityGuests = roomModel.room
+            cell.getValue = { value in
+                self.roomModel.room = value ?? 0
+            }
+        case 1:
+            cell.title = "Adult"
+            cell.quantityGuests = roomModel.adults
+            cell.getValue = { value in 
+                self.roomModel.adults = value ?? 0
+            }
+        case 2:
+            cell.title = "Children"
+            cell.quantityGuests = roomModel.children
+            cell.subTitle = "Ages 2 - 15"
+            cell.getValue = { value in 
+                self.roomModel.children = value ?? 0
+            }
+        case 3:
+            cell.title = "Infant"
+            cell.quantityGuests = roomModel.infants
+            cell.subTitle = "Under 2"
+            cell.getValue = { value in 
+                self.roomModel.infants = value ?? 0
+            }
+        default:
+            return cell
         }
         cell.selectionStyle = .none
         cell.indexPath = indexPath

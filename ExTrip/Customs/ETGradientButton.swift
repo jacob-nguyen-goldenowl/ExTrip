@@ -87,21 +87,21 @@ final class ETGradientButton: UIButton {
         cornerRadius = 20
 
         switch style {
-            case .small: 
-                setTitle(title.rawValue, for: .normal)
-                self.backgroundColor = nil
-                titleLabel?.font = UIFont.poppins(style: .regular)
-            case .nomal:
-                cornerRadius = 10
-                setTitle(title.rawValue, for: .normal)
-                self.backgroundColor = backgroundColor ?? .white
-                self.titleColor = titleColor ?? .black
-            case .mysticBlue:
-                topColor = UIColor.theme.lightBlue
-                bottomColor = UIColor.theme.lightGreen
-            case .dreamyPurple:
-                topColor = UIColor.theme.serenade
-                bottomColor = UIColor.theme.violet
+        case .small: 
+            setTitle(title.rawValue, for: .normal)
+            self.backgroundColor = nil
+            titleLabel?.font = UIFont.poppins(style: .regular)
+        case .nomal:
+            cornerRadius = 10
+            setTitle(title.rawValue, for: .normal)
+            self.backgroundColor = backgroundColor ?? .white
+            self.titleColor = titleColor ?? .black
+        case .mysticBlue:
+            topColor = UIColor.theme.lightBlue
+            bottomColor = UIColor.theme.lightGreen
+        case .dreamyPurple:
+            topColor = UIColor.theme.serenade
+            bottomColor = UIColor.theme.violet
         }
     }
     

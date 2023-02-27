@@ -68,9 +68,9 @@ class HotelTableViewCell: ETTableViewCell {
         addressLabel.setHeight(height: 20)
         
         starView.anchor(top: addressLabel.bottomAnchor,
-                                   leading: posterImageView.trailingAnchor,
-                                   paddingTop: 5, 
-                                   paddingLeading: paddingLeft)
+                        leading: posterImageView.trailingAnchor,
+                        paddingTop: 5, 
+                        paddingLeading: paddingLeft)
         starView.setHeight(height: 15)
         
         reviewLabel.anchor(top: addressLabel.bottomAnchor,
@@ -108,7 +108,4 @@ class HotelTableViewCell: ETTableViewCell {
         roomInfoLabel.text = "\(data.numberOfRoom) room - 1 night (incl.taxes)"
         starView.rating = data.star
     }
-    
 }
-
-

@@ -1,12 +1,12 @@
-    //
-    //  CagegoryCollectionReusableView.swift
-    //  ExTrip
-    //
-    //  Created by Nguyễn Hữu Toàn on 14/12/2022.
-    //
+//
+//  CagegoryCollectionReusableView.swift
+//  ExTrip
+//
+//  Created by Nguyễn Hữu Toàn on 14/12/2022.
+//
 import UIKit
 
-protocol CategoryCollectionReusableViewDelegate {
+protocol CategoryCollectionReusableViewDelegate: AnyObject {
     func categoryCollectionReusableViewhandleHotelBooking() 
     func categoryCollectionReusableViewhandleFilghtBooking()
     func categoryCollectionReusableViewhandleEvent()
@@ -16,7 +16,7 @@ class CategoryCollectionReusableView: UICollectionReusableView {
     
     static let identifier = "CategoryCollectionReusableView"
     
-    var delegate: CategoryCollectionReusableViewDelegate?
+    weak var delegate: CategoryCollectionReusableViewDelegate?
     
     private let categoryStackView = UIStackView()
     private let titleStackView = UIStackView()

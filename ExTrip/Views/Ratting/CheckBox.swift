@@ -39,7 +39,7 @@ class CheckBox: UIButton {
     // Bool property
     var isChecked: Bool = false {
         didSet {
-            if isChecked == true {
+            if isChecked {
                 backgroundColor = UIColor.theme.yellow
                 starImage.tintColor = UIColor.theme.white
                 currentStar?(numberOfStar ?? 5)
@@ -62,7 +62,7 @@ class CheckBox: UIButton {
     private func setup() {
         addSubviews(numberOfStarLabel,
                     starImage)
-        addTarget(self, action:#selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
+        addTarget(self, action: #selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
         isChecked = false
         backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.6)
         layer.cornerRadius = 5
@@ -73,18 +73,18 @@ class CheckBox: UIButton {
     private func setupConstraints() {
         let padding: CGFloat = 6
         starImage.anchor(top: topAnchor,
-                               bottom: bottomAnchor,
-                               trailing: trailingAnchor, 
-                               paddingTop: padding,
-                               paddingBottom: padding,
-                               paddingLeading: padding,
-                               paddingTrailing: padding)
+                         bottom: bottomAnchor,
+                         trailing: trailingAnchor, 
+                         paddingTop: padding,
+                         paddingBottom: padding,
+                         paddingLeading: padding,
+                         paddingTrailing: padding)
         starImage.setWidth(width: 25)
         
         numberOfStarLabel.anchor(top: topAnchor, 
-                                bottom: bottomAnchor,
-                                leading: leadingAnchor,
-                                paddingLeading: padding)
+                                 bottom: bottomAnchor,
+                                 leading: leadingAnchor,
+                                 paddingLeading: padding)
         numberOfStarLabel.setWidth(width: 25)
     }
     

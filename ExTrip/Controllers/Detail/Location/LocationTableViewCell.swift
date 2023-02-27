@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-protocol LocationTableViewCellDelegate {
+protocol LocationTableViewCellDelegate: AnyObject {
     func locationTableViewCellHandleSeeMap()
 }
 
@@ -16,7 +16,7 @@ class LocationTableViewCell: DetailTableViewCell {
     
     static let identifier = "LocationTableViewCell"
     
-    var delegate: LocationTableViewCellDelegate?
+    weak var delegate: LocationTableViewCellDelegate?
     
     var descriptionLocation: String? {
         didSet {
@@ -194,36 +194,40 @@ class LocationTableViewCell: DetailTableViewCell {
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: latitude, longitude: longitude)
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            if error != nil {
+            guard error == nil, let pm = placemarks, !pm.isEmpty else {
                 completion(nil, error)
-            } else if let pm = placemarks, !pm.isEmpty {
-                let pm = placemarks![0]
-                var address: String = ""
-                if pm.subThoroughfare != nil {
-                    address = address + pm.subThoroughfare! + " "
+                return
+            }
+            var address: String = ""
+
+            if let pm = placemarks, !pm.isEmpty {
+                let place = placemarks![0] 
+                
+                if place.subThoroughfare != nil {
+                    address = address + place.subThoroughfare! + " "
                 }
                 
-                if pm.thoroughfare != nil {
-                    address = address + pm.thoroughfare! + ", "
+                if place.thoroughfare != nil {
+                    address = address + place.thoroughfare! + ", "
                 }
                 
-                if pm.subLocality != nil {
-                    address = address + pm.subLocality! + ", "
+                if place.subLocality != nil {
+                    address = address + place.subLocality! + ", "
                 }
                 
-                if pm.subAdministrativeArea != nil {
-                    address = address + pm.subAdministrativeArea! + ", "
+                if place.subAdministrativeArea != nil {
+                    address = address + place.subAdministrativeArea! + ", "
                 }
                 
-                if pm.locality != nil {
-                    address = address + pm.locality! + ", "
+                if place.locality != nil {
+                    address = address + place.locality! + ", "
                 }
                 
-                if pm.country != nil {
-                    address = address + pm.country! + " "
+                if place.country != nil {
+                    address = address + place.country! + " "
                 }
-                if pm.postalCode != nil {
-                    address = address + pm.postalCode! + " "
+                if place.postalCode != nil {
+                    address = address + place.postalCode! + " "
                 }
                 completion(address, nil)
             }

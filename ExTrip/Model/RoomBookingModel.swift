@@ -21,4 +21,3 @@ struct RoomBookingModel {
         return adults + children + infants
     }
 }
-

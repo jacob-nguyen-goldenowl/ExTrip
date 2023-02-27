@@ -17,7 +17,7 @@ class DatabaseBooking {
     private let db = Firestore.firestore()
     
     // MARK: - Fetch all hotels
-    func filterHotelByCity(city: String, numberOfRoom: Int , completion: @escaping (Result<[HotelModel], Error>) -> Void) {
+    func filterHotelByCity(city: String, numberOfRoom: Int, completion: @escaping (Result<[HotelModel], Error>) -> Void) {
         db.collection("hotels")
             .whereField("city", isEqualTo: city)
             .whereField("numberOfRoom", isGreaterThanOrEqualTo: numberOfRoom)
@@ -28,8 +28,8 @@ class DatabaseBooking {
                         do {
                             let result = try document.data(as: HotelModel.self)
                             return result
-                        }
-                        catch { completion(.failure(error)) }
+                        
+                        } catch { completion(.failure(error)) }
                         return nil
                     }
                 }
@@ -48,8 +48,7 @@ class DatabaseBooking {
                         do {
                             let result = try document.data(as: RoomModel.self)
                             return result
-                        }
-                        catch { completion(.failure(error)) }
+                        } catch { completion(.failure(error)) }
                         return nil
                     }
                 }
@@ -68,8 +67,7 @@ class DatabaseBooking {
                         do {
                             let result = try document.data(as: BookingModel.self)
                             return result
-                        }
-                        catch { completion(.failure(error)) }
+                        } catch { completion(.failure(error)) }
                         return nil
                     }
                 }
@@ -87,8 +85,7 @@ class DatabaseBooking {
                         do {
                             let result = try document.data(as: BookingModel.self)
                             return result
-                        }
-                        catch { completion(.failure(error)) }
+                        } catch { completion(.failure(error)) }
                         return nil
                     }
                 }
@@ -105,8 +102,7 @@ class DatabaseBooking {
                         do {
                             let result = try document.data(as: BookingModel.self)
                             return result
-                        }
-                        catch { completion(.failure(error)) }
+                        } catch { completion(.failure(error)) }
                         return nil
                     }
                 }
@@ -115,4 +111,3 @@ class DatabaseBooking {
     }
     
 }
-

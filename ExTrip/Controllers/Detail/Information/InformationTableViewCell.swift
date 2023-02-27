@@ -73,7 +73,7 @@ class InformationTableViewCell: DetailTableViewCell {
     
 }
 
-// MARK: -  UICollectionViewDelegate, UICollectionViewDataSource
+// MARK: UICollectionViewDelegate, UICollectionViewDataSource
 extension InformationTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -81,7 +81,8 @@ extension InformationTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfomationCollectionViewCell.identifier, for: indexPath) as? InfomationCollectionViewCell else { return InfomationCollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfomationCollectionViewCell.identifier,
+                                                            for: indexPath) as? InfomationCollectionViewCell else { return InfomationCollectionViewCell() }
         let item = model[indexPath.row]
         cell.setDataForInformation(item)
         return cell 
@@ -102,4 +103,3 @@ extension InformationTableViewCell: UICollectionViewDelegateFlowLayout {
     }
     
 }
-
