@@ -248,14 +248,25 @@ extension InfoUserTableViewCell {
     }
     
     @objc func handleNameEmptyAction(_ notification: Notification) {
+    
         if let name = userNameTextField.text, name.isEmpty {
             userNameTextField.separatorLineViewColor = .red
-        } 
-        if let email = emailTextField.text, email.isEmpty {
+        }
+        if let email = emailTextField.text, !email.isEmpty {
+            if !email.isValidEmail() {
+                emailTextField.separatorLineViewColor = .red
+            }
+        } else {
             emailTextField.separatorLineViewColor = .red
         }
-        if let phone = phoneTextField.text, phone.isEmpty {
+        
+        if let phone = phoneTextField.text, !phone.isEmpty {
+            if !phone.isNumber() {
+                phoneTextField.separatorLineViewColor = .red
+            }
+        } else {
             phoneTextField.separatorLineViewColor = .red
         }
+        
     }
 }
