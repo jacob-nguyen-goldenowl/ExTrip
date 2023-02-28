@@ -13,7 +13,7 @@ extension UILabel {
         
         let range = NSString(string: text).range(of: search)
         let highlightColor = traitCollection.userInterfaceStyle == .light ? UIColor.theme.primary : UIColor.systemBlue
-        let highlightedAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: highlightColor]
+        let highlightedAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: highlightColor ?? .blue]
         
         attributedText.addAttributes(highlightedAttributes, range: range) 
         self.attributedText = attributedText

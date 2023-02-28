@@ -27,4 +27,6 @@ pod 'AORangeSlider', '~> 1.0'
 
 pod 'SwiftLint'
 
+pod 'lottie-ios'
+
 end

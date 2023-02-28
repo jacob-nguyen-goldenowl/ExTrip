@@ -39,6 +39,8 @@
 		046D389E296FB7B6000DE1AB /* ViewAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D389D296FB7B6000DE1AB /* ViewAllViewController.swift */; };
 		046D38A1296FB8A0000DE1AB /* ViewAllCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D38A0296FB8A0000DE1AB /* ViewAllCollectionViewCell.swift */; };
 		046D38A8296FFEE8000DE1AB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D38A7296FFEE8000DE1AB /* SearchViewController.swift */; };
+		046FC04B29AE66B800A7AEE4 /* ETRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */; };
+		046FC04D29AE7AB000A7AEE4 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */; };
 		0476EBC3299C77CD00000189 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */; };
 		0476EBCA299CCABF00000189 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */; };
 		0476EBD3299CE3DA00000189 /* RoomResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */; };
@@ -63,6 +65,14 @@
 		0486B8F529658BA800940B40 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8F429658BA800940B40 /* FilterTableViewCell.swift */; };
 		0486B8F72965911300940B40 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8F62965911300940B40 /* PriceTableViewCell.swift */; };
 		048942402972DD2B0051A207 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489423F2972DD2B0051A207 /* SearchViewModel.swift */; };
+		048D7A5029AD9A5F008BBE6A /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D7A4F29AD9A5F008BBE6A /* PaymentViewController.swift */; };
+		048D7A5229AD9B86008BBE6A /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D7A5129AD9B86008BBE6A /* PaymentTableViewCell.swift */; };
+		048D7A5429ADAA29008BBE6A /* ConfirmPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D7A5329ADAA29008BBE6A /* ConfirmPaymentViewController.swift */; };
+		048D7A5929ADAB32008BBE6A /* ConfirmHotelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D7A5829ADAB32008BBE6A /* ConfirmHotelTableViewCell.swift */; };
+		048D7A5B29ADAB3E008BBE6A /* ConfirmPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D7A5A29ADAB3E008BBE6A /* ConfirmPriceTableViewCell.swift */; };
+		048D7A6029ADB419008BBE6A /* ETConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D7A5F29ADB419008BBE6A /* ETConfirmTableViewCell.swift */; };
+		048D7A6729ADDB18008BBE6A /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 048D7A6629ADDB18008BBE6A /* loading.json */; };
+		048D7A6929ADDB65008BBE6A /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D7A6829ADDB65008BBE6A /* LottieView.swift */; };
 		0499705E29921697008BDBDA /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499705D29921697008BDBDA /* RoomModel.swift */; };
 		049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996ED2947234E005033C9 /* SignUpViewModel.swift */; };
 		049996F02947235D005033C9 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049996EF2947235D005033C9 /* DatabaseManager.swift */; };
@@ -157,6 +167,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
 		040911FD2946E11E00C8525F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		040911FF2946E15300C8525F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		040912012946E1DD00C8525F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -189,6 +200,8 @@
 		046D389D296FB7B6000DE1AB /* ViewAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllViewController.swift; sourceTree = "<group>"; };
 		046D38A0296FB8A0000DE1AB /* ViewAllCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllCollectionViewCell.swift; sourceTree = "<group>"; };
 		046D38A7296FFEE8000DE1AB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRippleButton.swift; sourceTree = "<group>"; };
+		046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResultViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +226,14 @@
 		0486B8F429658BA800940B40 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		0486B8F62965911300940B40 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
 		0489423F2972DD2B0051A207 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		048D7A4F29AD9A5F008BBE6A /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		048D7A5129AD9B86008BBE6A /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
+		048D7A5329ADAA29008BBE6A /* ConfirmPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPaymentViewController.swift; sourceTree = "<group>"; };
+		048D7A5829ADAB32008BBE6A /* ConfirmHotelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmHotelTableViewCell.swift; sourceTree = "<group>"; };
+		048D7A5A29ADAB3E008BBE6A /* ConfirmPriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPriceTableViewCell.swift; sourceTree = "<group>"; };
+		048D7A5F29ADB419008BBE6A /* ETConfirmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETConfirmTableViewCell.swift; sourceTree = "<group>"; };
+		048D7A6629ADDB18008BBE6A /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		048D7A6829ADDB65008BBE6A /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		0499705D29921697008BDBDA /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
 		049996ED2947234E005033C9 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		049996EF2947235D005033C9 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -305,9 +326,8 @@
 		04F7DE03295452320020494F /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		04F7DE04295452320020494F /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		04F7DE05295452320020494F /* WeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
-		1562EE31EE92B9F5A1EBDC72 /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
 		3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C294052A5F3A465206D25481 /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
+		BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				045D0323298A28030071EFB7 /* LoadingView.swift */,
+				048D7A6829ADDB65008BBE6A /* LottieView.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -421,10 +442,9 @@
 		0476EBD1299CE3C300000189 /* Room */ = {
 			isa = PBXGroup;
 			children = (
-				0476EC08299F756600000189 /* ReviewBook */,
+				0476EBE4299E0EF600000189 /* ChooseRoomViewController.swift */,
 				0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */,
 				0476EBD4299CE3DE00000189 /* Cell */,
-				0476EBE4299E0EF600000189 /* ChooseRoomViewController.swift */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -508,6 +528,42 @@
 				0429EDF82966912C0067F906 /* HotelClassTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		048D7A4E29AD9A47008BBE6A /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				048D7A4F29AD9A5F008BBE6A /* PaymentViewController.swift */,
+				048D7A5129AD9B86008BBE6A /* PaymentTableViewCell.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		048D7A5529ADAA32008BBE6A /* Confirm */ = {
+			isa = PBXGroup;
+			children = (
+				048D7A5329ADAA29008BBE6A /* ConfirmPaymentViewController.swift */,
+				048D7A5E29ADAB54008BBE6A /* Cell */,
+			);
+			path = Confirm;
+			sourceTree = "<group>";
+		};
+		048D7A5E29ADAB54008BBE6A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				048D7A5829ADAB32008BBE6A /* ConfirmHotelTableViewCell.swift */,
+				048D7A5A29ADAB3E008BBE6A /* ConfirmPriceTableViewCell.swift */,
+				048D7A5F29ADB419008BBE6A /* ETConfirmTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		048D7A6529ADDAB4008BBE6A /* Lotties */ = {
+			isa = PBXGroup;
+			children = (
+				048D7A6629ADDB18008BBE6A /* loading.json */,
+			);
+			path = Lotties;
 			sourceTree = "<group>";
 		};
 		049996F8294738CB005033C9 /* Home */ = {
@@ -676,8 +732,8 @@
 			children = (
 				04BF562C294193B200BCF4A5 /* ExTrip */,
 				04BF562B294193B200BCF4A5 /* Products */,
-				2DA043B931954E46AACE9358 /* Pods */,
 				F4714DDEB9475F6DCCBC49CA /* Frameworks */,
+				28DB43A2E7B5DC8A58621997 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -726,6 +782,7 @@
 		04BF564229419AB600BCF4A5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				048D7A6529ADDAB4008BBE6A /* Lotties */,
 				04BF56452941A2EF00BCF4A5 /* Fonts */,
 				04BF564429419AF800BCF4A5 /* Colors */,
 				04BF5636294193B300BCF4A5 /* Assets.xcassets */,
@@ -778,6 +835,7 @@
 				0481D3FF2973FC8E00EACB93 /* UILabel+Extension.swift */,
 				04EC5A58298B983100B6D80D /* UIImage+Extension.swift */,
 				0443CC99299354A70014E557 /* Date+Extension.swift */,
+				046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -794,6 +852,7 @@
 				044587DD2943174B009195F2 /* ETTextField.swift */,
 				04AB54312952A810005D5C31 /* ETSearchTextField.swift */,
 				0476EBDC299DE78B00000189 /* ETRoomButton.swift */,
+				046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -857,6 +916,9 @@
 		04BF56852942434000BCF4A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0476EC08299F756600000189 /* ReviewBook */,
+				048D7A5529ADAA32008BBE6A /* Confirm */,
+				048D7A4E29AD9A47008BBE6A /* Payment */,
 				0476EBD1299CE3C300000189 /* Room */,
 				04AC7E68298CC99000689EB2 /* Booking */,
 				04BB31BE296FAA1D002AA9E1 /* Detail */,
@@ -1070,12 +1132,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		2DA043B931954E46AACE9358 /* Pods */ = {
+		28DB43A2E7B5DC8A58621997 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1562EE31EE92B9F5A1EBDC72 /* Pods-ExTrip.debug.xcconfig */,
-				C294052A5F3A465206D25481 /* Pods-ExTrip.release.xcconfig */,
+				BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */,
+				038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */,
 			);
+			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1166,6 +1229,7 @@
 				04BF56602941A2EF00BCF4A5 /* Poppins-ExtraBold.ttf in Resources */,
 				04BF565D2941A2EF00BCF4A5 /* Poppins-Medium.ttf in Resources */,
 				04BF56672941A2EF00BCF4A5 /* Poppins-SemiBold.ttf in Resources */,
+				048D7A6729ADDB18008BBE6A /* loading.json in Resources */,
 				04BF563A294193B300BCF4A5 /* LaunchScreen.storyboard in Resources */,
 				04BF5637294193B300BCF4A5 /* Assets.xcassets in Resources */,
 				049996F4294731F4005033C9 /* GoogleService-Info.plist in Resources */,
@@ -1245,6 +1309,8 @@
 				0429EDF92966912C0067F906 /* HotelClassTableViewCell.swift in Sources */,
 				0429EDF0296676160067F906 /* RatingTableViewCell.swift in Sources */,
 				04AC7E62298CAF3200689EB2 /* SearchDestinationTableViewCell.swift in Sources */,
+				048D7A5029AD9A5F008BBE6A /* PaymentViewController.swift in Sources */,
+				048D7A5429ADAA29008BBE6A /* ConfirmPaymentViewController.swift in Sources */,
 				04BF566B2941A30400BCF4A5 /* Theme.swift in Sources */,
 				0476EC0D299F782200000189 /* ReviewBookTableViewCell.swift in Sources */,
 				0476EBD6299CE3EF00000189 /* RoomResultTableViewCell.swift in Sources */,
@@ -1273,6 +1339,7 @@
 				045D0324298A28030071EFB7 /* LoadingView.swift in Sources */,
 				0476EBE5299E0EF600000189 /* ChooseRoomViewController.swift in Sources */,
 				04E7E3352949AD490072EAFE /* UserDefaultKey.swift in Sources */,
+				046FC04B29AE66B800A7AEE4 /* ETRippleButton.swift in Sources */,
 				04F7DE0E295452320020494F /* Controller.swift in Sources */,
 				046D38A1296FB8A0000DE1AB /* ViewAllCollectionViewCell.swift in Sources */,
 				044587E229432BC5009195F2 /* SignUpViewController.swift in Sources */,
@@ -1290,6 +1357,7 @@
 				0476EC0F299F7C9000000189 /* BookingTimeTableViewCell.swift in Sources */,
 				046D389E296FB7B6000DE1AB /* ViewAllViewController.swift in Sources */,
 				04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */,
+				048D7A5929ADAB32008BBE6A /* ConfirmHotelTableViewCell.swift in Sources */,
 				04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */,
 				04AB54322952A810005D5C31 /* ETSearchTextField.swift in Sources */,
 				0481D4002973FC8E00EACB93 /* UILabel+Extension.swift in Sources */,
@@ -1308,12 +1376,14 @@
 				04D80D9629517A30005985ED /* DestinationTableViewCell.swift in Sources */,
 				04BB31D6296FAACE002AA9E1 /* InfomationCollectionViewCell.swift in Sources */,
 				044587DC29431728009195F2 /* SignInViewController.swift in Sources */,
+				048D7A5229AD9B86008BBE6A /* PaymentTableViewCell.swift in Sources */,
 				04AC7E6F298CCAC600689EB2 /* HotelBookingModel.swift in Sources */,
 				0486B8F529658BA800940B40 /* FilterTableViewCell.swift in Sources */,
 				04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */,
 				040DEAF92971D33D0044E24F /* HotelsRelatedTableViewCell.swift in Sources */,
 				04A9D835298D096600C25D73 /* ETFavoriteButton.swift in Sources */,
 				04F7DE09295452320020494F /* Date+Utilities.swift in Sources */,
+				048D7A5B29ADAB3E008BBE6A /* ConfirmPriceTableViewCell.swift in Sources */,
 				0429EDFC2966CC920067F906 /* TypeViewController.swift in Sources */,
 				0486B8DB29653E6800940B40 /* HotelModel.swift in Sources */,
 				04F7DE0D295452320020494F /* CurrentValueView.swift in Sources */,
@@ -1344,6 +1414,7 @@
 				04BB31D8296FAAD9002AA9E1 /* LocationTableViewCell.swift in Sources */,
 				04BB31E2296FAB2B002AA9E1 /* ViewDetailsViewController.swift in Sources */,
 				0486B8F72965911300940B40 /* PriceTableViewCell.swift in Sources */,
+				046FC04D29AE7AB000A7AEE4 /* Double+Extension.swift in Sources */,
 				04E7E3372949B7F40072EAFE /* HomeViewModel.swift in Sources */,
 				04EC5A59298B983100B6D80D /* UIImage+Extension.swift in Sources */,
 				04BB31BD296FA85F002AA9E1 /* DatabaseResponse.swift in Sources */,
@@ -1352,11 +1423,13 @@
 				0476EBD9299DC91A00000189 /* ETLabel.swift in Sources */,
 				046B7C46294A38A200777906 /* HomeCollectionViewCell.swift in Sources */,
 				040912022946E1DD00C8525F /* AuthManager.swift in Sources */,
+				048D7A6929ADDB65008BBE6A /* LottieView.swift in Sources */,
 				04AC7E6D298CC9EB00689EB2 /* HotelResultViewController.swift in Sources */,
 				0486B8F02965844800940B40 /* FilterViewController.swift in Sources */,
 				0476EBC3299C77CD00000189 /* RoomTableViewCell.swift in Sources */,
 				0486B8D72965208200940B40 /* ImageCache.swift in Sources */,
 				044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */,
+				048D7A6029ADB419008BBE6A /* ETConfirmTableViewCell.swift in Sources */,
 				0429EDFE2966CF3B0067F906 /* TypeTableViewCell.swift in Sources */,
 				042A14942948C58B00461C4D /* Tag.swift in Sources */,
 				0486B8E82965745500940B40 /* ETTableViewCell.swift in Sources */,
@@ -1496,7 +1569,7 @@
 		};
 		04BF563F294193B300BCF4A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1562EE31EE92B9F5A1EBDC72 /* Pods-ExTrip.debug.xcconfig */;
+			baseConfigurationReference = BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1525,7 +1598,7 @@
 		};
 		04BF5640294193B300BCF4A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C294052A5F3A465206D25481 /* Pods-ExTrip.release.xcconfig */;
+			baseConfigurationReference = 038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
