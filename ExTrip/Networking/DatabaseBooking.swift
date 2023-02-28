@@ -110,4 +110,13 @@ class DatabaseBooking {
             }
     }
     
+    func addBooking(_ booking: BookingModel, completion: @escaping (Bool) -> Void) {
+        do {
+            try db.collection("booking").addDocument(from: booking)
+            completion(true)
+        } catch {
+            completion(false)
+        }
+    }
+    
 }

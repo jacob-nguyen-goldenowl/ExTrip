@@ -18,6 +18,7 @@ struct RoomModel: Codable {
     var type: String
     var roomSize: Double
     var numOfRoomSameType: Int
+    var taxes: Double
 }
 
 struct Description: Codable {
