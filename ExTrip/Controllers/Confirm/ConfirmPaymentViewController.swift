@@ -15,6 +15,8 @@ class ConfirmPaymentViewController: UIViewController {
     private var bookingData: BookingModel?
     private var roomData: RoomModel?
     
+    var alert = UIAlertController()
+    
     private lazy var loadingView = LottieView()
     
     private let tableView: UITableView = {
@@ -51,13 +53,19 @@ class ConfirmPaymentViewController: UIViewController {
     private func setupBinder() {
         bookingViewModel.bookingStatus.bind { isBooking in
             if isBooking {
-                print("success")
-                let vc = TabbarViewController()
-                let nav = UINavigationController(rootViewController: vc)
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true)
+                self.showAlertWithoutButton(title: "Successful booking",
+                                            style: .alert)
+                self.dissmisAlert()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    let vc = TabbarViewController()
+                    let nav = UINavigationController(rootViewController: vc)
+                    nav.modalPresentationStyle = .fullScreen
+                    self.present(nav, animated: true)
+                }
             } else {
-                print("error")
+                self.showAlertWithoutButton(title: "Error booking",
+                                            style: .alert)
+                self.dissmisAlert()
             }
         }
     }
@@ -121,7 +129,13 @@ class ConfirmPaymentViewController: UIViewController {
     
     @objc func handleUsePaymentAction() {
         setupStarLoading()
-        bookingViewModel.addBooking(bookingData!)
+        if let bookingData = bookingData {
+            bookingViewModel.addBooking(bookingData)
+        } else {
+            self.showAlertWithoutButton(title: "Error booking",
+                                        style: .alert)
+            self.dissmisAlert()
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.loadingView.stopAnimating()
             self?.setupBinder()
@@ -183,4 +197,21 @@ extension ConfirmPaymentViewController: UITableViewDelegate, UITableViewDataSour
         }
         return UITableView.automaticDimension
     }
+}
+
+extension ConfirmPaymentViewController {
+    
+    func showAlertWithoutButton(title: String? = nil,
+                                message: String? = nil,
+                                style: UIAlertController.Style) {
+        alert = UIAlertController(title: title,
+                                  message: message,
+                                  preferredStyle: style)
+        present(alert, animated: true)
+    }
+    
+    func dissmisAlert() {
+        self.alert.dismiss(animated: true, completion: nil)
+    }
+
 }
