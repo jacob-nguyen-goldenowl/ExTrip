@@ -41,6 +41,8 @@
 		046D38A8296FFEE8000DE1AB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D38A7296FFEE8000DE1AB /* SearchViewController.swift */; };
 		046FC04B29AE66B800A7AEE4 /* ETRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */; };
 		046FC04D29AE7AB000A7AEE4 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */; };
+		046FC05329AE842900A7AEE4 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC05229AE842900A7AEE4 /* EmptyView.swift */; };
+		046FC05529AE89C600A7AEE4 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 046FC05429AE89C600A7AEE4 /* empty.json */; };
 		0476EBC3299C77CD00000189 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */; };
 		0476EBCA299CCABF00000189 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */; };
 		0476EBD3299CE3DA00000189 /* RoomResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */; };
@@ -202,6 +204,8 @@
 		046D38A7296FFEE8000DE1AB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRippleButton.swift; sourceTree = "<group>"; };
 		046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		046FC05229AE842900A7AEE4 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		046FC05429AE89C600A7AEE4 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResultViewController.swift; sourceTree = "<group>"; };
@@ -431,6 +435,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		046FC05129AE841500A7AEE4 /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				046FC05229AE842900A7AEE4 /* EmptyView.swift */,
+			);
+			path = Empty;
+			sourceTree = "<group>";
+		};
 		0476EBC8299CCAB300000189 /* Time */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,6 +573,7 @@
 		048D7A6529ADDAB4008BBE6A /* Lotties */ = {
 			isa = PBXGroup;
 			children = (
+				046FC05429AE89C600A7AEE4 /* empty.json */,
 				048D7A6629ADDB18008BBE6A /* loading.json */,
 			);
 			path = Lotties;
@@ -869,6 +882,7 @@
 		04BF567B2941E9D300BCF4A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				046FC05129AE841500A7AEE4 /* Empty */,
 				04133A36298ACAEC00466ECF /* Error */,
 				045D0322298A27F30071EFB7 /* Loading */,
 				04DE335E2971198500440509 /* Search */,
@@ -1138,7 +1152,6 @@
 				BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */,
 				038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1218,6 +1231,7 @@
 				04BF56682941A2EF00BCF4A5 /* Poppins-Italic.ttf in Resources */,
 				04BF56622941A2EF00BCF4A5 /* Poppins-Regular.ttf in Resources */,
 				04BF56592941A2EF00BCF4A5 /* Poppins-ThinItalic.ttf in Resources */,
+				046FC05529AE89C600A7AEE4 /* empty.json in Resources */,
 				04BF565A2941A2EF00BCF4A5 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				04BF56612941A2EF00BCF4A5 /* Poppins-BlackItalic.ttf in Resources */,
 				04BF56692941A2EF00BCF4A5 /* Poppins-MediumItalic.ttf in Resources */,
@@ -1393,6 +1407,7 @@
 				0486B8D92965328400940B40 /* AsyncImageView.swift in Sources */,
 				04D80D8D295178EC005985ED /* StretchyTableHeaderView.swift in Sources */,
 				04AC7E6A298CC99C00689EB2 /* BookingViewController.swift in Sources */,
+				046FC05329AE842900A7AEE4 /* EmptyView.swift in Sources */,
 				04D80D902951792F005985ED /* RattingView.swift in Sources */,
 				04F7DE0A295452320020494F /* Calendar+LastWeekday.swift in Sources */,
 				0443CC9A299354A70014E557 /* Date+Extension.swift in Sources */,

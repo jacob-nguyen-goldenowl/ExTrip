@@ -12,6 +12,7 @@ struct Tag {
     
     enum Animation {
         static let loading = "loading"
+        static let empty = "empty"
     }
     
     enum Image {
