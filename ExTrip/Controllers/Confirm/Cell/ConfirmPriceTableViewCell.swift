@@ -75,10 +75,6 @@ class ConfirmPriceTableViewCell: ETConfirmTableViewCell {
                                    paddingBottom: padding,
                                    paddingLeading: padding,
                                    paddingTrailing: padding)
-        
-        priceLabel.text = "USD 240.00"
-        taxesLabel.text = "USD 80.00"
-        totalPriceLabel.text = "USD 320.00"
     }
     
     func setDataForPriceRoom(roomCharge: Double?, taxes: Double?) {
@@ -88,9 +84,9 @@ class ConfirmPriceTableViewCell: ETConfirmTableViewCell {
             let totalPrice = calculatorTotalPrice(roomCharge: roomCharge, taxes: taxes)
             totalPriceLabel.text = "$ \(totalPrice.roundDouble())"
         } else {
-            priceLabel.text = "$ 0.00"
-            taxesLabel.text = "$ 0.00"
-            totalPriceLabel.text = "$ 0.00"
+            priceLabel.text = "$ --"
+            taxesLabel.text = "$ --"
+            totalPriceLabel.text = "$ --"
         }
     }
     

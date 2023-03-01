@@ -9,7 +9,6 @@ import UIKit
 
 class ConfirmPaymentViewController: UIViewController {
     
-    private var paymentData = [PaymentModel]()
     private var bookingViewModel = BookingViewModel()
     
     private var bookingData: BookingModel?
@@ -170,8 +169,7 @@ extension ConfirmPaymentViewController: UITableViewDelegate, UITableViewDataSour
         case 1:
             guard let priceCell = tableView.dequeueReusableCell(withIdentifier: ConfirmPriceTableViewCell.identifier, 
                                                                 for: indexPath) as? ConfirmPriceTableViewCell else { return UITableViewCell() }
-                
-                priceCell.setDataForPriceRoom(roomCharge: bookingData?.roomCharge, 
+            priceCell.setDataForPriceRoom(roomCharge: bookingData?.roomCharge, 
                                               taxes: roomData?.taxes)
             priceCell.backgroundColor = .tertiarySystemFill
             return priceCell
@@ -211,7 +209,7 @@ extension ConfirmPaymentViewController {
     }
     
     func dissmisAlert() {
-        self.alert.dismiss(animated: true, completion: nil)
+        alert.dismiss(animated: true, completion: nil)
     }
 
 }
