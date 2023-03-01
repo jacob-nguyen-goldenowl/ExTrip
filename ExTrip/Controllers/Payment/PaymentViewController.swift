@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct PaymentModel {
+private struct PaymentModel {
     let lblSection: String?
     let lblCell: [CellModel]?
     
@@ -17,7 +17,7 @@ struct PaymentModel {
     }
 }
 
-struct CellModel {
+private struct CellModel {
     let title: String?
     let cardImage: UIImage?
 }

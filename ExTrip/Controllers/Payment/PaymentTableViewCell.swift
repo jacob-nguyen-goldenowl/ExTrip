@@ -51,19 +51,11 @@ class PaymentTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var cardTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .poppins(style: .medium, size: 13)
-        label.textColor = .label
-        return label
-    }()
+    private lazy var cardTitleLabel = ETLabel(style: .small, textAlignment: .left, size: 13)
 
-    private lazy var typeHotelLabel: UILabel = {
-        let label = UILabel()
-        label.font = .poppins(style: .light, size: 11)
-        label.numberOfLines = 1
+    private lazy var typeHotelLabel: ETLabel = {
+        let label = ETLabel(style: .small, textAlignment: .center, size: 11)
         label.text = "Default"
-        label.textAlignment = .center
         label.backgroundColor = .secondarySystemFill
         label.layer.cornerRadius = 8
         label.clipsToBounds = true
