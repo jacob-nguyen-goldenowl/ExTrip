@@ -17,9 +17,12 @@ class ReviewBookViewController: UIViewController {
     
     private var room: RoomModel? 
     private var bookingTime: HotelBookingModel?
+    private var bookingData: BookingModel?
+        
     var fullName: String?
     var phoneNumber: String?
     var email: String?
+    var roomCharge: Double?
     
     private var positionRoom: IndexPath = IndexPath(item: 0, section: 0)
     private var numberOfRoom: Int = 1 {
@@ -28,6 +31,8 @@ class ReviewBookViewController: UIViewController {
             displayTotalPrice()
         }
     }
+    
+    private lazy var loadingView = LottieView()
 
     private lazy var paymentButton = ETGradientButton(title: .payment, 
                                                       style: .mysticBlue,
@@ -93,10 +98,16 @@ class ReviewBookViewController: UIViewController {
     
     private func setupUI() {
         setupNavigationBar()
+        getUserInfo()
         setupViews()
         regiterCell()
         setupAction()
-        setupPriceOfRoom()
+        displayTotalPrice()
+    }
+
+    private func  getUserInfo() {
+        let email = UserDefaults.standard.string(forKey: UserDefaultKey.userEmail)
+        self.email = email   
     }
 
     private func setupNavigationBar() {
@@ -112,12 +123,19 @@ class ReviewBookViewController: UIViewController {
         tableView.register(InfoUserTableViewCell.self,
                            forCellReuseIdentifier: InfoUserTableViewCell.identifier)
     }
+    
+    private func setupStarLoading() {
+        view.addSubview(loadingView)
+        loadingView.fillAnchor(view)
+        loadingView.startAnimating()
+    }
         
     // MARK: - Setup UI
     private func setupViews() {
         self.hideKeyboardWhenTappedAround() 
         view.addSubviews(tableView,
                          containerPriceView)
+        
         containerPriceView.addSubviews(titlePriceHeaderLabel,
                                        priceRoomLabel,
                                        paymentButton)
@@ -195,17 +213,14 @@ class ReviewBookViewController: UIViewController {
             }
         }
     }
-    
-    private func setupPriceOfRoom() {
-        priceRoomLabel.text = "$\(room?.price ?? 0.0)"
-    }
-    
+
     private func displayTotalPrice() {
         var totalPrice: Double = 0.0
         if let price = room?.price {
             totalPrice = price * Double(numberOfRoom)
         }
-        priceRoomLabel.text = "$\(totalPrice)"
+        priceRoomLabel.text = "$ \(totalPrice.roundDouble())"
+        self.roomCharge = totalPrice
     }
     
     private func setupAction() {
@@ -271,7 +286,7 @@ extension ReviewBookViewController: InfoUserTableViewCellDelegate {
 extension ReviewBookViewController {
     @objc func handlePaymentAction() {
         NotificationCenter.default.post(name: NSNotification.Name(UserDefaultKey.checkEmptyNotify), object: nil)
-        
+        setupStarLoading()
         let currentUserID = UserDefaults.standard.string(forKey: UserDefaultKey.userId)
         guard let booking = bookingTime?.date as? FastisRange else { return }
         guard let bookingRoom = bookingTime?.room else { return }
@@ -283,20 +298,37 @@ extension ReviewBookViewController {
            !name.isEmpty,
            !email.isEmpty,
            !phone.isEmpty {
-            
-            let arrivalDate = booking.fromDate.dateToTimestamp()
-            let departureDate = booking.toDate.dateToTimestamp()
-            
-            _ = BookingModel(hotelID: room.hotelID, 
-                             roomID: room.id,
-                             guestID: currentUserID ?? "",
-                             bookingDate: arrivalDate,
-                             arrivalDate: arrivalDate,
-                             departureDate: departureDate,
-                             numAdults: bookingRoom.adults,
-                             numChildren: bookingRoom.children,
-                             specialReq: "No")
-            print("success")
+            if email.isValidEmail() && phone.isNumber() {
+                let arrivalDate = booking.fromDate.dateToTimestamp()
+                let departureDate = booking.toDate.dateToTimestamp()
+                
+                if let currentUserID = currentUserID,
+                   let roomCharge = roomCharge {
+                    bookingData = BookingModel(hotelID: room.hotelID, 
+                                               roomID: room.id,
+                                               guestID: currentUserID,
+                                               bookingDate: arrivalDate,
+                                               arrivalDate: arrivalDate,
+                                               departureDate: departureDate,
+                                               roomNumber: 2,
+                                               roomCharge: roomCharge,
+                                               numAdults: bookingRoom.adults,
+                                               numChildren: bookingRoom.children,
+                                               specialReq: "No")
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                        self?.loadingView.stopAnimating()
+                        let vc = PaymentViewController(data: self?.bookingData, room: self?.room)
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                } else {
+                    loadingView.stopAnimating()
+                }
+            } else {
+                loadingView.stopAnimating()
+            }
+        } else {
+            loadingView.stopAnimating()
         }
     }
 }

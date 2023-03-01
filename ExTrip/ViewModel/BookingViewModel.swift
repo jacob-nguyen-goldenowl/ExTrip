@@ -16,7 +16,8 @@ class BookingViewModel {
     
     var hotelsRelatedCity: Observable<[HotelModel]?> = Observable(nil)
     var roomAvailible: Observable<[RoomModel]?> = Observable(nil)
-        
+    var bookingStatus: Observable<Bool> = Observable(true)
+
     // MARK: - HOTEL
     func dataHotelByCity(city: String,
                          numberOfRoom: Int,
@@ -137,5 +138,16 @@ extension BookingViewModel {
             return true
         }
         return false
+    }
+    
+    // MARK: Add booking
+    func addBooking(_ booking: BookingModel) {
+        DatabaseBooking.shared.addBooking(booking) { success in
+            if success {
+                self.bookingStatus.value = true
+            } else {
+                self.bookingStatus.value = false
+            }
+        }
     }
 }

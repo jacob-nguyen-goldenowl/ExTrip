@@ -30,7 +30,7 @@ class ETLabel: UILabel {
         self.numberOfLines = 1
         self.textColor = .black
         self.backgroundColor = .clear
-        self.font = .poppins(style: .bold, size: size ?? 11)
+        self.font = .poppins(style: .medium, size: size ?? 11)
         switch style {
         case .small: 
             self.textAlignment = textAlignment
