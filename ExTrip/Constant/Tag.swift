@@ -9,12 +9,4 @@ import Foundation
 
 struct Tag {
     static let indicatoryView = 1234567
-    
-    enum Animation {
-        static let loading = "loading"
-    }
-    
-    enum Image {
-        static let defaultBackground = "default"
-    }
 }

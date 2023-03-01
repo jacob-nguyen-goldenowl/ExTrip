@@ -25,7 +25,7 @@ class LottieView: UIView {
     
     private lazy var animationView: LottieAnimationView = {
         let animationView = LottieAnimationView()
-        let animation = LottieAnimation.named(Tag.Animation.loading)
+        let animation = LottieAnimation.named(Constant.Animation.loading)
         animationView.animation = animation
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.loopMode = .loop

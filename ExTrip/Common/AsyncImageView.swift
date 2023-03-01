@@ -44,7 +44,7 @@ class AsyncImageView: UIImageView {
         self.isUserInteractionEnabled = true
     }
      
-    func loadImage(url: String, defaultBackground: UIImage? = UIImage(named: Tag.Image.defaultBackground)) {
+    func loadImage(url: String, defaultBackground: UIImage? = UIImage(named: Constant.Image.defaultBackground)) {
         self.startIndicator()
         loading.loadImage(url) { [weak self] status in
             guard let self = self else { return }

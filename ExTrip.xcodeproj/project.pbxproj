@@ -41,6 +41,7 @@
 		046D38A8296FFEE8000DE1AB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D38A7296FFEE8000DE1AB /* SearchViewController.swift */; };
 		046FC04B29AE66B800A7AEE4 /* ETRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */; };
 		046FC04D29AE7AB000A7AEE4 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */; };
+		046FC05D29AF54FC00A7AEE4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC05C29AF54FC00A7AEE4 /* Constant.swift */; };
 		0476EBC3299C77CD00000189 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */; };
 		0476EBCA299CCABF00000189 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */; };
 		0476EBD3299CE3DA00000189 /* RoomResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */; };
@@ -202,6 +203,7 @@
 		046D38A7296FFEE8000DE1AB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRippleButton.swift; sourceTree = "<group>"; };
 		046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		046FC05C29AF54FC00A7AEE4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResultViewController.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 			children = (
 				042A14932948C58B00461C4D /* Tag.swift */,
 				04E7E3342949AD490072EAFE /* UserDefaultKey.swift */,
+				046FC05C29AF54FC00A7AEE4 /* Constant.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1138,7 +1141,6 @@
 				BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */,
 				038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1330,6 +1332,7 @@
 				0486B8DF2965615A00940B40 /* DatabaseRequest.swift in Sources */,
 				0443CC96299340130014E557 /* DatabaseBooking.swift in Sources */,
 				0476EBDD299DE78B00000189 /* ETRoomButton.swift in Sources */,
+				046FC05D29AF54FC00A7AEE4 /* Constant.swift in Sources */,
 				04D80DBD295215FE005985ED /* CategoryCollectionReusableView.swift in Sources */,
 				04E7E33129497D610072EAFE /* ProfileViewController.swift in Sources */,
 				04BF56772941D86B00BCF4A5 /* ETButtonTitle.swift in Sources */,
