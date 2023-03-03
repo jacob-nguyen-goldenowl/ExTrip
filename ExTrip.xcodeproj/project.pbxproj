@@ -44,9 +44,9 @@
 		046FC04B29AE66B800A7AEE4 /* ETRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */; };
 		046FC04D29AE7AB000A7AEE4 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */; };
 		046FC05D29AF54FC00A7AEE4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC05C29AF54FC00A7AEE4 /* Constant.swift */; };
-		046FC06429B0239900A7AEE4 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC06329B0239900A7AEE4 /* ProfileTableViewCell.swift */; };
 		046FC06629B023CA00A7AEE4 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC06529B023CA00A7AEE4 /* ProfileViewModel.swift */; };
 		046FC06829B0244300A7AEE4 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC06729B0244300A7AEE4 /* ProfileTableHeaderView.swift */; };
+		0471DBA329B1A13A00FE62B3 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471DBA229B1A13A00FE62B3 /* ProfileTableViewCell.swift */; };
 		0476EBC3299C77CD00000189 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */; };
 		0476EBCA299CCABF00000189 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */; };
 		0476EBD3299CE3DA00000189 /* RoomResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */; };
@@ -211,9 +211,9 @@
 		046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRippleButton.swift; sourceTree = "<group>"; };
 		046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		046FC05C29AF54FC00A7AEE4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		046FC06329B0239900A7AEE4 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = ../../../../../Clone/ExTrip/ExTrip/Controllers/Profile/ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		046FC06529B023CA00A7AEE4 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		046FC06729B0244300A7AEE4 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
+		0471DBA229B1A13A00FE62B3 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResultViewController.swift; sourceTree = "<group>"; };
@@ -1096,7 +1096,7 @@
 			children = (
 				04087DB229B0AC2600539B1A /* EditProfile */,
 				04E7E33029497D610072EAFE /* ProfileViewController.swift */,
-				046FC06329B0239900A7AEE4 /* ProfileTableViewCell.swift */,
+				0471DBA229B1A13A00FE62B3 /* ProfileTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1448,9 +1448,9 @@
 				04D80DAF2951FCB2005985ED /* StepBookingModel.swift in Sources */,
 				040911FE2946E11E00C8525F /* Observable.swift in Sources */,
 				04BB31D8296FAAD9002AA9E1 /* LocationTableViewCell.swift in Sources */,
+				0471DBA329B1A13A00FE62B3 /* ProfileTableViewCell.swift in Sources */,
 				04BB31E2296FAB2B002AA9E1 /* ViewDetailsViewController.swift in Sources */,
 				0486B8F72965911300940B40 /* PriceTableViewCell.swift in Sources */,
-				046FC06429B0239900A7AEE4 /* ProfileTableViewCell.swift in Sources */,
 				046FC04D29AE7AB000A7AEE4 /* Double+Extension.swift in Sources */,
 				04E7E3372949B7F40072EAFE /* HomeViewModel.swift in Sources */,
 				04EC5A59298B983100B6D80D /* UIImage+Extension.swift in Sources */,
