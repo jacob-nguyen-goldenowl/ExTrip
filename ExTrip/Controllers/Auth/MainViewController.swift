@@ -122,7 +122,8 @@ extension MainViewController {
     
     @objc func handleSignInAction() {
         let vc = SignInViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     @objc func handleSignUpAction() {
