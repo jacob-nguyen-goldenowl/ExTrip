@@ -170,7 +170,7 @@ extension ConfirmPaymentViewController: UITableViewDelegate, UITableViewDataSour
             guard let priceCell = tableView.dequeueReusableCell(withIdentifier: ConfirmPriceTableViewCell.identifier, 
                                                                 for: indexPath) as? ConfirmPriceTableViewCell else { return UITableViewCell() }
             priceCell.setDataForPriceRoom(roomCharge: bookingData?.roomCharge, 
-                                              taxes: roomData?.taxes)
+                                          taxes: roomData?.taxes)
             priceCell.backgroundColor = .tertiarySystemFill
             return priceCell
         case 2:

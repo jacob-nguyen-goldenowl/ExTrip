@@ -117,4 +117,28 @@ extension UIViewController {
         
         return titleView
     }
+    
+    // MARK: Open URL
+    enum URLStype {
+        case service, about
+    }
+
+    func openURL(type: URLStype) {
+        let urlString: String
+        
+        switch type {
+        case .service, .about:
+            urlString = Constant.URL.github
+        }
+        
+        guard let url = URL(string: urlString) else {
+            errorAlert(message: "Can't not open \(urlString)")
+            return
+        }
+        UIApplication.shared.open(url)
+    }
+    
+    func errorAlert(message: String) {
+        showAlert(title: "Error", message: message, style: .alert)
+    }
 }

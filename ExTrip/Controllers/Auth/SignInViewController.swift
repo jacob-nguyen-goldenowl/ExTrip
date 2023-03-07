@@ -169,10 +169,7 @@ class SignInViewController: UIViewController {
     
     // MARK: - Go to home screen
     private func goToHomePage() {
-        let vc = TabbarViewController()
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .flipHorizontal
-        present(vc, animated: false)
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     } 
     
 }
