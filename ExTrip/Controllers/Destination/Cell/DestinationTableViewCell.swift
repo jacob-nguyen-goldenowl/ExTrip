@@ -25,6 +25,8 @@ class DestinationTableViewCell: UITableViewCell {
         }
     }
     
+    var wishlists = [WishListModel]()
+    
     private var numberOfColumns = 2
     private var cellPadding: CGFloat = 10
     
@@ -54,7 +56,7 @@ class DestinationTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.fillAnchor(self)
     }
-    
+
 }
 
 // MARK: UICollectionViewDelegate, UICollectionViewDataSource
@@ -67,9 +69,16 @@ extension DestinationTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DestinationCollectionViewCell.identifier,
                                                             for: indexPath) as? DestinationCollectionViewCell else { return UICollectionViewCell() }
-        let item = model[indexPath.item]
-        cell.isSelectedLikeButton = item.like
+        var item = model[indexPath.item]
+        
+        if wishlists.contains(where: { $0.hotelID == item.id }) {
+            item.like = true
+        } else {
+            item.like = false
+        }
+        
         cell.setDataForDestination(item)
+        cell.hotelId = item.id
         return cell 
     }
     
