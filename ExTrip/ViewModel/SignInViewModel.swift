@@ -18,10 +18,21 @@ class SignInViewModel {
                 if status.rawValue == 0 {
                     self?.error.value = msg.statusDescription
                 } else {
+                    self?.signInNotify()
                     self?.success.value = msg.statusDescription
                 }
             }
         }
     }
     
+    func signInNotify() {
+        NotificationCenter.default.post(name: NSNotification.Name(UserDefaultKey.loginsuccessNotify),  
+                                        object: nil)
+    }
+
+    deinit { 
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name(UserDefaultKey.loginsuccessNotify),
+                                                  object: nil) 
+    }
 }
