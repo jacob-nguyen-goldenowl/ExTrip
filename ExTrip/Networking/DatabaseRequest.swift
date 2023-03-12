@@ -95,5 +95,27 @@ class DatabaseRequest {
 
             }
     }
-        
+    
+    func addWishList(with wishlist: WishListModel, completion: @escaping (Bool) -> Void) {
+        do {
+            try db.collection("wishlist").addDocument(from: wishlist)
+            completion(true)
+        } catch {
+            completion(false)
+        }
+    }
+    
+    func removeWishList(_ hotelID: String, completion: @escaping (Bool) -> Void) {
+        db.collection("wishlist").whereField("hotelID", isEqualTo: hotelID).getDocuments { (querySnapshot, err) in 
+            if let err = err {
+                completion(false)
+                print("Error getting documents: \(err)")
+            } else { 
+                for document in querySnapshot!.documents { 
+                    document.reference.delete() 
+                } 
+                completion(true) 
+            }
+        }
+    }
 }
