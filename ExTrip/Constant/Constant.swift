@@ -11,10 +11,16 @@ struct Constant {
     
     enum Animation {
         static let loading = "loading"
+        static let emptyBox = "emptyBox"
     }
     
     enum Image {
         static let defaultBackground = "default"
     }
     
+}
+
+struct FeatureFlags {
+    static var isUpdateWishlist: Bool = false
+    static var isLiked: Bool = false
 }
