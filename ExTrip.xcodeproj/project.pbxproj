@@ -42,6 +42,10 @@
 		046FC04B29AE66B800A7AEE4 /* ETRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */; };
 		046FC04D29AE7AB000A7AEE4 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */; };
 		046FC05D29AF54FC00A7AEE4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FC05C29AF54FC00A7AEE4 /* Constant.swift */; };
+		0471DBA629B1A9BB00FE62B3 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471DBA529B1A9BB00FE62B3 /* EmptyView.swift */; };
+		0471DBA829B1ABD700FE62B3 /* emptyBox.json in Resources */ = {isa = PBXBuildFile; fileRef = 0471DBA729B1ABD700FE62B3 /* emptyBox.json */; };
+		0471DBAA29B1AD9A00FE62B3 /* WishListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471DBA929B1AD9A00FE62B3 /* WishListViewModel.swift */; };
+		0471DBAC29B1B6B500FE62B3 /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471DBAB29B1B6B500FE62B3 /* WishListTableViewCell.swift */; };
 		0476EBC3299C77CD00000189 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */; };
 		0476EBCA299CCABF00000189 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */; };
 		0476EBD3299CE3DA00000189 /* RoomResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */; };
@@ -53,6 +57,7 @@
 		0476EC0D299F782200000189 /* ReviewBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC0C299F782200000189 /* ReviewBookTableViewCell.swift */; };
 		0476EC0F299F7C9000000189 /* BookingTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC0E299F7C9000000189 /* BookingTimeTableViewCell.swift */; };
 		0476EC11299F7DD200000189 /* InfoUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */; };
+		047D881129B9D2DD006A3587 /* ETViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D881029B9D2DD006A3587 /* ETViewModel.swift */; };
 		0481D4002973FC8E00EACB93 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481D3FF2973FC8E00EACB93 /* UILabel+Extension.swift */; };
 		0486B8D72965208200940B40 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8D62965208200940B40 /* ImageCache.swift */; };
 		0486B8D92965328400940B40 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8D82965328400940B40 /* AsyncImageView.swift */; };
@@ -146,7 +151,7 @@
 		04DE3360297119CF00440509 /* ETSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE335F297119CF00440509 /* ETSearchBar.swift */; };
 		04DE3363297147EE00440509 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE3362297147EE00440509 /* SearchTableViewCell.swift */; };
 		04E7E32829497C0D0072EAFE /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E32729497C0D0072EAFE /* TabbarViewController.swift */; };
-		04E7E32B29497CDC0072EAFE /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E32A29497CDC0072EAFE /* FavoriteViewController.swift */; };
+		04E7E32B29497CDC0072EAFE /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E32A29497CDC0072EAFE /* WishListViewController.swift */; };
 		04E7E33129497D610072EAFE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E33029497D610072EAFE /* ProfileViewController.swift */; };
 		04E7E3332949AD190072EAFE /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E3322949AD190072EAFE /* UserManager.swift */; };
 		04E7E3352949AD490072EAFE /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7E3342949AD490072EAFE /* UserDefaultKey.swift */; };
@@ -164,6 +169,8 @@
 		04F7DE0E295452320020494F /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DE03295452320020494F /* Controller.swift */; };
 		04F7DE0F295452320020494F /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DE04295452320020494F /* DayCell.swift */; };
 		04F7DE10295452320020494F /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DE05295452320020494F /* WeekView.swift */; };
+		04F7F88E29BE7945003FDA73 /* ETMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F88D29BE7945003FDA73 /* ETMainViewController.swift */; };
+		04F7F89229BE8E4F003FDA73 /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F89129BE8E4F003FDA73 /* WishListModel.swift */; };
 		37FB3B4A5CCA0FA56B9F3953 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +211,10 @@
 		046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRippleButton.swift; sourceTree = "<group>"; };
 		046FC04C29AE7AB000A7AEE4 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		046FC05C29AF54FC00A7AEE4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		0471DBA529B1A9BB00FE62B3 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		0471DBA729B1ABD700FE62B3 /* emptyBox.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyBox.json; sourceTree = "<group>"; };
+		0471DBA929B1AD9A00FE62B3 /* WishListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewModel.swift; sourceTree = "<group>"; };
+		0471DBAB29B1B6B500FE62B3 /* WishListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResultViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +226,7 @@
 		0476EC0C299F782200000189 /* ReviewBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBookTableViewCell.swift; sourceTree = "<group>"; };
 		0476EC0E299F7C9000000189 /* BookingTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTimeTableViewCell.swift; sourceTree = "<group>"; };
 		0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserTableViewCell.swift; sourceTree = "<group>"; };
+		047D881029B9D2DD006A3587 /* ETViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETViewModel.swift; sourceTree = "<group>"; };
 		0481D3FF2973FC8E00EACB93 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		0486B8D62965208200940B40 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0486B8D82965328400940B40 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
@@ -310,7 +322,7 @@
 		04DE335F297119CF00440509 /* ETSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETSearchBar.swift; sourceTree = "<group>"; };
 		04DE3362297147EE00440509 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		04E7E32729497C0D0072EAFE /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
-		04E7E32A29497CDC0072EAFE /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		04E7E32A29497CDC0072EAFE /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		04E7E33029497D610072EAFE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		04E7E3322949AD190072EAFE /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		04E7E3342949AD490072EAFE /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
@@ -328,6 +340,8 @@
 		04F7DE03295452320020494F /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		04F7DE04295452320020494F /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		04F7DE05295452320020494F /* WeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		04F7F88D29BE7945003FDA73 /* ETMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETMainViewController.swift; sourceTree = "<group>"; };
+		04F7F89129BE8E4F003FDA73 /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
 		3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -361,6 +375,7 @@
 		040911FA2946E0DB00C8525F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				047D881029B9D2DD006A3587 /* ETViewModel.swift */,
 				040911FF2946E15300C8525F /* SignInViewModel.swift */,
 				049996ED2947234E005033C9 /* SignUpViewModel.swift */,
 				04E7E3362949B7F40072EAFE /* HomeViewModel.swift */,
@@ -368,6 +383,7 @@
 				0489423F2972DD2B0051A207 /* SearchViewModel.swift */,
 				045D031E29891F910071EFB7 /* FilterViewModel.swift */,
 				0443CC97299346F20014E557 /* BookingViewModel.swift */,
+				0471DBA929B1AD9A00FE62B3 /* WishListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -434,6 +450,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		0471DBA429B1A9A600FE62B3 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				0471DBA529B1A9BB00FE62B3 /* EmptyView.swift */,
+			);
+			path = EmptyView;
+			sourceTree = "<group>";
+		};
 		0476EBC8299CCAB300000189 /* Time */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,6 +509,22 @@
 				0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		047D881429BB41CF006A3587 /* WishListTabelView */ = {
+			isa = PBXGroup;
+			children = (
+				04E7E32A29497CDC0072EAFE /* WishListViewController.swift */,
+			);
+			path = WishListTabelView;
+			sourceTree = "<group>";
+		};
+		047D881529BB41F9006A3587 /* WishListViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0471DBAB29B1B6B500FE62B3 /* WishListTableViewCell.swift */,
+			);
+			path = WishListViewCell;
 			sourceTree = "<group>";
 		};
 		0486B8E2296572F100940B40 /* More */ = {
@@ -564,6 +604,7 @@
 		048D7A6529ADDAB4008BBE6A /* Lotties */ = {
 			isa = PBXGroup;
 			children = (
+				0471DBA729B1ABD700FE62B3 /* emptyBox.json */,
 				048D7A6629ADDB18008BBE6A /* loading.json */,
 			);
 			path = Lotties;
@@ -872,6 +913,7 @@
 		04BF567B2941E9D300BCF4A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0471DBA429B1A9A600FE62B3 /* EmptyView */,
 				04133A36298ACAEC00466ECF /* Error */,
 				045D0322298A27F30071EFB7 /* Loading */,
 				04DE335E2971198500440509 /* Search */,
@@ -912,6 +954,7 @@
 				04AC7E6E298CCAC600689EB2 /* HotelBookingModel.swift */,
 				0499705D29921697008BDBDA /* RoomModel.swift */,
 				044F397229922A3100003888 /* BookingModel.swift */,
+				04F7F89129BE8E4F003FDA73 /* WishListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -930,9 +973,10 @@
 				04D80DA02951B9C2005985ED /* HotelBooking */,
 				04D80D9129517997005985ED /* Destination */,
 				04E7E32F29497D4F0072EAFE /* Profile */,
-				04E7E32929497C9C0072EAFE /* Favorite */,
+				04E7E32929497C9C0072EAFE /* WishList */,
 				049996F8294738CB005033C9 /* Home */,
 				04BF56862942434E00BCF4A5 /* Auth */,
+				04F7F88D29BE7945003FDA73 /* ETMainViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1054,12 +1098,13 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		04E7E32929497C9C0072EAFE /* Favorite */ = {
+		04E7E32929497C9C0072EAFE /* WishList */ = {
 			isa = PBXGroup;
 			children = (
-				04E7E32A29497CDC0072EAFE /* FavoriteViewController.swift */,
+				047D881529BB41F9006A3587 /* WishListViewCell */,
+				047D881429BB41CF006A3587 /* WishListTabelView */,
 			);
-			path = Favorite;
+			path = WishList;
 			sourceTree = "<group>";
 		};
 		04E7E32F29497D4F0072EAFE /* Profile */ = {
@@ -1224,6 +1269,7 @@
 				04BF56612941A2EF00BCF4A5 /* Poppins-BlackItalic.ttf in Resources */,
 				04BF56692941A2EF00BCF4A5 /* Poppins-MediumItalic.ttf in Resources */,
 				04BF565F2941A2EF00BCF4A5 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				0471DBA829B1ABD700FE62B3 /* emptyBox.json in Resources */,
 				04BF56642941A2EF00BCF4A5 /* Poppins-Bold.ttf in Resources */,
 				04BF565B2941A2EF00BCF4A5 /* Poppins-BoldItalic.ttf in Resources */,
 				04BF565E2941A2EF00BCF4A5 /* Poppins-SemiBoldItalic.ttf in Resources */,
@@ -1305,6 +1351,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				049F2825295AA532002257B9 /* RoomBookingModel.swift in Sources */,
+				0471DBAA29B1AD9A00FE62B3 /* WishListViewModel.swift in Sources */,
+				04F7F88E29BE7945003FDA73 /* ETMainViewController.swift in Sources */,
 				04BF56702941AAF900BCF4A5 /* UIView+Extension.swift in Sources */,
 				04BF56722941BC8700BCF4A5 /* UIStackView+Extension.swift in Sources */,
 				0486B8ED2965770900940B40 /* HotelTableViewCell.swift in Sources */,
@@ -1379,6 +1427,7 @@
 				04D80D9629517A30005985ED /* DestinationTableViewCell.swift in Sources */,
 				04BB31D6296FAACE002AA9E1 /* InfomationCollectionViewCell.swift in Sources */,
 				044587DC29431728009195F2 /* SignInViewController.swift in Sources */,
+				047D881129B9D2DD006A3587 /* ETViewModel.swift in Sources */,
 				048D7A5229AD9B86008BBE6A /* PaymentTableViewCell.swift in Sources */,
 				04AC7E6F298CCAC600689EB2 /* HotelBookingModel.swift in Sources */,
 				0486B8F529658BA800940B40 /* FilterTableViewCell.swift in Sources */,
@@ -1394,8 +1443,10 @@
 				049996EE2947234E005033C9 /* SignUpViewModel.swift in Sources */,
 				04BF566E2941A65500BCF4A5 /* UIFont+Extension.swift in Sources */,
 				0486B8D92965328400940B40 /* AsyncImageView.swift in Sources */,
+				04F7F89229BE8E4F003FDA73 /* WishListModel.swift in Sources */,
 				04D80D8D295178EC005985ED /* StretchyTableHeaderView.swift in Sources */,
 				04AC7E6A298CC99C00689EB2 /* BookingViewController.swift in Sources */,
+				0471DBA629B1A9BB00FE62B3 /* EmptyView.swift in Sources */,
 				04D80D902951792F005985ED /* RattingView.swift in Sources */,
 				04F7DE0A295452320020494F /* Calendar+LastWeekday.swift in Sources */,
 				0443CC9A299354A70014E557 /* Date+Extension.swift in Sources */,
@@ -1410,7 +1461,7 @@
 				04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */,
 				0486B8DD2965423C00940B40 /* HotelViewModel.swift in Sources */,
 				04BB31C8296FAA77002AA9E1 /* DetailTableViewCell.swift in Sources */,
-				04E7E32B29497CDC0072EAFE /* FavoriteViewController.swift in Sources */,
+				04E7E32B29497CDC0072EAFE /* WishListViewController.swift in Sources */,
 				04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */,
 				04D80DAF2951FCB2005985ED /* StepBookingModel.swift in Sources */,
 				040911FE2946E11E00C8525F /* Observable.swift in Sources */,
@@ -1430,6 +1481,7 @@
 				04AC7E6D298CC9EB00689EB2 /* HotelResultViewController.swift in Sources */,
 				0486B8F02965844800940B40 /* FilterViewController.swift in Sources */,
 				0476EBC3299C77CD00000189 /* RoomTableViewCell.swift in Sources */,
+				0471DBAC29B1B6B500FE62B3 /* WishListTableViewCell.swift in Sources */,
 				0486B8D72965208200940B40 /* ImageCache.swift in Sources */,
 				044587E4294331B5009195F2 /* UINavigation+Extension.swift in Sources */,
 				048D7A6029ADB419008BBE6A /* ETConfirmTableViewCell.swift in Sources */,
