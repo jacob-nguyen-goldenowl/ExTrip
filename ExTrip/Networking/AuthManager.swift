@@ -73,5 +73,10 @@ class AuthManager {
             }
         }
     }
+    
+    func getCurrentUserID() -> String {
+        guard let userID = Auth.auth().currentUser?.uid else { return "" }
+        return userID
+    }
 
 }

@@ -53,22 +53,23 @@ class DatabaseResponse {
     } 
     
     // MARK: Fetch all data
-    public func fetchDataById<T: Codable>(collection: String, filed: String, documentId: String?, completion: @escaping([T]) -> Void) {
+    public func fetchDataById<T: Codable>(collection: String,
+                                          filed: String, 
+                                          documentId: String?,
+                                          completion: @escaping([T], _ error: APIError?) -> Void) {
         guard let id = documentId else { return }
-        db.collection(collection)
-            .whereField(filed, isEqualTo: id)
-            .getDocuments { (querySnapshot, error) in
+        db.collection(collection).whereField(filed, isEqualTo: id).getDocuments { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
                     var data = [T]()
                     data = querySnapshot.documents.compactMap { document in
                         do {
                             return try document.data(as: T.self)
-                        } catch { print(error) }
+                        } catch { completion([], error as? APIError) }
                         return nil
                     }
-                    completion(data)
+                    completion(data, nil)
                 }
-            }
+        }
     } 
     
 }

@@ -287,7 +287,7 @@ extension ReviewBookViewController {
     @objc func handlePaymentAction() {
         NotificationCenter.default.post(name: NSNotification.Name(UserDefaultKey.checkEmptyNotify), object: nil)
         setupStarLoading()
-        let currentUserID = UserDefaults.standard.string(forKey: UserDefaultKey.userId)
+        let currentUserID = AuthManager.shared.getCurrentUserID()
         guard let booking = bookingTime?.date as? FastisRange else { return }
         guard let bookingRoom = bookingTime?.room else { return }
         guard let room = room else { return }
@@ -302,8 +302,7 @@ extension ReviewBookViewController {
                 let arrivalDate = booking.fromDate.dateToTimestamp()
                 let departureDate = booking.toDate.dateToTimestamp()
                 
-                if let currentUserID = currentUserID,
-                   let roomCharge = roomCharge {
+                if let roomCharge = roomCharge {
                     bookingData = BookingModel(hotelID: room.hotelID, 
                                                roomID: room.id,
                                                guestID: currentUserID,
