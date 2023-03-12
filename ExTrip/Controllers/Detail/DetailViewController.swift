@@ -17,7 +17,7 @@ enum DetailType: Int {
     case time = 6
 }
 
-class DetailViewController: UIViewController {
+class DetailViewController: ETMainViewController {
         
     private let bookingViewModel = BookingViewModel()
     private var bookingTime: HotelBookingModel
@@ -99,13 +99,15 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupNavigation()
+        navigationController?.configBackButton()
         fetchDataRooms()
-    }
+        setupBinder()
+        
+    }    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupBinder()
+        setupNavigation()
     }          
     private func fetchDataRooms() {
         if let date = bookingTime.date as? FastisRange {
@@ -126,11 +128,14 @@ class DetailViewController: UIViewController {
     }
 
     private func setupNavigation() {
-        navigationController?.configBackButton()
-    
-        let filterButton = ETFavoriteButton()
-        filterButton.addTarget(self, action: #selector(handleLikeAction), for: .touchUpInside)
-        let item = UIBarButtonItem(customView: filterButton)
+        let favouriteButton = ETFavoriteButton()
+        if wishListViewModel.processComparisonHotelId(data.id) {
+            favouriteButton.isChecked = true
+        } else {
+            favouriteButton.isChecked = false
+        }
+        setupFavorite(favouriteButton)
+        let item = UIBarButtonItem(customView: favouriteButton)
         
         if let date = bookingTime.date as? FastisRange,
            let room = bookingTime.room {
@@ -204,6 +209,22 @@ class DetailViewController: UIViewController {
     @objc func handleSelectRoomAction() {
         let vc = RoomResultViewController(rooms, time: bookingTime)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func setupFavorite(_ favouriteButton: ETFavoriteButton) {
+        favouriteButton.currentUser = currentUser
+        let wishlist = WishListModel(hotelID: data.id, userID: currentUser)
+        favouriteButton.likedClousure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.wishListViewModel.addWishtlist(with: wishlist)
+            }
+        } 
+        
+        favouriteButton.dislikeClousure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.wishListViewModel.removeFromWishlist(with: self?.data.id ?? "")
+            }
+        }
     }
     
 }

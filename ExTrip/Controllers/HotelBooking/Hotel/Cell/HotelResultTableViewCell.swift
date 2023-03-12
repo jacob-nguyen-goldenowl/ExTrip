@@ -12,6 +12,15 @@ class HotelResultTableViewCell: ETTableViewCell {
     
     static let identifier = "HotelResultTableViewCell"
     
+    lazy var viewModel = WishListViewModel()
+    
+    var currentUser: String = ""
+    var hotelId: String = "" {
+        didSet {
+            setupFavorite()
+        }
+    }
+     
     private let padding: CGFloat = 10
     private let paddingSize: CGFloat = 5
     private let buttonSize: CGFloat = 25
@@ -52,7 +61,7 @@ class HotelResultTableViewCell: ETTableViewCell {
         return imageView
     }()
 
-    private lazy var favouriteButton = ETFavoriteButton()
+    lazy var favouriteButton = ETFavoriteButton()
     
     // MARK: - Room info properties
     private lazy var separatorLine: UIView = {
@@ -108,6 +117,7 @@ class HotelResultTableViewCell: ETTableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubViews()
+        setupFavorite()
     }
     
     required init?(coder: NSCoder) {
@@ -115,6 +125,7 @@ class HotelResultTableViewCell: ETTableViewCell {
     }
     
     private func setupSubViews() {
+        currentUser = AuthManager.shared.getCurrentUserID()
         contentView.addSubview(boxView)
         boxView.addSubviews(posterImageView,
                             titleLabel,
@@ -277,6 +288,22 @@ class HotelResultTableViewCell: ETTableViewCell {
         reviewLabel.text = calculatorReview(hotel.review)
         addressLabel.text = hotel.address.capitalizeFirstLetter()
         soldOutPriceLabel.text = "$ \(hotel.price)"
+        favouriteButton.isChecked = hotel.like
+    }
+    
+    func setupFavorite() {
+        let wishlist = WishListModel(hotelID: hotelId, userID: currentUser)
+        favouriteButton.likedClousure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.viewModel.addWishtlist(with: wishlist)
+            }
+        } 
+        
+        favouriteButton.dislikeClousure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.viewModel.removeFromWishlist(with: self?.hotelId ?? "")
+            }
+        }
     }
     
     func setupDataInfoRoomBooking(room roomLeft: Int,
