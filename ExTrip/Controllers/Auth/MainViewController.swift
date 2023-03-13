@@ -9,6 +9,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    private let signInViewModel = SignInViewModel()
+    
     // MARK: - Properties
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -110,6 +112,23 @@ class MainViewController: UIViewController {
         signInButton.addTarget(self, action: #selector(handleSignInAction), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(handleSignUpAction), for: .touchUpInside)
     }
+    
+    private func setupLoginWithGoogle() {
+        signInViewModel.loginWithGoogle(viewController: self)
+        
+        signInViewModel.navigationClosure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        signInViewModel.alertMessageClosure = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.showAlert(message: "\(error)", style: .alert)
+            }
+        }
+    }
+    
 }
 
 // MARK: - Handle action
@@ -118,6 +137,7 @@ extension MainViewController {
     }
 
     @objc func handleGoogleAction() {
+        setupLoginWithGoogle()
     }
     
     @objc func handleSignInAction() {
