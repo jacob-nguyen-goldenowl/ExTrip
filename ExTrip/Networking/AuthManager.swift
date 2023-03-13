@@ -74,6 +74,25 @@ class AuthManager {
         }
     }
     
+    func signOut(completion: @escaping (Result<Bool, Error>) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            resetDefaults()
+            completion(.success(true))
+        } catch let error as NSError {
+            completion(.failure(error))
+        }
+        UserManager.shared.removeUserInfo()
+    }
+    
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+    }
+    
     func getCurrentUserID() -> String {
         guard let userID = Auth.auth().currentUser?.uid else { return "" }
         return userID
