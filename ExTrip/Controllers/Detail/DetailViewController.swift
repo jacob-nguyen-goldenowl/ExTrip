@@ -214,13 +214,13 @@ class DetailViewController: ETMainViewController {
     func setupFavorite(_ favouriteButton: ETFavoriteButton) {
         favouriteButton.currentUser = currentUser
         let wishlist = WishListModel(hotelID: data.id, userID: currentUser)
-        favouriteButton.likedClousure = { [weak self] in
+        favouriteButton.likedClosure = { [weak self] in
             DispatchQueue.main.async {
                 self?.wishListViewModel.addWishtlist(with: wishlist)
             }
         } 
         
-        favouriteButton.dislikeClousure = { [weak self] in
+        favouriteButton.dislikeClosure = { [weak self] in
             DispatchQueue.main.async {
                 self?.wishListViewModel.removeFromWishlist(with: self?.data.id ?? "")
             }

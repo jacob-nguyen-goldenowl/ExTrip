@@ -293,13 +293,13 @@ class HotelResultTableViewCell: ETTableViewCell {
     
     func setupFavorite() {
         let wishlist = WishListModel(hotelID: hotelId, userID: currentUser)
-        favouriteButton.likedClousure = { [weak self] in
+        favouriteButton.likedClosure = { [weak self] in
             DispatchQueue.main.async {
                 self?.viewModel.addWishtlist(with: wishlist)
             }
         } 
         
-        favouriteButton.dislikeClousure = { [weak self] in
+        favouriteButton.dislikeClosure = { [weak self] in
             DispatchQueue.main.async {
                 self?.viewModel.removeFromWishlist(with: self?.hotelId ?? "")
             }

@@ -17,8 +17,8 @@ class ETFavoriteButton: UIButton {
     let likeColor = UIColor.theme.red ?? .red
     let unlikeColor = UIColor.theme.lightGray ?? .gray
     
-    var likedClousure: (() -> Void)?
-    var dislikeClousure: (() -> Void)?
+    var likedClosure: (() -> Void)?
+    var dislikeClosure: (() -> Void)?
     
     private lazy var starImage: UIImageView = {
         let imageView = UIImageView()
@@ -71,10 +71,10 @@ class ETFavoriteButton: UIButton {
     private func handleLike() {
         if isChecked {
             createAnimationWhenSelectItem(starImage)
-            likedClousure?()
+            likedClosure?()
         } else {
             createAnimationWhenSelectItem(starImage)
-            dislikeClousure?()
+            dislikeClosure?()
         }
     }
 
