@@ -44,7 +44,7 @@ class AsyncImageView: UIImageView {
         self.isUserInteractionEnabled = true
     }
      
-    func loadImage(url: String, defaultBackground: UIImage? = UIImage(named: Constant.Image.defaultBackground)) {
+    func loadImage(url: String, defaultImage: UIImage? = UIImage(named: Constant.Image.defaultImage)) {
         self.startIndicator()
         loading.loadImage(url) { [weak self] status in
             guard let self = self else { return }
@@ -55,11 +55,20 @@ class AsyncImageView: UIImageView {
                     self.image = image
                 case .failure(let error):
                     self.stopIndicator()
-                    self.image = defaultBackground
+                    self.image = defaultImage
                     self.backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.6)
                     print(error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    func fetchImage(imageURL: String?, defaultImage: UIImage? = nil) {
+        if let imageURL = imageURL {
+            loadImage(url: imageURL, defaultImage: defaultImage)
+        } else {
+            print("default image")
+            self.image = defaultImage
         }
     }
     

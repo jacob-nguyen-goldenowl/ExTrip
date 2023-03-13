@@ -61,7 +61,7 @@ class UserManager {
                              image: userImage)
     }
     
-    func getUserId() -> String {
-        return userDefault.string(forKey: UserDefaultKey.userId) ?? ""
+    func getUserId() -> String? {
+        return userDefault.string(forKey: UserDefaultKey.userId)
     }
 }

@@ -15,9 +15,12 @@ struct Constant {
     }
     
     enum Image {
-        static let defaultBackground = "default"
+        static let defaultImage = "account"
     }
     
+    enum URL {
+        static let github = "https://github.com/jacob-nguyen-goldenowl/ExTrip"
+    }
 }
 
 struct FeatureFlags {
