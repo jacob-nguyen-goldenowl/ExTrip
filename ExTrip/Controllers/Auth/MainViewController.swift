@@ -9,12 +9,20 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    private let signInViewModel = SignInViewModel()
+    
     // MARK: - Properties
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "background")
         return imageView
+    }()
+    
+    private lazy var cancelButton: ETCancelButton = {
+        let button = ETCancelButton()
+        button.delegate = self
+        return button
     }()
 
     private lazy var subtitleLabel: UILabel = {
@@ -50,8 +58,9 @@ class MainViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .systemBackground
         view.insertSubview(backgroundImageView, at: 0)
-        view.addSubview(facebookButton)
-        view.addSubviews(horizontalStackView,
+        view.addSubviews(cancelButton, 
+                         facebookButton,
+                         horizontalStackView,
                          subtitleLabel,
                          googleButton)
         setupConstraintViews()
@@ -63,6 +72,14 @@ class MainViewController: UIViewController {
         let heightButton: CGFloat = 50
         
         backgroundImageView.fillAnchor(view)
+        
+        cancelButton.anchor(top: view.topAnchor,
+                            leading: view.leadingAnchor,
+                            paddingTop: 30,
+                            paddingLeading: padding)
+        cancelButton.setWidth(width: 40)
+        cancelButton.setHeight(height: 40)
+        
         horizontalStackView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                    leading: view.leadingAnchor,
                                    trailing: view.trailingAnchor,
@@ -110,6 +127,23 @@ class MainViewController: UIViewController {
         signInButton.addTarget(self, action: #selector(handleSignInAction), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(handleSignUpAction), for: .touchUpInside)
     }
+    
+    private func setupLoginWithGoogle() {
+        signInViewModel.loginWithGoogle(viewController: self)
+        
+        signInViewModel.navigationClosure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        signInViewModel.alertMessageClosure = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.showAlert(message: "\(error)", style: .alert)
+            }
+        }
+    }
+    
 }
 
 // MARK: - Handle action
@@ -118,6 +152,7 @@ extension MainViewController {
     }
 
     @objc func handleGoogleAction() {
+        setupLoginWithGoogle()
     }
     
     @objc func handleSignInAction() {
@@ -129,5 +164,12 @@ extension MainViewController {
     @objc func handleSignUpAction() {
         let vc = SignUpViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension MainViewController: ETCancelButtonDelegate {
+    func eTCancelButtonHandleCancelAction() {
+        print("dissmiss")
+        dismiss(animated: true)
     }
 }

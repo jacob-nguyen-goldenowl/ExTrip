@@ -17,7 +17,7 @@ class ProfileTableHeaderView: UIView {
     private let paddingSignUp: CGFloat = 15
     private let paddingSignIn: CGFloat = 5
     
-    let currentUserId = UserManager.shared.getUserId()
+    let currentUserId: String?
     let userName = UserDefaults.standard.string(forKey: UserDefaultKey.userName)
     let avatarURL = UserDefaults.standard.string(forKey: UserDefaultKey.userPhotoURL)
     
@@ -46,6 +46,8 @@ class ProfileTableHeaderView: UIView {
     }()
     
     override init(frame: CGRect) {
+        let currentUser = AuthManager.shared.currentUser()
+        currentUserId = currentUser?.uid
         super.init(frame: frame)
         updateViews()
     }

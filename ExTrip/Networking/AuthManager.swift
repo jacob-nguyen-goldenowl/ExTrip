@@ -9,6 +9,8 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
+import FirebaseCore
+import GoogleSignIn
 
 class AuthManager {
         
@@ -16,6 +18,12 @@ class AuthManager {
     static let shared = AuthManager()
 
     private init() {}
+    
+    enum AuthenticationError: Error {
+        case signInError(message: String)
+        case tokenError(message: String)
+        case clientError(message: String)
+    }
     
     // MARK: - Login 
     func login(email: String, password: String, completion: @escaping(ResultInt, StatusCode) -> Void) {
@@ -72,6 +80,56 @@ class AuthManager {
                            .insertUserFailed)
             }
         }
+    }
+    
+    func loginWithGoogle(with viewController: UIViewController, completion: @escaping (Error?) -> Void) {
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            completion(AuthenticationError.clientError(message: "No client ID found in Firebase configuration"))
+            return
+        }
+        
+        let config = GIDConfiguration(clientID: clientID)
+        
+        GIDSignIn.sharedInstance.configuration = config
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { result, error in
+            guard error == nil, let result = result else {
+                completion(AuthenticationError
+                    .signInError(message: "Error"))
+                return
+            }
+            
+            let user = result.user
+            
+            guard let idToken = user.idToken else {
+                completion(AuthenticationError.tokenError(message: "Id token missing"))
+                return
+            }
+            
+            let accessToken = user.accessToken
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString,
+                                                           accessToken: accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { result, error in
+                guard error == nil else {
+                    completion(AuthenticationError
+                        .signInError(message: "Somthing error when login"))
+                    return
+                }
+                if let currentUser = Auth.auth().currentUser {
+                    UserManager.shared.saveUserGoogle(currentUser)
+                }
+                completion(nil)
+            }
+        }
+    }
+    
+    func currentUser() -> User? {
+        guard let currentUser = Auth.auth().currentUser else {
+            return nil
+        }
+        return currentUser
     }
     
     func signOut(completion: @escaping (Result<Bool, Error>) -> Void) {

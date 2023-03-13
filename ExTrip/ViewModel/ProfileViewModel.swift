@@ -11,7 +11,12 @@ class ProfileViewModel {
     
     var userName = UserDefaults.standard.string(forKey: UserDefaultKey.userName)
     var avatarURL = UserDefaults.standard.string(forKey: UserDefaultKey.userPhotoURL)
-    var userID = UserManager.shared.getUserId()
+    var currentUserID: String?
+    
+    init() {
+        var currentUser = AuthManager.shared.currentUser()
+        currentUserID = currentUser?.uid
+    }
 
     func signOut(completion: @escaping (Error?) -> Void) {
         AuthManager.shared.signOut { result in

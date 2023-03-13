@@ -16,6 +16,13 @@ class UserManager {
     
     private let db = Firestore.firestore()
     private let userDefault = UserDefaults.standard
+    
+    func saveUserGoogle(_ user: User) {
+        UserDefaults.standard.set(user.uid, forKey: UserDefaultKey.userId)
+        UserDefaults.standard.set(user.email, forKey: UserDefaultKey.userEmail)
+        UserDefaults.standard.set(user.photoURL?.absoluteString, forKey: UserDefaultKey.userPhotoURL)
+        UserDefaults.standard.set(user.displayName, forKey: UserDefaultKey.userName)
+    }
 
     func saveUserInfo(_ uid: String) {
         let docRef = db.collection("users").document(uid)
