@@ -20,6 +20,7 @@ class SignInViewModel {
             if let error = error {
                 self?.alertMessageClosure?(error)
             } else {
+                self?.postNotificationCenter()
                 self?.navigationClosure?()
             }
         }

@@ -117,9 +117,19 @@ class AuthManager {
                         .signInError(message: "Somthing error when login"))
                     return
                 }
+                if let user = Auth.auth().currentUser {
+                    UserManager.shared.saveUserInfo(user.uid)
+                }
                 completion(nil)
             }
         }
+    }
+    
+    func currentUser() -> User? {
+        guard let currentUser = Auth.auth().currentUser else {
+            return nil
+        }
+        return currentUser
     }
     
     func signOut(completion: @escaping (Result<Bool, Error>) -> Void) {

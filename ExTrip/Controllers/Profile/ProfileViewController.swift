@@ -162,7 +162,7 @@ class ProfileViewController: UIViewController {
     }
 
     func checkUserLogin() {
-        let userID =  profileViewModel.userID
+        let userID =  profileViewModel.currentUserID
         if userID != nil {
             shouldHideSection = false
         } else {
