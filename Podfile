@@ -15,6 +15,7 @@ pod 'Firebase/Crashlytics'
 pod 'Firebase/Storage'
 pod 'FirebaseFirestore'
 pod 'FirebaseFirestoreSwift'
+pod 'GoogleSignIn'
 
 # Calendar
 pod 'JTAppleCalendar'
