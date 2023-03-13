@@ -14,6 +14,12 @@ class SignInViewController: UIViewController {
     // MARK: - Properties
     private let verticalStackView = UIStackView()
     private let signUpStackView = UIStackView()
+    
+    private lazy var cancelButton: ETCancelButton = {
+        let button = ETCancelButton()
+        button.delegate = self
+        return button
+    }()
 
     private lazy var emailTextField: ETTextField = {
         let textField = ETTextField(type: .email)
@@ -77,7 +83,8 @@ class SignInViewController: UIViewController {
         self.hideKeyboardWhenTappedAround() 
 
         view.backgroundColor = .systemBackground
-        view.addSubviews(verticalStackView,
+        view.addSubviews(cancelButton, 
+                         verticalStackView,
                          forgetPasswordButton,
                          loginButton, 
                          signUpStackView)
@@ -87,6 +94,13 @@ class SignInViewController: UIViewController {
     
     private func setupConstraintViews() {
         let padding: CGFloat = 30
+        
+        cancelButton.anchor(top: view.topAnchor,
+                            leading: view.leadingAnchor,
+                            paddingTop: padding,
+                            paddingLeading: 15)
+        cancelButton.setWidth(width: 40)
+        cancelButton.setHeight(height: 40)
         
         verticalStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                  leading: view.leadingAnchor,
@@ -203,5 +217,11 @@ extension SignInViewController {
         navigationController?.pushViewController(vc, animated: true)
         emailTextField.text = ""
         passwordTextField.text = ""
+    }
+}
+
+extension SignInViewController: ETCancelButtonDelegate {
+    func eTCancelButtonHandleCancelAction() {
+        dismiss(animated: true)
     }
 }

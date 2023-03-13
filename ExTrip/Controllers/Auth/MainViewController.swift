@@ -18,6 +18,12 @@ class MainViewController: UIViewController {
         imageView.image = UIImage(named: "background")
         return imageView
     }()
+    
+    private lazy var cancelButton: ETCancelButton = {
+        let button = ETCancelButton()
+        button.delegate = self
+        return button
+    }()
 
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
@@ -52,8 +58,9 @@ class MainViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .systemBackground
         view.insertSubview(backgroundImageView, at: 0)
-        view.addSubview(facebookButton)
-        view.addSubviews(horizontalStackView,
+        view.addSubviews(cancelButton, 
+                         facebookButton,
+                         horizontalStackView,
                          subtitleLabel,
                          googleButton)
         setupConstraintViews()
@@ -65,6 +72,14 @@ class MainViewController: UIViewController {
         let heightButton: CGFloat = 50
         
         backgroundImageView.fillAnchor(view)
+        
+        cancelButton.anchor(top: view.topAnchor,
+                            leading: view.leadingAnchor,
+                            paddingTop: 30,
+                            paddingLeading: padding)
+        cancelButton.setWidth(width: 40)
+        cancelButton.setHeight(height: 40)
+        
         horizontalStackView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                    leading: view.leadingAnchor,
                                    trailing: view.trailingAnchor,
@@ -149,5 +164,12 @@ extension MainViewController {
     @objc func handleSignUpAction() {
         let vc = SignUpViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension MainViewController: ETCancelButtonDelegate {
+    func eTCancelButtonHandleCancelAction() {
+        print("dissmiss")
+        dismiss(animated: true)
     }
 }

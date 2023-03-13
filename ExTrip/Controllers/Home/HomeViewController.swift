@@ -37,9 +37,7 @@ class HomeViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeViewModel.welcomTitle()
         homeViewModel.fetchData()
-        setupTitleBinder()
         setupDataBinder()
         setupViews()
         registerCell()
@@ -64,15 +62,6 @@ class HomeViewController: UIViewController {
                                 withReuseIdentifier: CategoryCollectionReusableView.identifier)
     }
 
-    // MARK: - Setup Binder
-    private func setupTitleBinder() {
-        homeViewModel.welcomeMessage.bind {[weak self] message in
-            if let message = message {
-                self?.setupLeftAlignTitleView(text: message)
-            }
-        }
-    }
-    
     private func setupDataBinder() {
         homeViewModel.destination.bind { [weak self] data in
             if let data = data {
