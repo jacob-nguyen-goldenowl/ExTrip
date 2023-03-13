@@ -138,6 +138,7 @@
 		04BF56812941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */; };
 		04BF56842941EA6C00BCF4A5 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */; };
 		04BF56882942438B00BCF4A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF56872942438B00BCF4A5 /* MainViewController.swift */; };
+		04D5BEA429BEDDE4008AF1DE /* ETCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D5BEA329BEDDE4008AF1DE /* ETCancelButton.swift */; };
 		04D80D8D295178EC005985ED /* StretchyTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80D8C295178EC005985ED /* StretchyTableHeaderView.swift */; };
 		04D80D902951792F005985ED /* RattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80D8F2951792F005985ED /* RattingView.swift */; };
 		04D80D93295179B9005985ED /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80D92295179B9005985ED /* DestinationViewController.swift */; };
@@ -307,6 +308,7 @@
 		04BF56802941EA0D00BCF4A5 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		04BF56832941EA6C00BCF4A5 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		04BF56872942438B00BCF4A5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		04D5BEA329BEDDE4008AF1DE /* ETCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETCancelButton.swift; sourceTree = "<group>"; };
 		04D80D8C295178EC005985ED /* StretchyTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyTableHeaderView.swift; sourceTree = "<group>"; };
 		04D80D8F2951792F005985ED /* RattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RattingView.swift; sourceTree = "<group>"; };
 		04D80D92295179B9005985ED /* DestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
@@ -883,6 +885,7 @@
 				04AB54312952A810005D5C31 /* ETSearchTextField.swift */,
 				0476EBDC299DE78B00000189 /* ETRoomButton.swift */,
 				046FC04A29AE66B800A7AEE4 /* ETRippleButton.swift */,
+				04D5BEA329BEDDE4008AF1DE /* ETCancelButton.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -1409,6 +1412,7 @@
 				0499705E29921697008BDBDA /* RoomModel.swift in Sources */,
 				042A14912948B9DD00461C4D /* StatusCode.swift in Sources */,
 				04D80D9629517A30005985ED /* DestinationTableViewCell.swift in Sources */,
+				04D5BEA429BEDDE4008AF1DE /* ETCancelButton.swift in Sources */,
 				04BB31D6296FAACE002AA9E1 /* InfomationCollectionViewCell.swift in Sources */,
 				044587DC29431728009195F2 /* SignInViewController.swift in Sources */,
 				048D7A5229AD9B86008BBE6A /* PaymentTableViewCell.swift in Sources */,

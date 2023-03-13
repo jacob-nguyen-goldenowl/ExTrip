@@ -117,8 +117,8 @@ class AuthManager {
                         .signInError(message: "Somthing error when login"))
                     return
                 }
-                if let user = Auth.auth().currentUser {
-                    UserManager.shared.saveUserInfo(user.uid)
+                if let currentUser = Auth.auth().currentUser {
+                    UserManager.shared.saveUserGoogle(currentUser)
                 }
                 completion(nil)
             }
