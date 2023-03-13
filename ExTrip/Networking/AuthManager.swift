@@ -92,5 +92,10 @@ class AuthManager {
             defaults.removeObject(forKey: key)
         }
     }
+    
+    func getCurrentUserID() -> String {
+        guard let userID = Auth.auth().currentUser?.uid else { return "" }
+        return userID
+    }
 
 }

@@ -23,7 +23,7 @@ class TabbarViewController: UITabBarController {
         changeUnSelectedColor()
         
         let home = HomeViewController()
-        let favorite = FavoriteViewController()
+        let favorite = WishListViewController()
         let booking = BookingViewController()
         let profile = ProfileViewController()
         

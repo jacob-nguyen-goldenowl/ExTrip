@@ -8,13 +8,18 @@
 import UIKit
 
 class ETFavoriteButton: UIButton {
+        
+    var currentUser: String = ""
     
     // Images
     let likedImage = UIImage(named: "favorite.fill")
     let likeImage = UIImage(named: "favorite")
     let likeColor = UIColor.theme.red ?? .red
     let unlikeColor = UIColor.theme.lightGray ?? .gray
-
+    
+    var likedClosure: (() -> Void)?
+    var dislikeClosure: (() -> Void)?
+    
     private lazy var starImage: UIImageView = {
         let imageView = UIImageView()
         imageView.changeColorImage(image: likeImage, color: unlikeColor)
@@ -26,18 +31,13 @@ class ETFavoriteButton: UIButton {
     // Bool property
     var isChecked: Bool = false {
         didSet {
-            if isChecked {
-                starImage.changeColorImage(image: likedImage, color: likeColor)
-                createAnimationWhenSelectItem(starImage)
-            } else {
-                starImage.changeColorImage(image: likeImage, color: unlikeColor)
-                createAnimationWhenSelectItem(starImage)
-            }
+            setupLike()
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        currentUser = AuthManager.shared.getCurrentUserID()
         setup()
     }
     
@@ -48,7 +48,15 @@ class ETFavoriteButton: UIButton {
     private func setup() {
         addSubview(starImage)
         addTarget(self, action: #selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
-        isChecked = false
+        setupLike()
+    }
+    
+    private func setupLike() {
+        if isChecked {
+            starImage.changeColorImage(image: likedImage, color: likeColor)
+        } else {
+            starImage.changeColorImage(image: likeImage, color: unlikeColor)
+        }
     }
     
     func createAnimationWhenSelectItem(_ item: UIImageView) {
@@ -59,10 +67,32 @@ class ETFavoriteButton: UIButton {
         propertyAnimator.addAnimations({ item.transform = CGAffineTransform.identity }, delayFactor: timeInterval)
         propertyAnimator.startAnimation()
     }
-
-    @objc func buttonClicked(sender: UIButton) {
-        if sender == self {
-            isChecked = !isChecked
+    
+    private func handleLike() {
+        if isChecked {
+            createAnimationWhenSelectItem(starImage)
+            likedClosure?()
+        } else {
+            createAnimationWhenSelectItem(starImage)
+            dislikeClosure?()
         }
     }
+
+    @objc func buttonClicked(sender: UIButton) {
+        if !currentUser.isEmpty {
+            if sender == self {
+                isChecked = !isChecked
+            }
+            handleLike()
+        } else {
+            let vc = MainViewController()
+            vc.modalPresentationStyle = .fullScreen
+            if let rootViewController = window?.windowScene?.keyWindow?.rootViewController {
+                rootViewController.present(vc, animated: true)      
+            } else {
+                print("something error when navigation to root view")
+            }
+        }
+    }
+    
 }

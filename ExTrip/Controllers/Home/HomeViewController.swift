@@ -160,7 +160,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                                            scoreDestination: item.rating,
                                            titleDestination: item.country,
                                            imageDestination: item.image)
-        vc.titleHeader = item.country
+        vc.hotelViewModel.titleHeader = item.country
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

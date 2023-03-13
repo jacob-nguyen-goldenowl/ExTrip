@@ -12,9 +12,13 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     static let identifier = "DestinationCollectionViewCell"
     
     private var cellPadding: CGFloat = 10
-    var isSelectedLikeButton: Bool = false {
+
+    lazy var viewModel = WishListViewModel()
+    
+    var currentUser: String = ""
+    var hotelId: String = "" {
         didSet {
-            changeColorLikeButton()
+            setupFavorite()
         }
     }
     
@@ -33,11 +37,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var likeButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .clear
-        return button
-    }()
+    lazy var favouriteButton = ETFavoriteButton()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -59,8 +59,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubViews()
-        setupActionButton()
-        changeColorLikeButton()
+        setupFavorite()
     }
     
     required init?(coder: NSCoder) {
@@ -68,9 +67,10 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupSubViews() {
+        currentUser = AuthManager.shared.getCurrentUserID()
         contentView.addSubview(containerView)
         containerView.addSubviews(posterImageView,
-                                  likeButton, 
+                                  favouriteButton, 
                                   titleLabel,
                                   priceLabel, 
                                   ratingView)
@@ -92,12 +92,12 @@ class DestinationCollectionViewCell: UICollectionViewCell {
                                paddingTrailing: padding)
         posterImageView.setHeight(height: frame.size.width - padding*2)
         
-        likeButton.anchor(top: containerView.topAnchor, 
-                          trailing: containerView.trailingAnchor,
-                          paddingTop: paddingLike,
-                          paddingTrailing: paddingLike)
-        likeButton.setHeight(height: 30)
-        likeButton.setWidth(width: 30)
+        favouriteButton.anchor(top: containerView.topAnchor, 
+                               trailing: containerView.trailingAnchor,
+                               paddingTop: paddingLike,
+                               paddingTrailing: paddingLike)
+        favouriteButton.setHeight(height: 30)
+        favouriteButton.setWidth(width: 30)
         
         titleLabel.anchor(top: posterImageView.bottomAnchor,
                           leading: containerView.leadingAnchor, 
@@ -121,28 +121,28 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         ratingView.setHeight(height: 30)        
     }
     
-    private func changeColorLikeButton() {
-        let image = UIImage(named: isSelectedLikeButton ? "favorite.fill" : "favorite")
-        let tintedImage = image?.withRenderingMode(.alwaysTemplate)
-        likeButton.setImage(tintedImage, for: .normal)
-        likeButton.tintColor = isSelectedLikeButton ? UIColor.theme.red ?? .red : UIColor.theme.white ?? .white
-    }
-    
-    private func setupActionButton() {
-        likeButton.addTarget(self, action: #selector(handleLikeAction), for: .touchUpInside)
-    }
-    
     func setDataForDestination(_ data: HotelModel) {
         posterImageView.loadImage(url: data.thumbnail)
         titleLabel.text = data.name.capitalizeFirstLetter()
         priceLabel.text = "Start From $\(data.price)"
         ratingView.score = "\(data.rating)"
+        favouriteButton.isChecked = data.like
     }
-}
-
-extension DestinationCollectionViewCell {
-    @objc func handleLikeAction() {
-        isSelectedLikeButton = !isSelectedLikeButton
-        changeColorLikeButton()
+    
+    func setupFavorite() {
+        favouriteButton.currentUser = currentUser
+        let wishlist = WishListModel(hotelID: hotelId, userID: currentUser)
+        favouriteButton.likedClosure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.viewModel.addWishtlist(with: wishlist)
+            }
+        } 
+        
+        favouriteButton.dislikeClosure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.viewModel.removeFromWishlist(with: self?.hotelId ?? "")
+            }
+        }
     }
+    
 }

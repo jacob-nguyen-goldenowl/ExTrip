@@ -18,5 +18,5 @@ struct UserDefaultKey {
     static let loadingNotify = "com.loading.notification.center"
     static let filterNotity = "com.filter.notication.center"
     static let checkEmptyNotify = "com.extrip.empty.notication.center"
-    static let loginSuccess = "com.extrip.user.login.success"
+    static let loginsuccessNotify = "com.login.success.notification.center"
 }

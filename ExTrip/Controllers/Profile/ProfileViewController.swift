@@ -186,7 +186,7 @@ class ProfileViewController: UIViewController {
     private func receiverNotificationCenter() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(loginSuccess),
-                                               name: NSNotification.Name(UserDefaultKey.loginSuccess),
+                                               name: NSNotification.Name(UserDefaultKey.loginsuccessNotify),
                                                object: nil )
     }
     
@@ -201,7 +201,7 @@ class ProfileViewController: UIViewController {
     }
     
     deinit { 
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(UserDefaultKey.loginSuccess), object: nil) 
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(UserDefaultKey.loginsuccessNotify), object: nil) 
     }    
     
 }
@@ -289,7 +289,7 @@ extension ProfileViewController {
     }
     
     private func handleSaveAction() {
-        let vc = FavoriteViewController()
+        let vc = WishListViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     

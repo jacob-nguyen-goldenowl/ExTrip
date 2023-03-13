@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HotelResultViewController: UIViewController {
+class HotelResultViewController: ETMainViewController {
 
     private let bookingViewModel = BookingViewModel()
     
@@ -154,7 +154,23 @@ class HotelResultViewController: UIViewController {
                          bottom: view.bottomAnchor,
                          leading: view.leadingAnchor,
                          trailing: view.trailingAnchor)
-
+    }
+    
+    private func receiverNotify() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(loginSuccess),
+                                               name: NSNotification.Name(UserDefaultKey.loginsuccessNotify),
+                                               object: nil)
+    }
+    
+    @objc func loginSuccess() {
+        setupBinder()
+    }
+    
+    deinit { 
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name(UserDefaultKey.loginsuccessNotify),
+                                                  object: nil) 
     }
     
 }
@@ -167,13 +183,17 @@ extension HotelResultViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HotelResultTableViewCell.identifier, for: indexPath) as? HotelResultTableViewCell else { return UITableViewCell() }
-        if let hotel = hotels?[indexPath.item] {
-            
+        if var hotel = hotels?[indexPath.item] {
+            if wishListViewModel.processComparisonHotelId(hotel.id) {
+                hotel.like = true
+            } else {
+                hotel.like = false
+            }
             var room: [RoomModel] = []
             if let rooms = rooms {
                 room = rooms.filter { $0.hotelID == hotel.id }
             } 
-            
+            cell.hotelId = hotel.id
             cell.numberRoomAvailable = room.count
             
             cell.setupDataInfoHotelBooking(hotel: hotel)

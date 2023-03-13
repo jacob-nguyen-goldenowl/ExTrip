@@ -26,19 +26,11 @@ enum Section: Int {
     static let sections: [Section] = [.hotel, .flight, .event]
 }
 
-class DestinationViewController: UIViewController {
+class DestinationViewController: ETMainViewController {
     
-    private let hotelViewModel = HotelViewModel()
+    var hotelViewModel = HotelViewModel()
     
-    private let sections = Section.sections
-    private var allHotels: [HotelModel] = []
-    private var countryID: String?
-    
-    var isSeletedLike: Bool = false
-    var titleHeader: String = ""
-    var scoreDestination: String?
-    var titleDestination: String?
-    var imageDestination: String?
+    private lazy var sections = Section.sections
     
     // MARK: - Properties
     private let tableView: UITableView = {
@@ -54,31 +46,23 @@ class DestinationViewController: UIViewController {
         return table
     }()
     
-    private lazy var cornerView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 20
-        view.backgroundColor = .systemBackground
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        return view
-    }()
-    
     // MARK: - Initialization
     init(destinationID: String?,
          scoreDestination: String?,
          titleDestination: String?, 
          imageDestination: String?) {
-        self.countryID = destinationID
-        self.scoreDestination = scoreDestination
-        self.titleDestination = titleDestination
-        self.imageDestination = imageDestination
+        hotelViewModel.countryID = destinationID
+        hotelViewModel.scoreDestination = scoreDestination
+        hotelViewModel.titleDestination = titleDestination
+        hotelViewModel.imageDestination = imageDestination
         super.init(nibName: nil, bundle: nil)
     }
 
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewModel()
         setupViews()
-        setupBinder()
         setupNavigationBar()
     }
     
@@ -90,17 +74,13 @@ class DestinationViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Setup binder
-    private func setupBinder() {
-        hotelViewModel.fetchLimitData(destinationID: countryID)
-        hotelViewModel.fetchAllData(destinationID: countryID)
-
-        hotelViewModel.hotels.bind { [weak self] value in
-            guard let self = self else { return }
-            if let value = value {
-                self.allHotels = value
+    private func setupViewModel() {
+        hotelViewModel.reloadTableViewClosure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
-        }
+        }        
+        hotelViewModel.fetchLimitData(destinationID: hotelViewModel.countryID)
     }
     
     // MARK: - Setup UI
@@ -126,7 +106,7 @@ class DestinationViewController: UIViewController {
 extension DestinationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return hotelViewModel.listOfData.isEmpty ? 0 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,11 +119,8 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
         switch indexPath.section {
         case Section.hotel.rawValue: 
             cell.sectionOfCell  = indexPath.section
-            hotelViewModel.limitHotels.bind { value in
-                if let value = value {
-                    cell.model = value
-                }
-            }
+            cell.wishlists = wishListViewModel.wishlists
+            cell.model = hotelViewModel.listOfData
         case Section.flight.rawValue:
             // Just test data
             print("none")
@@ -203,15 +180,6 @@ extension DestinationViewController: UITableViewDelegate, UITableViewDataSource 
                       trailing: headerView.trailingAnchor, 
                       paddingTrailing: padding)
         
-        if section == Section.hotel.rawValue {
-            headerView.addSubview(cornerView)
-            cornerView.anchor(bottom: headerView.topAnchor,
-                              leading: headerView.leadingAnchor,
-                              trailing: headerView.trailingAnchor,
-                              paddingBottom: -5)
-            cornerView.setHeight(height: 40)
-        }
-        
         switch section {
         case Section.hotel.rawValue:
             button.addTarget(self, action: #selector(handleSeeAllHotelAction), for: .touchUpInside)
@@ -233,9 +201,9 @@ extension DestinationViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let header = tableView.tableHeaderView as? StretchyTableHeaderView else { return }
         header.scrollViewDidScroll(tableView)
-        if let image = imageDestination,
-           let score = scoreDestination,
-           let title = titleDestination {
+        if let image = hotelViewModel.imageDestination,
+           let score = hotelViewModel.scoreDestination,
+           let title = hotelViewModel.titleDestination {
             header.setDataForHeader(image: image,
                                     score: score,
                                     title: title)
@@ -248,7 +216,7 @@ extension DestinationViewController: UIScrollViewDelegate {
         if scrollView.contentOffset.y < -20 {
             navigationItem.title = nil
         } else {
-            navigationItem.title = titleHeader
+            navigationItem.title = hotelViewModel.titleHeader.uppercased()
         }
     }
     
@@ -257,7 +225,7 @@ extension DestinationViewController: UIScrollViewDelegate {
 // MARK: - Handle action button
 extension DestinationViewController {
     @objc func handleSeeAllHotelAction() {
-        let vc = HotelViewController(allHotels)
+        let vc = HotelViewController(hotelViewModel.listOfData)
         vc.title = "Hotels".uppercased()
         navigationAction(vc)
     }
