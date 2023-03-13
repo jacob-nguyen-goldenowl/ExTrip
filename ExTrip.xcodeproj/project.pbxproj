@@ -940,11 +940,8 @@
 		04BF567B2941E9D300BCF4A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				0471DBA429B1A9A600FE62B3 /* EmptyView */,
-=======
 				04087DB729B0D15A00539B1A /* Back */,
->>>>>>> dev
 				04133A36298ACAEC00466ECF /* Error */,
 				045D0322298A27F30071EFB7 /* Loading */,
 				04DE335E2971198500440509 /* Search */,
