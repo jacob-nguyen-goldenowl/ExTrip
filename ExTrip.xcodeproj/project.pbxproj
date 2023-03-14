@@ -109,6 +109,22 @@
 		04BB31DD296FAAF8002AA9E1 /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB31DC296FAAF8002AA9E1 /* OverviewTableViewCell.swift */; };
 		04BB31DF296FAB13002AA9E1 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB31DE296FAB13002AA9E1 /* DescriptionTableViewCell.swift */; };
 		04BB31E2296FAB2B002AA9E1 /* ViewDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB31E1296FAB2B002AA9E1 /* ViewDetailsViewController.swift */; };
+		04BD59F529C02B6A00E66F0E /* room_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59E529C02B6800E66F0E /* room_framed.png */; };
+		04BD59F629C02B6A00E66F0E /* view_all_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59E629C02B6800E66F0E /* view_all_framed.png */; };
+		04BD59F729C02B6A00E66F0E /* payment_method_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59E729C02B6900E66F0E /* payment_method_framed.png */; };
+		04BD59F829C02B6A00E66F0E /* booking_result_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59E829C02B6900E66F0E /* booking_result_framed.png */; };
+		04BD59F929C02B6A00E66F0E /* filter_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59E929C02B6900E66F0E /* filter_framed.png */; };
+		04BD59FA29C02B6A00E66F0E /* review_book_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59EA29C02B6900E66F0E /* review_book_framed.png */; };
+		04BD59FB29C02B6A00E66F0E /* destination_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59EB29C02B6900E66F0E /* destination_framed.png */; };
+		04BD59FC29C02B6A00E66F0E /* search_city_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59EC29C02B6900E66F0E /* search_city_framed.png */; };
+		04BD59FD29C02B6A00E66F0E /* select_room_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59ED29C02B6900E66F0E /* select_room_framed.png */; };
+		04BD59FE29C02B6A00E66F0E /* hotel_detail_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59EE29C02B6900E66F0E /* hotel_detail_framed.png */; };
+		04BD59FF29C02B6A00E66F0E /* confirm_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59EF29C02B6900E66F0E /* confirm_framed.png */; };
+		04BD5A0029C02B6A00E66F0E /* hotel_booking_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59F029C02B6900E66F0E /* hotel_booking_framed.png */; };
+		04BD5A0129C02B6A00E66F0E /* home_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59F129C02B6A00E66F0E /* home_framed.png */; };
+		04BD5A0229C02B6A00E66F0E /* profile_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59F229C02B6A00E66F0E /* profile_framed.png */; };
+		04BD5A0329C02B6A00E66F0E /* select_date_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59F329C02B6A00E66F0E /* select_date_framed.png */; };
+		04BD5A0429C02B6A00E66F0E /* wishlist_framed.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD59F429C02B6A00E66F0E /* wishlist_framed.png */; };
 		04BF54BE2949DDEA001176A1 /* DestinationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF54BD2949DDEA001176A1 /* DestinationModel.swift */; };
 		04BF562E294193B200BCF4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562D294193B200BCF4A5 /* AppDelegate.swift */; };
 		04BF5630294193B200BCF4A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF562F294193B200BCF4A5 /* SceneDelegate.swift */; };
@@ -284,6 +300,22 @@
 		04BB31DC296FAAF8002AA9E1 /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		04BB31DE296FAB13002AA9E1 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		04BB31E1296FAB2B002AA9E1 /* ViewDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDetailsViewController.swift; sourceTree = "<group>"; };
+		04BD59E529C02B6800E66F0E /* room_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room_framed.png; sourceTree = "<group>"; };
+		04BD59E629C02B6800E66F0E /* view_all_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view_all_framed.png; sourceTree = "<group>"; };
+		04BD59E729C02B6900E66F0E /* payment_method_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = payment_method_framed.png; sourceTree = "<group>"; };
+		04BD59E829C02B6900E66F0E /* booking_result_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = booking_result_framed.png; sourceTree = "<group>"; };
+		04BD59E929C02B6900E66F0E /* filter_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter_framed.png; sourceTree = "<group>"; };
+		04BD59EA29C02B6900E66F0E /* review_book_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_book_framed.png; sourceTree = "<group>"; };
+		04BD59EB29C02B6900E66F0E /* destination_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = destination_framed.png; sourceTree = "<group>"; };
+		04BD59EC29C02B6900E66F0E /* search_city_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_city_framed.png; sourceTree = "<group>"; };
+		04BD59ED29C02B6900E66F0E /* select_room_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_room_framed.png; sourceTree = "<group>"; };
+		04BD59EE29C02B6900E66F0E /* hotel_detail_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotel_detail_framed.png; sourceTree = "<group>"; };
+		04BD59EF29C02B6900E66F0E /* confirm_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirm_framed.png; sourceTree = "<group>"; };
+		04BD59F029C02B6900E66F0E /* hotel_booking_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotel_booking_framed.png; sourceTree = "<group>"; };
+		04BD59F129C02B6A00E66F0E /* home_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_framed.png; sourceTree = "<group>"; };
+		04BD59F229C02B6A00E66F0E /* profile_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_framed.png; sourceTree = "<group>"; };
+		04BD59F329C02B6A00E66F0E /* select_date_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_date_framed.png; sourceTree = "<group>"; };
+		04BD59F429C02B6A00E66F0E /* wishlist_framed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wishlist_framed.png; sourceTree = "<group>"; };
 		04BF54BD2949DDEA001176A1 /* DestinationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationModel.swift; sourceTree = "<group>"; };
 		04BF562A294193B200BCF4A5 /* ExTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BF562D294193B200BCF4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -450,6 +482,37 @@
 				046FC05C29AF54FC00A7AEE4 /* Constant.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		045962FF29BF0DB200735673 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				0459630029BF0DBB00735673 /* Screenshots */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		0459630029BF0DBB00735673 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				04BD59E829C02B6900E66F0E /* booking_result_framed.png */,
+				04BD59EF29C02B6900E66F0E /* confirm_framed.png */,
+				04BD59EB29C02B6900E66F0E /* destination_framed.png */,
+				04BD59E929C02B6900E66F0E /* filter_framed.png */,
+				04BD59F129C02B6A00E66F0E /* home_framed.png */,
+				04BD59F029C02B6900E66F0E /* hotel_booking_framed.png */,
+				04BD59EE29C02B6900E66F0E /* hotel_detail_framed.png */,
+				04BD59E729C02B6900E66F0E /* payment_method_framed.png */,
+				04BD59F229C02B6A00E66F0E /* profile_framed.png */,
+				04BD59EA29C02B6900E66F0E /* review_book_framed.png */,
+				04BD59E529C02B6800E66F0E /* room_framed.png */,
+				04BD59EC29C02B6900E66F0E /* search_city_framed.png */,
+				04BD59F329C02B6A00E66F0E /* select_date_framed.png */,
+				04BD59ED29C02B6900E66F0E /* select_room_framed.png */,
+				04BD59E629C02B6800E66F0E /* view_all_framed.png */,
+				04BD59F429C02B6A00E66F0E /* wishlist_framed.png */,
+			);
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		045D0322298A27F30071EFB7 /* Loading */ = {
@@ -821,6 +884,7 @@
 		04BF562C294193B200BCF4A5 /* ExTrip */ = {
 			isa = PBXGroup;
 			children = (
+				045962FF29BF0DB200735673 /* Docs */,
 				0486B8E52965731E00940B40 /* Base */,
 				04F7DDF5295452010020494F /* Framework */,
 				04D80D8B295178C9005985ED /* Common */,
@@ -1296,25 +1360,41 @@
 				04BF565C2941A2EF00BCF4A5 /* Poppins-Light.ttf in Resources */,
 				04BF56582941A2EF00BCF4A5 /* Poppins-ExtraLight.ttf in Resources */,
 				04BF56662941A2EF00BCF4A5 /* Poppins-Thin.ttf in Resources */,
+				04BD59FF29C02B6A00E66F0E /* confirm_framed.png in Resources */,
 				04BF56682941A2EF00BCF4A5 /* Poppins-Italic.ttf in Resources */,
+				04BD59FB29C02B6A00E66F0E /* destination_framed.png in Resources */,
+				04BD59F529C02B6A00E66F0E /* room_framed.png in Resources */,
 				04BF56622941A2EF00BCF4A5 /* Poppins-Regular.ttf in Resources */,
+				04BD5A0129C02B6A00E66F0E /* home_framed.png in Resources */,
+				04BD59FE29C02B6A00E66F0E /* hotel_detail_framed.png in Resources */,
 				04BF56592941A2EF00BCF4A5 /* Poppins-ThinItalic.ttf in Resources */,
 				04BF565A2941A2EF00BCF4A5 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				04BD5A0029C02B6A00E66F0E /* hotel_booking_framed.png in Resources */,
 				04BF56612941A2EF00BCF4A5 /* Poppins-BlackItalic.ttf in Resources */,
 				04BF56692941A2EF00BCF4A5 /* Poppins-MediumItalic.ttf in Resources */,
 				04BF565F2941A2EF00BCF4A5 /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				0471DBA829B1ABD700FE62B3 /* emptyBox.json in Resources */,
 				04BF56642941A2EF00BCF4A5 /* Poppins-Bold.ttf in Resources */,
+				04BD59F729C02B6A00E66F0E /* payment_method_framed.png in Resources */,
 				04BF565B2941A2EF00BCF4A5 /* Poppins-BoldItalic.ttf in Resources */,
+				04BD59F829C02B6A00E66F0E /* booking_result_framed.png in Resources */,
 				04BF565E2941A2EF00BCF4A5 /* Poppins-SemiBoldItalic.ttf in Resources */,
+				04BD59FD29C02B6A00E66F0E /* select_room_framed.png in Resources */,
 				04BF56632941A2EF00BCF4A5 /* Poppins-LightItalic.ttf in Resources */,
 				04BF56602941A2EF00BCF4A5 /* Poppins-ExtraBold.ttf in Resources */,
+				04BD5A0429C02B6A00E66F0E /* wishlist_framed.png in Resources */,
+				04BD59F929C02B6A00E66F0E /* filter_framed.png in Resources */,
 				04BF565D2941A2EF00BCF4A5 /* Poppins-Medium.ttf in Resources */,
 				04BF56672941A2EF00BCF4A5 /* Poppins-SemiBold.ttf in Resources */,
+				04BD5A0229C02B6A00E66F0E /* profile_framed.png in Resources */,
 				048D7A6729ADDB18008BBE6A /* loading.json in Resources */,
 				04BF563A294193B300BCF4A5 /* LaunchScreen.storyboard in Resources */,
 				04BF5637294193B300BCF4A5 /* Assets.xcassets in Resources */,
+				04BD59FA29C02B6A00E66F0E /* review_book_framed.png in Resources */,
+				04BD59FC29C02B6A00E66F0E /* search_city_framed.png in Resources */,
 				049996F4294731F4005033C9 /* GoogleService-Info.plist in Resources */,
+				04BD5A0329C02B6A00E66F0E /* select_date_framed.png in Resources */,
+				04BD59F629C02B6A00E66F0E /* view_all_framed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
