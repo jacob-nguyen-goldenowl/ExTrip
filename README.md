@@ -13,7 +13,7 @@ A simple travel app for booking hotels for iOS. *Made by [Jacob](https://github.
 
 <br />
 
-***Click to View Extrip app Design from [[ExTrip]](https://www.figma.com/file/FfvKrAkefsdYNvYlPAZaYu/Trip-Go-Travel-UI-Kit-(Community)?node-id=0%3A2419&t=ttzrCNvNkCMJVNu0-0) ***
+***Click to View Extrip app Design from*** [[ExTrip]](https://www.figma.com/file/FfvKrAkefsdYNvYlPAZaYu/Trip-Go-Travel-UI-Kit-(Community)?node-id=0%3A2419&t=ttzrCNvNkCMJVNu0-0)
 
 <br />
 
