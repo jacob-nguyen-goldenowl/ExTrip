@@ -27,7 +27,7 @@ A simple travel app for booking hotels for iOS. *Made by [Jacob](https://github.
 
 | Booking Room                                  | Review and Book                                  | Room                                  | Payment                                  | Confirm payment                                  |
 | ------------------------------------------ | ------------------------------------------------ | --------------------------------------- | ---------------------------------------- | ------------------------------------- |
-| ![](Docs/Screenshots/hotel_booking_framed.png) | ![](Docs/Screenshots/review_book_framed.png) | ![](Docs/Screenshots/room.png) | ![](Docs/Screenshots/payment_method_framed.png) | ![](Docs/Screenshots/confirm.png) |
+| ![](Docs/Screenshots/hotel_booking_framed.png) | ![](Docs/Screenshots/review_book_framed.png) | ![](Docs/Screenshots/room_framed.png) | ![](Docs/Screenshots/payment_method_framed.png) | ![](Docs/Screenshots/confirm_framed.png) |
 
 | Profile                                 | Search                                  | View all                                   | Filter                               | Select date                                     |
 | ---------------------------------------- | -------------------------------------- | ------------------------------------------- | --------------------------------------- | ------------------------------------------ |
@@ -37,97 +37,108 @@ A simple travel app for booking hotels for iOS. *Made by [Jacob](https://github.
 
 ## Structure
 
-├── ExTrip
-│   ├── AppDelegate
-│   │   ├── AppDelegate.swift
-│   │   └── SceneDelegate.swift
-│   ├── Base
-│   │   └── ETTableViewCell.swift
-│   ├── Base.lproj
-│   │   └── LaunchScreen.storyboard
-│   ├── Common
-│   │   ├── AsyncImageView.swift
-│   │   └── ImageCache.swift
-│   ├── Constant
-│   │   ├── Tag.swift
-│   │   └── UserDefaultKey.swift
-│   ├── Controllers
-│   │   ├── Auth
-│   │   ├── Booking
-│   │   ├── Destination
-│   │   ├── Detail
-│   │   ├── Favorite
-│   │   ├── Filter
-│   │   ├── Home
-│   │   ├── HotelBooking
-│   │   ├── More
-│   │   └── Profile
-│   ├── Customs
-│   │   ├── ButtonStyle
-│   │   ├── ETGradientButton.swift
-│   │   ├── ETIconButton.swift
-│   │   ├── ETSearchTextField.swift
-│   │   ├── ETTextField.swift
-│   │   ├── Label
-│   │   ├── Like
-│   │   └── Slider
-│   ├── Extensions
-│   │   ├── Date+Extension.swift
-│   │   ├── String+Extension.swift
-│   │   ├── UIFont+Extension.swift
-│   │   ├── UIImage+Extension.swift
-│   │   ├── UILabel+Extension.swift
-│   │   ├── UINavigation+Extension.swift
-│   │   ├── UIStackView+Extension.swift
-│   │   ├── UIView+Extension.swift
-│   │   └── UIViewController+Extension.swift
-│   ├── Framework
-│   │   └── Calender
-│   ├── GoogleService-Info.plist
-│   ├── Info.plist
-│   ├── Model
-│   │   ├── BookingModel.swift
-│   │   ├── DestinationModel.swift
-│   │   ├── FilterModel.swift
-│   │   ├── HotelBookingModel.swift
-│   │   ├── HotelModel.swift
-│   │   ├── OnboardingModel.swift
-│   │   ├── RoomBookingModel.swift
-│   │   ├── RoomModel.swift
-│   │   ├── StepBookingModel.swift
-│   │   └── UserInfoModel.swift
-│   ├── Navigation
-│   │   └── TabbarViewController.swift
-│   ├── Networking
-│   │   ├── AuthManager.swift
-│   │   ├── DatabaseBooking.swift
-│   │   ├── DatabaseManager.swift
-│   │   ├── DatabaseRequest.swift
-│   │   ├── DatabaseResponse.swift
-│   │   ├── StatusCode.swift
-│   │   └── UserManager.swift
-│   ├── Observable
-│   │   └── Observable.swift
-│   ├── Resources
-│   │   ├── Assets.xcassets
-│   │   ├── Colors
-│   │   └── Fonts
-│   ├── ViewModel
-│   │   ├── BookingViewModel.swift
-│   │   ├── FilterViewModel.swift
-│   │   ├── HomeViewModel.swift
-│   │   ├── HotelViewModel.swift
-│   │   ├── SearchViewModel.swift
-│   │   ├── SignInViewModel.swift
-│   │   └── SignUpViewModel.swift
-│   └── Views
-│       ├── Error
-│       ├── Header
-│       ├── Loading
-│       ├── Onboarding
-│       ├── Ratting
-│       └── Search
-├── ExTrip.xcodeproj
+```
+ExTrip
+├── Base
+│   └── ETTableViewCell.swift
+├── Common
+│   ├── AsyncImageView.swift
+│   └── ImageCache.swift
+├── Constant
+│   ├── Constant.swift
+│   ├── Tag.swift
+│   └── UserDefaultKey.swift
+├── Controllers
+│   ├── Auth
+│   ├── Booking
+│   ├── Confirm
+│   ├── Destination
+│   ├── Detail
+│   ├── ETMainViewController.swift
+│   ├── Filter
+│   ├── Home
+│   ├── HotelBooking
+│   ├── More
+│   ├── Payment
+│   ├── Profile
+│   ├── ReviewBook
+│   ├── Room
+│   └── WishList
+├── Customs
+│   ├── ButtonStyle
+│   ├── ETCancelButton.swift
+│   ├── ETGradientButton.swift
+│   ├── ETIconButton.swift
+│   ├── ETRippleButton.swift
+│   ├── ETRoomButton.swift
+│   ├── ETSearchTextField.swift
+│   ├── ETTextField.swift
+│   ├── Label
+│   ├── Like
+│   └── Slider
+├── Extensions
+│   ├── Date+Extension.swift
+│   ├── Double+Extension.swift
+│   ├── String+Extension.swift
+│   ├── UIFont+Extension.swift
+│   ├── UIImage+Extension.swift
+│   ├── UILabel+Extension.swift
+│   ├── UINavigation+Extension.swift
+│   ├── UIStackView+Extension.swift
+│   ├── UIView+Extension.swift
+│   └── UIViewController+Extension.swift
+├── Framework
+│   └── Calender
+├── Model
+│   ├── BookingModel.swift
+│   ├── DestinationModel.swift
+│   ├── FilterModel.swift
+│   ├── HotelBookingModel.swift
+│   ├── HotelModel.swift
+│   ├── OnboardingModel.swift
+│   ├── RoomBookingModel.swift
+│   ├── RoomModel.swift
+│   ├── StepBookingModel.swift
+│   ├── UserInfoModel.swift
+│   └── WishListModel.swift
+├── Navigation
+│   └── TabbarViewController.swift
+├── Networking
+│   ├── AuthManager.swift
+│   ├── DatabaseBooking.swift
+│   ├── DatabaseManager.swift
+│   ├── DatabaseRequest.swift
+│   ├── DatabaseResponse.swift
+│   ├── StatusCode.swift
+│   └── UserManager.swift
+├── Observable
+│   └── Observable.swift
+├── Resources
+│   ├── Assets.xcassets
+│   ├── Colors
+│   ├── Fonts
+│   └── Lotties
+├── ViewModel
+│   ├── BookingViewModel.swift
+│   ├── ETViewModel.swift
+│   ├── FilterViewModel.swift
+│   ├── HomeViewModel.swift
+│   ├── HotelViewModel.swift
+│   ├── ProfileViewModel.swift
+│   ├── SearchViewModel.swift
+│   ├── SignInViewModel.swift
+│   ├── SignUpViewModel.swift
+│   └── WishListViewModel.swift
+└── Views
+    ├── Back
+    ├── EmptyView
+    ├── Error
+    ├── Header
+    ├── Loading
+    ├── Onboarding
+    ├── Ratting
+    └── Search
+```
 
 <br />
 
@@ -187,4 +198,25 @@ pod install
 - https://icons8.com/
 - https://lottiefiles.com/
 - https://www.canva.com/
+
+## License
+
+```
+    Apache 2.0 License
+
+
+    Copyright 2022 Jacob Nguyen
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+```
 
