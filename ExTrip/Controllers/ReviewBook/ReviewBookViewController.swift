@@ -309,11 +309,12 @@ extension ReviewBookViewController {
                                                bookingDate: arrivalDate,
                                                arrivalDate: arrivalDate,
                                                departureDate: departureDate,
-                                               roomNumber: 2,
+                                               roomNumber: bookingRoom.room,
                                                roomCharge: roomCharge,
                                                numAdults: bookingRoom.adults,
                                                numChildren: bookingRoom.children,
-                                               specialReq: "No")
+                                               specialReq: "No",
+                                               status: "active")
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                         self?.loadingView.stopAnimating()
