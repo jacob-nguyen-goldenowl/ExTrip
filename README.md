@@ -36,97 +36,72 @@ A simple travel app for booking hotels for iOS. *Made by [Jacob](https://github.
 ## Structure
 
 ```
-ExTrip
-├── Base
-│   └── ETTableViewCell.swift
+Extrip
 ├── Common
-│   ├── AsyncImageView.swift
-│   └── ImageCache.swift
-├── Constant
-│   ├── Constant.swift
-│   ├── Tag.swift
-│   └── UserDefaultKey.swift
+│   ├── AsyncImage
+│   ├── Constant
+│   ├── ImageCache
+│   └── Observable
 ├── Controllers
 │   ├── Auth
 │   ├── Booking
 │   ├── Confirm
 │   ├── Destination
 │   ├── Detail
-│   ├── ETMainViewController.swift
 │   ├── Filter
 │   ├── Home
 │   ├── HotelBooking
+│   ├── Main
 │   ├── More
 │   ├── Payment
 │   ├── Profile
 │   ├── ReviewBook
 │   ├── Room
-│   └── WishList
+│   └── Wishlist
 ├── Customs
+│   ├── Button
 │   ├── ButtonStyle
-│   ├── ETCancelButton.swift
-│   ├── ETGradientButton.swift
-│   ├── ETIconButton.swift
-│   ├── ETRippleButton.swift
-│   ├── ETRoomButton.swift
-│   ├── ETSearchTextField.swift
-│   ├── ETTextField.swift
 │   ├── Label
-│   ├── Like
-│   └── Slider
+│   ├── Slider
+│   └── TextField
 ├── Extensions
-│   ├── Date+Extension.swift
-│   ├── Double+Extension.swift
-│   ├── String+Extension.swift
-│   ├── UIFont+Extension.swift
-│   ├── UIImage+Extension.swift
-│   ├── UILabel+Extension.swift
-│   ├── UINavigation+Extension.swift
-│   ├── UIStackView+Extension.swift
-│   ├── UIView+Extension.swift
-│   └── UIViewController+Extension.swift
+│   ├── Date
+│   ├── Double
+│   ├── Font
+│   ├── String
+│   ├── UIImage
+│   ├── UILabel
+│   ├── UINavigation
+│   ├── UIStackView
+│   └── UIView
 ├── Framework
 │   └── Calender
 ├── Model
-│   ├── BookingModel.swift
-│   ├── DestinationModel.swift
-│   ├── FilterModel.swift
-│   ├── HotelBookingModel.swift
-│   ├── HotelModel.swift
-│   ├── OnboardingModel.swift
-│   ├── RoomBookingModel.swift
-│   ├── RoomModel.swift
-│   ├── StepBookingModel.swift
-│   ├── UserInfoModel.swift
-│   └── WishListModel.swift
+│   ├── Booking
+│   ├── Home
+│   ├── Hotel
+│   ├── User
+│   └── Wishlist
 ├── Navigation
-│   └── TabbarViewController.swift
+│   └── TabBar
 ├── Networking
-│   ├── AuthManager.swift
-│   ├── DatabaseBooking.swift
-│   ├── DatabaseManager.swift
-│   ├── DatabaseRequest.swift
-│   ├── DatabaseResponse.swift
-│   ├── StatusCode.swift
-│   └── UserManager.swift
-├── Observable
-│   └── Observable.swift
+│   ├── AuthService
+│   ├── DatabaseManager
+│   ├── Request
+│   └── Response
 ├── Resources
 │   ├── Assets.xcassets
 │   ├── Colors
 │   ├── Fonts
 │   └── Lotties
 ├── ViewModel
-│   ├── BookingViewModel.swift
-│   ├── ETViewModel.swift
-│   ├── FilterViewModel.swift
-│   ├── HomeViewModel.swift
-│   ├── HotelViewModel.swift
-│   ├── ProfileViewModel.swift
-│   ├── SearchViewModel.swift
-│   ├── SignInViewModel.swift
-│   ├── SignUpViewModel.swift
-│   └── WishListViewModel.swift
+│   ├── Auth
+│   ├── Booking
+│   ├── Filter
+│   ├── Home
+│   ├── Profile
+│   ├── Root
+│   └── WishList
 └── Views
     ├── Back
     ├── EmptyView
@@ -136,7 +111,14 @@ ExTrip
     ├── Onboarding
     ├── Ratting
     └── Search
+
 ```
+
+<br />
+
+## Data structure
+
+![GitHub Cards Preview](Docs/diagram.png)
 
 <br />
 
@@ -152,7 +134,7 @@ ExTrip
 ​
 ### Github Repo
 
-You can pull the *[Extrip Git Repo](https://github.com/jacob-nguyen-goldenowl/ExTrip.git)* and go to project folder
+You can clone the *[Extrip Git Repo](https://github.com/jacob-nguyen-goldenowl/ExTrip.git)* and go to project folder
 
 ### CocoaPods
 
