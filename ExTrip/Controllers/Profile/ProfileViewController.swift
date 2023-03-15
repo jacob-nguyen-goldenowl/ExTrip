@@ -294,12 +294,12 @@ extension ProfileViewController {
     }
     
     private func handleWalletAction() {
-        let vc = BookingViewController()
+        let vc = TrackerBookingViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
     private func handleTrackBookingAction() {
-        let vc = BookingViewController()
+        let vc = TrackerBookingViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     

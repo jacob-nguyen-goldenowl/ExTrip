@@ -12,6 +12,8 @@ struct Constant {
     enum Animation {
         static let loading = "loading"
         static let emptyBox = "emptyBox"
+        static let active = "active"
+        
     }
     
     enum Image {

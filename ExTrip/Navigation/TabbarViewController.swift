@@ -24,7 +24,7 @@ class TabbarViewController: UITabBarController {
         
         let home = HomeViewController()
         let favorite = WishListViewController()
-        let booking = BookingViewController()
+        let booking = TrackerBookingViewController()
         let profile = ProfileViewController()
         
         let vc1 = createTabbarController(home, image: UIImage(named: "home"))
