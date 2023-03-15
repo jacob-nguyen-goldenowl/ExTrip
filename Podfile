@@ -30,4 +30,6 @@ pod 'SwiftLint'
 
 pod 'lottie-ios'
 
+pod 'BetterSegmentedControl'
+
 end
