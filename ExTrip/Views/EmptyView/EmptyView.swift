@@ -27,7 +27,13 @@ class EmptyView: UIView {
             setupEmptyView()
         }
     }
-
+    
+    var lottieAnimation: String? {
+        didSet {
+            setupAnimationImage(with: lottieAnimation)
+        }
+    }
+    
     private let padding: CGFloat = 50
     private let paddingTop: CGFloat = 20
     
@@ -42,15 +48,7 @@ class EmptyView: UIView {
                                           size: 15, 
                                           numberOfLines: 3)
     
-    private lazy var animationView: LottieAnimationView = {
-        let animationView = LottieAnimationView()
-        let animation = LottieAnimation.named(Constant.Animation.emptyBox)
-        animationView.animation = animation
-        animationView.backgroundBehavior = .pauseAndRestore
-        animationView.loopMode = .loop
-        animationView.play()
-        return animationView
-    }()
+    private lazy var animationView =  LottieAnimationView()
     
     private lazy var signInButton: ETRippleButton = {
         let button = ETRippleButton()
@@ -66,6 +64,7 @@ class EmptyView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupAnimationImage(with: nil)
         setupEmptyView()
     }
     
@@ -81,7 +80,7 @@ class EmptyView: UIView {
             
             animationView.center(centerX: centerXAnchor,
                                  centerY: centerYAnchor,
-                                 paddingY: -100)
+                                 paddingY: -(padding + padding))
             animationView.setWidth(width: 200)
             animationView.setHeight(height: 200)
             
@@ -106,6 +105,14 @@ class EmptyView: UIView {
             }
             self.removeFromSuperview()
         }
+    }
+    
+    private func setupAnimationImage(with animationName: String?) {
+        let animation = LottieAnimation.named(animationName ?? Constant.Animation.emptyBox)
+        animationView.animation = animation
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.loopMode = .loop
+        animationView.play()
     }
     
     @objc func handleSignInAction() {
