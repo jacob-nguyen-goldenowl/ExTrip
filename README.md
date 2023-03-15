@@ -117,9 +117,9 @@ Extrip
 <br />
 
 ## Data structure
-
+```
 ![GitHub Cards Preview](Docs/diagram.png)
-
+```
 <br />
 
 ## Requirements
