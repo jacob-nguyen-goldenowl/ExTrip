@@ -24,7 +24,11 @@ class EmptyView: UIView {
     
     var isLogin: Bool = false {
         didSet {
-            setupEmptyView()
+            if isLogin {
+                signInButton.isHidden = true
+            } else {
+                signInButton.isHidden = false
+            }
         }
     }
     
@@ -46,7 +50,8 @@ class EmptyView: UIView {
     private lazy var emptyLabel = ETLabel(style: .small,
                                           textAlignment: .center,
                                           size: 15, 
-                                          numberOfLines: 3)
+                                          numberOfLines: 3,
+                                          color: UIColor.theme.black)
     
     private lazy var animationView =  LottieAnimationView()
     
@@ -90,15 +95,12 @@ class EmptyView: UIView {
                               paddingTop: paddingTop,
                               paddingLeading: padding,
                               paddingTrailing: padding)
-            if isLogin {
-                signInButton.isHidden = true
-            } else {
-                signInButton.anchor(top: emptyLabel.bottomAnchor, 
-                                    paddingTop: paddingTop)
-                signInButton.center(centerX: centerXAnchor)
-                signInButton.setWidth(width: 150)
-                signInButton.setHeight(height: 50)
-            }
+            
+            signInButton.anchor(top: emptyLabel.bottomAnchor, 
+                                paddingTop: paddingTop)
+            signInButton.center(centerX: centerXAnchor)
+            signInButton.setWidth(width: 150)
+            signInButton.setHeight(height: 50)
         } else {
             for subview in self.subviews {
                 subview.removeFromSuperview()

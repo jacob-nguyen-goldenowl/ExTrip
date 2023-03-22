@@ -104,6 +104,7 @@ class ProfileViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.shouldHideSection = true
                 self?.tableView.reloadData()
+                FeatureFlags.isLogout = true
             }
         }
     }
@@ -198,6 +199,7 @@ class ProfileViewController: UIViewController {
             self.tableView.reloadData()
             self.stopLoading()
         })
+        FeatureFlags.isLogout = false
     }
     
     deinit { 

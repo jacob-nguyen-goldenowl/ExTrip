@@ -57,9 +57,8 @@ class ConfirmPaymentViewController: UIViewController {
                 self.dissmisAlert()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     let vc = TabbarViewController()
-                    let nav = UINavigationController(rootViewController: vc)
-                    nav.modalPresentationStyle = .fullScreen
-                    self.present(nav, animated: true)
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true)
                 }
             } else {
                 self.showAlertWithoutButton(title: "Error booking",
