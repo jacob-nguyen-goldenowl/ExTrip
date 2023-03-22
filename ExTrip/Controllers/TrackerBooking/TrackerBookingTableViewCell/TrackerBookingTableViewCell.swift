@@ -17,7 +17,16 @@ class TrackerBookingTableViewCell: UITableViewCell {
     
     weak var delegate: TrackerBookingTableViewCellDelegate? 
     
-    let padding: CGFloat = 10
+    let padding: CGFloat = 8
+    
+    var bookingID: String?
+    var hotelID: String?
+    
+    var bookingStatus: String = "active" {
+        didSet {
+            shouldCancelButton()
+        }
+    }
     
     private lazy var bookingImageView: AsyncImageView = {
         let imageView = AsyncImageView()
@@ -28,10 +37,8 @@ class TrackerBookingTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var cancelButton: UIButton = {
+    private lazy var bookingButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
-        button.setTitle("Cancel", for: .normal)
         button.titleLabel?.font = .poppins(style: .bold, size: 12)
         button.addTarget(self, action: #selector(handleCancelBookingAction), for: .touchUpInside)
         return button
@@ -68,7 +75,7 @@ class TrackerBookingTableViewCell: UITableViewCell {
     private func setupSubViews() {
         contentView.addSubviews(containerView)
         containerView.addSubviews(containerDateStackView,
-                                  cancelButton, 
+                                  bookingButton, 
                                   roomChargeLabel,
                                   bookingImageView, 
                                   roomNumberLabel)
@@ -77,26 +84,26 @@ class TrackerBookingTableViewCell: UITableViewCell {
     
     // MARK: - Constraints
     private func setupConstraintSubViews() {
-        let buttonSize: CGSize = CGSize(width: 58, height: 28)
+        let buttonSize: CGSize = CGSize(width: 62, height: 28)
         let imageSize: CGFloat = 30
                     
         containerView.fillAnchor(contentView, padding: padding)
         
         roomChargeLabel.anchor(top: containerView.topAnchor,
                                leading: containerView.leadingAnchor,
-                               trailing: cancelButton.leadingAnchor, 
+                               trailing: bookingButton.leadingAnchor, 
                                paddingTop: padding,
                                paddingLeading: padding,
                                paddingTrailing: padding)
         roomChargeLabel.setHeight(height: 30)
         
-        cancelButton.anchor(top: containerView.topAnchor, 
-                            trailing: containerView.trailingAnchor, 
-                            paddingTop: padding,
-                            paddingTrailing: padding)
-        cancelButton.setHeight(height: buttonSize.height)
-        cancelButton.setWidth(width: buttonSize.width)
-        cancelButton.layer.cornerRadius = buttonSize.height/2
+        bookingButton.anchor(top: containerView.topAnchor, 
+                             trailing: containerView.trailingAnchor, 
+                             paddingTop: padding,
+                             paddingTrailing: padding)
+        bookingButton.setHeight(height: buttonSize.height)
+        bookingButton.setWidth(width: buttonSize.width)
+        bookingButton.layer.cornerRadius = buttonSize.height/2
         
         containerDateStackView.anchor(top: roomChargeLabel.bottomAnchor,
                                       leading: containerView.leadingAnchor,
@@ -119,10 +126,22 @@ class TrackerBookingTableViewCell: UITableViewCell {
                                paddingLeading: padding)
     }
     
+    private func shouldCancelButton() {
+        if bookingStatus == "active" {
+            bookingButton.setTitle("Cancel", for: .normal)
+            bookingButton.backgroundColor = .red
+        } else {
+            bookingButton.backgroundColor = .blue
+            bookingButton.setTitle("Booking", for: .normal)
+        }
+    }
+    
     func setupDataTrackerBooking(booking: BookingCellViewModel) {
+        bookingStatus = booking.status 
+        bookingID = booking.id
         arrivalDate.text = "Check-in: " + booking.arrivaleDate
         departureDate.text = "Check-out: " + booking.departureDate
-        roomChargeLabel.text = "Total: \(booking.roomChange)"
+        roomChargeLabel.text = "Total: $\(booking.roomChange)"
         roomNumberLabel.text = "\(booking.numberOfRoom) rooms"
     }
 

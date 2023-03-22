@@ -8,7 +8,7 @@
 import UIKit
 import BetterSegmentedControl
 
-enum SegmentType {
+private enum SegmentType {
     case active 
     case pass
     case canceled
@@ -16,15 +16,15 @@ enum SegmentType {
     var segmentTitle: String {
         switch self {
         case .active:
-            return "Active"
+            return "active"
         case .pass:
-            return "Pass"
+            return "pass"
         case .canceled:
-            return "Canceled"
+            return "cancel"
         }
     }
     
-    static let section: [SegmentType] = [.active, .pass, .canceled]
+    static let segmented: [SegmentType] = [.active, .pass, .canceled]
 }
 
 class TrackerBookingViewController: UIViewController {
@@ -33,11 +33,17 @@ class TrackerBookingViewController: UIViewController {
         return TrackerBookingViewModel()
     }()
     
-    private let section = SegmentType.section
+    private let segmented = SegmentType.segmented
+    private var segmentIndex: Int = 0
     
     private lazy var titleSegmentedControl = ["Active", "Pass", "Canceled"]
     
+    // MARK: Create properties
     private lazy var containerView = UIView() 
+    private lazy var containerTableView = UIView()
+    
+    private lazy var refreshControl = UIRefreshControl()
+    private lazy var loadingView = LottieView()
     
     private lazy var segmentedControl: BetterSegmentedControl = {
         let control = BetterSegmentedControl()
@@ -60,19 +66,16 @@ class TrackerBookingViewController: UIViewController {
         return control
     }()
     
-    private lazy var refreshControl = UIRefreshControl()
-    
-    private lazy var loadingView = LottieView()
-    
     private lazy var emptyView: EmptyView = {
         let view = EmptyView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.lottieAnimation = Constant.Animation.active
+        view.emptyString = viewModel.activeEmptyString
         view.delegate = self
         return view
     }()
     
-    private let tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let table = UITableView()
         table.showsVerticalScrollIndicator = false
         table.clipsToBounds = true
@@ -81,33 +84,34 @@ class TrackerBookingViewController: UIViewController {
         return table
     }()
     
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewModel()
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if FeatureFlags.isLogout {
+            setupViewModel()
+        }
+    }
+    
     private func setupUI() {
-        setupViewModel()
         setupViews()
         regiterCell()
         receiverNotify()
         setupNavigationBar()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if FeatureFlags.isUpdateWishlist {
-            setupViewModel()
-            FeatureFlags.isUpdateWishlist = false
-        }
-    }
-
-    // MARK: - Setup UI
+    // MARK: Setup UI
     private func setupViews() {
         view.backgroundColor = UIColor.theme.primary
         view.addSubviews(containerView,
-                         tableView)
+                         containerTableView)
         containerView.addSubview(segmentedControl)
+        containerTableView.addSubview(tableView)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -125,10 +129,13 @@ class TrackerBookingViewController: UIViewController {
         
         segmentedControl.fillAnchor(containerView)
         
-        tableView.anchor(top: segmentedControl.bottomAnchor,
-                         bottom: view.bottomAnchor, 
-                         leading: view.leadingAnchor,
-                         trailing: view.trailingAnchor)
+        containerTableView.backgroundColor = .systemBackground
+        containerTableView.anchor(top: segmentedControl.bottomAnchor,
+                                  bottom: view.bottomAnchor, 
+                                  leading: view.leadingAnchor,
+                                  trailing: view.trailingAnchor)
+        
+        tableView.fillAnchor(containerTableView)
     }
     
     private func setupNavigationBar() {
@@ -136,17 +143,15 @@ class TrackerBookingViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .blue
     }
     
-        // MARK: - Fetch data
+    // MARK: Fetch data
     private func setupViewModel() {
         viewModel.updateLoadingStatus = { [weak self] in
             DispatchQueue.main.async {
                 let isLoading = self?.viewModel.isLoading ?? false
                 if isLoading {
                     self?.startAnimating()
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self?.tableView.alpha = 1.0
-                        self?.hiddenEmptyView()
-                    })
+                    self?.tableView.alpha = 0.0
+                    self?.hiddenEmptyView()
                 } else {
                     self?.stopAnimating()
                     UIView.animate(withDuration: 0.2, animations: {
@@ -165,12 +170,19 @@ class TrackerBookingViewController: UIViewController {
         
         viewModel.showEmptyViewClosure = { [weak self] in 
             DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.2, animations: {
+                UIView.animate(withDuration: 0.1, animations: {
                     self?.showEmptyView()
                 })
             }
         }
-        viewModel.requestFetchData("active")
+        
+        if segmentIndex == 0 {
+            viewModel.requestFetchData(segmented[segmentIndex].segmentTitle)
+        } else if segmentIndex == 1 {
+            viewModel.requestFetchData(segmented[segmentIndex].segmentTitle)
+        } else {
+            viewModel.requestFetchData(segmented[segmentIndex].segmentTitle)
+        }
     }
     
     private func regiterCell() {
@@ -211,7 +223,6 @@ class TrackerBookingViewController: UIViewController {
                          bottom: view.bottomAnchor, 
                          leading: view.leadingAnchor,
                          trailing: view.trailingAnchor)
-        emptyView.emptyString = viewModel.emptyString
         emptyView.showEmptyView()
     }
     
@@ -236,9 +247,27 @@ class TrackerBookingViewController: UIViewController {
                                                   name: NSNotification.Name(UserDefaultKey.loginsuccessNotify),
                                                   object: nil) 
     }
+    
+    private func showCancelAlert(with bookingID: String?, status: String) {
+        // Create the alert
+        let alert = UIAlertController(title: "Hey, Wait!!", message: "Are you sure, you want to cancel booking hotel?", preferredStyle: UIAlertController.Style.alert)
+        
+        // Add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: { _ in
+            DispatchQueue.main.async { 
+                self.viewModel.updateBooking(bookingID, 
+                                             status: self.segmented[2].segmentTitle)
+                self.setupViewModel()
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
+// MARK: UITableViewDelegate, UITableViewDataSource
 extension TrackerBookingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -253,6 +282,7 @@ extension TrackerBookingViewController: UITableViewDelegate, UITableViewDataSour
         let booking = viewModel.getCellViewModel(at: indexPath)
         let bookingCell = viewModel.createCellViewModel(booking: booking)
         cell.setupDataTrackerBooking(booking: bookingCell)
+        cell.hotelID = booking.hotelID
         cell.delegate = self
         return cell
     }
@@ -260,21 +290,13 @@ extension TrackerBookingViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let lable: UILabel = UILabel(frame: CGRect(x: 0,
-                                                   y: 0, 
-                                                   width: view.frame.size.width,
-                                                   height: view.frame.size.height))
-        lable.textAlignment = .center
-        lable.text = "No more results"
-        lable.font = .poppins(style: .medium, size: 12)
-        lable.textColor = UIColor.theme.lightGray
-        return viewModel.isLoading ? nil : lable
-    }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        let booking = viewModel.getCellViewModel(at: indexPath)
+        let vc = TrackerDetailViewController(bookingID: booking.id, 
+                                             hotelID: booking.hotelID)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -287,23 +309,50 @@ extension TrackerBookingViewController: EmptyViewDelgate {
     }
 }
 
-// MARK: - Action handlers
+// MARK: - Action handlers & setup segmented
 extension TrackerBookingViewController {
     @objc func navigationSegmentedControlValueChanged(_ sender: BetterSegmentedControl) {
-        if sender.index == 0 {
-            print("Turning lights on.")
-            emptyView.lottieAnimation = Constant.Animation.active
-            viewModel.requestFetchData("active")
+        segmentIndex = sender.index
+        switch segmented[sender.index] {
+        case .active:
+            setupCurrentSegmentedControl(with: segmented[sender.index].segmentTitle,
+                                         animationName: Constant.Animation.active,
+                                         emptyString: viewModel.activeEmptyString)
+        case .pass:
+            setupCurrentSegmentedControl(with: segmented[sender.index].segmentTitle,
+                                         animationName: Constant.Animation.pass,
+                                         emptyString: viewModel.passEmptyString)
+        case .canceled:
+            setupCurrentSegmentedControl(with: segmented[sender.index].segmentTitle,
+                                         animationName: Constant.Animation.cancel,
+                                         emptyString: viewModel.cancelEmptyString)
+        }
+    }
+    
+    private func setupCurrentSegmentedControl(with status: String,
+                                              animationName: String, 
+                                              emptyString: String) {
+        emptyView.lottieAnimation = animationName
+        emptyView.emptyString = emptyString
+        let currentUserID = AuthManager.shared.getCurrentUserID()
+        if !currentUserID.isEmpty {
+            viewModel.requestFetchData(status)
         } else {
-            emptyView.lottieAnimation = Constant.Animation.emptyBox
-            viewModel.requestFetchData("pass")
+            tableView.reloadData()
         }
     }
 }
 
 extension TrackerBookingViewController: TrackerBookingTableViewCellDelegate {
     func trackerBookingTableViewCellHandleCancelBooking(_ cell: TrackerBookingTableViewCell) {
-        self.showAlert(title: "Hey, wait!!", message: "Are you sure, you want to cancel this booking your order? If you cancel your trip, you will forfeit the entire amount paid in advance.", style: .alert)
+        let bookingID = cell.bookingID
+        let status = cell.bookingStatus
+        if status == segmented[0].segmentTitle {
+            self.showCancelAlert(with: bookingID, status: status)
+        } else {
+            let vc = HotelBookingViewController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
-    
 }
