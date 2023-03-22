@@ -63,6 +63,7 @@
 		04740EB929CAC51A0051176E /* TrackerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740EB829CAC51A0051176E /* TrackerDetailViewController.swift */; };
 		04740EBB29CAC5470051176E /* HotelTrackerDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740EBA29CAC5470051176E /* HotelTrackerDetailTableViewCell.swift */; };
 		04740EC029CAC5A60051176E /* ETMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740EBF29CAC5A60051176E /* ETMainViewController.swift */; };
+		04740EC329CAC7050051176E /* TrackerBookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740EC229CAC7050051176E /* TrackerBookingModel.swift */; };
 		0476EBC3299C77CD00000189 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */; };
 		0476EBCA299CCABF00000189 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */; };
 		0476EBD3299CE3DA00000189 /* RoomResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */; };
@@ -247,6 +248,7 @@
 		04740EB829CAC51A0051176E /* TrackerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerDetailViewController.swift; sourceTree = "<group>"; };
 		04740EBA29CAC5470051176E /* HotelTrackerDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelTrackerDetailTableViewCell.swift; sourceTree = "<group>"; };
 		04740EBF29CAC5A60051176E /* ETMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETMainViewController.swift; sourceTree = "<group>"; };
+		04740EC229CAC7050051176E /* TrackerBookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerBookingModel.swift; sourceTree = "<group>"; };
 		0476EBC2299C77CD00000189 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBC9299CCABF00000189 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		0476EBD2299CE3DA00000189 /* RoomResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomResultViewController.swift; sourceTree = "<group>"; };
@@ -543,6 +545,14 @@
 				04740EBF29CAC5A60051176E /* ETMainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		04740EC129CAC6F40051176E /* Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				04740EC229CAC7050051176E /* TrackerBookingModel.swift */,
+			);
+			path = Tracker;
 			sourceTree = "<group>";
 		};
 		0476EBC8299CCAB300000189 /* Time */ = {
@@ -1221,6 +1231,7 @@
 		04BF56822941EA6000BCF4A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04740EC129CAC6F40051176E /* Tracker */,
 				0477DAF929C1C0930034A9E0 /* Wishlist */,
 				0477DAF829C1C0840034A9E0 /* Hotel */,
 				0477DAF729C1C0750034A9E0 /* User */,
@@ -1670,6 +1681,7 @@
 				046D3898296FB2E6000DE1AB /* HeaderCollectionTableViewCell.swift in Sources */,
 				04D80DA22951B9D0005985ED /* HotelBookingViewController.swift in Sources */,
 				0476EC0A299F758F00000189 /* ReviewBookViewController.swift in Sources */,
+				04740EC329CAC7050051176E /* TrackerBookingModel.swift in Sources */,
 				045D0324298A28030071EFB7 /* LoadingView.swift in Sources */,
 				04740EB729CAC4EA0051176E /* TrackerQRCodeTableViewCell.swift in Sources */,
 				0476EBE5299E0EF600000189 /* ChooseRoomViewController.swift in Sources */,

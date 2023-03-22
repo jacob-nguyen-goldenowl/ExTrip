@@ -136,7 +136,7 @@ class TrackerBookingTableViewCell: UITableViewCell {
         }
     }
     
-    func setupDataTrackerBooking(booking: BookingCellViewModel) {
+    func setupDataTrackerBooking(booking: TrackerBookingModel) {
         bookingStatus = booking.status 
         bookingID = booking.id
         arrivalDate.text = "Check-in: " + booking.arrivaleDate

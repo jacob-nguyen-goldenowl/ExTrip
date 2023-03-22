@@ -7,15 +7,6 @@
 
 import UIKit
 
-struct BookingCellViewModel {
-    let id: String?
-    let arrivaleDate: String
-    let departureDate: String
-    let numberOfRoom: Int
-    let roomChange: Double
-    let status: String
-}
-
 class TrackerBookingViewModel: ETViewModel<BookingModel> {
     
     let activeEmptyString = "You haven't started any trips yet. Once you make a booking, it'll appear here."
@@ -45,19 +36,19 @@ class TrackerBookingViewModel: ETViewModel<BookingModel> {
         }
     }
     
-    func createCellViewModel(booking: BookingModel) -> BookingCellViewModel {
+    func createCellViewModel(booking: BookingModel) -> TrackerBookingModel {
         let bookingID: String? = booking.id
         let arrivalDate: String = booking.arrivalDate.timestampToDate().displayMonthString
         let departureDate: String = booking.departureDate.timestampToDate().displayMonthString
         let numberOfRoom: Int = booking.roomNumber
         let totalPrice = booking.roomCharge
         let status = booking.status
-        return BookingCellViewModel(id: bookingID,
-                                    arrivaleDate: arrivalDate,
-                                    departureDate: departureDate,
-                                    numberOfRoom: numberOfRoom, 
-                                    roomChange: totalPrice,
-                                    status: status)
+        return TrackerBookingModel(id: bookingID,
+                                   arrivaleDate: arrivalDate,
+                                   departureDate: departureDate,
+                                   numberOfRoom: numberOfRoom, 
+                                   roomChange: totalPrice,
+                                   status: status)
     }
     
     func updateBooking(_ bookingID: String?, status: String) {

@@ -50,7 +50,7 @@ class ETViewModel<T: Codable> {
         return listOfData[indexPath.row]
     }
     
-    var numberOfCells: Int {
+    var numberOfRows: Int {
         return listOfData.count
     }
 
