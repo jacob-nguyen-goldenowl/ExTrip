@@ -34,7 +34,7 @@ class ETViewModel<T: Codable> {
         }
     }
     
-    var emptyWishlist: String? {
+    var emptyData: String? {
         didSet {
             self.showEmptyViewClosure?()
         }

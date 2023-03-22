@@ -43,7 +43,7 @@ class WishListViewModel: ETViewModel<HotelModel> {
             guard let self = self else { return }
             self.isLoading = false
             if result.isEmpty {
-                self.emptyWishlist = self.emptyString
+                self.emptyData = self.emptyString
             }
             if let error = error {
                 self.alertMessage = error.rawValue
