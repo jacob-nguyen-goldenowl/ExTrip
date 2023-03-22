@@ -29,9 +29,7 @@ private enum SegmentType {
 
 class TrackerBookingViewController: UIViewController {
     
-    lazy var viewModel: TrackerBookingViewModel = {
-        return TrackerBookingViewModel()
-    }()
+    let viewModel = TrackerBookingViewModel()
     
     private let segmented = SegmentType.segmented
     private var segmentIndex: Int = 0
@@ -192,11 +190,7 @@ class TrackerBookingViewController: UIViewController {
     
     private func setupRefreshControl() {
         refreshControl.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.addSubview(refreshControl)
-        }
+        tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(handleRefreshTableViewAction), for: .valueChanged)
     }
     
@@ -271,7 +265,7 @@ class TrackerBookingViewController: UIViewController {
 extension TrackerBookingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.isLoading ? 0 : viewModel.numberOfCells
+        return viewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
