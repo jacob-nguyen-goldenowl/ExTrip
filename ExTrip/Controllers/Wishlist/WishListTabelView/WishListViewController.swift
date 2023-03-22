@@ -39,15 +39,15 @@ class WishListViewController: UIViewController {
         receiverNotify()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if FeatureFlags.isUpdateWishlist {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if FeatureFlags.isUpdateWishlist || FeatureFlags.isLogout {
             setupViewModel()
             FeatureFlags.isUpdateWishlist = false
         }
         setupNavigationBar()
     }
-    
+
     // MARK: - Setup UI
     private func setupViews() {
         view.addSubview(tableView)
@@ -175,7 +175,7 @@ class WishListViewController: UIViewController {
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.isLoading ? 0 : viewModel.numberOfCells
+        return viewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -217,10 +217,10 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
             let hoteID = self.viewModel.getCellViewModel(at: indexPath).id
             self.removeHotelFromWishList(hoteID)
             self.viewModel.listOfData.remove(at: indexPath.row)
-            if indexPath.row == 0 {
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            if self.viewModel.listOfData.isEmpty {
                 self.showEmptyView()
             }
-            tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
@@ -231,7 +231,6 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     private func removeHotelFromWishList(_ hotelID: String) {
         DispatchQueue.main.async { [weak self] in
             self?.viewModel.removeFromWishlist(with: hotelID)
-            
         }
     }
 }

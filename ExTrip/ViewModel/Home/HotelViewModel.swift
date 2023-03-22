@@ -16,7 +16,39 @@ class HotelViewModel: ETViewModel<HotelModel> {
     var scoreDestination: String?
     var titleDestination: String?
     var imageDestination: String?
-
+        
+    var bookingID: String? {
+        didSet {
+            if let bookingID = bookingID, !bookingID.isEmpty {
+                fetchRoom(bookingID)
+            } else {
+                self.emptyData = "Error"
+            }
+        }
+    }
+    
+    var hotelID: String? {
+        didSet {
+            if let hotelID = hotelID, !hotelID.isEmpty {
+                fetchHotel(hotelID)
+            } else {
+                self.emptyData = "Error"
+            }
+        }
+    }
+        
+    var hotel: HotelModel? {
+        didSet {
+            if hotel != nil {
+                self.reloadTableViewClosure?()
+            } else {
+                self.emptyData = "Error"
+            }
+        }
+    }
+    
+    var booking: BookingModel?
+    
     func fetchLimitData(destinationID: String?) {
         DatabaseResponse.shared.fetchLimitDataById(collection: "hotels",
                                                    filed: "destination_id",
@@ -39,4 +71,17 @@ class HotelViewModel: ETViewModel<HotelModel> {
         }
     }
     
+    // Tracker booking detail 
+    func fetchHotel(_ hotelID: String) {
+        DatabaseRequest.shared.fetchHotel(hotelID) { hotel in
+            self.hotel = hotel
+        }
+    }
+    
+    func fetchRoom(_ bookingID: String) {
+        DatabaseRequest.shared.fetchBooking(bookingID, completion: { booking in
+            self.booking = booking
+        })
+    }
+
 }

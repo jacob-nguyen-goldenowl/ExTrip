@@ -603,6 +603,7 @@ PODS:
   - AppAuth/Core (1.6.0)
   - AppAuth/ExternalUserAgent (1.6.0):
     - AppAuth/Core
+  - BetterSegmentedControl (2.0.1)
   - BoringSSL-GRPC (0.0.24):
     - BoringSSL-GRPC/Implementation (= 0.0.24)
     - BoringSSL-GRPC/Interface (= 0.0.24)
@@ -823,6 +824,7 @@ PODS:
 
 DEPENDENCIES:
   - AORangeSlider (~> 1.0)
+  - BetterSegmentedControl
   - Cosmos (~> 23.0)
   - Firebase/Analytics
   - Firebase/Auth
@@ -842,6 +844,7 @@ SPEC REPOS:
     - abseil
     - AORangeSlider
     - AppAuth
+    - BetterSegmentedControl
     - BoringSSL-GRPC
     - Cosmos
     - Firebase
@@ -879,6 +882,7 @@ SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
   AORangeSlider: 169fbf8d9848dac92de8f3c20042a95116c03331
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
+  BetterSegmentedControl: 09607b27861d49cbce48b7673b74f9150a3d371a
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Firebase: 3d6637234ab163e31852834617b4fe1df3b7af6d
@@ -912,6 +916,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
 
-PODFILE CHECKSUM: fdd23ef9dacff31d7ea26faebf0c6a1a2003e089
+PODFILE CHECKSUM: 0938e510d3ee2a18c384c7c91782b3286cce5a95
 
 COCOAPODS: 1.12.0

@@ -24,10 +24,20 @@ class EmptyView: UIView {
     
     var isLogin: Bool = false {
         didSet {
-            setupEmptyView()
+            if isLogin {
+                signInButton.isHidden = true
+            } else {
+                signInButton.isHidden = false
+            }
         }
     }
-
+    
+    var lottieAnimation: String? {
+        didSet {
+            setupAnimationImage(with: lottieAnimation)
+        }
+    }
+    
     private let padding: CGFloat = 50
     private let paddingTop: CGFloat = 20
     
@@ -40,17 +50,10 @@ class EmptyView: UIView {
     private lazy var emptyLabel = ETLabel(style: .small,
                                           textAlignment: .center,
                                           size: 15, 
-                                          numberOfLines: 3)
+                                          numberOfLines: 3,
+                                          color: UIColor.theme.black)
     
-    private lazy var animationView: LottieAnimationView = {
-        let animationView = LottieAnimationView()
-        let animation = LottieAnimation.named(Constant.Animation.emptyBox)
-        animationView.animation = animation
-        animationView.backgroundBehavior = .pauseAndRestore
-        animationView.loopMode = .loop
-        animationView.play()
-        return animationView
-    }()
+    private lazy var animationView =  LottieAnimationView()
     
     private lazy var signInButton: ETRippleButton = {
         let button = ETRippleButton()
@@ -66,6 +69,7 @@ class EmptyView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupAnimationImage(with: nil)
         setupEmptyView()
     }
     
@@ -81,7 +85,7 @@ class EmptyView: UIView {
             
             animationView.center(centerX: centerXAnchor,
                                  centerY: centerYAnchor,
-                                 paddingY: -100)
+                                 paddingY: -(padding + padding))
             animationView.setWidth(width: 200)
             animationView.setHeight(height: 200)
             
@@ -91,21 +95,26 @@ class EmptyView: UIView {
                               paddingTop: paddingTop,
                               paddingLeading: padding,
                               paddingTrailing: padding)
-            if isLogin {
-                signInButton.isHidden = true
-            } else {
-                signInButton.anchor(top: emptyLabel.bottomAnchor, 
-                                    paddingTop: paddingTop)
-                signInButton.center(centerX: centerXAnchor)
-                signInButton.setWidth(width: 150)
-                signInButton.setHeight(height: 50)
-            }
+            
+            signInButton.anchor(top: emptyLabel.bottomAnchor, 
+                                paddingTop: paddingTop)
+            signInButton.center(centerX: centerXAnchor)
+            signInButton.setWidth(width: 150)
+            signInButton.setHeight(height: 50)
         } else {
             for subview in self.subviews {
                 subview.removeFromSuperview()
             }
             self.removeFromSuperview()
         }
+    }
+    
+    private func setupAnimationImage(with animationName: String?) {
+        let animation = LottieAnimation.named(animationName ?? Constant.Animation.emptyBox)
+        animationView.animation = animation
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.loopMode = .loop
+        animationView.play()
     }
     
     @objc func handleSignInAction() {

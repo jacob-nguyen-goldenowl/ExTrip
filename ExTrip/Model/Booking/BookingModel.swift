@@ -21,4 +21,5 @@ struct BookingModel: Codable {
     var numAdults: Int
     var numChildren: Int
     var specialReq: String
+    var status: String
 }

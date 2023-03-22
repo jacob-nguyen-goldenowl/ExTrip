@@ -34,7 +34,7 @@ class ETViewModel<T: Codable> {
         }
     }
     
-    var emptyWishlist: String? {
+    var emptyData: String? {
         didSet {
             self.showEmptyViewClosure?()
         }
@@ -50,7 +50,7 @@ class ETViewModel<T: Codable> {
         return listOfData[indexPath.row]
     }
     
-    var numberOfCells: Int {
+    var numberOfRows: Int {
         return listOfData.count
     }
 

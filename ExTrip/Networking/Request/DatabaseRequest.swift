@@ -118,4 +118,38 @@ class DatabaseRequest {
             }
         }
     }
+    
+    func updateField(_ bookingID: String, status: String, completion: @escaping (Bool) -> Void) {
+        let docRef = db.collection("booking").document(bookingID)
+        docRef.updateData(["status": status])
+        completion(true)
+    }
+    
+    // MARK: Fetch one Hotel 
+    func fetchHotel(_ hotelID: String, completion: @escaping (HotelModel?) -> Void ) {
+        db.collection("hotels").document(hotelID).getDocument { (document, _) in
+            if let document = document {
+                do {
+                    let result = try document.data(as: HotelModel.self)
+                    completion(result)
+                } catch {
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
+    func fetchBooking(_ bookingID: String, completion: @escaping (BookingModel?) -> Void ) {
+        db.collection("booking").document(bookingID).getDocument { (document, _) in
+            if let document = document {
+                do {
+                    let result = try document.data(as: BookingModel.self)
+                    completion(result)
+                } catch {
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
 }

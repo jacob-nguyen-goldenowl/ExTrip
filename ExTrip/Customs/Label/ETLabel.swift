@@ -17,18 +17,18 @@ enum LabelType {
 class ETLabel: UILabel {
     
     // MARK: - Initialization 
-    required init(style: LabelType, textAlignment: NSTextAlignment = .center, size: CGFloat? = nil, numberOfLines: Int? = nil) {  
+    required init(style: LabelType, textAlignment: NSTextAlignment = .center, size: CGFloat? = nil, numberOfLines: Int? = nil, color: UIColor? = .black) {  
         super.init(frame: .zero)
-        setupLabel(style: style, textAlignment: textAlignment, size: size, numberOfLines: numberOfLines)
+        setupLabel(style: style, textAlignment: textAlignment, size: size, numberOfLines: numberOfLines, color: color)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupLabel(style: LabelType, textAlignment: NSTextAlignment, size: CGFloat?, numberOfLines: Int?) {
+    private func setupLabel(style: LabelType, textAlignment: NSTextAlignment, size: CGFloat?, numberOfLines: Int?, color: UIColor?) {
         self.numberOfLines = numberOfLines ?? 1
-        self.textColor = .black
+        self.textColor = color
         self.backgroundColor = .clear
         self.font = .poppins(style: .medium, size: size ?? 11)
         switch style {
