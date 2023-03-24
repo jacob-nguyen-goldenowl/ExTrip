@@ -41,7 +41,7 @@ enum Filter: Int {
 class FilterViewController: UIViewController {
     
     // MARK: - Properties
-    private let filtes = Filter.filtes
+    private let sections = Filter.filtes
     
     private var rangePrice: Price? 
     private var currentRating: Double?
@@ -192,7 +192,7 @@ class FilterViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filtes.count
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -207,47 +207,41 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = indexPath.row
-        switch row {
-        case Filter.price.rawValue:
-            guard let  cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier,
-                                                            for: indexPath) as? PriceTableViewCell else { return PriceTableViewCell() }
-            cell.priceValue = { [weak self] value in
+        switch sections[indexPath.row] {
+        case .price:
+            guard let  priceCell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier,
+                                                                 for: indexPath) as? PriceTableViewCell else { return PriceTableViewCell() }
+            priceCell.priceValue = { [weak self] value in
                 self?.rangePrice = value
             }
-            cell.rangePrice = rangePrice
-            cell.title = "Price Range"
-            return cell
-        case Filter.rating.rawValue:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.identifier,
-                                                           for: indexPath) as? RatingTableViewCell else { return RatingTableViewCell() }
-            cell.currentValue = { [weak self] value in
+            priceCell.rangePrice = rangePrice
+            priceCell.title = "Price Range"
+            return priceCell
+        case .rating:
+            guard let ratingCell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.identifier,
+                                                                 for: indexPath) as? RatingTableViewCell else { return RatingTableViewCell() }
+            ratingCell.currentValue = { [weak self] value in
                 self?.currentRating = value
             }
-            cell.ratingValue = Float(currentRating ?? 0.0)
-            cell.title = "Guest Rating"
-            return cell
-        case Filter.hotel.rawValue:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HotelClassTableViewCell.identifier,
-                                                           for: indexPath) as? HotelClassTableViewCell else { return HotelClassTableViewCell() }
-            cell.currentStar = { [weak self] star in
-                self?.currentStar = star
+            ratingCell.ratingValue = Float(currentRating ?? 0.0)
+            ratingCell.title = "Guest Rating"
+            return ratingCell
+        case .hotel:
+            guard let hotelCell = tableView.dequeueReusableCell(withIdentifier: HotelClassTableViewCell.identifier,
+                                                                for: indexPath) as? HotelClassTableViewCell else { return HotelClassTableViewCell() }
+            hotelCell.currentStar = { [weak self] value in
+                self?.currentStar = value
             }
-            cell.starIndex = currentStar
-            cell.title = "Hotel Class"
-            return cell
-        case Filter.sevice.rawValue,
-             Filter.type.rawValue,
-             Filter.bed.rawValue,
-             Filter.payment.rawValue:
+            hotelCell.starIndex = currentStar
+            hotelCell.title = "Hotel Class"
+            return hotelCell
+        case .sevice, .type, .bed, .payment:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FilterTableViewCell.mainIdentifier,
                                                            for: indexPath) as? FilterTableViewCell else { return FilterTableViewCell() }
             cell.accessoryType  = .disclosureIndicator
             cell.selectionStyle = .default
-            cell.textLabel?.text = filtes[row].title
+            cell.textLabel?.text = sections[indexPath.row].title
             return cell
-        default:  
-            return UITableViewCell()
         }
     }
     
@@ -255,7 +249,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
         let vc = TypeViewController()
-        vc.text = filtes[row].title
+        vc.text = sections[row].title
         switch row {
         case Filter.sevice.rawValue:
             vc.valueAllTypes = service

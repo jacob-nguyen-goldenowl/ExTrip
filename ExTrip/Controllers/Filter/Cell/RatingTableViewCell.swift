@@ -15,8 +15,8 @@ class RatingTableViewCell: FilterTableViewCell {
 
     private lazy var slider: ETHeightSlider = {
         let slider = ETHeightSlider()
-        slider.minimumValue = 0
-        slider.maximumValue = 10
+        slider.minimumValue = 0.0
+        slider.maximumValue = 5.0
         slider.tintColor = UIColor.theme.primary
         slider.setThumbImage(thumbImage, for: .normal)
         return slider
