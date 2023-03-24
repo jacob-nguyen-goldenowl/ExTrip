@@ -9,13 +9,16 @@ import UIKit
 
 class RoomResultViewController: UIViewController {
         
-    var bookingTime: HotelBookingModel?
+    private let bookingViewModel = BookingViewModel()
     
-    var rooms: [RoomModel]?
+    private lazy var errorLabel = ETLabel(style: .large, 
+                                          textAlignment: .center,
+                                          size: 13,
+                                          color: .black)
 
-    init(_ data: [RoomModel]?, time: HotelBookingModel) {
-        self.rooms = data
-        self.bookingTime = time
+    init(_ rooms: [RoomModel]?, time: HotelBookingModel) {
+        self.bookingViewModel.rooms = rooms
+        self.bookingViewModel.hotelBooking = time
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -63,17 +66,27 @@ class RoomResultViewController: UIViewController {
     // MARK: - Setup UI
     private func setupViews() {
         view.backgroundColor = .systemBackground
-        view.addSubviews(tableView)
+        view.addSubviews(errorLabel,
+                         tableView)
         tableView.delegate = self
         tableView.dataSource = self
         setupConstaintsView()
     }
     
-    private func setupConstaintsView() {  
+    private func setupConstaintsView() { 
+        setupErrorLabel()
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          bottom: view.bottomAnchor,
                          leading: view.leadingAnchor,
                          trailing: view.trailingAnchor)
+    }
+    
+    private func setupErrorLabel() {
+        errorLabel.isHidden = true
+        errorLabel.text = "No result"
+        errorLabel.fillAnchor(view)
+        errorLabel.center(centerX: view.centerXAnchor, 
+                          centerY: view.centerYAnchor)
     }
     
 }
@@ -81,7 +94,7 @@ class RoomResultViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension RoomResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let numberOfRoom = rooms?.count {
+        if let numberOfRoom = bookingViewModel.rooms?.count {
             return numberOfRoom
         } else {
             return 0
@@ -91,11 +104,13 @@ extension RoomResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RoomResultTableViewCell.identifier, for: indexPath) as? RoomResultTableViewCell else { return UITableViewCell() }
         cell.backgroundColor = .clear
-        if let rooms = rooms {
+        if let rooms = bookingViewModel.rooms {
             let room = rooms[indexPath.item]
-            cell.setDataForRoom(room: room) 
+            cell.setDataForRoom(room: room,
+                                day: bookingViewModel.hotelBooking.day) 
+            errorLabel.isHidden = true
         } else {
-            
+            errorLabel.isHidden = false
         }
         
         cell.delegate = self
@@ -114,13 +129,13 @@ extension RoomResultViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension RoomResultViewController: RoomResultTableViewCellDelegate {
     func roomSelectTableViewCellhandleBookNavigation(_ data: RoomResultTableViewCell) {
-        checkCurrentUser(data.room, time: bookingTime)
+        checkCurrentUser(data.room, time: bookingViewModel.hotelBooking)
     }
     
     func checkCurrentUser(_ roomInfo: RoomModel?, time: HotelBookingModel?) {
         let userId = UserDefaults.standard.string(forKey: UserDefaultKey.userId)
         if userId != nil {
-            let vc = ReviewBookViewController(roomInfo, time: bookingTime)
+            let vc = ReviewBookViewController(roomInfo, time: bookingViewModel.hotelBooking)
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = MainViewController()
