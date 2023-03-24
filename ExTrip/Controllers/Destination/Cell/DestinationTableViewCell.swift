@@ -17,6 +17,8 @@ class DestinationTableViewCell: UITableViewCell {
     
     weak var delegate: DestinationTableViewCellDelegate?
     
+    let viewModel = WishListViewModel()
+    
     var sectionOfCell: Int = 0
     
     var model: [HotelModel] = [] {
@@ -70,7 +72,10 @@ extension DestinationTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DestinationCollectionViewCell.identifier,
                                                             for: indexPath) as? DestinationCollectionViewCell else { return UICollectionViewCell() }
         var item = model[indexPath.item]
-        
+        viewModel.fetchDataWishlist()
+        if FeatureFlags.isLiked {
+            self.wishlists = viewModel.wishlists
+        }
         if wishlists.contains(where: { $0.hotelID == item.id }) {
             item.like = true
         } else {

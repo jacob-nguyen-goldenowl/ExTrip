@@ -64,6 +64,7 @@ class DestinationViewController: ETMainViewController {
         setupViewModel()
         setupViews()
         setupNavigationBar()
+        receiverNotificationCenter()
     }
     
     private func setupNavigationBar() {
@@ -79,7 +80,8 @@ class DestinationViewController: ETMainViewController {
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
-        }        
+        }      
+        wishListViewModel.fetchDataWishlist()
         hotelViewModel.fetchLimitData(destinationID: hotelViewModel.countryID)
     }
     
@@ -100,6 +102,23 @@ class DestinationViewController: ETMainViewController {
         tableView.fillAnchor(view)
     }
     
+    // MARK: Notification center
+    private func receiverNotificationCenter() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(loginSuccess),
+                                               name: NSNotification.Name(UserDefaultKey.loginsuccessNotify),
+                                               object: nil )
+    }
+    
+    @objc func loginSuccess() {
+        setupViewModel()
+    }
+    
+    deinit {
+        FeatureFlags.isLiked = false
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(UserDefaultKey.loginsuccessNotify), object: nil) 
+    }
+
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -225,7 +244,7 @@ extension DestinationViewController: UIScrollViewDelegate {
 // MARK: - Handle action button
 extension DestinationViewController {
     @objc func handleSeeAllHotelAction() {
-        let vc = HotelViewController(hotelViewModel.listOfData)
+        let vc = HotelViewController(hotelViewModel.countryID)
         vc.title = "Hotels".uppercased()
         navigationAction(vc)
     }
