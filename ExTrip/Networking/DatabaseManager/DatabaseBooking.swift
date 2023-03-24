@@ -76,6 +76,7 @@ class DatabaseBooking {
     }
     
     func fetchAllBookingByRoom(roomId: String, completion: @escaping (Result<[BookingModel], Error>) -> Void) {
+        let currentUserId = AuthManager.shared.getCurrentUserID()
         db.collection("booking")
             .whereField("roomID", isEqualTo: roomId)
             .getDocuments { querySnapshot, error in
@@ -89,7 +90,8 @@ class DatabaseBooking {
                         return nil
                     }
                 }
-                completion(.success(data))
+                let booking = data.filter { $0.guestID == currentUserId }
+                completion(.success(booking))
             }
     }
     
