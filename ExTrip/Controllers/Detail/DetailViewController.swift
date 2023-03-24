@@ -205,7 +205,7 @@ class DetailViewController: ETMainViewController {
     
     private func setPriceForContainerView() {
         let day = bookingViewModel.hotelBooking.day
-        let price = bookingViewModel.hotel?.price ?? 0.0 * Double(bookingViewModel.hotelBooking.day)
+        let price = bookingViewModel.hotel?.price ?? 0.0 * Double(day)
         priceRoomLabel.text = ("$ \(price)")
     }
     
@@ -385,7 +385,7 @@ extension DetailViewController: DescriptionTableViewCellDelegate {
                                                title: hotel.name)
             navigationController?.pushViewController(vc, animated: true)
         } else {
-            self.showAlert(title: "Alert",message: "Something error when fetch data", style: .alert)
+            self.showAlert(title: "Alert", message: "Something error when fetch data", style: .alert)
         }
     }
 }
