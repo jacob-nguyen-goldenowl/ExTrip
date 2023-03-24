@@ -313,7 +313,8 @@ class HotelResultTableViewCell: ETTableViewCell {
                                   price currentPrice: Double) {
         numberRoomLabel.text = "only \(roomLeft) left".uppercased()
         let price = currentPrice * Double(day)
-        priceLabel.text = "$ \(price)"
+        let roundedPrice = String(format: "%.3f", price)
+        priceLabel.text = "$ \(roundedPrice)"
         defaultPriceLabel.setStrikeThroughText("$ \(defaultPrice)")
     }
     
