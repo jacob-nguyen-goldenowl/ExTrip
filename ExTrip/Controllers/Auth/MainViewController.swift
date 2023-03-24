@@ -129,6 +129,18 @@ class MainViewController: UIViewController {
     }
     
     private func setupLoginWithGoogle() {
+        
+        signInViewModel.updateLoadingStatus = { [weak self] in
+            DispatchQueue.main.async {
+                let isLoading = self?.signInViewModel.isLoading ?? false
+                if isLoading {
+                    self?.startAnimating()
+                } else {
+                    self?.stopAnimating()
+                }
+            }
+        }
+        
         signInViewModel.loginWithGoogle(viewController: self)
         
         signInViewModel.navigationClosure = { [weak self] in
@@ -137,13 +149,21 @@ class MainViewController: UIViewController {
             }
         }
         
-        signInViewModel.alertMessageClosure = { [weak self] error in
+        signInViewModel.alertMessageClosure = { [weak self] in
             DispatchQueue.main.async {
-                self?.showAlert(message: "\(error)", style: .alert)
+                self?.stopAnimating()
             }
         }
     }
     
+    // MARK: - Start & stop animate
+    private func startAnimating() {
+        customActivityIndicatory(self.view)
+    }
+    
+    private func stopAnimating() {
+        customActivityIndicatory(self.view, startAnimate: false)
+    }
 }
 
 // MARK: - Handle action
