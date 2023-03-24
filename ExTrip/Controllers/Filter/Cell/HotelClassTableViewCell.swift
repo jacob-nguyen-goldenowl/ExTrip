@@ -64,11 +64,13 @@ class HotelClassTableViewCell: FilterTableViewCell {
         let numberOfViews = 5
         for i in 1...numberOfViews {
             let button = CheckBox()
+            button.starIndex = starIndex
             button.currentStar = { star in
                 self.currentStar?(star)
             }
             if i == starIndex {
                 button.isChecked = true
+                self.currentStar?(i)
             }
             button.numberOfStar = i
             horizontalStackView.addArrangedSubview(button)

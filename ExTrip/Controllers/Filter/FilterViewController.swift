@@ -247,11 +247,10 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let row = indexPath.row
         let vc = TypeViewController()
-        vc.text = sections[row].title
-        switch row {
-        case Filter.sevice.rawValue:
+        vc.text = sections[indexPath.row].title
+        switch sections[indexPath.row] {
+        case .sevice:
             vc.valueAllTypes = service
             vc.saveCheckBoxPosition = { [weak self] position in
                 self?.positionService = position
@@ -263,7 +262,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             }
             vc.currentValue = currentValueService
             present(vc, animated: true)
-        case Filter.type.rawValue:
+        case .type:
             vc.valueAllTypes = property
             vc.saveCheckBoxPosition = { [weak self] position in
                 self?.positionProperty = position
@@ -275,7 +274,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             }
             vc.currentValue = currentValueProperty
             present(vc, animated: true)
-        case Filter.bed.rawValue:
+        case .bed:
             vc.valueAllTypes = bed
             vc.saveCheckBoxPosition = { [weak self] position in
                 self?.positionBed = position
@@ -287,7 +286,7 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             }
             vc.currentValue = currentValueBed
             present(vc, animated: true)
-        case Filter.payment.rawValue:
+        case .payment:
             vc.valueAllTypes = payment
             vc.saveCheckBoxPosition = { [weak self] position in
                 self?.positionPayment = position
@@ -299,8 +298,8 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
             }
             vc.currentValue = currentValuePayment
             present(vc, animated: true)
-        default:
-            print("nil")
+        case .price, .rating, .hotel:
+            return
         }
     }
 }
