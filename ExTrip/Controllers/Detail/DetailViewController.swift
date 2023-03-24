@@ -20,28 +20,10 @@ enum DetailType: Int {
 class DetailViewController: ETMainViewController {
         
     private let bookingViewModel = BookingViewModel()
-    private var bookingTime: HotelBookingModel
-    
-    var checkIsLike: Bool = false {
-        didSet {
-            setupNavigation()
-        }
-    }
-    private var data: HotelModel
-    var timer: Timer?
-    
-    private var rooms: [RoomModel]? {
-        didSet {
-            if let rooms = rooms, !rooms.isEmpty {
-                checkRoomAvailable(true)
-            } else {
-                checkRoomAvailable(false)
-                
-            }
-        }
-    }
     
     // MARK: - Properties
+    private lazy var spinner = UIActivityIndicatorView(style: .medium)
+    
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.bouncesZoom = false
@@ -86,9 +68,10 @@ class DetailViewController: ETMainViewController {
             
     init(data: HotelModel, bookingTime: HotelBookingModel = HotelBookingModel(destination: nil, 
                                                                               date: FastisRange(from: Date.today, to: Date.tomorrow),
-                                                                              room: RoomBookingModel(room: 1, adults: 2, children: 0, infants: 0))) {
-        self.data = data
-        self.bookingTime = bookingTime
+                                                                              room: RoomBookingModel(room: 1, adults: 2, children: 0, infants: 0),
+                                                                              day: 1)) {
+        self.bookingViewModel.hotel = data
+        self.bookingViewModel.hotelBooking = bookingTime
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -96,40 +79,67 @@ class DetailViewController: ETMainViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         navigationController?.configBackButton()
-        fetchDataRooms()
-        setupBinder()
-        
+        setupViewModel()
     }    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupNavigation()
-    }          
-    private func fetchDataRooms() {
-        if let date = bookingTime.date as? FastisRange {
-            bookingViewModel.dataRoomByOneHotel(data.id,
-                                                time: BookingTime(arrivalDate: date.fromDate,
-                                                                  departureDate: date.toDate))
+    }   
+    
+    private func setupViewModel() {
+        bookingViewModel.updateLoadingStatus = { [weak self] in
+            DispatchQueue.main.async {
+                let isLoading = self?.bookingViewModel.isLoading ?? false
+                if isLoading {
+                    self?.startAnimating()
+                } else {
+                    self?.stopAnimating()
+                }
+            }
+        }
+        
+        bookingViewModel.reloadingTableViewClosure = { [weak self] in
+            DispatchQueue.main.async {
+                if let rooms = self?.bookingViewModel.rooms, !rooms.isEmpty {
+                    self?.checkRoomAvailable(true)
+                } else {
+                    self?.checkRoomAvailable(false)
+                }
+            }
+        }
+        
+        if let date = bookingViewModel.hotelBooking.date as? FastisRange,
+           let hotel = bookingViewModel.hotel {
+            bookingViewModel.fetchRoomByOneHotel(hotel.id,
+                                                 time: BookingTime(arrivalDate: date.fromDate,
+                                                                   departureDate: date.toDate))
         }
     }
     
-    private func setupBinder() {
-        bookingViewModel.roomAvailible.bind { [weak self] rooms in
-            guard let self = self else { return }
-            self.timer?.invalidate()
-            self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-                self.rooms = rooms
-            })
-        }
+    private func startAnimating() {
+        containerPriceView.addSubview(spinner)
+        spinner.center(centerX: containerPriceView.centerXAnchor, 
+                       centerY: containerPriceView.centerYAnchor)
+        spinner.startAnimating()
     }
-
+    
+    private func stopAnimating() {
+        spinner.removeFromSuperview()
+        spinner.stopAnimating()
+        spinner.hidesWhenStopped = true
+    }
+    
+    // MARK: Setup navigation bar
     private func setupNavigation() {
         let favouriteButton = ETFavoriteButton()
-        if wishListViewModel.processComparisonHotelId(data.id) {
+        guard let id = bookingViewModel.hotel?.id else { return }
+        if wishListViewModel.processComparisonHotelId(id) {
             favouriteButton.isChecked = true
         } else {
             favouriteButton.isChecked = false
@@ -137,16 +147,16 @@ class DetailViewController: ETMainViewController {
         setupFavorite(favouriteButton)
         let item = UIBarButtonItem(customView: favouriteButton)
         
-        if let date = bookingTime.date as? FastisRange,
-           let room = bookingTime.room {
+        if let date = bookingViewModel.hotelBooking.date as? FastisRange,
+           let name = bookingViewModel.hotel?.name,
+           let room = bookingViewModel.hotelBooking.room {
             let numberOfGuest = room.numberOfGuest(adults: room.adults,
                                                    children: room.children, 
                                                    infants: room.infants)
             let time = date.fromDate.displayDateString + " - " + date.toDate.displayDateString
             let infoBookingRoom = time + " • " + "\(numberOfGuest) Guest"
-            navigationItem.titleView = setTitle(title: data.name.capitalizeFirstLetter(), subtitle: infoBookingRoom)
+            navigationItem.titleView = setTitle(title: name.capitalizeFirstLetter(), subtitle: infoBookingRoom)
             navigationItem.titleView?.isHidden = true
-
         }
         
         self.navigationItem.setRightBarButton(item, animated: true)
@@ -194,8 +204,9 @@ class DetailViewController: ETMainViewController {
     }
     
     private func setPriceForContainerView() {
-        priceRoomLabel.text = ("$\(data.price)")
-        
+        let day = bookingViewModel.hotelBooking.day
+        let price = bookingViewModel.hotel?.price ?? 0.0 * Double(bookingViewModel.hotelBooking.day)
+        priceRoomLabel.text = ("$ \(price)")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -207,13 +218,14 @@ class DetailViewController: ETMainViewController {
     }
     
     @objc func handleSelectRoomAction() {
-        let vc = RoomResultViewController(rooms, time: bookingTime)
+        let vc = RoomResultViewController(bookingViewModel.rooms, time: bookingViewModel.hotelBooking)
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupFavorite(_ favouriteButton: ETFavoriteButton) {
+        guard let hotelID = bookingViewModel.hotel?.id else { return }
         favouriteButton.currentUser = currentUser
-        let wishlist = WishListModel(hotelID: data.id, userID: currentUser)
+        let wishlist = WishListModel(hotelID: hotelID, userID: currentUser)
         favouriteButton.likedClosure = { [weak self] in
             DispatchQueue.main.async {
                 self?.wishListViewModel.addWishtlist(with: wishlist)
@@ -222,7 +234,7 @@ class DetailViewController: ETMainViewController {
         
         favouriteButton.dislikeClosure = { [weak self] in
             DispatchQueue.main.async {
-                self?.wishListViewModel.removeFromWishlist(with: self?.data.id ?? "")
+                self?.wishListViewModel.removeFromWishlist(with: hotelID)
             }
         }
     }
@@ -237,20 +249,21 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
+        let hotel = bookingViewModel.hotel
         switch row {
         case DetailType.header.rawValue:
             guard let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCollectionTableViewCell.identifier,
                                                                  for: indexPath) as? HeaderCollectionTableViewCell else { return HeaderCollectionTableViewCell() }
-            headerCell.listImage = data.image
+            headerCell.listImage = hotel?.image ?? []
             headerCell.delegate = self
             return headerCell   
         case DetailType.overview.rawValue:
             guard let overviewCell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier,
                                                                    for: indexPath) as? OverviewTableViewCell else { return OverviewTableViewCell() }
-            overviewCell.scoreRatting = "\(data.rating)"
-            overviewCell.title = data.name
-            overviewCell.typeHotel = data.type
-            overviewCell.addressHotel = data.address
+            overviewCell.scoreRatting = "\(hotel?.rating ?? 1)"
+            overviewCell.title = hotel?.name
+            overviewCell.typeHotel = hotel?.type
+            overviewCell.addressHotel = hotel?.address
             return overviewCell
         case DetailType.information.rawValue:
             guard let infoCell = tableView.dequeueReusableCell(withIdentifier: InformationTableViewCell.identifier,
@@ -261,36 +274,32 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let locationCell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier,
                                                                        for: indexPath) as? LocationTableViewCell else { return LocationTableViewCell() }
             locationCell.title = "Location"
-            locationCell.descriptionLocation = data.location.description
-            locationCell.location = data.location
+            locationCell.descriptionLocation = hotel?.location.description
+            locationCell.location = hotel?.location
             locationCell.delegate = self
             return locationCell 
         case DetailType.description.rawValue:
             guard let descriptionCell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.identifier,
                                                                       for: indexPath) as? DescriptionTableViewCell else { return DescriptionTableViewCell() }
             descriptionCell.title = "Description"
-            descriptionCell.descriptionHotel = data.description
+            descriptionCell.descriptionHotel = hotel?.description
             descriptionCell.delegate = self
             return descriptionCell 
         case DetailType.time.rawValue:
             guard let timeCell = tableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.identifier,
                                                                for: indexPath) as? TimeTableViewCell else { return TimeTableViewCell() }
-            timeCell.infoBooking = bookingTime
+                timeCell.infoBooking = bookingViewModel.hotelBooking
             return timeCell 
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell",
                                                            for: indexPath) as? DetailTableViewCell else { return DetailTableViewCell() }
-            cell.textLabel?.text = "\(data.rating)/5 - Good"
+                cell.textLabel?.text = "\(hotel?.rating ?? 5)/5 - Good"
             cell.accessoryType = .disclosureIndicator
-            cell.numberOfReview = "\(data.review)"
+            cell.numberOfReview = "\(hotel?.review ?? 0)"
             return cell
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected...")
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let row = indexPath.row 
         let padding: CGFloat = 4
@@ -316,7 +325,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         if isAvailable {
             selectRoomButton.isUserInteractionEnabled = true
             selectRoomButton.backgroundColor = UIColor.theme.lightBlue
-            priceRoomLabel.text = ("$\(data.price)")
+            setPriceForContainerView()
             setupContainerPriceView()
         } else {
             setupContainerPriceView()
@@ -361,23 +370,23 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension DetailViewController {
-    @objc func handleLikeAction() {
-        
-    }
-}
-
 extension DetailViewController: LocationTableViewCellDelegate {
     func locationTableViewCellHandleSeeMap() {
-        let vc = MapViewController(locationHotel: data.location)
+        guard let location = bookingViewModel.hotel?.location else { return }
+        let vc = MapViewController(locationHotel: location)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension DetailViewController: DescriptionTableViewCellDelegate {
     func descriptionTableViewCellHandleSeeDetails() {
-        let vc = ViewDetailsViewController(description: data.description, title: data.name)
-        navigationController?.pushViewController(vc, animated: true)
+        if let hotel = bookingViewModel.hotel {
+            let vc = ViewDetailsViewController(description: hotel.description,
+                                               title: hotel.name)
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            self.showAlert(title: "Alert",message: "Something error when fetch data", style: .alert)
+        }
     }
 }
 

@@ -11,16 +11,10 @@ class HotelResultViewController: ETMainViewController {
 
     private let bookingViewModel = BookingViewModel()
     
-    var hotelDataBooking: HotelBookingModel?
+    private lazy var emptyView = FilterErrorView()
     
-    private var rooms: [RoomModel]?
-        
-    private var hotels: [HotelModel]? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
+    private var day: Int = 1
+
     // MARK: - Properties
     private lazy var loadingView: CustomLoadingView = {
         let image: UIImage = UIImage(named: "loading") ?? UIImage()
@@ -28,23 +22,16 @@ class HotelResultViewController: ETMainViewController {
     }()
     
     private let tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .grouped)
+        let table = UITableView()
         table.showsVerticalScrollIndicator = false
         table.backgroundColor = .clear
         table.separatorStyle = .none
         return table
     }()
     
-    private let backgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "hotelBooking")
-        imageView.contentMode = .scaleToFill
-        return imageView
-    }()
-    
     // Initialization constructor
-    init(data: HotelBookingModel?) {
-        self.hotelDataBooking = data
+    init(data: HotelBookingModel) {
+        self.bookingViewModel.hotelBooking = data
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -67,32 +54,17 @@ class HotelResultViewController: ETMainViewController {
         tableView.rowHeight = UITableView.automaticDimension
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupBinder()
-    }
-    
-    private func startLoading() {
-        view.addSubview(loadingView)
-        loadingView.center = view.center
-        loadingView.startAnimating()
-    }
-    
-    private func stopLoading() {
-        loadingView.stopAnimating()
-        loadingView.removeFromSuperview()
-    }
-    
     private func setupNavigationBar() {
         navigationController?.configBackButton()
         
-        if let date = hotelDataBooking?.date as? FastisRange,
-           let title = hotelDataBooking?.destination,
-           let room = hotelDataBooking?.room {
+        let booking = bookingViewModel.hotelBooking
+        if let date = booking.date as? FastisRange,
+           let title = booking.destination,
+           let room = booking.room {
             let numberOfGuest = room.numberOfGuest(adults: room.adults,
                                                    children: room.children, 
                                                    infants: room.infants)
-            
+        
             let time = date.fromDate.displayDateString + " - " + date.toDate.displayDateString
             let infoBookingRoom = time + " • " + "\(numberOfGuest) Guest"
             navigationItem.titleView = setTitle(title: title, subtitle: infoBookingRoom)
@@ -100,17 +72,53 @@ class HotelResultViewController: ETMainViewController {
     }
     
     private func fetchDataHotel() {
-        if let destination = hotelDataBooking?.destination?.lowercased(),
-           let room = hotelDataBooking?.room?.room,
-           let date = hotelDataBooking?.date as? FastisRange {
+        bookingViewModel.updateLoadingStatus = { [weak self] in
+            DispatchQueue.main.async {
+                let isLoading = self?.bookingViewModel.isLoading ?? false
+                if isLoading {
+                    self?.startLoading()
+                    UIView.animate(withDuration: 0.1, animations: {
+                        self?.tableView.alpha = 0.0
+                        self?.hiddenEmptyView()
+                    })
+                } else {
+                    UIView.animate(withDuration: 0.1, animations: {
+                        self?.tableView.alpha = 1.0
+                        self?.hiddenEmptyView()
+                        self?.stopLoading()
+                    })
+                }
+            }
+        }
+        
+        bookingViewModel.reloadingTableViewClosure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+
+        bookingViewModel.showEmptyViewClosure = { [weak self] in 
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self?.showEmptyView()
+                })
+            }
+        }
+        
+        let booking = bookingViewModel.hotelBooking
+        if let destination = booking.destination?.lowercased(),
+           let room = booking.room?.room,
+           let date = booking.date as? FastisRange {
             bookingViewModel.dataHotelByCity(city: destination,
                                              numberOfRoom: room, 
                                              time: BookingTime(arrivalDate: date.fromDate,
                                                                departureDate: date.toDate)) 
+            
+            self.day = numberOf24DaysBetween(date.fromDate, and: date.toDate)
+            
         } else {
             stopLoading()
-            // Show something ...
-            print("error when fetching")
+            showEmptyView()
         }
     }
     
@@ -118,26 +126,12 @@ class HotelResultViewController: ETMainViewController {
         tableView.register(HotelResultTableViewCell.self,
                            forCellReuseIdentifier: HotelResultTableViewCell.identifier)
     }
-    
-    private func setupBinder() {
-        bookingViewModel.hotelsRelatedCity.bind { [weak self] hotels in
-            if let hotels = hotels, !hotels.isEmpty {
-                self?.hotels = hotels
-            } else {
-                self?.stopLoading() 
-            }
-        }
         
-        bookingViewModel.roomAvailible.bind { [weak self] rooms in
-            self?.rooms = rooms
-        }
-    }
-    
     // MARK: - Setup UI
     private func setupViews() {
         view.backgroundColor = .systemBackground
-        view.addSubviews(tableView)
-        view.insertSubview(backgroundImageView, at: 0)
+        view.addSubviews(emptyView,
+                         tableView)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -145,11 +139,7 @@ class HotelResultViewController: ETMainViewController {
     }
     
     private func setupConstaintsView() {  
-        backgroundImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                                   bottom: view.bottomAnchor,
-                                   leading: view.leadingAnchor,
-                                   trailing: view.trailingAnchor)
-        
+        emptyView.fillAnchor(view)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          bottom: view.bottomAnchor,
                          leading: view.leadingAnchor,
@@ -164,7 +154,7 @@ class HotelResultViewController: ETMainViewController {
     }
     
     @objc func loginSuccess() {
-        setupBinder()
+        fetchDataHotel()
     }
     
     deinit { 
@@ -173,52 +163,77 @@ class HotelResultViewController: ETMainViewController {
                                                   object: nil) 
     }
     
+    private func startLoading() {
+        view.addSubview(loadingView)
+        loadingView.center = view.center
+        loadingView.startAnimating()
+    }
+    
+    private func stopLoading() {
+        loadingView.stopAnimating()
+        loadingView.removeFromSuperview()
+    }
+    
+    private func showEmptyView() {
+        emptyView.isHidden = false
+        tableView.isHidden = false
+    }
+    
+    private func hiddenEmptyView() {
+        emptyView.isHidden = true
+        tableView.isHidden = false
+    }
+    
+    func numberOf24DaysBetween(_ from: Date, and to: Date) -> Int {
+        let calendar = Calendar.current
+        let numberOfDay = calendar.dateComponents([.day], from: from, to: to)
+        return numberOfDay.day! + 1
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension HotelResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hotels?.count ?? 0
+        return bookingViewModel.listOfData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HotelResultTableViewCell.identifier, for: indexPath) as? HotelResultTableViewCell else { return UITableViewCell() }
-        if var hotel = hotels?[indexPath.item] {
-            if wishListViewModel.processComparisonHotelId(hotel.id) {
-                hotel.like = true
-            } else {
-                hotel.like = false
-            }
-            var room: [RoomModel] = []
-            if let rooms = rooms {
-                room = rooms.filter { $0.hotelID == hotel.id }
-            } 
-            cell.hotelId = hotel.id
-            cell.numberRoomAvailable = room.count
-            
-            cell.setupDataInfoHotelBooking(hotel: hotel)
-            
-            cell.setupDataInfoRoomBooking(room: room.count,
-                                          defaultPrice: room.first?.defaultPrice ?? 0.0,
-                                          price: room.first?.price ?? 0.0)
-            stopLoading()
+        var hotel = bookingViewModel.getCellViewModel(at: indexPath) 
+        cell.day = day
+        if wishListViewModel.processComparisonHotelId(hotel.id) {
+            hotel.like = true
+        } else {
+            hotel.like = false
         }
+        var room: [RoomModel] = []
+        if let rooms = bookingViewModel.rooms {
+            room = rooms.filter { $0.hotelID == hotel.id }
+        } 
+        cell.hotelId = hotel.id
+        cell.numberRoomAvailable = room.count
+        
+        cell.setupDataInfoHotelBooking(hotel: hotel)
+        cell.setupDataInfoRoomBooking(room: room.count,
+                                      defaultPrice: room.first?.defaultPrice ?? 0.0,
+                                      price: room.first?.price ?? 0.0)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let hotel = hotels?[indexPath.item] {
-            if let room = hotelDataBooking?.room,
-               let date = hotelDataBooking?.date as? FastisRange {
-                let bookingTime = HotelBookingModel(destination: nil,
-                                                    date: date,
-                                                    room: room)
-                let vc = DetailViewController(data: hotel,
-                                              bookingTime: bookingTime)
-                navigationController?.pushViewController(vc, animated: true)
-            }
+        let hotel = bookingViewModel.getCellViewModel(at: indexPath)
+        if let room = bookingViewModel.hotelBooking.room,
+           let date = bookingViewModel.hotelBooking.date as? FastisRange {
+            let bookingTime = HotelBookingModel(destination: nil,
+                                                date: date,
+                                                room: room,
+                                                day: self.day)
+            let vc = DetailViewController(data: hotel,
+                                          bookingTime: bookingTime)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
