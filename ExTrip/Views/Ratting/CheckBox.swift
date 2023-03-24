@@ -18,6 +18,12 @@ class CheckBox: UIButton {
         }
     }
     
+    var starIndex: Int? {
+        didSet {
+            currentStar?(starIndex ?? 0)
+        }
+    }
+    
     var currentStar: ((Int) -> Void)?
     
     private lazy var numberOfStarLabel: UILabel = {
@@ -42,7 +48,7 @@ class CheckBox: UIButton {
             if isChecked {
                 backgroundColor = UIColor.theme.yellow
                 starImage.tintColor = UIColor.theme.white
-                currentStar?(numberOfStar ?? 5)
+                currentStar?(numberOfStar ?? 0)
             } else {
                 backgroundColor = UIColor.theme.lightGray?.withAlphaComponent(0.6)
                 starImage.tintColor = UIColor.theme.yellow
