@@ -124,7 +124,8 @@ extension RoomResultViewController: RoomResultTableViewCellDelegate {
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = MainViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
         }
     }
 }
