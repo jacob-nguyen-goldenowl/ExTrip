@@ -27,11 +27,6 @@ class HotelViewController: UIViewController {
     // MARK: Properties
     private lazy var loadingView = LottieView()
 
-    private lazy var activityIndicator: CustomLoadingView = {
-        let image: UIImage = UIImage(named: "loading")!
-        return CustomLoadingView(image: image)
-    }()
-    
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.register(HotelTableViewCell.self,
@@ -51,10 +46,14 @@ class HotelViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    private func setupUI() {
         setupViewModel()
         setupNavigation()
+        fetchDataHotel()
         setupView()
-        addLoadingIndicator()
         setupNotificationCenter()
     }
     
@@ -77,11 +76,6 @@ class HotelViewController: UIViewController {
         let item = UIBarButtonItem(customView: filterButton)
         
         self.navigationItem.setRightBarButton(item, animated: true)
-    }
-    
-    private func addLoadingIndicator() {
-        view.addSubview(activityIndicator)
-        activityIndicator.center = view.center
     }
     
     // MARK: Setup view model
@@ -118,11 +112,12 @@ class HotelViewController: UIViewController {
                 })
             }
         }
-        
+    }
+
+    // MARK: Fetch data
+    private func fetchDataHotel() {
         hotelViewModel.fetchAllData(destinationID: hotelViewModel.countryID)
     }
-    
-    // MARK: - Binder
     private func fetchFilterDatabase(filter: FilterModel) {
         hotelViewModel.resultHotelByFilter(filter: filter)
     }
@@ -174,7 +169,11 @@ class HotelViewController: UIViewController {
             filterButton.tintColor = UIColor.theme.lightBlue ?? .blue
         }   
     }
-
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(UserDefaultKey.loadingNotify), object: nil)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
