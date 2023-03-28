@@ -13,6 +13,9 @@ import UserNotifications
 
 class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
     
+    static let shared = PushNotificationManager()
+    private override init() {}
+
     func registerForPushNotifications() {
         Messaging.messaging().delegate = self
         if #available(iOS 10.0, *) {
