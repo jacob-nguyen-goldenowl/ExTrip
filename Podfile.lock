@@ -627,6 +627,9 @@ PODS:
   - Firebase/Database (10.5.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 10.5.0)
+  - Firebase/Messaging (10.5.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 10.5.0)
   - Firebase/Storage (10.5.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 10.5.0)
@@ -696,6 +699,15 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
+  - FirebaseMessaging (10.5.0):
+    - FirebaseCore (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - GoogleDataTransport (~> 9.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GoogleUtilities/Reachability (~> 7.8)
+    - GoogleUtilities/UserDefaults (~> 7.8)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
   - FirebaseSharedSwift (10.5.0)
   - FirebaseStorage (10.5.0):
     - FirebaseAppCheckInterop (~> 10.0)
@@ -831,6 +843,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Crashlytics
   - Firebase/Database
+  - Firebase/Messaging
   - Firebase/Storage
   - FirebaseFirestore
   - FirebaseFirestoreSwift
@@ -860,6 +873,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseFirestoreSwift
     - FirebaseInstallations
+    - FirebaseMessaging
     - FirebaseSharedSwift
     - FirebaseStorage
     - GoogleAppMeasurement
@@ -898,6 +912,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 7785ee9fe192f736fdb9f5d14a451ba0b33c3005
   FirebaseFirestoreSwift: 3f63a09244cf0dc5e19072c13618446c686b05b6
   FirebaseInstallations: 935bc4abb6f7a035cab7a0c31cb777b2be3dd254
+  FirebaseMessaging: 35ecbbc68ff547fca80f9326c9622e79288c7149
   FirebaseSharedSwift: 30289ed76ccb441067a2cd3472cc5b2f491b9d8f
   FirebaseStorage: 858ba102341232ad8f4e3a457090858200716966
   GoogleAppMeasurement: 40c70a7d89013f0eca72006c4b9732163ea4cdae
@@ -916,6 +931,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
 
-PODFILE CHECKSUM: 0938e510d3ee2a18c384c7c91782b3286cce5a95
+PODFILE CHECKSUM: f0f40fea1039761d8c543936a60d0b708c7c409e
 
 COCOAPODS: 1.12.0

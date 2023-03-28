@@ -16,6 +16,7 @@ pod 'Firebase/Storage'
 pod 'FirebaseFirestore'
 pod 'FirebaseFirestoreSwift'
 pod 'GoogleSignIn'
+pod 'Firebase/Messaging'
 
 # Calendar
 pod 'JTAppleCalendar'
