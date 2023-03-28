@@ -14,7 +14,7 @@
 		</dict>
 	</array>
 	<key>GIDClientID</key>
-	<string>657497406624-3ik25t4so4kb8sciipflcmkven7nas7l.apps.googleusercontent.com</string>
+	<string>186496725151-ng0nh6655lc1iv4gcdb94v8qpt5sm6pt.apps.googleusercontent.com</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Light.ttf</string>
@@ -41,5 +41,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

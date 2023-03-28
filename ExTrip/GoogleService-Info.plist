@@ -30,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:186496725151:ios:63a8b60431bb346f6a32aa</string>
+	<key>DATABASE_URL</key>
+	<string>https://explore-trip-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
