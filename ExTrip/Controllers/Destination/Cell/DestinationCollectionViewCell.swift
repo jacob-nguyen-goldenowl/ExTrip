@@ -15,7 +15,6 @@ class DestinationCollectionViewCell: UICollectionViewCell {
 
     lazy var viewModel = WishListViewModel()
     
-    var currentUser: String = ""
     var hotelId: String = "" {
         didSet {
             setupFavorite()
@@ -67,7 +66,6 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupSubViews() {
-        currentUser = AuthManager.shared.getCurrentUserID()
         contentView.addSubview(containerView)
         containerView.addSubviews(posterImageView,
                                   favouriteButton, 
@@ -130,9 +128,10 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     }
     
     func setupFavorite() {
-        favouriteButton.currentUser = currentUser
+        let currentUser = AuthManager.shared.getCurrentUserID()
         let wishlist = WishListModel(hotelID: hotelId, userID: currentUser)
         favouriteButton.likedClosure = { [weak self] in
+            FeatureFlags.isLiked = true
             DispatchQueue.main.async {
                 self?.viewModel.addWishtlist(with: wishlist)
             }
@@ -140,6 +139,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
         
         favouriteButton.dislikeClosure = { [weak self] in
             DispatchQueue.main.async {
+                FeatureFlags.isLiked = true
                 self?.viewModel.removeFromWishlist(with: self?.hotelId ?? "")
             }
         }

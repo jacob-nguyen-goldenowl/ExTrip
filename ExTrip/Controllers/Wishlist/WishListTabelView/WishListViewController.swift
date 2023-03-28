@@ -8,10 +8,8 @@
 import UIKit
 
 class WishListViewController: UIViewController {
-    
-    lazy var viewModel: WishListViewModel = {
-        return WishListViewModel()
-    }()
+
+    let viewModel = WishListViewModel()
     
     private lazy var refreshControl = UIRefreshControl()
         
@@ -19,7 +17,7 @@ class WishListViewController: UIViewController {
     private lazy var emptyView =  EmptyView()
             
     private let tableView: UITableView = {
-        let table = UITableView()
+        let table = UITableView(frame: .zero, style: .grouped)
         table.showsVerticalScrollIndicator = false
         table.clipsToBounds = true
         table.separatorColor = .clear

@@ -13,13 +13,15 @@ class HotelBookingViewController: UIViewController {
         StepBookingModel(title: "Destination",
                          icon: UIImage(named: "location"),
                          color: UIColor.theme.lightBlue ?? .blue), 
-        StepBookingModel(title: "Select Date",
+        StepBookingModel(title: "Date",
                          icon: UIImage(named: "event"),
                          color: UIColor.theme.lightBlue ?? .blue),
         StepBookingModel(title: "Rooms and guests",
                          icon: UIImage(named: "user"),
                          color: UIColor.theme.lightBlue ?? .blue)
     ]
+    
+    var day: Int = 1
     
     var hotel: HotelModel?
         
@@ -189,6 +191,8 @@ class HotelBookingViewController: UIViewController {
         fastisController.allowToChooseNilDate = true
         fastisController.doneHandler = { newValue in
             self.timeValue = newValue
+            let time = newValue!
+            self.day = self.numberOf24DaysBetween(time.fromDate, and: time.toDate)
         }
         fastisController.initialValue = timeValue as? FastisRange 
         present(fastisController, animated: true)
@@ -214,6 +218,12 @@ class HotelBookingViewController: UIViewController {
         present(vc, animated: true)
     }
 
+    func numberOf24DaysBetween(_ from: Date, and to: Date) -> Int {
+        let calendar = Calendar.current
+        let numberOfDay = calendar.dateComponents([.day], from: from, to: to)
+        return numberOfDay.day! + 1
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -262,7 +272,8 @@ extension HotelBookingViewController {
     @objc func handleSearchHotelAction() {
         let data = HotelBookingModel(destination: destinationValue,
                                      date: timeValue, 
-                                     room: roomValue)
+                                     room: roomValue, 
+                                     day: day)
         if let hotel = hotel {
             let vc = DetailViewController(data: hotel, bookingTime: data)
             navigationController?.pushViewController(vc, animated: true)

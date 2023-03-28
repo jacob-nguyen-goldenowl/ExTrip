@@ -37,7 +37,6 @@ class ETFavoriteButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        currentUser = AuthManager.shared.getCurrentUserID()
         setup()
     }
     
@@ -79,6 +78,7 @@ class ETFavoriteButton: UIButton {
     }
 
     @objc func buttonClicked(sender: UIButton) {
+        currentUser = AuthManager.shared.getCurrentUserID()
         if !currentUser.isEmpty {
             if sender == self {
                 isChecked = !isChecked

@@ -111,7 +111,7 @@ class AuthManager {
             let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString,
                                                            accessToken: accessToken.tokenString)
             
-            Auth.auth().signIn(with: credential) { result, error in
+            Auth.auth().signIn(with: credential) { _, error in
                 guard error == nil else {
                     completion(AuthenticationError
                         .signInError(message: "Somthing error when login"))

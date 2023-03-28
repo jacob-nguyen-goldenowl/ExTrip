@@ -9,8 +9,9 @@ import UIKit
 
 class HotelViewController: UIViewController {
     
+    private let hotelViewModel = HotelViewModel()
+
     private let errorView = FilterErrorView()
-    private let filterViewModel = FilterViewModel()
     var valueFilter = FilterModel(price: Price(maximun: 1000.0, minimun: 0.0),
                                   star: 0,
                                   service: [],
@@ -22,19 +23,10 @@ class HotelViewController: UIViewController {
                                   positionBed: [],
                                   payment: [],
                                   positionPayment: [])
-    
-    private var hotels: [HotelModel] = [] {
-        didSet {
-            tableView.reloadData()
-            showNotFoundView()
-        }
-    }
-    
-    private lazy var activityIndicator: CustomLoadingView = {
-        let image: UIImage = UIImage(named: "loading")!
-        return CustomLoadingView(image: image)
-    }()
-    
+
+    // MARK: Properties
+    private lazy var loadingView = LottieView()
+
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.register(HotelTableViewCell.self,
@@ -45,16 +37,23 @@ class HotelViewController: UIViewController {
         return table
     }()
     
-    convenience init(_ data: [HotelModel]) {
+    private lazy var filterButton = UIButton(type: .custom)
+
+    convenience init(_ countryID: String?) {
         self.init()
-        self.hotels = data
+        self.hotelViewModel.countryID = countryID
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    private func setupUI() {
+        setupViewModel()
         setupNavigation()
+        fetchDataHotel()
         setupView()
-        addLoadingIndicator()
         setupNotificationCenter()
     }
     
@@ -69,7 +68,6 @@ class HotelViewController: UIViewController {
     private func setupNavigation() {
         navigationController?.configBackButton()
         
-        let filterButton = UIButton(type: .custom)
         let image = UIImage(named: "slider")
         let tintedImage = image?.withRenderingMode(.alwaysTemplate)
         filterButton.setImage(tintedImage, for: .normal)
@@ -80,60 +78,78 @@ class HotelViewController: UIViewController {
         self.navigationItem.setRightBarButton(item, animated: true)
     }
     
-    private func addLoadingIndicator() {
-        view.addSubview(activityIndicator)
-        activityIndicator.center = view.center
-    }
-    
-    // MARK: - Binder
-    private func fetchFilterDatabase(filter: FilterModel) {
-        filterViewModel.resultHotelByFilter(filter: filter)
-    }
-    
-    private func setupBinder() {
-        filterViewModel.hotelsFilter.bind { [weak self] result in
-            guard let self = self else { return }
-            if let result = result {
-                self.hotels = result
+    // MARK: Setup view model
+    private func setupViewModel() {
+        hotelViewModel.updateLoadingStatus = { [weak self] in
+            DispatchQueue.main.async {
+                let isLoading = self?.hotelViewModel.isLoading ?? false
+                if isLoading {
+                    self?.startAnimating()
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self?.tableView.alpha = 0.0
+                    })
+                } else {
+                    self?.stopAnimating()
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self?.tableView.alpha = 1.0
+                    })
+                }
             }
         }
-    }
-    
-    private func setupErrorBinder() {
-        filterViewModel.errorMsg.bind { [weak self] error in
-            guard let self = self else { return }
-            if error != nil {
-                self.stopLoading()
-                self.setupErrorView()
+        
+        hotelViewModel.reloadTableViewClosure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.showNotFoundView()
+            }
+        }
+        
+        hotelViewModel.showEmptyViewClosure = { [weak self] in 
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self?.stopAnimating()
+                    self?.showNotFoundView()
+                })
             }
         }
     }
 
-    // MARK: - Setup loading 
-    func starLoading() {
-        activityIndicator.startAnimating()
-        tableView.isHidden = true
-        errorView.removeFromSuperview()
+    // MARK: Fetch data
+    private func fetchDataHotel() {
+        hotelViewModel.fetchAllData(destinationID: hotelViewModel.countryID)
+    }
+    private func fetchFilterDatabase(filter: FilterModel) {
+        hotelViewModel.resultHotelByFilter(filter: filter)
     }
     
-    func stopLoading() {
-        self.activityIndicator.stopAnimating()
+    // MARK: - Animating 
+    private func startAnimating() {
+        view.addSubview(loadingView)
+        loadingView.fillAnchor(view)
+        loadingView.startAnimating()
+    }
+    
+    private func stopAnimating() {
+        loadingView.stopAnimating()
     }
 
     private func showNotFoundView() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-            if self.hotels.isEmpty {
+            if self.hotelViewModel.listOfData.isEmpty {
                 self.tableView.isHidden = true
+                self.startAnimating()
                 self.setupErrorView()
+                self.errorView.isHidden = false
             } else {
+                self.errorView.removeFromSuperview()
                 self.tableView.isHidden = false
             }
-            self.stopLoading()
+            self.stopAnimating()
         }
     }
     
     private func navigationToHotelDetail(row: Int) {
-        let data = hotels[row]
+        let data = hotelViewModel.listOfData[row]
         let vc = DetailViewController(data: data)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -145,26 +161,38 @@ class HotelViewController: UIViewController {
                          leading: view.leadingAnchor, 
                          trailing: view.trailingAnchor)
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 0 { 
+            filterButton.tintColor = UIColor.theme.black ?? .black
+        } else {   
+            filterButton.tintColor = UIColor.theme.lightBlue ?? .blue
+        }   
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(UserDefaultKey.loadingNotify), object: nil)
+    }
     
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension HotelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hotels.count
+        return hotelViewModel.listOfData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HotelTableViewCell.identifier,
                                                        for: indexPath) as? HotelTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        let data = hotels[indexPath.row]
-        cell.cofigureHotel(data)
+        let hotel = hotelViewModel.getCellViewModel(at: indexPath)
+        cell.cofigureHotel(hotel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170
+        return 150
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -193,9 +221,8 @@ extension HotelViewController {
         guard let data = notification.object else { return }
         fetchFilterDatabase(filter: data as! FilterModel)
         valueFilter = data as! FilterModel
-        starLoading()
-        setupBinder()
-        setupErrorBinder()
+        errorView.isHidden = true
+        setupViewModel()
     }
 
 }

@@ -175,7 +175,7 @@ class RoomResultTableViewCell: ETTableViewCell {
         bookButton.addTarget(self, action: #selector(handleBookButton), for: .touchUpInside)
     }
     
-    func setDataForRoom(room: RoomModel) {
+    func setDataForRoom(room: RoomModel, day: Int) {
         self.room = room
         posterImageView.loadImage(url: room.image.first ?? "")
         titleLabel.text = room.type.capitalizeFirstLetter()
@@ -186,7 +186,13 @@ class RoomResultTableViewCell: ETTableViewCell {
         numberOfBedLabel.text = "\(room.description?.bed ?? 1) Bed"
         defaultPriceLabel.setStrikeThroughText("$\(room.defaultPrice)")
         afftercashbackLabel.text = "Affter Cashback"
-        priceLabel.text = "$\(room.price)"
+        setupPrice(with: room.price, day: day)
+    }
+    
+    func setupPrice(with price: Double, day: Int) {
+        let totalPrice = price * Double(day)
+        let roundedPrice = String(format: "%.2f", totalPrice)
+        priceLabel.text = ("$ \(roundedPrice)")
     }
     
 }

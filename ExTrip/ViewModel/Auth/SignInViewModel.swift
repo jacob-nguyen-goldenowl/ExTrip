@@ -12,17 +12,25 @@ class SignInViewModel {
     var error: Observable<String?> = Observable(nil)
     var success: Observable<String?> = Observable(nil)
     
+    var isLoading: Bool = false {
+        didSet {
+            self.updateLoadingStatus?()
+        }
+    }
+    var updateLoadingStatus: (() -> Void)?
     var navigationClosure: (() -> Void)?
-    var alertMessageClosure: ((Error) -> Void)?
+    var alertMessageClosure: (() -> Void)?
     
     func loginWithGoogle(viewController: UIViewController) {
+        isLoading = true
         AuthManager.shared.loginWithGoogle(with: viewController) { [weak self] error in
-            if let error = error {
-                self?.alertMessageClosure?(error)
+            if error != nil {
+                self?.alertMessageClosure?()
             } else {
                 self?.signInNotify()
                 self?.navigationClosure?()
             }
+            self?.isLoading = false
         }
     }
     

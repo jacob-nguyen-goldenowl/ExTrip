@@ -12,25 +12,40 @@ struct BookingTime {
     let departureDate: Date
 }
 
-class BookingViewModel {
+class BookingViewModel: ETViewModel<HotelModel> {
     
-    var hotelsRelatedCity: Observable<[HotelModel]?> = Observable(nil)
-    var roomAvailible: Observable<[RoomModel]?> = Observable(nil)
     var bookingStatus: Observable<Bool> = Observable(true)
+    
+    var hotel: HotelModel?
+    var hotelBooking = HotelBookingModel(destination: nil,
+                                         date: FastisRange(from: Date.today, to: Date.tomorrow), 
+                                         room: RoomBookingModel(room: 1, adults: 2, children: 0, infants: 0), 
+                                         day: 1) 
+    
+    var reloadingTableViewClosure: (() -> Void)?
+
+    var rooms: [RoomModel]? {
+        didSet {
+            self.reloadingTableViewClosure?()
+        }
+    }
 
     // MARK: - HOTEL
     func dataHotelByCity(city: String,
                          numberOfRoom: Int,
                          time: BookingTime) {
+        isLoading = true
         DatabaseBooking.shared.filterHotelByCity(city: city, numberOfRoom: numberOfRoom) { status in
             switch status {
             case .success(let hotels):
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.checkHotelHasRooms(with: hotels, time: time) { listRoom in
-                        self.hotelsRelatedCity.value = hotels
-                        self.roomAvailible.value = listRoom
-                    }
+                self.checkHotelHasRooms(with: hotels, time: time) { rooms in
+                    self.rooms = rooms
+                }
+                self.isLoading = false
+                if hotels.isEmpty {
+                    self.emptyData = "Empty data"
+                } else {
+                    self.listOfData = hotels
                 }
             case .failure(let error):
                 print(error)
@@ -38,18 +53,25 @@ class BookingViewModel {
         }
     }
     
-    func dataRoomByOneHotel(_ hotelID: String, time: BookingTime) {
-        print(time)
+    func fetchRoomByOneHotel(_ hotelID: String, time: BookingTime) {
+        isLoading = true
         DatabaseBooking.shared.fetchAllRoomByHotel(hotelId: hotelID) { status in
             var newRooms: [RoomModel] = []
             switch status {
             case .success(let rooms):
                 self.checkRoomHasBooking(with: rooms, time: time) { roomAvailable in 
-                    newRooms.append(roomAvailable)
-                DispatchQueue.main.async { [weak self] in 
-                            self?.roomAvailible.value = newRooms 
+                    if let room = roomAvailable {
+                        newRooms.append(room)
+                    }
+                DispatchQueue.main.async { [weak self] in
+                    if !rooms.isEmpty {
+                        self?.rooms = newRooms
+                    } else {
+                        self?.rooms = []
+                    }
                 }
                 }
+                self.isLoading = false
             case .failure(let error):
                 print(error)    
             }
@@ -66,7 +88,9 @@ class BookingViewModel {
                 switch status {
                 case .success(let rooms):
                     self.checkRoomHasBooking(with: rooms, time: time) { roomAvailable in 
-                        newRooms.append(roomAvailable)
+                        if let room = roomAvailable {
+                            newRooms.append(room)
+                        }
                         completion(newRooms)
                     }
                 case .failure(let error):
@@ -78,12 +102,14 @@ class BookingViewModel {
     
     func checkRoomHasBooking(with rooms: [RoomModel], 
                              time: BookingTime,
-                             completion: @escaping ((RoomModel) -> Void)) {
+                             completion: @escaping ((RoomModel?) -> Void)) {
         rooms.forEach {
             self.dataBookingByRoom(room: $0, 
                                    time: time) { (room, isRoomNotAvailable)  in
                 if !isRoomNotAvailable {
                     completion(room)
+                } else {
+                    completion(nil)
                 }
             }
         }
@@ -95,7 +121,8 @@ class BookingViewModel {
         DatabaseBooking.shared.fetchAllBookingByRoom(roomId: room.id) { status in 
             switch status {
             case .success(let booking):
-                if self.checkListBookingDuplicate(time: time, booking: booking) {
+                let bookingActive = self.filterBooking(booking: booking)
+                if self.checkListBookingDuplicate(time: time, booking: bookingActive) {
                     completion(room, true)
                 } else {
                     completion(room, false)
@@ -104,6 +131,11 @@ class BookingViewModel {
                 print(error)
             }
         }
+    }
+    
+    func filterBooking(booking: [BookingModel]) -> [BookingModel] {
+        let bookingActive = booking.filter { $0.status == "active" }
+        return bookingActive
     }
     
 }

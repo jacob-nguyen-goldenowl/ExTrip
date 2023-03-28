@@ -20,6 +20,8 @@ class HotelResultTableViewCell: ETTableViewCell {
             setupFavorite()
         }
     }
+    
+    var day: Int = 1
      
     private let padding: CGFloat = 10
     private let paddingSize: CGFloat = 5
@@ -310,7 +312,9 @@ class HotelResultTableViewCell: ETTableViewCell {
                                   defaultPrice: Double,
                                   price currentPrice: Double) {
         numberRoomLabel.text = "only \(roomLeft) left".uppercased()
-        priceLabel.text = "$ \(currentPrice)"
+        let price = currentPrice * Double(day)
+        let roundedPrice = String(format: "%.3f", price)
+        priceLabel.text = "$ \(roundedPrice)"
         defaultPriceLabel.setStrikeThroughText("$ \(defaultPrice)")
     }
     

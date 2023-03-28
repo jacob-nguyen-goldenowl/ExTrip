@@ -16,7 +16,7 @@ class HotelTableViewCell: ETTableViewCell {
         let view = CosmosView()
         view.sizeToFit()
         view.settings.updateOnTouch = false
-        view.settings.starSize = 16
+        view.settings.starSize = 14
         return view
     }()
     
@@ -43,21 +43,20 @@ class HotelTableViewCell: ETTableViewCell {
     private func setupConstraintSubView() {
         let padding: CGFloat = 20
         let paddingLeft: CGFloat = 10
-        posterImageView.anchor(top: topAnchor,
-                               bottom: bottomAnchor,
-                               leading: leadingAnchor,
+        let imageSize: CGFloat = 110
+        posterImageView.anchor(leading: leadingAnchor,
                                paddingTop: padding,
-                               paddingBottom: padding, 
-                               paddingLeading: 20)
-        posterImageView.setWidth(width: 130)
+                               paddingLeading: padding)
+        posterImageView.center(centerY: centerYAnchor)
+        posterImageView.setWidth(width: imageSize)
+        posterImageView.setHeight(height: imageSize)
 
         titleLabel.anchor(top: posterImageView.topAnchor,
                           leading: posterImageView.trailingAnchor,
                           trailing: trailingAnchor,
-                          paddingTop: 5,
                           paddingLeading: paddingLeft,
-                          paddingTrailing: 5)
-        titleLabel.setHeight(height: 25)
+                          paddingTrailing: paddingLeft)
+        titleLabel.setHeight(height: 20)
         
         addressLabel.anchor(top: titleLabel.bottomAnchor, 
                             leading: posterImageView.trailingAnchor, 
@@ -71,6 +70,7 @@ class HotelTableViewCell: ETTableViewCell {
                         leading: posterImageView.trailingAnchor,
                         paddingTop: 5, 
                         paddingLeading: paddingLeft)
+        starView.setWidth(width: 80)
         starView.setHeight(height: 15)
         
         reviewLabel.anchor(top: addressLabel.bottomAnchor,
@@ -80,7 +80,6 @@ class HotelTableViewCell: ETTableViewCell {
                            paddingLeading: paddingLeft,
                            paddingTrailing: padding)
         reviewLabel.setHeight(height: 15)
-        reviewLabel.setWidth(width: 120)
         
         priceLabel.anchor(top: starView.bottomAnchor,
                           leading: posterImageView.trailingAnchor,

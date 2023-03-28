@@ -49,6 +49,7 @@ class HotelViewModel: ETViewModel<HotelModel> {
     
     var booking: BookingModel?
     
+    // MARK: Fetch data
     func fetchLimitData(destinationID: String?) {
         DatabaseResponse.shared.fetchLimitDataById(collection: "hotels",
                                                    filed: "destination_id",
@@ -61,17 +62,39 @@ class HotelViewModel: ETViewModel<HotelModel> {
     }
     
     func fetchAllData(destinationID: String?) {
-        DatabaseResponse.shared.fetchLimitDataById(collection: "hotels",
-                                                   filed: "destination_id",
-                                                   documentId: destinationID) { (result: [HotelModel]) in
+        isLoading = true
+        DatabaseResponse.shared.fetchDataById(collection: "hotels",
+                                              filed: "destination_id",
+                                              documentId: destinationID) { (result: [HotelModel], _) in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.hotels.value = result
+                self.listOfData = result
             }
+            self.isLoading = false
         }
     }
     
-    // Tracker booking detail 
+    // MARK: Filter 
+    func resultHotelByFilter(filter: FilterModel) {
+        isLoading = true
+        DatabaseRequest.shared.filterHotel(filter) { status in
+            switch status {
+            case .success(let hotels):
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    if hotels.isEmpty {
+                        self.emptyData = "Empty"
+                    }
+                    self.listOfData = hotels
+                    self.isLoading = false
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    // MARK: Tracker booking
     func fetchHotel(_ hotelID: String) {
         DatabaseRequest.shared.fetchHotel(hotelID) { hotel in
             self.hotel = hotel
