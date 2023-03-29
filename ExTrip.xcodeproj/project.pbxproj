@@ -76,7 +76,8 @@
 		0476EC11299F7DD200000189 /* InfoUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */; };
 		0477DAE129C17DD20034A9E0 /* active.json in Resources */ = {isa = PBXBuildFile; fileRef = 0477DAE029C17DD20034A9E0 /* active.json */; };
 		0481D4002973FC8E00EACB93 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481D3FF2973FC8E00EACB93 /* UILabel+Extension.swift */; };
-		0481ED3D29D293AD009ECE93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0481ED3C29D293AD009ECE93 /* GoogleService-Info.plist */; };
+		0481ED4329D2ABD2009ECE93 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481ED4229D2ABD2009ECE93 /* PushNotificationManager.swift */; };
+		0481ED4829D2D060009ECE93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0481ED4729D2D060009ECE93 /* GoogleService-Info.plist */; };
 		0486B8D72965208200940B40 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8D62965208200940B40 /* ImageCache.swift */; };
 		0486B8D92965328400940B40 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8D82965328400940B40 /* AsyncImageView.swift */; };
 		0486B8DB29653E6800940B40 /* HotelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8DA29653E6800940B40 /* HotelModel.swift */; };
@@ -260,8 +261,10 @@
 		0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserTableViewCell.swift; sourceTree = "<group>"; };
 		0477DAE029C17DD20034A9E0 /* active.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = active.json; sourceTree = "<group>"; };
 		0481D3FF2973FC8E00EACB93 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
-		0481ED3C29D293AD009ECE93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0481ED3E29D2A4F0009ECE93 /* ExTrip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExTrip.entitlements; sourceTree = "<group>"; };
+		0481ED4229D2ABD2009ECE93 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		0481ED4629D2C707009ECE93 /* ExTripDebug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ExTripDebug.entitlements; sourceTree = "<group>"; };
+		0481ED4729D2D060009ECE93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0486B8D62965208200940B40 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0486B8D82965328400940B40 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		0486B8DA29653E6800940B40 /* HotelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelModel.swift; sourceTree = "<group>"; };
@@ -830,6 +833,14 @@
 			path = HotelResultTableView;
 			sourceTree = "<group>";
 		};
+		0481ED4029D2AB7A009ECE93 /* PushNotification */ = {
+			isa = PBXGroup;
+			children = (
+				0481ED4229D2ABD2009ECE93 /* PushNotificationManager.swift */,
+			);
+			path = PushNotification;
+			sourceTree = "<group>";
+		};
 		0486B8E2296572F100940B40 /* More */ = {
 			isa = PBXGroup;
 			children = (
@@ -1092,7 +1103,9 @@
 		04BF562C294193B200BCF4A5 /* ExTrip */ = {
 			isa = PBXGroup;
 			children = (
+				0481ED4029D2AB7A009ECE93 /* PushNotification */,
 				0481ED3E29D2A4F0009ECE93 /* ExTrip.entitlements */,
+				0481ED4629D2C707009ECE93 /* ExTripDebug.entitlements */,
 				0486B8E52965731E00940B40 /* Base */,
 				04F7DDF5295452010020494F /* Framework */,
 				04D80D8B295178C9005985ED /* Common */,
@@ -1108,7 +1121,7 @@
 				04BF564229419AB600BCF4A5 /* Resources */,
 				04BF5638294193B300BCF4A5 /* LaunchScreen.storyboard */,
 				04BF563B294193B300BCF4A5 /* Info.plist */,
-				0481ED3C29D293AD009ECE93 /* GoogleService-Info.plist */,
+				0481ED4729D2D060009ECE93 /* GoogleService-Info.plist */,
 			);
 			path = ExTrip;
 			sourceTree = "<group>";
@@ -1566,7 +1579,7 @@
 				04BF56692941A2EF00BCF4A5 /* Poppins-MediumItalic.ttf in Resources */,
 				04BF565F2941A2EF00BCF4A5 /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				0471DBA829B1ABD700FE62B3 /* emptyBox.json in Resources */,
-				0481ED3D29D293AD009ECE93 /* GoogleService-Info.plist in Resources */,
+				0481ED4829D2D060009ECE93 /* GoogleService-Info.plist in Resources */,
 				04BF56642941A2EF00BCF4A5 /* Poppins-Bold.ttf in Resources */,
 				04BF565B2941A2EF00BCF4A5 /* Poppins-BoldItalic.ttf in Resources */,
 				04BF565E2941A2EF00BCF4A5 /* Poppins-SemiBoldItalic.ttf in Resources */,
@@ -1663,6 +1676,7 @@
 				0476EC0D299F782200000189 /* ReviewBookTableViewCell.swift in Sources */,
 				0476EBD6299CE3EF00000189 /* RoomResultTableViewCell.swift in Sources */,
 				049F2823295AA473002257B9 /* RoomViewController.swift in Sources */,
+				0481ED4329D2ABD2009ECE93 /* PushNotificationManager.swift in Sources */,
 				046D38A8296FFEE8000DE1AB /* SearchViewController.swift in Sources */,
 				04D80D9829517A94005985ED /* DestinationCollectionViewCell.swift in Sources */,
 				04BF56752941D66400BCF4A5 /* ETGradientButton.swift in Sources */,
@@ -1938,7 +1952,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTrip.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTripDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1946,20 +1960,23 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = KSZT64RKCS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExTrip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ExTrip;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kappa.ExTrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "extrip-28032023";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "extra-provision-2803-updated";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1980,20 +1997,23 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = KSZT64RKCS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExTrip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ExTrip;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kappa.ExTrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "extrip-28032023";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "extra-provision-2803-updated";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -19,4 +19,5 @@ struct UserDefaultKey {
     static let filterNotity = "com.filter.notication.center"
     static let checkEmptyNotify = "com.extrip.empty.notication.center"
     static let loginsuccessNotify = "com.login.success.notification.center"
+    static let fcmToken = "com.kappa.fcmToken.exTrip"
 }
