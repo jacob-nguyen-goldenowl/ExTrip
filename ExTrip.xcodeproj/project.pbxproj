@@ -1518,7 +1518,7 @@
 				04BF5628294193B200BCF4A5 /* Resources */,
 				9C8F2F6DBB4FD01970051A92 /* [CP] Embed Pods Frameworks */,
 				9FB8296529A880AD00DBD6B5 /* ShellScript */,
-				044480B229D43206002E793D /* ShellScript */,
+				044480CE29D44CED002E793D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1599,7 +1599,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		044480B229D43206002E793D /* ShellScript */ = {
+		044480CE29D44CED002E793D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
 			files = (
@@ -1607,7 +1607,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}\n$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
 				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputFileListPaths = (
@@ -1617,7 +1617,6 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
-			showEnvVarsInLog = 0;
 		};
 		4DC418440A795DF3F3BB036A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
