@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>186496725151-ng0nh6655lc1iv4gcdb94v8qpt5sm6pt.apps.googleusercontent.com</string>
+	<string>1062632074684-qq5uvfjk4c6a8a5bornqr6hr3359pnou.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.186496725151-ng0nh6655lc1iv4gcdb94v8qpt5sm6pt</string>
+	<string>com.googleusercontent.apps.1062632074684-qq5uvfjk4c6a8a5bornqr6hr3359pnou</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCsxYU7jh5gMg_NzQxh8v1uOLuXVoRjw84</string>
+	<string>AIzaSyALmHK8YLsALFt3mAgjmAY3adoRKj8_NmU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>186496725151</string>
+	<string>1062632074684</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.kappa.ExTrip</string>
 	<key>PROJECT_ID</key>
-	<string>explore-trip</string>
+	<string>extripapp-8fad1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>explore-trip.appspot.com</string>
+	<string>extripapp-8fad1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:186496725151:ios:63a8b60431bb346f6a32aa</string>
-	<key>DATABASE_URL</key>
-	<string>https://explore-trip-default-rtdb.firebaseio.com</string>
+	<string>1:1062632074684:ios:b16273d3b9bbe814d54fb9</string>
 </dict>
 </plist>

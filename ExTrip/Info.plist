@@ -9,12 +9,12 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.186496725151-ng0nh6655lc1iv4gcdb94v8qpt5sm6pt</string>
+				<string>com.googleusercontent.apps.1062632074684-qq5uvfjk4c6a8a5bornqr6hr3359pnou</string>
 			</array>
 		</dict>
 	</array>
 	<key>GIDClientID</key>
-	<string>186496725151-ng0nh6655lc1iv4gcdb94v8qpt5sm6pt.apps.googleusercontent.com</string>
+	<string>1062632074684-qq5uvfjk4c6a8a5bornqr6hr3359pnou.apps.googleusercontent.com</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Light.ttf</string>
