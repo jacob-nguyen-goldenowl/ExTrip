@@ -141,4 +141,12 @@ extension UIViewController {
     func errorAlert(message: String) {
         showAlert(title: "Error", message: message, style: .alert)
     }
+    
+    func showPopUpAlert() {
+        let alert = UIAlertController(title: title,
+                                      message: "This function will be updated in the upcoming version",
+                                      preferredStyle: .alert)
+        present(alert, animated: true)
+        alert.dismiss(animated: true)
+    }
 }

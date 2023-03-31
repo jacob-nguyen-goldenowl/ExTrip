@@ -286,8 +286,9 @@ extension ProfileViewController: ProfileTableHeaderViewDelegate {
 // MARK: Handle action
 extension ProfileViewController {
     private func handleManagerAccountAction() {
-        let vc = EditProfileViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        self.showPopUpAlert()
+//        let vc = EditProfileViewController()
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func handleSaveAction() {
@@ -296,8 +297,7 @@ extension ProfileViewController {
     }
     
     private func handleWalletAction() {
-        let vc = TrackerBookingViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        self.showPopUpAlert()
     }
     
     private func handleTrackBookingAction() {
@@ -305,9 +305,11 @@ extension ProfileViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func handleSettingAction() {}
+    private func handleSettingAction() {
+        self.showPopUpAlert()
+    }
     
     @objc func handleSetionAction() {
-            // Handle setting
+        self.showPopUpAlert()
     }
 }
