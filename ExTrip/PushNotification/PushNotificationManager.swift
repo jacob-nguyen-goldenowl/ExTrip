@@ -34,19 +34,9 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
         }
         
         UIApplication.shared.registerForRemoteNotifications()
-        updateFirestorePushTokenIfNeeded()
     }
-    
-    // Add token to firestore
-    func updateFirestorePushTokenIfNeeded() {
-        if let token = Messaging.messaging().fcmToken {
-            let usersRef = Firestore.firestore().collection("token").document("fcmToken")
-            usersRef.setData(["fcmToken": token], merge: true)
-        }
-    }
-    
+        
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        updateFirestorePushTokenIfNeeded()
         messaging.token { token, error in
             if let error = error {
                 print("Error fetching FCM registration token: \(error)")
