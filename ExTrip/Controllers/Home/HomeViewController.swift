@@ -41,10 +41,6 @@ class HomeViewController: UIViewController {
         setupDataBinder()
         setupViews()
         registerCell()
-        
-        let library_path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
-        print("libray path \(library_path)")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,31 +66,6 @@ class HomeViewController: UIViewController {
                 print("error when get data")
             }
         }
-    }
-    
-    private func setupLeftAlignTitleView(text: String) {
-        guard let frame = navigationController?.navigationBar.frame else {
-            return
-        }
-        
-        let parentView = UIView(frame: CGRect(x: 0,
-                                              y: 0,
-                                              width: frame.width*3,
-                                              height: frame.height))
-        self.navigationItem.titleView = parentView
-        
-        let label = UILabel(frame: .init(x: parentView.frame.minX,
-                                         y: parentView.frame.minY,
-                                         width: parentView.frame.width,
-                                         height: parentView.frame.height))
-        label.backgroundColor = .clear
-        label.numberOfLines = 2
-        label.font = .poppins(style: .bold, size: 30)
-        label.textAlignment = .left
-        label.textColor = .black
-        label.text = text
-        
-        parentView.addSubview(label)
     }
     
     // MARK: - Setup navigation bar
@@ -186,6 +157,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Action button
 extension HomeViewController {
     @objc func handleSearchAction() {
+        self.showPopUpAlert()
     }
 }
 
@@ -197,11 +169,11 @@ extension HomeViewController: CategoryCollectionReusableViewDelegate {
     }
     
     func categoryCollectionReusableViewhandleFilghtBooking() {
-        // Code here ...
+        self.showPopUpAlert()
     }
     
     func categoryCollectionReusableViewhandleEvent() {
-        // Core here ...
+        self.showPopUpAlert()
     }
 }
 
