@@ -41,16 +41,7 @@ class CategoryCollectionReusableView: UICollectionReusableView {
         label.font = .poppins(style: .bold)
         return label
     }()
-    
-    private lazy var seeAllButton: UIButton = {
-        let button = UIButton()
-        let title = ETButtonTitle.viewAll.rawValue
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(.lightGray, for: .normal)
-        button.titleLabel?.font = .poppins(style: .medium, size: 12)
-        return button
-    }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubViews()
@@ -65,8 +56,7 @@ class CategoryCollectionReusableView: UICollectionReusableView {
         addSubviews(categoryStackView, 
                     titleStackView,
                     separatorView,
-                    categoryLabel, 
-                    seeAllButton)
+                    categoryLabel)
         
         setupStackView(stackView: categoryStackView, views: [hotelButton, flightButton, eventButton])
         setupStackView(stackView: titleStackView, views: [hotelLabel, flightLabel, eventLabel])
@@ -102,12 +92,6 @@ class CategoryCollectionReusableView: UICollectionReusableView {
                              paddingTop: padding,
                              paddingLeading: padding)
         categoryLabel.setHeight(height: 30)
-        
-        seeAllButton.anchor(top: separatorView.bottomAnchor,
-                            trailing: trailingAnchor,
-                            paddingTop: padding, 
-                            paddingTrailing: padding)
-        seeAllButton.setHeight(height: 30)
     }
     
     private func createCategory(image: UIImage?, color: UIColor?) -> UIButton {
