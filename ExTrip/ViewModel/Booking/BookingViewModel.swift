@@ -15,8 +15,9 @@ struct BookingTime {
 class BookingViewModel: ETViewModel<HotelModel> {
     
     var bookingStatus: Observable<Bool> = Observable(true)
-    
+    var room: RoomModel?
     var hotel: HotelModel?
+    var price: Double?
     var hotelBooking = HotelBookingModel(destination: nil,
                                          date: FastisRange(from: Date.today, to: Date.tomorrow), 
                                          room: RoomBookingModel(room: 1, adults: 2, children: 0, infants: 0), 

@@ -22,8 +22,6 @@
 		0429EDFE2966CF3B0067F906 /* TypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429EDFD2966CF3B0067F906 /* TypeTableViewCell.swift */; };
 		042A14912948B9DD00461C4D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A14902948B9DD00461C4D /* StatusCode.swift */; };
 		042A14942948C58B00461C4D /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A14932948C58B00461C4D /* Tag.swift */; };
-		042A47D229DBA3FB00027004 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */; };
-		042A47D329DBA3FB00027004 /* Pods_ExTrip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0443CC96299340130014E557 /* DatabaseBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443CC95299340130014E557 /* DatabaseBooking.swift */; };
 		0443CC9A299354A70014E557 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443CC99299354A70014E557 /* Date+Extension.swift */; };
 		044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587D92942EC29009195F2 /* ETIconButton.swift */; };
@@ -189,21 +187,8 @@
 		04F7DE0F295452320020494F /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DE04295452320020494F /* DayCell.swift */; };
 		04F7DE10295452320020494F /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DE05295452320020494F /* WeekView.swift */; };
 		04F7F89229BE8E4F003FDA73 /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F89129BE8E4F003FDA73 /* WishListModel.swift */; };
+		A162D76F23B59718AED24500 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		042A47D429DBA3FB00027004 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				042A47D329DBA3FB00027004 /* Pods_ExTrip.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
@@ -395,11 +380,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		04BF5627294193B200BCF4A5 /* Frameworks */ = {
+		D4ED11DBD970EE9F9613986B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				042A47D229DBA3FB00027004 /* Pods_ExTrip.framework in Frameworks */,
+				A162D76F23B59718AED24500 /* Pods_ExTrip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1527,12 +1512,11 @@
 			buildPhases = (
 				4DC418440A795DF3F3BB036A /* [CP] Check Pods Manifest.lock */,
 				04BF5626294193B200BCF4A5 /* Sources */,
-				04BF5627294193B200BCF4A5 /* Frameworks */,
 				04BF5628294193B200BCF4A5 /* Resources */,
 				9C8F2F6DBB4FD01970051A92 /* [CP] Embed Pods Frameworks */,
 				9FB8296529A880AD00DBD6B5 /* ShellScript */,
 				044480CE29D44CED002E793D /* ShellScript */,
-				042A47D429DBA3FB00027004 /* Embed Frameworks */,
+				D4ED11DBD970EE9F9613986B /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1988,6 +1972,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTripDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1999,9 +1984,9 @@
 				INFOPLIST_FILE = ExTrip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ExTrip;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -2026,6 +2011,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTrip.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2037,9 +2023,9 @@
 				INFOPLIST_FILE = ExTrip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ExTrip;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
