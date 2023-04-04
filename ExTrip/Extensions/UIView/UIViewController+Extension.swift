@@ -89,14 +89,14 @@ extension UIViewController {
         let titleLabel = UILabel(frame: .init(x: 0, y: -2, width: 0, height: 0))
         
         titleLabel.backgroundColor = UIColor.clear
-        titleLabel.textColor = UIColor.gray
+        titleLabel.textColor = .blue
         titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         titleLabel.text = title
         titleLabel.sizeToFit()
         
         let subtitleLabel = UILabel(frame: .init(x: 0, y: 18, width: 0, height: 0))
         subtitleLabel.backgroundColor = UIColor.clear
-        subtitleLabel.textColor = UIColor.black
+        subtitleLabel.textColor = .label
         subtitleLabel.font = UIFont.boldSystemFont(ofSize: 11)
         subtitleLabel.text = subtitle
         subtitleLabel.sizeToFit()
@@ -143,10 +143,7 @@ extension UIViewController {
     }
     
     func showPopUpAlert() {
-        let alert = UIAlertController(title: title,
-                                      message: "This function will be updated in the upcoming version",
-                                      preferredStyle: .alert)
-        present(alert, animated: true)
-        alert.dismiss(animated: true)
+        self.showAlert(message: "This function will be updated in the upcoming version",
+                       style: .alert)
     }
 }
