@@ -31,15 +31,11 @@ class DatabaseManager {
     // Insert new user
     public func insertNewUser(with info: UserInfoModel, uid: String, completion: @escaping(Bool) -> Void) {
         let users = fireStore.collection("users").document(uid)
-        
-        users.setData(info.dictionary) { error in 
-            if error == nil {
-                // Success
-                completion(true)
-            } else {
-                // Failed
-                completion(false)
-            }
+        do {
+            try users.setData(from: info.self)
+            completion(true)
+        } catch {
+            completion(false)
         }
     }
     

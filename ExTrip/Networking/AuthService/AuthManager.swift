@@ -46,38 +46,33 @@ class AuthManager {
     
     // MARK: - Register
     func register(with info: UserInfoModel, password: String, completion: @escaping (ResultInt, StatusCode) -> Void) {
-        guard let email = info.email, let name = info.name else { return }
-        // Check email existing yet
-        DatabaseManager.shared.canCreateNewUser(with: email, username: name) { canCreate in
-            if canCreate {
-                Auth.auth().createUser(withEmail: email, password: password) { result, error in 
-                    
-                    guard result != nil, error == nil else { 
-                        completion(.failed,
-                                   .registerFailed)
-                        return 
-                    }
-                    
-                    guard let uid = result?.user.uid else { return }
-                    
-                    // Insert into database
-                    DatabaseManager.shared.insertNewUser(with: info, uid: uid) { success in 
-                        if success {
-                            UserManager.shared.saveUserInfo(uid)
-                            completion(.success,
-                                       .registerSuccess)
-                            return
-                        } else {
-                            completion(.failed,
-                                       .insertUserFailed)
-                            return
-                        }
-                    }
-                }
-            } else {
-                    // Email or password does not exit
+        guard let email = info.email else { 
+            completion(.failed,
+                       .insertUserFailed)
+            return 
+        }
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in 
+            
+            guard result != nil, error == nil else { 
                 completion(.failed,
-                           .insertUserFailed)
+                           .registerFailed)
+                return 
+            }
+            
+            guard let uid = result?.user.uid else { return }
+            
+                // Insert into database
+            DatabaseManager.shared.insertNewUser(with: info, uid: uid) { success in 
+                if success {
+                    UserManager.shared.saveUserInfo(uid)
+                    completion(.success,
+                               .registerSuccess)
+                    return
+                } else {
+                    completion(.failed,
+                               .insertUserFailed)
+                    return
+                }
             }
         }
     }
