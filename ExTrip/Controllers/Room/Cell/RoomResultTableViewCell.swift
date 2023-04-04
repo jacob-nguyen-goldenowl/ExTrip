@@ -184,17 +184,20 @@ class RoomResultTableViewCell: ETTableViewCell {
         roomSizeLabel.setSuperScripts(bigText: "\(room.roomSize)m", smallText: "2")
         occupancyLabel.text = "Max \(room.occupancy) adults"
         numberOfBedLabel.text = "\(room.description?.bed ?? 1) Bed"
-        defaultPriceLabel.setStrikeThroughText("$\(room.defaultPrice)")
+        let oldPrice = setupPrice(with: room.defaultPrice, day: day)
+        defaultPriceLabel.setStrikeThroughText("$\(oldPrice)")
         afftercashbackLabel.text = "Affter Cashback"
-        setupPrice(with: room.price, day: day)
+        let newPrice = setupPrice(with: room.price, day: day)
+        priceLabel.text = ("$ \(newPrice)")
+
     }
     
-    func setupPrice(with price: Double, day: Int) {
+    private func setupPrice(with price: Double, day: Int) -> String {
         let totalPrice = price * Double(day)
         let roundedPrice = String(format: "%.2f", totalPrice)
-        priceLabel.text = ("$ \(roundedPrice)")
+        return "$\(roundedPrice)"
     }
-    
+
 }
 
 extension RoomResultTableViewCell {

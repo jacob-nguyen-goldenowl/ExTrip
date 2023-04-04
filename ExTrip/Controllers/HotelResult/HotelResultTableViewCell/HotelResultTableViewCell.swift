@@ -313,19 +313,21 @@ class HotelResultTableViewCell: ETTableViewCell {
                                   price currentPrice: Double) {
         numberRoomLabel.text = "only \(roomLeft) left".uppercased()
         let price = currentPrice * Double(day)
-        let roundedPrice = String(format: "%.3f", price)
+        let roundedPrice = String(format: "%.2f", price)
+        let oldPrice = defaultPrice * Double(day)
+        let roundedOldPrice = String(format: "%.2f", oldPrice)
         priceLabel.text = "$ \(roundedPrice)"
-        defaultPriceLabel.setStrikeThroughText("$ \(defaultPrice)")
+        defaultPriceLabel.setStrikeThroughText("$ \(roundedOldPrice)")
     }
     
     private func calculatorScoreService(_ score: Double) -> String {
-        if score >= 9.0 {
+        if score >= 4.5 {
             return "\(score) Exceptional"
-        } else if score >= 8.0 && score <= 8.9 {
+        } else if score >= 4.0 && score <= 4.4 {
             return "\(score) Excellent"
-        } else if score >= 7.0 && score <= 7.9 {
+        } else if score >= 3.0 && score <= 3.9 {
             return "\(score) Very good"
-        } else if score >= 5.0 && score <= 6.9 {
+        } else if score >= 2.5 && score <= 2.9 {
             return "\(score) Good"
         } else {
             return "\(score) Bad"
