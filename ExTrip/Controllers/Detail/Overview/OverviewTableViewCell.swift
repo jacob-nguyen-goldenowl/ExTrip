@@ -60,7 +60,10 @@ class OverviewTableViewCell: DetailTableViewCell {
     private lazy var iconLocationImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "location")
+        let locationImage = UIImage(named: "location")
+        let tintedImage = locationImage?.withRenderingMode(.alwaysTemplate)
+        image.tintColor = .label
+        image.image = tintedImage
         image.clipsToBounds = true
         return image
     }()

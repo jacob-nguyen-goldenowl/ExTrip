@@ -11,9 +11,8 @@ class ConfirmPaymentViewController: UIViewController {
     
     private var bookingViewModel = BookingViewModel()
     
-    private var bookingData: BookingModel?
-    private var roomData: RoomModel?
-    
+    private var totalPrice: Double = 0.0
+        
     var alert = UIAlertController()
     
     private lazy var loadingView = LottieView()
@@ -21,7 +20,6 @@ class ConfirmPaymentViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.showsVerticalScrollIndicator = false
-        table.backgroundColor = .white
         table.isUserInteractionEnabled = false
         return table
     }()
@@ -29,9 +27,14 @@ class ConfirmPaymentViewController: UIViewController {
     private lazy var usePaymentMethod = ETGradientButton(title: .payNow, style: .mysticBlue)
     
     // Initialization constructor
-    init(data: BookingModel?, room: RoomModel?) {
-        self.bookingData = data
-        self.roomData = room
+    init(data: HotelBookingModel, room: RoomModel?, price: Double?) {
+        bookingViewModel.hotelBooking = data
+        bookingViewModel.room = room
+        bookingViewModel.price = price
+        if let price = price, 
+            let taxes = room?.taxes {
+            totalPrice = price + taxes
+        }
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,9 +59,7 @@ class ConfirmPaymentViewController: UIViewController {
                                             style: .alert)
                 self.dissmisAlert()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    let vc = TabbarViewController()
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true)
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             } else {
                 self.showAlertWithoutButton(title: "Error booking",
@@ -127,7 +128,27 @@ class ConfirmPaymentViewController: UIViewController {
     
     @objc func handleUsePaymentAction() {
         setupStarLoading()
-        if let bookingData = bookingData {
+        let currentUserID = AuthManager.shared.getCurrentUserID()
+
+        if let booking = bookingViewModel.hotelBooking.date as? FastisRange,
+           let bookingRoom = bookingViewModel.hotelBooking.room,
+           let room = bookingViewModel.room {
+            
+            let arrivalDate = booking.fromDate.dateToTimestamp()
+            let departureDate = booking.toDate.dateToTimestamp()
+            
+            let bookingData = BookingModel(hotelID: room.hotelID, 
+                                           roomID: room.id,
+                                           guestID: currentUserID,
+                                           bookingDate: arrivalDate,
+                                           arrivalDate: arrivalDate,
+                                           departureDate: departureDate,
+                                           roomNumber: bookingRoom.room,
+                                           roomCharge: totalPrice,
+                                           numAdults: bookingRoom.adults,
+                                           numChildren: bookingRoom.children,
+                                           specialReq: "No",
+                                           status: "active")
             bookingViewModel.addBooking(bookingData)
         } else {
             self.showAlertWithoutButton(title: "Error booking",
@@ -156,20 +177,20 @@ extension ConfirmPaymentViewController: UITableViewDelegate, UITableViewDataSour
         case 0:
             guard let hotelCell = tableView.dequeueReusableCell(withIdentifier: ConfirmHotelTableViewCell.identifier, 
                                                                 for: indexPath) as? ConfirmHotelTableViewCell else { return UITableViewCell() }
-            if let room = roomData,
-               let arrivalDate = bookingData?.arrivalDate.timestampToDate(),
-               let departureDate = bookingData?.departureDate.timestampToDate() {
+
+                if let room = bookingViewModel.room,
+                   let booking = bookingViewModel.hotelBooking.date as? FastisRange {                    
                 hotelCell.setDataForBookingHotel(room,
-                                                 arrivalDate: arrivalDate, 
-                                                 departureDate: departureDate)
+                                                 arrivalDate: booking.toDate, 
+                                                 departureDate: booking.fromDate)
             }
             hotelCell.backgroundColor = .tertiarySystemFill
             return hotelCell
         case 1:
             guard let priceCell = tableView.dequeueReusableCell(withIdentifier: ConfirmPriceTableViewCell.identifier, 
                                                                 for: indexPath) as? ConfirmPriceTableViewCell else { return UITableViewCell() }
-            priceCell.setDataForPriceRoom(roomCharge: bookingData?.roomCharge, 
-                                          taxes: roomData?.taxes)
+                priceCell.setDataForPriceRoom(roomCharge: bookingViewModel.price, 
+                                              taxes: bookingViewModel.room?.taxes)
             priceCell.backgroundColor = .tertiarySystemFill
             return priceCell
         case 2:
@@ -177,7 +198,7 @@ extension ConfirmPaymentViewController: UITableViewDelegate, UITableViewDataSour
                                                                  for: indexPath) as? PaymentTableViewCell else { return UITableViewCell() }
             methodCell.backgroundColor = .tertiarySystemFill
             methodCell.cardTitle = "apple pay"
-                methodCell.cardImage = UIImage(named: "applepay")
+            methodCell.cardImage = UIImage(named: "applepay")
             methodCell.accessoryType = .disclosureIndicator
             return methodCell  
         default:

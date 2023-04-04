@@ -214,7 +214,8 @@ extension SignInViewController {
     
     @objc func handleRegisterAction() {
         let vc = SignUpViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
         emailTextField.text = ""
         passwordTextField.text = ""
     }

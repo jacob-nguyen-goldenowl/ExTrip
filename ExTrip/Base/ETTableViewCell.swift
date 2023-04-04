@@ -12,6 +12,7 @@ class ETTableViewCell: UITableViewCell {
     public var isSelectedLikeButton: Bool = false
     let lightGrayColor = UIColor.theme.lightGray ?? .lightGray
     let primaryColor = UIColor.theme.primary ?? .blue
+    let labelColor = UIColor.label
     
     public let posterImageView: AsyncImageView = {
         let imageView = AsyncImageView()
@@ -23,7 +24,7 @@ class ETTableViewCell: UITableViewCell {
 
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.theme.black ?? .black
+        label.textColor = labelColor
         label.font = .poppins(style: .medium)
         label.numberOfLines = 2
         return label
@@ -31,14 +32,14 @@ class ETTableViewCell: UITableViewCell {
     
     public lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.theme.black ?? .black
+        label.textColor = labelColor
         label.font = .poppins(style: .bold, size: 16)
         return label
     }()
     
     public lazy var addressLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.theme.black ?? .black
+        label.textColor = labelColor
         label.numberOfLines = 2
         label.font = .poppins(style: .light, size: 11)
         return label
@@ -46,7 +47,7 @@ class ETTableViewCell: UITableViewCell {
     
     public lazy var roomInfoLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.theme.black ?? .black
+        label.textColor = labelColor
         label.font = .poppins(style: .light, size: 12)
         return label
     }()

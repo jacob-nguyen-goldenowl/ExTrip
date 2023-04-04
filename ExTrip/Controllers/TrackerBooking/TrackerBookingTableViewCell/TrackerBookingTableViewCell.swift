@@ -46,7 +46,7 @@ class TrackerBookingTableViewCell: UITableViewCell {
     
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.theme.tertiarySystemFill
+        view.backgroundColor = .tertiarySystemFill
         view.layer.cornerRadius = 10
         return view
     }()
@@ -141,7 +141,7 @@ class TrackerBookingTableViewCell: UITableViewCell {
         bookingID = booking.id
         arrivalDate.text = "Check-in: " + booking.arrivaleDate
         departureDate.text = "Check-out: " + booking.departureDate
-        roomChargeLabel.text = "Total: $\(booking.roomChange)"
+        roomChargeLabel.text = "Total: $\(booking.roomChange.roundDouble())"
         roomNumberLabel.text = "\(booking.numberOfRoom) rooms"
     }
 

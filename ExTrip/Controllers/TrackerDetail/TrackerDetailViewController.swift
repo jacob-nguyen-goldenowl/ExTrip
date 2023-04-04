@@ -15,7 +15,6 @@ class TrackerDetailViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.showsVerticalScrollIndicator = false
-        table.backgroundColor = .white
         table.isUserInteractionEnabled = false
         table.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return table

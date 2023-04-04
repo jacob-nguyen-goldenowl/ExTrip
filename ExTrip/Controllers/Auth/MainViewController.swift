@@ -39,8 +39,8 @@ class MainViewController: UIViewController {
     
     private lazy var signInButton = ETGradientButton(title: .signIn,
                                                      style: .nomal,
-                                                     backgroundColor: UIColor.theme.black, 
-                                                     titleColor: UIColor.theme.white)
+                                                     backgroundColor: .black, 
+                                                     titleColor: .white)
     private lazy var signUpButton = ETGradientButton(title: .signUp,
                                                      style: .nomal)
     
@@ -169,6 +169,7 @@ class MainViewController: UIViewController {
 // MARK: - Handle action
 extension MainViewController {
     @objc func handleFacebookAction() {
+        self.showPopUpAlert()
     }
 
     @objc func handleGoogleAction() {
@@ -183,13 +184,13 @@ extension MainViewController {
     
     @objc func handleSignUpAction() {
         let vc = SignUpViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
 
 extension MainViewController: ETCancelButtonDelegate {
     func eTCancelButtonHandleCancelAction() {
-        print("dissmiss")
         dismiss(animated: true)
     }
 }

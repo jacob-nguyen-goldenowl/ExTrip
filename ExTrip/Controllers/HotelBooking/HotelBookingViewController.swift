@@ -95,7 +95,7 @@ class HotelBookingViewController: UIViewController {
         let view = UIView()
         view.layer.cornerRadius = 35
         view.clipsToBounds = true
-        view.backgroundColor = UIColor.theme.white ?? .white
+        view.backgroundColor = .systemBackground
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return view
     }()

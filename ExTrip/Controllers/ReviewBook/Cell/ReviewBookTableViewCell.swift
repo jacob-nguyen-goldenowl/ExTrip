@@ -21,8 +21,8 @@ class ReviewBookTableViewCell: ETTableViewCell {
     private lazy var boxView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 5
-        view.layer.masksToBounds = true
         view.layer.borderWidth = 0.8
+        view.layer.borderColor = UIColor.theme.tertiarySystemFill?.cgColor
         return view
     }()
     

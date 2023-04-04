@@ -78,17 +78,16 @@ class ETIconButton: UIButton {
     
     private func setupStyleButton(style: ETIconStyle) {
         textLabel.font = .poppins(style: .regular)
+        textLabel.textColor = .black
         cornerRadius = 10
         switch style {
         case .facebook:
             textLabel.text = "Login with Facebook"
             iconImageView.image = UIImage(named: "facebook")
-            textLabel.textColor = UIColor.theme.black ?? .black
             backgroundColor = UIColor.theme.lightBlue
         case .google:
             textLabel.text = "Login with Google"
             iconImageView.image = UIImage(named: "google")
-            textLabel.textColor = UIColor.theme.black
             backgroundColor = UIColor.theme.white ?? .white
         }
     }

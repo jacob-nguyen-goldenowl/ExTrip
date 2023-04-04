@@ -34,8 +34,10 @@ class ETSearchBar: UISearchBar {
     private func setupUI() {
         activityIndicator.tintColor = .gray
         sizeToFit()
-        placeholder = "Search for items, destinations"
-        tintColor = UIColor.lightGray
+        searchTextField.attributedPlaceholder = NSAttributedString(
+            string: "Search for items, destination",
+            attributes: [.foregroundColor: UIColor.gray]
+        )
         searchTextField.font = .systemFont(ofSize: 15)
         searchTextField.backgroundColor = .white
         changeColorOfCancelButton()
@@ -69,7 +71,6 @@ class ETSearchBar: UISearchBar {
         } else {
             self.searchTextField.leftView = isLoading ? activityIndicator : iconImageView
         }
-//        isLoading ? startIndicator() : stopIndicator()
         if isLoading {
             startIndicator()
         } else {

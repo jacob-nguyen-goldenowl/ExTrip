@@ -36,6 +36,7 @@ class BookingTimeTableViewCell: ETTableViewCell {
         let view = UIView()
         view.layer.cornerRadius = 5
         view.layer.borderWidth = 0.8
+        view.layer.borderColor = UIColor.theme.tertiarySystemFill?.cgColor
         return view
     }()
     
@@ -135,7 +136,7 @@ class BookingTimeTableViewCell: ETTableViewCell {
         stackView.axis = .vertical
         stackView.spacing = 5
         stackView.addArrangedSubviews(title, info)
-        stackView.backgroundColor = .white
+        stackView.backgroundColor = .systemBackground
         return stackView
     }
     
