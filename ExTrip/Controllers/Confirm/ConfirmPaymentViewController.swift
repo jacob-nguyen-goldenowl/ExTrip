@@ -10,10 +10,7 @@ import UIKit
 class ConfirmPaymentViewController: UIViewController {
     
     private var bookingViewModel = BookingViewModel()
-    
-    private var totalPrice: Double = 0.0
-    private var totalTaxes: Double = 0.0
-        
+
     var alert = UIAlertController()
     
     private lazy var loadingView = LottieView()
@@ -28,15 +25,18 @@ class ConfirmPaymentViewController: UIViewController {
     private lazy var usePaymentMethod = ETGradientButton(title: .payNow, style: .mysticBlue)
     
     // Initialization constructor
-    init(data: HotelBookingModel, room: RoomModel?, price: Double?, numberOfRoom: Int?) {
+    init(data: HotelBookingModel,
+         room: RoomModel?,
+         price: Double?, 
+         numberOfRoom: Int?) {
         bookingViewModel.hotelBooking = data
         bookingViewModel.room = room
         bookingViewModel.price = price
         bookingViewModel.numberOfRoom = numberOfRoom
-        if let price = price, 
-            let taxes = room?.taxes {
-            totalTaxes = taxes * Double(bookingViewModel.hotelBooking.day)
-            totalPrice = price + totalTaxes
+        if let price = price,
+           let taxes = room?.taxes {
+            bookingViewModel.totalTaxes = taxes * Double(bookingViewModel.hotelBooking.day)
+            bookingViewModel.totalPrice = price + bookingViewModel.totalPrice
         }
         super.init(nibName: nil, bundle: nil)
     }
@@ -148,7 +148,7 @@ class ConfirmPaymentViewController: UIViewController {
                                            arrivalDate: arrivalDate,
                                            departureDate: departureDate,
                                            roomNumber: numberOfRoom,
-                                           roomCharge: totalPrice,
+                                           roomCharge: bookingViewModel.totalPrice,
                                            numAdults: bookingRoom.adults,
                                            numChildren: bookingRoom.children,
                                            specialReq: "No",
@@ -182,9 +182,8 @@ extension ConfirmPaymentViewController: UITableViewDelegate, UITableViewDataSour
         case 0:
             guard let hotelCell = tableView.dequeueReusableCell(withIdentifier: ConfirmHotelTableViewCell.identifier, 
                                                                 for: indexPath) as? ConfirmHotelTableViewCell else { return UITableViewCell() }
-
-                if let room = bookingViewModel.room,
-                   let booking = bookingViewModel.hotelBooking.date as? FastisRange {                    
+            if let room = bookingViewModel.room,
+               let booking = bookingViewModel.hotelBooking.date as? FastisRange {                    
                 hotelCell.setDataForBookingHotel(room,
                                                  arrivalDate: booking.toDate, 
                                                  departureDate: booking.fromDate)
@@ -194,8 +193,8 @@ extension ConfirmPaymentViewController: UITableViewDelegate, UITableViewDataSour
         case 1:
             guard let priceCell = tableView.dequeueReusableCell(withIdentifier: ConfirmPriceTableViewCell.identifier, 
                                                                 for: indexPath) as? ConfirmPriceTableViewCell else { return UITableViewCell() }
-                priceCell.setDataForPriceRoom(roomCharge: bookingViewModel.price, 
-                                              taxes: totalTaxes)
+            priceCell.setDataForPriceRoom(roomCharge: bookingViewModel.price, 
+                                          taxes: bookingViewModel.totalTaxes)
             priceCell.backgroundColor = .tertiarySystemFill
             return priceCell
         case 2:

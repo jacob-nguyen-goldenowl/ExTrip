@@ -16,11 +16,7 @@ enum BookType: Int {
 class ReviewBookViewController: UIViewController {
     
     private let bookingViewModel = BookingViewModel()
-    
-    private var room: RoomModel? 
-    private var bookingTime: HotelBookingModel?
-    private var bookingData: BookingModel?
-        
+
     var fullName: String?
     var phoneNumber: String?
     var email: String?
@@ -73,10 +69,9 @@ class ReviewBookViewController: UIViewController {
     }()
     
     init(_ data: RoomModel?, time: HotelBookingModel) {
-        room = data
+        bookingViewModel.room = data
         positionRoom = IndexPath(item: numberOfRoom - 1, section: 0)
         bookingViewModel.hotelBooking = time
-        bookingTime = time
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -203,7 +198,7 @@ class ReviewBookViewController: UIViewController {
     }
     
     private func setupChooseRoomViewController(with viewController: ChooseRoomViewController) {
-        if let numberOfRoomSameType = room?.numOfRoomSameType {
+        if let numberOfRoomSameType = bookingViewModel.room?.numOfRoomSameType {
             var numberOfRoom = [String]()
             for i in 1 ... numberOfRoomSameType {
                 numberOfRoom.append("\(i) room")
@@ -214,13 +209,13 @@ class ReviewBookViewController: UIViewController {
 
     private func displayTotalPrice() {
         var totalPrice: Double = 0.0
-        if let price = room?.price, 
-            let day = bookingTime?.day {
+        if let price = bookingViewModel.room?.price {
+            let day = bookingViewModel.hotelBooking.day
             totalPrice = setupPrice(with: price, day: day)
         } else {
             priceRoomLabel.text = "---"
         }
-        priceRoomLabel.text = totalPrice.convertDoubleToCurrency()
+        priceRoomLabel.text = totalPrice.toCurrency()
         self.roomCharge = totalPrice
     }
     
@@ -250,13 +245,13 @@ extension ReviewBookViewController: UITableViewDelegate, UITableViewDataSource {
         case BookType.time.rawValue:
             guard let timeCell = tableView.dequeueReusableCell(withIdentifier: BookingTimeTableViewCell.identifier, 
                                                                for: indexPath) as? BookingTimeTableViewCell else { return UITableViewCell() }
-            timeCell.infoBooking = bookingTime
+            timeCell.infoBooking = bookingViewModel.hotelBooking
             timeCell.numberOfRoom = numberOfRoom
             return timeCell
         case BookType.room.rawValue:
             guard let roomCell = tableView.dequeueReusableCell(withIdentifier: ReviewBookTableViewCell.identifier, 
                                                                for: indexPath) as? ReviewBookTableViewCell else { return UITableViewCell() }
-            roomCell.room = room
+            roomCell.room = bookingViewModel.room
             return roomCell
         case BookType.info.rawValue:
             guard let infoCell = tableView.dequeueReusableCell(withIdentifier: InfoUserTableViewCell.identifier, 
@@ -305,7 +300,7 @@ extension ReviewBookViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.loadingView.stopAnimating()
                     let vc = PaymentViewController(data: self.bookingViewModel.hotelBooking,
-                                                   room: self.room,
+                                                   room: self.bookingViewModel.room,
                                                    price: self.roomCharge, 
                                                    numberOfRoom: self.numberOfRoom)
                     self.navigationController?.pushViewController(vc, animated: true)
