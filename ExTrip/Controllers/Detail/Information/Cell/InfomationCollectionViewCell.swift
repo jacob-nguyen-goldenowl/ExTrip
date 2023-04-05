@@ -58,7 +58,9 @@ class InfomationCollectionViewCell: UICollectionViewCell {
     }
     
     func setDataForInformation(_ data: InformationModel) {
-        iconImageView.image = data.icon
+        let tintedImage = data.icon?.withRenderingMode(.alwaysTemplate)
+        iconImageView.image = tintedImage
+        iconImageView.tintColor = .label
         informationLabel.text = data.title
     }
 }

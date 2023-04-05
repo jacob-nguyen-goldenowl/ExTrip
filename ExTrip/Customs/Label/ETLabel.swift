@@ -17,7 +17,7 @@ enum LabelType {
 class ETLabel: UILabel {
     
     // MARK: - Initialization 
-    required init(style: LabelType, textAlignment: NSTextAlignment = .center, size: CGFloat? = nil, numberOfLines: Int? = nil, color: UIColor? = .black) {  
+    required init(style: LabelType, textAlignment: NSTextAlignment = .center, size: CGFloat? = nil, numberOfLines: Int? = nil, color: UIColor? = .label) {  
         super.init(frame: .zero)
         setupLabel(style: style, textAlignment: textAlignment, size: size, numberOfLines: numberOfLines, color: color)
     }

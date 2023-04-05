@@ -16,6 +16,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.layer.masksToBounds = true
         view.layer.cornerRadius = 20
+        view.layer.borderWidth = 1.0
+        view.layer.borderColor = UIColor.tertiarySystemFill.cgColor
         return view 
     }()
     

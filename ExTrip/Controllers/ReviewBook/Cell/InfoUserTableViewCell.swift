@@ -168,7 +168,7 @@ class InfoUserTableViewCell: ETTableViewCell {
         stackView.addArrangedSubviews(leftTextField,
                                       leftImageView)
                 
-        leftTextField.textColor = .black
+        leftTextField.textColor = .label
         leftTextField.inputView = countryPickerView
         leftTextField.text = countries.first?.value
         outerView.addSubview(stackView)

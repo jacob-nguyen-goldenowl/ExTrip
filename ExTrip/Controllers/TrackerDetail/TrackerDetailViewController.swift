@@ -15,7 +15,6 @@ class TrackerDetailViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.showsVerticalScrollIndicator = false
-        table.backgroundColor = .white
         table.isUserInteractionEnabled = false
         table.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return table
@@ -165,7 +164,7 @@ extension TrackerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell = tableView.dequeueReusableCell(withIdentifier: TrackerDetailTableViewCell.identifier, 
                                                  for: indexPath) as! TrackerDetailTableViewCell
             cell.textLabel?.text = "Total:"
-            cell.title = "USD \(viewModel.booking?.roomCharge ?? 0.0)" 
+            cell.title = viewModel.booking?.roomCharge.toCurrency() ?? "---" 
             cell.isHighLight = true
         case 5:
             guard let qrCodeCell = tableView.dequeueReusableCell(withIdentifier: TrackerQRCodeTableViewCell.identifier, 

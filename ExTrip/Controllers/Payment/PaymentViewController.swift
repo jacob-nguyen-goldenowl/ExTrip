@@ -25,24 +25,28 @@ private struct CellModel {
 class PaymentViewController: UIViewController {
 
     private var paymentData = [PaymentModel]()
-    private var bookingData: BookingModel?
-    private var roomData: RoomModel?
+    
+    private let bookingViewModel = BookingViewModel()
 
     private lazy var loadingView = LottieView()
     
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.showsVerticalScrollIndicator = false
-        table.backgroundColor = .white
         return table
     }()
     
     private lazy var usePaymentMethod = ETGradientButton(title: .paymentMethod, style: .mysticBlue)
     
-        // Initialization constructor
-    init(data: BookingModel?, room: RoomModel?) {
-        self.bookingData = data
-        self.roomData = room
+    // Initialization constructor
+    init(data: HotelBookingModel,
+         room: RoomModel?,
+         price: Double?, 
+         numberOfRoom: Int?) {
+        bookingViewModel.hotelBooking = data
+        bookingViewModel.room = room
+        bookingViewModel.price = price
+        bookingViewModel.numberOfRoom = numberOfRoom
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -127,10 +131,13 @@ class PaymentViewController: UIViewController {
     
     @objc func handleUsePaymentAction() {
         setupStarLoading()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            self?.loadingView.stopAnimating()
-            let vc = ConfirmPaymentViewController(data: self?.bookingData, room: self?.roomData)
-            self?.navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.loadingView.stopAnimating()
+            let vc = ConfirmPaymentViewController(data: self.bookingViewModel.hotelBooking,
+                                                  room: self.bookingViewModel.room,
+                                                  price: self.bookingViewModel.price,
+                                                  numberOfRoom: self.bookingViewModel.numberOfRoom)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

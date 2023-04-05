@@ -13,7 +13,6 @@ class SignUpViewController: UIViewController {
     private var user: UserInfoModel?
     // MARK: - Properties        
     private var inputTextStackView = UIStackView()
-    private var horizontalStackView = UIStackView()
     
     private lazy var userNameTextField: ETTextField = {
         let textField = ETTextField(type: .nomal)
@@ -21,31 +20,15 @@ class SignUpViewController: UIViewController {
         return textField
     }()
     
-    private lazy var stateTextField: ETTextField = {
-        let textFiled = ETTextField(type: .nomal)
-        textFiled.placeholder = "State*"
-        textFiled.textChangeColor = "*"
-        return textFiled
+    private lazy var cancelButton: ETCancelButton = {
+        let button = ETCancelButton()
+        button.delegate = self
+        return button
     }()
-    
-    private lazy var cityTextField: ETTextField = {
-        let textFiled = ETTextField(type: .nomal)
-        textFiled.placeholder = "City*"
-        textFiled.textChangeColor = "*"
-        return textFiled
-    }()
-    
+
     private lazy var emailTextField: ETTextField = {
         let textFiled = ETTextField(type: .nomal)
         textFiled.placeholder = "Enter Email ID*"
-        textFiled.textChangeColor = "*"
-        return textFiled
-    }()
-    
-    private lazy var phoneTextField: ETTextField = {
-        let textFiled = ETTextField(type: .nomal)
-        textFiled.placeholder = "0x9999999*"
-        textFiled.keyboardType = .decimalPad
         textFiled.textChangeColor = "*"
         return textFiled
     }()
@@ -77,7 +60,8 @@ class SignUpViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .systemBackground
         self.hideKeyboardWhenTappedAround()
-        view.addSubviews(userNameTextField,
+        view.addSubviews(cancelButton,
+                         userNameTextField,
                          inputTextStackView,
                          registerButton)
         setupConstraintView()
@@ -88,10 +72,17 @@ class SignUpViewController: UIViewController {
     private func setupConstraintView() {
         let paddingSize: CGFloat = 30
         
+        cancelButton.anchor(top: view.topAnchor,
+                            leading: view.leadingAnchor,
+                            paddingTop: 30,
+                            paddingLeading: 20)
+        cancelButton.setWidth(width: 40)
+        cancelButton.setHeight(height: 40)
+        
         inputTextStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                   leading: view.leadingAnchor,
                                   trailing: view.trailingAnchor,
-                                  paddingTop: 50,
+                                  paddingTop: 100,
                                   paddingLeading: paddingSize,
                                   paddingTrailing: paddingSize)
         
@@ -108,23 +99,12 @@ class SignUpViewController: UIViewController {
     private func setupInputTextStackView() {
         inputTextStackView.addArrangedSubviews(userNameTextField,
                                                emailTextField,
-                                               horizontalStackView,
-                                               phoneTextField,
                                                passwordTextField)
         inputTextStackView.axis = .vertical
-        inputTextStackView.spacing = 50
-        inputTextStackView.distribution = .equalCentering
-        setupHorizontalStackView()
+        inputTextStackView.spacing = 40
+        inputTextStackView.distribution = .fillEqually
     }
-    
-    private func setupHorizontalStackView() {
-        horizontalStackView.addArrangedSubviews(stateTextField,
-                                                cityTextField)
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.spacing = 20
-        horizontalStackView.distribution = .fillEqually
-    }
-    
+
     // MARK: - Start & stop animate
     private func startAnimation() {
         customActivityIndicatory(self.view)
@@ -175,15 +155,9 @@ extension SignUpViewController {
         guard let email = emailTextField.text,
               let password = passwordTextField.text,
               let name = userNameTextField.text,
-              let state = stateTextField.text,
-              let city = cityTextField.text,
-              let phone = phoneTextField.text,
               !password.isEmpty,
               !email.isEmpty,
-              !name.isEmpty,
-              !state.isEmpty,
-              !city.isEmpty,
-              !phone.isEmpty else {
+              !name.isEmpty else {
             stopAnimation()
             showAlert(title: "Notify",
                       message: "Please enter your information",
@@ -195,27 +169,25 @@ extension SignUpViewController {
             showAlert(title: "Notify",
                       message: "Email is not valid",
                       style: .alert)
-        } else if !phone.isNumber() {
-            stopAnimation()
-            showAlert(title: "Notify",
-                      message: "Phone number is not valid",
-                      style: .alert)
         } else {
             startAnimation()
             user = UserInfoModel(email: email,
                                  name: name,
-                                 state: state,
-                                 city: city,
-                                 phone: phone,
                                  image: nil) 
             guard let user = user else {
-            stopAnimation()
-            showAlert(title: "Notify",
-                      message: "Failed to create an account. Please re-create",
-                      style: .alert)
-            return
+                stopAnimation()
+                showAlert(title: "Notify",
+                          message: "Failed to create an account. Please re-create",
+                          style: .alert)
+                return
         }
             signUpViewModel.register(info: user, password: password)
         }
+    }
+}
+
+extension SignUpViewController: ETCancelButtonDelegate {
+    func eTCancelButtonHandleCancelAction() {
+        dismiss(animated: true)
     }
 }

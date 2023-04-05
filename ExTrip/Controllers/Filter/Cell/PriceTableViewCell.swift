@@ -19,7 +19,7 @@ class PriceTableViewCell: FilterTableViewCell {
 
     var value: Price = Price(maximun: 1000.0, minimun: 0.0) {
         didSet {
-            showValue.text = "US $\(value.minimun) - US $\(value.maximun)"
+            showValue.text = "$\(value.minimun) - $\(value.maximun)"
         }
     }
     
@@ -58,7 +58,7 @@ class PriceTableViewCell: FilterTableViewCell {
         rangeSlider.setValue(low: rangePrice?.minimun ?? 0.0,
                              high: rangePrice?.maximun ?? 1000.0,
                              animated: false)
-        showValue.text = "US $\(value.minimun) - US $\(value.maximun)"
+        showValue.text = "$\(rangePrice?.minimun ?? 0.0) - $\(rangePrice?.maximun ?? 1000.0)"
     }
 
     private func setupInit() {

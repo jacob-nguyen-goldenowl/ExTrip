@@ -16,7 +16,15 @@ class BookingViewModel: ETViewModel<HotelModel> {
     
     var bookingStatus: Observable<Bool> = Observable(true)
     
+    var room: RoomModel?
     var hotel: HotelModel?
+    var bookingData: BookingModel?
+
+    var price: Double?
+    var numberOfRoom: Int?
+    var totalPrice: Double = 0.0
+    var totalTaxes: Double = 0.0
+    
     var hotelBooking = HotelBookingModel(destination: nil,
                                          date: FastisRange(from: Date.today, to: Date.tomorrow), 
                                          room: RoomBookingModel(room: 1, adults: 2, children: 0, infants: 0), 

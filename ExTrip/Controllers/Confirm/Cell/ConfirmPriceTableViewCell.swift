@@ -77,12 +77,12 @@ class ConfirmPriceTableViewCell: ETConfirmTableViewCell {
                                    paddingTrailing: padding)
     }
     
-    func setDataForPriceRoom(roomCharge: Double?, taxes: Double?) {
-        if let roomCharge = roomCharge, let taxes = taxes {
-            priceLabel.text = "$ \(roomCharge.roundDouble())"
-            taxesLabel.text = "$ \(taxes.roundDouble())"
+    func setDataForPriceRoom(roomCharge: Double?, taxes: Double) {
+        if let roomCharge = roomCharge {
+            priceLabel.text = roomCharge.toCurrency()
+            taxesLabel.text = taxes.toCurrency()
             let totalPrice = calculatorTotalPrice(roomCharge: roomCharge, taxes: taxes)
-            totalPriceLabel.text = "$ \(totalPrice.roundDouble())"
+            totalPriceLabel.text = totalPrice.toCurrency()
         } else {
             priceLabel.text = "$ --"
             taxesLabel.text = "$ --"

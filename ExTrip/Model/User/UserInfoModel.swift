@@ -7,20 +7,8 @@
 
 import Foundation
 
-struct UserInfoModel {
+struct UserInfoModel: Codable {
     let email: String?
     let name: String?
-    let state: String?
-    let city: String?
-    let phone: String?
     let image: String?
-    
-    var dictionary: [String: Any] {
-        return ["email": name ?? "",
-                "name": name ?? "",
-                "state": state ?? "",
-                "city": city ?? "",
-                "phone": phone ?? "",
-                "image": image ?? ""]
-    }
 }

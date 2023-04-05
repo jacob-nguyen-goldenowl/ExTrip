@@ -109,9 +109,9 @@ class CategoryCollectionReusableView: UICollectionReusableView {
     private func createLabel(title: String) -> UILabel {
         let label = UILabel()
         label.text = title.uppercased()
-        label.font = .poppins(style: .medium, size: 13)
+        label.font = .poppins(style: .bold, size: 13)
         label.textAlignment = .center
-        label.textColor = UIColor.theme.lightGray
+        label.textColor = UIColor.theme.black
         return label
     }
     
@@ -120,7 +120,7 @@ class CategoryCollectionReusableView: UICollectionReusableView {
             stackView.addArrangedSubview(i)
         }
         stackView.axis = .horizontal
-        stackView.spacing = 60
+        stackView.spacing = 65
         stackView.distribution = .fillEqually
     }
     

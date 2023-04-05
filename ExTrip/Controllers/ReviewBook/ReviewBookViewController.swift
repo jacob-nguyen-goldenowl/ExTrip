@@ -15,10 +15,8 @@ enum BookType: Int {
 
 class ReviewBookViewController: UIViewController {
     
-    private var room: RoomModel? 
-    private var bookingTime: HotelBookingModel?
-    private var bookingData: BookingModel?
-        
+    private let bookingViewModel = BookingViewModel()
+
     var fullName: String?
     var phoneNumber: String?
     var email: String?
@@ -70,15 +68,10 @@ class ReviewBookViewController: UIViewController {
         return table
     }()
     
-    init(_ data: RoomModel?, time: HotelBookingModel?) {
-        room = data
-        if let room = time?.room?.room {
-            numberOfRoom = room
-            positionRoom = IndexPath(item: room - 1, section: 0)
-        } else {
-            numberOfRoom = 1
-        }
-        bookingTime = time
+    init(_ data: RoomModel?, time: HotelBookingModel) {
+        bookingViewModel.room = data
+        positionRoom = IndexPath(item: numberOfRoom - 1, section: 0)
+        bookingViewModel.hotelBooking = time
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -205,7 +198,7 @@ class ReviewBookViewController: UIViewController {
     }
     
     private func setupChooseRoomViewController(with viewController: ChooseRoomViewController) {
-        if let numberOfRoomSameType = room?.numOfRoomSameType {
+        if let numberOfRoomSameType = bookingViewModel.room?.numOfRoomSameType {
             var numberOfRoom = [String]()
             for i in 1 ... numberOfRoomSameType {
                 numberOfRoom.append("\(i) room")
@@ -216,11 +209,19 @@ class ReviewBookViewController: UIViewController {
 
     private func displayTotalPrice() {
         var totalPrice: Double = 0.0
-        if let price = room?.price {
-            totalPrice = price * Double(numberOfRoom)
+        if let price = bookingViewModel.room?.price {
+            let day = bookingViewModel.hotelBooking.day
+            totalPrice = setupPrice(with: price, day: day)
+        } else {
+            priceRoomLabel.text = "---"
         }
-        priceRoomLabel.text = "$ \(totalPrice.roundDouble())"
+        priceRoomLabel.text = totalPrice.toCurrency()
         self.roomCharge = totalPrice
+    }
+    
+    private func setupPrice(with price: Double, day: Int) -> Double {
+        let totalPrice = price * Double(day) * Double(numberOfRoom)
+        return totalPrice
     }
     
     private func setupAction() {
@@ -244,13 +245,13 @@ extension ReviewBookViewController: UITableViewDelegate, UITableViewDataSource {
         case BookType.time.rawValue:
             guard let timeCell = tableView.dequeueReusableCell(withIdentifier: BookingTimeTableViewCell.identifier, 
                                                                for: indexPath) as? BookingTimeTableViewCell else { return UITableViewCell() }
-            timeCell.infoBooking = bookingTime
+            timeCell.infoBooking = bookingViewModel.hotelBooking
             timeCell.numberOfRoom = numberOfRoom
             return timeCell
         case BookType.room.rawValue:
             guard let roomCell = tableView.dequeueReusableCell(withIdentifier: ReviewBookTableViewCell.identifier, 
                                                                for: indexPath) as? ReviewBookTableViewCell else { return UITableViewCell() }
-            roomCell.room = room
+            roomCell.room = bookingViewModel.room
             return roomCell
         case BookType.info.rawValue:
             guard let infoCell = tableView.dequeueReusableCell(withIdentifier: InfoUserTableViewCell.identifier, 
@@ -287,10 +288,6 @@ extension ReviewBookViewController {
     @objc func handlePaymentAction() {
         NotificationCenter.default.post(name: NSNotification.Name(UserDefaultKey.checkEmptyNotify), object: nil)
         setupStarLoading()
-        let currentUserID = AuthManager.shared.getCurrentUserID()
-        guard let booking = bookingTime?.date as? FastisRange else { return }
-        guard let bookingRoom = bookingTime?.room else { return }
-        guard let room = room else { return }
         
         if let name = fullName,
            let email = email,
@@ -299,31 +296,16 @@ extension ReviewBookViewController {
            !email.isEmpty,
            !phone.isEmpty {
             if email.isValidEmail() && phone.isNumber() {
-                let arrivalDate = booking.fromDate.dateToTimestamp()
-                let departureDate = booking.toDate.dateToTimestamp()
                 
-                if let roomCharge = roomCharge {
-                    bookingData = BookingModel(hotelID: room.hotelID, 
-                                               roomID: room.id,
-                                               guestID: currentUserID,
-                                               bookingDate: arrivalDate,
-                                               arrivalDate: arrivalDate,
-                                               departureDate: departureDate,
-                                               roomNumber: bookingRoom.room,
-                                               roomCharge: roomCharge,
-                                               numAdults: bookingRoom.adults,
-                                               numChildren: bookingRoom.children,
-                                               specialReq: "No",
-                                               status: "active")
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                        self?.loadingView.stopAnimating()
-                        let vc = PaymentViewController(data: self?.bookingData, room: self?.room)
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                    }
-                } else {
-                    loadingView.stopAnimating()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.loadingView.stopAnimating()
+                    let vc = PaymentViewController(data: self.bookingViewModel.hotelBooking,
+                                                   room: self.bookingViewModel.room,
+                                                   price: self.roomCharge, 
+                                                   numberOfRoom: self.numberOfRoom)
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
+
             } else {
                 loadingView.stopAnimating()
             }

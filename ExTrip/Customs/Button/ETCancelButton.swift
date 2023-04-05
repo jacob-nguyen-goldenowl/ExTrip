@@ -19,7 +19,9 @@ class ETCancelButton: UIView {
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.sizeToFit()
-        button.setImage(UIImage(named: "cancel"), for: .normal)
+        let image = UIImage(named: "cancel")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(image, for: .normal)
+        button.tintColor = .label
         button.contentMode = .scaleAspectFit
         return button
     }()
