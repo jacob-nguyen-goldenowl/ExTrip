@@ -30,4 +30,5 @@ struct FeatureFlags {
     static var isUpdateWishlist: Bool = false
     static var isLiked: Bool = false
     static var isLogout: Bool = false
+    static var isBooking: Bool = false
 }

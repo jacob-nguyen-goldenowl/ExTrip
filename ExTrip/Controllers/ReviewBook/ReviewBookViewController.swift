@@ -74,12 +74,7 @@ class ReviewBookViewController: UIViewController {
     
     init(_ data: RoomModel?, time: HotelBookingModel) {
         room = data
-        if let room = time.room?.room {
-            numberOfRoom = room
-            positionRoom = IndexPath(item: room - 1, section: 0)
-        } else {
-            numberOfRoom = 1
-        }
+        positionRoom = IndexPath(item: numberOfRoom - 1, section: 0)
         bookingViewModel.hotelBooking = time
         bookingTime = time
         super.init(nibName: nil, bundle: nil)
@@ -225,7 +220,7 @@ class ReviewBookViewController: UIViewController {
         } else {
             priceRoomLabel.text = "---"
         }
-        priceRoomLabel.text = "$ \(totalPrice.roundDouble())"
+        priceRoomLabel.text = totalPrice.convertDoubleToCurrency()
         self.roomCharge = totalPrice
     }
     
@@ -311,7 +306,8 @@ extension ReviewBookViewController {
                     self.loadingView.stopAnimating()
                     let vc = PaymentViewController(data: self.bookingViewModel.hotelBooking,
                                                    room: self.room,
-                                                   price: self.roomCharge)
+                                                   price: self.roomCharge, 
+                                                   numberOfRoom: self.numberOfRoom)
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
 

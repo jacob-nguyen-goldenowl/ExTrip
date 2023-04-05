@@ -91,8 +91,9 @@ class TrackerBookingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if FeatureFlags.isLogout {
+        if FeatureFlags.isLogout || FeatureFlags.isBooking {
             setupViewModel()
+            FeatureFlags.isBooking = false
         }
     }
     
