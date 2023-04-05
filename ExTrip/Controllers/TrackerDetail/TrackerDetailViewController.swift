@@ -164,7 +164,7 @@ extension TrackerDetailViewController: UITableViewDelegate, UITableViewDataSourc
             cell = tableView.dequeueReusableCell(withIdentifier: TrackerDetailTableViewCell.identifier, 
                                                  for: indexPath) as! TrackerDetailTableViewCell
             cell.textLabel?.text = "Total:"
-            cell.title = "USD \(viewModel.booking?.roomCharge ?? 0.0)" 
+                cell.title = viewModel.booking?.roomCharge.convertDoubleToCurrency() ?? "---" 
             cell.isHighLight = true
         case 5:
             guard let qrCodeCell = tableView.dequeueReusableCell(withIdentifier: TrackerQRCodeTableViewCell.identifier, 

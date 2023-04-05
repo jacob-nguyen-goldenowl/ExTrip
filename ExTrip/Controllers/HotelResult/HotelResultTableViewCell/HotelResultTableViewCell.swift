@@ -313,11 +313,9 @@ class HotelResultTableViewCell: ETTableViewCell {
                                   price currentPrice: Double) {
         numberRoomLabel.text = "only \(roomLeft) left".uppercased()
         let price = currentPrice * Double(day)
-        let roundedPrice = String(format: "%.2f", price)
         let oldPrice = defaultPrice * Double(day)
-        let roundedOldPrice = String(format: "%.2f", oldPrice)
-        priceLabel.text = "$ \(roundedPrice)"
-        defaultPriceLabel.setStrikeThroughText("$ \(roundedOldPrice)")
+        priceLabel.text = price.convertDoubleToCurrency()
+        defaultPriceLabel.setStrikeThroughText(oldPrice.convertDoubleToCurrency())
     }
     
     private func calculatorScoreService(_ score: Double) -> String {

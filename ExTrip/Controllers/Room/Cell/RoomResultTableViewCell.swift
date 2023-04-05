@@ -185,17 +185,16 @@ class RoomResultTableViewCell: ETTableViewCell {
         occupancyLabel.text = "Max \(room.occupancy) adults"
         numberOfBedLabel.text = "\(room.description?.bed ?? 1) Bed"
         let oldPrice = setupPrice(with: room.defaultPrice, day: day)
-        defaultPriceLabel.setStrikeThroughText("$\(oldPrice)")
+        defaultPriceLabel.setStrikeThroughText(oldPrice)
         afftercashbackLabel.text = "Affter Cashback"
         let newPrice = setupPrice(with: room.price, day: day)
-        priceLabel.text = ("$ \(newPrice)")
+        priceLabel.text = newPrice
 
     }
     
     private func setupPrice(with price: Double, day: Int) -> String {
         let totalPrice = price * Double(day)
-        let roundedPrice = String(format: "%.2f", totalPrice)
-        return "$\(roundedPrice)"
+        return totalPrice.convertDoubleToCurrency()
     }
 
 }

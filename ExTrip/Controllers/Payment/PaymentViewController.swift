@@ -39,10 +39,11 @@ class PaymentViewController: UIViewController {
     private lazy var usePaymentMethod = ETGradientButton(title: .paymentMethod, style: .mysticBlue)
     
         // Initialization constructor
-    init(data: HotelBookingModel, room: RoomModel?, price: Double?) {
+    init(data: HotelBookingModel, room: RoomModel?, price: Double?, numberOfRoom: Int?) {
         bookingViewModel.hotelBooking = data
         bookingViewModel.room = room
         bookingViewModel.price = price
+        bookingViewModel.numberOfRoom = numberOfRoom
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -131,7 +132,8 @@ class PaymentViewController: UIViewController {
             self.loadingView.stopAnimating()
             let vc = ConfirmPaymentViewController(data: self.bookingViewModel.hotelBooking,
                                                   room: self.bookingViewModel.room,
-                                                  price: self.bookingViewModel.price)
+                                                  price: self.bookingViewModel.price,
+                                                  numberOfRoom: self.bookingViewModel.numberOfRoom)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

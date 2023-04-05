@@ -122,7 +122,7 @@ class DestinationCollectionViewCell: UICollectionViewCell {
     func setDataForDestination(_ data: HotelModel) {
         posterImageView.loadImage(url: data.thumbnail)
         titleLabel.text = data.name.capitalizeFirstLetter()
-        priceLabel.text = "Start From $\(data.price)"
+        priceLabel.text = "Start From \(data.price.convertDoubleToCurrency())"
         ratingView.score = "\(data.rating)"
         favouriteButton.isChecked = data.like
     }

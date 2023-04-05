@@ -101,7 +101,7 @@ class HotelTableViewCell: ETTableViewCell {
     public func cofigureHotel(_ data: HotelModel) {
         posterImageView.loadImage(url: data.thumbnail)
         titleLabel.text = data.name.capitalizeFirstLetter()
-        priceLabel.text = "US $\(data.price)"
+        priceLabel.text = "\(data.price.convertDoubleToCurrency())"
         reviewLabel.text = "(\(data.review) Reviews)"
         addressLabel.text = "\(data.road.capitalizeFirstLetter()) Road | \(data.kmFromCenter) from center"
         roomInfoLabel.text = "\(data.numberOfRoom) room - 1 night (incl.taxes)"

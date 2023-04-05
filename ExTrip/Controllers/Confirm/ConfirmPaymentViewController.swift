@@ -12,6 +12,7 @@ class ConfirmPaymentViewController: UIViewController {
     private var bookingViewModel = BookingViewModel()
     
     private var totalPrice: Double = 0.0
+    private var totalTaxes: Double = 0.0
         
     var alert = UIAlertController()
     
@@ -27,13 +28,15 @@ class ConfirmPaymentViewController: UIViewController {
     private lazy var usePaymentMethod = ETGradientButton(title: .payNow, style: .mysticBlue)
     
     // Initialization constructor
-    init(data: HotelBookingModel, room: RoomModel?, price: Double?) {
+    init(data: HotelBookingModel, room: RoomModel?, price: Double?, numberOfRoom: Int?) {
         bookingViewModel.hotelBooking = data
         bookingViewModel.room = room
         bookingViewModel.price = price
+        bookingViewModel.numberOfRoom = numberOfRoom
         if let price = price, 
             let taxes = room?.taxes {
-            totalPrice = price + taxes
+            totalTaxes = taxes * Double(bookingViewModel.hotelBooking.day)
+            totalPrice = price + totalTaxes
         }
         super.init(nibName: nil, bundle: nil)
     }
@@ -132,7 +135,8 @@ class ConfirmPaymentViewController: UIViewController {
 
         if let booking = bookingViewModel.hotelBooking.date as? FastisRange,
            let bookingRoom = bookingViewModel.hotelBooking.room,
-           let room = bookingViewModel.room {
+           let room = bookingViewModel.room,
+           let numberOfRoom = bookingViewModel.numberOfRoom {
             
             let arrivalDate = booking.fromDate.dateToTimestamp()
             let departureDate = booking.toDate.dateToTimestamp()
@@ -143,13 +147,14 @@ class ConfirmPaymentViewController: UIViewController {
                                            bookingDate: arrivalDate,
                                            arrivalDate: arrivalDate,
                                            departureDate: departureDate,
-                                           roomNumber: bookingRoom.room,
+                                           roomNumber: numberOfRoom,
                                            roomCharge: totalPrice,
                                            numAdults: bookingRoom.adults,
                                            numChildren: bookingRoom.children,
                                            specialReq: "No",
                                            status: "active")
             bookingViewModel.addBooking(bookingData)
+            FeatureFlags.isBooking = true
         } else {
             self.showAlertWithoutButton(title: "Error booking",
                                         style: .alert)
@@ -190,7 +195,7 @@ extension ConfirmPaymentViewController: UITableViewDelegate, UITableViewDataSour
             guard let priceCell = tableView.dequeueReusableCell(withIdentifier: ConfirmPriceTableViewCell.identifier, 
                                                                 for: indexPath) as? ConfirmPriceTableViewCell else { return UITableViewCell() }
                 priceCell.setDataForPriceRoom(roomCharge: bookingViewModel.price, 
-                                              taxes: bookingViewModel.room?.taxes)
+                                              taxes: totalTaxes)
             priceCell.backgroundColor = .tertiarySystemFill
             return priceCell
         case 2:
