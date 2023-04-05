@@ -314,8 +314,8 @@ class HotelResultTableViewCell: ETTableViewCell {
         numberRoomLabel.text = "only \(roomLeft) left".uppercased()
         let price = currentPrice * Double(day)
         let oldPrice = defaultPrice * Double(day)
-        priceLabel.text = price.convertDoubleToCurrency()
-        defaultPriceLabel.setStrikeThroughText(oldPrice.convertDoubleToCurrency())
+        priceLabel.text = price.toCurrency()
+        defaultPriceLabel.setStrikeThroughText(oldPrice.toCurrency())
     }
     
     private func calculatorScoreService(_ score: Double) -> String {

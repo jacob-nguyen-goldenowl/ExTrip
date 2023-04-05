@@ -206,7 +206,7 @@ class DetailViewController: ETMainViewController {
     private func setPriceForContainerView() {
         let price = bookingViewModel.hotel?.price ?? 0.0
         let totalPrice = price * Double(bookingViewModel.hotelBooking.day)
-        priceRoomLabel.text = totalPrice.convertDoubleToCurrency()
+        priceRoomLabel.text = totalPrice.toCurrency()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

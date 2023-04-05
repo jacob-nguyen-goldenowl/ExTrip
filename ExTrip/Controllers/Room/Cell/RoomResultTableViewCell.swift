@@ -194,7 +194,7 @@ class RoomResultTableViewCell: ETTableViewCell {
     
     private func setupPrice(with price: Double, day: Int) -> String {
         let totalPrice = price * Double(day)
-        return totalPrice.convertDoubleToCurrency()
+        return totalPrice.toCurrency()
     }
 
 }

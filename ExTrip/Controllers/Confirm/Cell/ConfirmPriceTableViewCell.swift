@@ -79,10 +79,10 @@ class ConfirmPriceTableViewCell: ETConfirmTableViewCell {
     
     func setDataForPriceRoom(roomCharge: Double?, taxes: Double) {
         if let roomCharge = roomCharge {
-            priceLabel.text = roomCharge.convertDoubleToCurrency()
-            taxesLabel.text = taxes.convertDoubleToCurrency()
+            priceLabel.text = roomCharge.toCurrency()
+            taxesLabel.text = taxes.toCurrency()
             let totalPrice = calculatorTotalPrice(roomCharge: roomCharge, taxes: taxes)
-            totalPriceLabel.text = totalPrice.convertDoubleToCurrency()
+            totalPriceLabel.text = totalPrice.toCurrency()
         } else {
             priceLabel.text = "$ --"
             taxesLabel.text = "$ --"

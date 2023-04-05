@@ -1614,7 +1614,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n";
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
 		};
 		4DC418440A795DF3F3BB036A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

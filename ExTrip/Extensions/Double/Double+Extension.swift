@@ -12,7 +12,7 @@ extension Double {
         return (self * 1000).rounded() / 1000
     }
     
-    func convertDoubleToCurrency() -> String {
+    func toCurrency() -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
         numberFormatter.locale = Locale(identifier: "en_US")

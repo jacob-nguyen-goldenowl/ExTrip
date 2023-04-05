@@ -38,8 +38,11 @@ class PaymentViewController: UIViewController {
     
     private lazy var usePaymentMethod = ETGradientButton(title: .paymentMethod, style: .mysticBlue)
     
-        // Initialization constructor
-    init(data: HotelBookingModel, room: RoomModel?, price: Double?, numberOfRoom: Int?) {
+    // Initialization constructor
+    init(data: HotelBookingModel,
+         room: RoomModel?,
+         price: Double?, 
+         numberOfRoom: Int?) {
         bookingViewModel.hotelBooking = data
         bookingViewModel.room = room
         bookingViewModel.price = price

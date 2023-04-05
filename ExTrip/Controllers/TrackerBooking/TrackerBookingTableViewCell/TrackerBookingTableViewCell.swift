@@ -141,7 +141,7 @@ class TrackerBookingTableViewCell: UITableViewCell {
         bookingID = booking.id
         arrivalDate.text = "Check-in: " + booking.arrivaleDate
         departureDate.text = "Check-out: " + booking.departureDate
-        roomChargeLabel.text = "Total: \(booking.roomChange.convertDoubleToCurrency())"
+        roomChargeLabel.text = "Total: \(booking.roomChange.toCurrency())"
         roomNumberLabel.text = "\(booking.numberOfRoom) rooms"
     }
 
