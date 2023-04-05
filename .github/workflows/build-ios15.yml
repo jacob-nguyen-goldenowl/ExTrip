@@ -8,8 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: macos-12
-
+    runs-on: macos-latest
+    strategy:
+        matrix:
+          destination: 'platform=iOS Simulator,OS=15.0,name=iPhone X'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
@@ -41,4 +43,4 @@ jobs:
         shell: bash
       - name: Xcode iOS build
         run: |
-          xcodebuild -workspace ExTrip.xcworkspace -scheme ExTrip -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' | xcpretty
+          xcodebuild clean test -project ExTrip.xcworkspace -scheme Texstyle -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
