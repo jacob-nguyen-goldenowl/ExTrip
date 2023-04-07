@@ -16,14 +16,13 @@ jobs:
 
       - name: ACTIONS_ALLOW_UNSECURE_COMMANDS
         run: echo 'ACTIONS_ALLOW_UNSECURE_COMMANDS=true' >> $GITHUB_ENV
-        
+
       - name: Set environment variables from project settings
         run: |
           exec .github/scripts/set-env-from-xcodeproj.sh
       - name: Import signing certificate
         env:
           SIGNING_CERTIFICATE_P12_DATA: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
-          SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.SIGNING_CERTIFICATE_PASSWORD }}
         run: |
           exec .github/scripts/import-certificate.sh
       - name: Import provisioning profile
