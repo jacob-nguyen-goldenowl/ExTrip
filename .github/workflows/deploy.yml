@@ -13,6 +13,9 @@ jobs:
     steps:
       - name: Checkout project
         uses: actions/checkout@v3
+        
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_13.1.app
 
       - name: ACTIONS_ALLOW_UNSECURE_COMMANDS
         run: echo 'ACTIONS_ALLOW_UNSECURE_COMMANDS=true' >> $GITHUB_ENV
