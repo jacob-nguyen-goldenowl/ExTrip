@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1062632074684-qq5uvfjk4c6a8a5bornqr6hr3359pnou.apps.googleusercontent.com</string>
+	<string>720716746459-4m364nofac53onr3kob3ar7dnf0dlqc2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1062632074684-qq5uvfjk4c6a8a5bornqr6hr3359pnou</string>
+	<string>com.googleusercontent.apps.720716746459-4m364nofac53onr3kob3ar7dnf0dlqc2</string>
 	<key>API_KEY</key>
-	<string>AIzaSyALmHK8YLsALFt3mAgjmAY3adoRKj8_NmU</string>
+	<string>AIzaSyABbqaONbXKoQMiR0ltE_zBQpN5laTmtrw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1062632074684</string>
+	<string>720716746459</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.kappa.ExTrip</string>
+	<string>com.golden.extrip</string>
 	<key>PROJECT_ID</key>
-	<string>extripapp-8fad1</string>
+	<string>extrip-travel</string>
 	<key>STORAGE_BUCKET</key>
-	<string>extripapp-8fad1.appspot.com</string>
+	<string>extrip-travel.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1062632074684:ios:b16273d3b9bbe814d54fb9</string>
+	<string>1:720716746459:ios:04f62fc6064494650e06fe</string>
 </dict>
 </plist>
