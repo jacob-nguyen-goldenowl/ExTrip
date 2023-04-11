@@ -1644,11 +1644,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist\n",
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist\n",
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
