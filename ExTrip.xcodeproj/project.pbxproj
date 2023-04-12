@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0400AEA029E51D9F00F82A4D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0400AE9F29E51D9F00F82A4D /* GoogleService-Info.plist */; };
 		04087DB429B0AC7000539B1A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04087DB329B0AC7000539B1A /* EditProfileViewController.swift */; };
 		04087DB629B0AC9A00539B1A /* EditProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04087DB529B0AC9A00539B1A /* EditProfileTableViewCell.swift */; };
 		040911FE2946E11E00C8525F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040911FD2946E11E00C8525F /* Observable.swift */; };
@@ -22,6 +21,7 @@
 		0429EDFE2966CF3B0067F906 /* TypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429EDFD2966CF3B0067F906 /* TypeTableViewCell.swift */; };
 		042A14912948B9DD00461C4D /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A14902948B9DD00461C4D /* StatusCode.swift */; };
 		042A14942948C58B00461C4D /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A14932948C58B00461C4D /* Tag.swift */; };
+		0430EAF929E655120087C549 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0430EAF829E655120087C549 /* GoogleService-Info.plist */; };
 		0443CC96299340130014E557 /* DatabaseBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443CC95299340130014E557 /* DatabaseBooking.swift */; };
 		0443CC9A299354A70014E557 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443CC99299354A70014E557 /* Date+Extension.swift */; };
 		044587DA2942EC29009195F2 /* ETIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044587D92942EC29009195F2 /* ETIconButton.swift */; };
@@ -192,7 +192,6 @@
 
 /* Begin PBXFileReference section */
 		038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
-		0400AE9F29E51D9F00F82A4D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04087DB329B0AC7000539B1A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		04087DB529B0AC9A00539B1A /* EditProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewCell.swift; sourceTree = "<group>"; };
 		040911FD2946E11E00C8525F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -207,6 +206,7 @@
 		0429EDFD2966CF3B0067F906 /* TypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTableViewCell.swift; sourceTree = "<group>"; };
 		042A14902948B9DD00461C4D /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 		042A14932948C58B00461C4D /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		0430EAF829E655120087C549 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0443CC95299340130014E557 /* DatabaseBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseBooking.swift; sourceTree = "<group>"; };
 		0443CC99299354A70014E557 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		044587D92942EC29009195F2 /* ETIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETIconButton.swift; sourceTree = "<group>"; };
@@ -1119,7 +1119,7 @@
 				04BF564229419AB600BCF4A5 /* Resources */,
 				04BF5638294193B300BCF4A5 /* LaunchScreen.storyboard */,
 				04BF563B294193B300BCF4A5 /* Info.plist */,
-				0400AE9F29E51D9F00F82A4D /* GoogleService-Info.plist */,
+				0430EAF829E655120087C549 /* GoogleService-Info.plist */,
 			);
 			path = ExTrip;
 			sourceTree = "<group>";
@@ -1578,7 +1578,7 @@
 				04BF56692941A2EF00BCF4A5 /* Poppins-MediumItalic.ttf in Resources */,
 				04BF565F2941A2EF00BCF4A5 /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				0471DBA829B1ABD700FE62B3 /* emptyBox.json in Resources */,
-				0400AEA029E51D9F00F82A4D /* GoogleService-Info.plist in Resources */,
+				0430EAF929E655120087C549 /* GoogleService-Info.plist in Resources */,
 				04BF56642941A2EF00BCF4A5 /* Poppins-Bold.ttf in Resources */,
 				04BF565B2941A2EF00BCF4A5 /* Poppins-BoldItalic.ttf in Resources */,
 				04BF565E2941A2EF00BCF4A5 /* Poppins-SemiBoldItalic.ttf in Resources */,
@@ -1977,46 +1977,9 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTripDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 369462BHJ6;
-				ENABLE_BITCODE = NO;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ExTrip/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ExTrip;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UIStatusBarStyle = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.golden.extrip;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		04BF5640294193B300BCF4A5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTrip.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 369462BHJ6;
 				ENABLE_BITCODE = NO;
@@ -2034,11 +1997,51 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.golden.extrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Jacob Go ExTrip Deploy";
+				PROVISIONING_PROFILE_SPECIFIER = "Jacob-12-Apr-AppStore";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Jacob-12-Apr-AppStore";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04BF5640294193B300BCF4A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTrip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 369462BHJ6;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExTrip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ExTrip;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.golden.extrip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Jacob-12-Apr-AppStore";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Jacob-12-Apr-AppStore";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
