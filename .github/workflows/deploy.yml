@@ -44,3 +44,9 @@ jobs:
         run: |
           fastlane beta
 
+      - name: Clean up keychain and provisioning profile
+        if: ${{ always() }}
+        run: |
+          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
+          rm ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
+
