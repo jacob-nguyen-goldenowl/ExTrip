@@ -45,7 +45,7 @@ jobs:
         if: ${{ always() }}
         run: |
           security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
-          rm ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
+          rm ~/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision
       - name: Build app
         run: |
           fastlane beta
