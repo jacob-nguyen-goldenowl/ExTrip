@@ -41,11 +41,11 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-      - name: Clean up keychain and provisioning profile
-        if: ${{ always() }}
-        run: |
-          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
-          rm ~/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision
+      # - name: Clean up keychain and provisioning profile
+      #   if: ${{ always() }}
+      #   run: |
+      #     security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
+      #     rm ~/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision
       - name: Build app
         run: |
           fastlane beta
