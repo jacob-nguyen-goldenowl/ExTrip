@@ -13,14 +13,51 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
+ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
+ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]
+
 default_platform(:ios)
 
 platform :ios do
-  ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]
-  desc "Push a new beta build to TestFlight"
-  lane :beta do
-    increment_build_number(xcodeproj: "ExTrip.xcodeproj")
-    build_app(workspace: "ExTrip.xcworkspace", scheme: "ExTrip", export_method: "app-store")
-    # upload_to_testflight
-  end
+  desc "Push a new beta build to firebase"
+  lane :firebase do |options|
+
+    clear_derived_data
+    clean_build_artifacts
+  
+    build_app(
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: { 
+          "com.golden.extrip" => "Jacob-12-Apr-AppStore"
+        }
+      }
+    )
+
+     firebase_app_distribution(
+       app: ENV["FIREBASE_APP_ID"],
+       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
+     )
+    end
+
+    desc "Push a new beta build to TestFlight"
+    lane :beta do |options|
+  
+      clear_derived_data
+      clean_build_artifacts
+  
+      build_app(
+        workspace: "ExTrip.xcworkspace",
+        scheme: "ExTrip",
+        export_options: {
+          export_method: "app-store",
+          provisioningProfiles: { 
+            "com.golden.extrip" => "Jacob-12-Apr-AppStore"
+          }
+        }
+      )
+      upload_to_testflight
+    end
+
 end

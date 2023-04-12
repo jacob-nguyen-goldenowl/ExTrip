@@ -15,6 +15,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios firebase
+
+```sh
+[bundle exec] fastlane ios firebase
+```
+
+Push a new beta build to firebase
+
 ### ios beta
 
 ```sh
