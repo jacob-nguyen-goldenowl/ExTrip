@@ -51,7 +51,6 @@ jobs:
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
 
-          
       - name: Clean up keychain and provisioning profile
         if: ${{ always() }}
         run: |
