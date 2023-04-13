@@ -18,7 +18,7 @@ jobs:
         run: sudo xcode-select -switch /Applications/Xcode.app
       - name: Install Dependencies
         run: |
-          cd Example
+          cd ExTrip
           pod install --repo-update
       - name: Install the Apple certificate and provisioning profile
         env:
