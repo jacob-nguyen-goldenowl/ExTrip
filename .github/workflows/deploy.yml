@@ -16,10 +16,12 @@ jobs:
 
       - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode.app
+
       - name: Install Dependencies
         run: |
           cd ExTrip
           pod install --repo-update
+          
       - name: Install the Apple certificate and provisioning profile
         env:
           SIGNING_CERTIFICATE_P12_DATA: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
@@ -43,6 +45,7 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+
       - name: Build app
         run: |
           fastlane beta

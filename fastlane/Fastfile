@@ -16,6 +16,7 @@
 ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
 ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
 ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]
+ENV["FASTLANE_PASSWORD"]
 
 default_platform(:ios)
 
@@ -59,5 +60,5 @@ platform :ios do
       )
       upload_to_testflight
     end
-    
+
 end
