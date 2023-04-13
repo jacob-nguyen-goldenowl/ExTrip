@@ -14,7 +14,6 @@
 		04099C3E2967F6740008EB3F /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04099C3D2967F6740008EB3F /* CheckBox.swift */; };
 		040DEAF92971D33D0044E24F /* HotelsRelatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040DEAF82971D33D0044E24F /* HotelsRelatedTableViewCell.swift */; };
 		04133A38298ACAFE00466ECF /* FilterErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04133A37298ACAFE00466ECF /* FilterErrorView.swift */; };
-		04151DB329D5EED90057F045 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04151DB229D5EED90057F045 /* GoogleService-Info.plist */; };
 		041A509E29C07C9E00E6CDAD /* TrackerBookingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A509D29C07C9E00E6CDAD /* TrackerBookingTableViewCell.swift */; };
 		0429EDF0296676160067F906 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429EDEF296676160067F906 /* RatingTableViewCell.swift */; };
 		0429EDF92966912C0067F906 /* HotelClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429EDF82966912C0067F906 /* HotelClassTableViewCell.swift */; };
@@ -76,6 +75,7 @@
 		0476EC0F299F7C9000000189 /* BookingTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC0E299F7C9000000189 /* BookingTimeTableViewCell.swift */; };
 		0476EC11299F7DD200000189 /* InfoUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */; };
 		0477DAE129C17DD20034A9E0 /* active.json in Resources */ = {isa = PBXBuildFile; fileRef = 0477DAE029C17DD20034A9E0 /* active.json */; };
+		0480D56F29E7A361001ED05F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0480D56E29E7A361001ED05F /* GoogleService-Info.plist */; };
 		0481D4002973FC8E00EACB93 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481D3FF2973FC8E00EACB93 /* UILabel+Extension.swift */; };
 		0481ED4329D2ABD2009ECE93 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481ED4229D2ABD2009ECE93 /* PushNotificationManager.swift */; };
 		0486B8D72965208200940B40 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486B8D62965208200940B40 /* ImageCache.swift */; };
@@ -187,11 +187,10 @@
 		04F7DE0F295452320020494F /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DE04295452320020494F /* DayCell.swift */; };
 		04F7DE10295452320020494F /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DE05295452320020494F /* WeekView.swift */; };
 		04F7F89229BE8E4F003FDA73 /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F89129BE8E4F003FDA73 /* WishListModel.swift */; };
-		A162D76F23B59718AED24500 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */; };
+		42264C5CDCBAB8C2FA6D74A8 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF34A3C5E6B7122A7A19818 /* Pods_ExTrip.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
 		04087DB329B0AC7000539B1A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		04087DB529B0AC9A00539B1A /* EditProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewCell.swift; sourceTree = "<group>"; };
 		040911FD2946E11E00C8525F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -199,7 +198,6 @@
 		04099C3D2967F6740008EB3F /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		040DEAF82971D33D0044E24F /* HotelsRelatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsRelatedTableViewCell.swift; sourceTree = "<group>"; };
 		04133A37298ACAFE00466ECF /* FilterErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterErrorView.swift; sourceTree = "<group>"; };
-		04151DB229D5EED90057F045 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		041A509D29C07C9E00E6CDAD /* TrackerBookingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerBookingTableViewCell.swift; sourceTree = "<group>"; };
 		0429EDEF296676160067F906 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		0429EDF82966912C0067F906 /* HotelClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelClassTableViewCell.swift; sourceTree = "<group>"; };
@@ -261,6 +259,7 @@
 		0476EC0E299F7C9000000189 /* BookingTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTimeTableViewCell.swift; sourceTree = "<group>"; };
 		0476EC10299F7DD200000189 /* InfoUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoUserTableViewCell.swift; sourceTree = "<group>"; };
 		0477DAE029C17DD20034A9E0 /* active.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = active.json; sourceTree = "<group>"; };
+		0480D56E29E7A361001ED05F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0481D3FF2973FC8E00EACB93 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		0481ED3E29D2A4F0009ECE93 /* ExTrip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExTrip.entitlements; sourceTree = "<group>"; };
 		0481ED4229D2ABD2009ECE93 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
@@ -375,8 +374,9 @@
 		04F7DE04295452320020494F /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		04F7DE05295452320020494F /* WeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		04F7F89129BE8E4F003FDA73 /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
-		3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
+		56C4B630659C1D141D8D148E /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
+		5FF34A3C5E6B7122A7A19818 /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C35C5390FCDE013D4EC307BC /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,7 +384,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A162D76F23B59718AED24500 /* Pods_ExTrip.framework in Frameworks */,
+				42264C5CDCBAB8C2FA6D74A8 /* Pods_ExTrip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1085,9 +1085,9 @@
 			children = (
 				04BF562C294193B200BCF4A5 /* ExTrip */,
 				04BF562B294193B200BCF4A5 /* Products */,
-				F4714DDEB9475F6DCCBC49CA /* Frameworks */,
 				28DB43A2E7B5DC8A58621997 /* Pods */,
 				04740E7D29CABF080051176E /* Recovered References */,
+				99AB0DA4816FA2B21EC6494D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1119,7 +1119,7 @@
 				04BF564229419AB600BCF4A5 /* Resources */,
 				04BF5638294193B300BCF4A5 /* LaunchScreen.storyboard */,
 				04BF563B294193B300BCF4A5 /* Info.plist */,
-				04151DB229D5EED90057F045 /* GoogleService-Info.plist */,
+				0480D56E29E7A361001ED05F /* GoogleService-Info.plist */,
 			);
 			path = ExTrip;
 			sourceTree = "<group>";
@@ -1489,16 +1489,16 @@
 		28DB43A2E7B5DC8A58621997 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */,
-				038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */,
+				C35C5390FCDE013D4EC307BC /* Pods-ExTrip.debug.xcconfig */,
+				56C4B630659C1D141D8D148E /* Pods-ExTrip.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F4714DDEB9475F6DCCBC49CA /* Frameworks */ = {
+		99AB0DA4816FA2B21EC6494D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */,
+				5FF34A3C5E6B7122A7A19818 /* Pods_ExTrip.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1510,13 +1510,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04BF563E294193B300BCF4A5 /* Build configuration list for PBXNativeTarget "ExTrip" */;
 			buildPhases = (
-				4DC418440A795DF3F3BB036A /* [CP] Check Pods Manifest.lock */,
+				E6AF081303CB363EB0636AEC /* [CP] Check Pods Manifest.lock */,
 				04BF5626294193B200BCF4A5 /* Sources */,
 				04BF5628294193B200BCF4A5 /* Resources */,
-				9C8F2F6DBB4FD01970051A92 /* [CP] Embed Pods Frameworks */,
 				9FB8296529A880AD00DBD6B5 /* ShellScript */,
 				044480CE29D44CED002E793D /* ShellScript */,
 				D4ED11DBD970EE9F9613986B /* Frameworks */,
+				15DD8B2061263C7B7F39BE6C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1578,7 +1578,7 @@
 				04BF56692941A2EF00BCF4A5 /* Poppins-MediumItalic.ttf in Resources */,
 				04BF565F2941A2EF00BCF4A5 /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				0471DBA829B1ABD700FE62B3 /* emptyBox.json in Resources */,
-				04151DB329D5EED90057F045 /* GoogleService-Info.plist in Resources */,
+				0480D56F29E7A361001ED05F /* GoogleService-Info.plist in Resources */,
 				04BF56642941A2EF00BCF4A5 /* Poppins-Bold.ttf in Resources */,
 				04BF565B2941A2EF00BCF4A5 /* Poppins-BoldItalic.ttf in Resources */,
 				04BF565E2941A2EF00BCF4A5 /* Poppins-SemiBoldItalic.ttf in Resources */,
@@ -1599,6 +1599,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		044480CE29D44CED002E793D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 8;
 			files = (
 			);
@@ -1616,7 +1617,42 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
 		};
-		4DC418440A795DF3F3BB036A /* [CP] Check Pods Manifest.lock */ = {
+		15DD8B2061263C7B7F39BE6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FB8296529A880AD00DBD6B5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		E6AF081303CB363EB0636AEC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1637,40 +1673,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		9C8F2F6DBB4FD01970051A92 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9FB8296529A880AD00DBD6B5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1968,17 +1970,17 @@
 		};
 		04BF563F294193B300BCF4A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */;
+			baseConfigurationReference = C35C5390FCDE013D4EC307BC /* Pods-ExTrip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTripDebug.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = KSZT64RKCS;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 369462BHJ6;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExTrip/Info.plist;
@@ -1995,10 +1997,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kappa.ExTrip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.golden.extrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "provisioning build device";
+				PROVISIONING_PROFILE_SPECIFIER = "Jacob-12-Apr-AppStore";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Jacob-12-Apr-AppStore";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2007,17 +2009,17 @@
 		};
 		04BF5640294193B300BCF4A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */;
+			baseConfigurationReference = 56C4B630659C1D141D8D148E /* Pods-ExTrip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTrip.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = KSZT64RKCS;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 369462BHJ6;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExTrip/Info.plist;
@@ -2034,10 +2036,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kappa.ExTrip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.golden.extrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "provisioning build device";
+				PROVISIONING_PROFILE_SPECIFIER = "Jacob-12-Apr-AppStore";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Jacob-12-Apr-AppStore";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

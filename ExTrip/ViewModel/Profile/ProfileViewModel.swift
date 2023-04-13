@@ -14,7 +14,7 @@ class ProfileViewModel {
     var currentUserID: String?
     
     init() {
-        var currentUser = AuthManager.shared.currentUser()
+        let currentUser = AuthManager.shared.currentUser()
         currentUserID = currentUser?.uid
     }
 
