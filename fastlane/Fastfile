@@ -40,4 +40,24 @@ platform :ios do
        firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
      )
     end
+
+    desc "Push a new beta build to TestFlight"
+    lane :beta do |options|
+  
+      clear_derived_data
+      clean_build_artifacts
+  
+      build_app(
+        workspace: "ExTrip.xcworkspace",
+        scheme: "ExTrip",
+        export_options: {
+          export_method: "app-store",
+          provisioningProfiles: { 
+            "com.golden.extrip" => "Jacob-12-Apr-AppStore"
+          }
+        }
+      )
+      upload_to_testflight
+    end
+    
 end

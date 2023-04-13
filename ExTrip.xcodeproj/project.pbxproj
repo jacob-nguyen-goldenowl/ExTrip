@@ -187,11 +187,10 @@
 		04F7DE0F295452320020494F /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DE04295452320020494F /* DayCell.swift */; };
 		04F7DE10295452320020494F /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7DE05295452320020494F /* WeekView.swift */; };
 		04F7F89229BE8E4F003FDA73 /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F89129BE8E4F003FDA73 /* WishListModel.swift */; };
-		A162D76F23B59718AED24500 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */; };
+		42264C5CDCBAB8C2FA6D74A8 /* Pods_ExTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF34A3C5E6B7122A7A19818 /* Pods_ExTrip.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
 		04087DB329B0AC7000539B1A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		04087DB529B0AC9A00539B1A /* EditProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewCell.swift; sourceTree = "<group>"; };
 		040911FD2946E11E00C8525F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -375,8 +374,9 @@
 		04F7DE04295452320020494F /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		04F7DE05295452320020494F /* WeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		04F7F89129BE8E4F003FDA73 /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
-		3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
+		56C4B630659C1D141D8D148E /* Pods-ExTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.release.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.release.xcconfig"; sourceTree = "<group>"; };
+		5FF34A3C5E6B7122A7A19818 /* Pods_ExTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C35C5390FCDE013D4EC307BC /* Pods-ExTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExTrip.debug.xcconfig"; path = "Target Support Files/Pods-ExTrip/Pods-ExTrip.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,7 +384,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A162D76F23B59718AED24500 /* Pods_ExTrip.framework in Frameworks */,
+				42264C5CDCBAB8C2FA6D74A8 /* Pods_ExTrip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1085,9 +1085,9 @@
 			children = (
 				04BF562C294193B200BCF4A5 /* ExTrip */,
 				04BF562B294193B200BCF4A5 /* Products */,
-				F4714DDEB9475F6DCCBC49CA /* Frameworks */,
 				28DB43A2E7B5DC8A58621997 /* Pods */,
 				04740E7D29CABF080051176E /* Recovered References */,
+				99AB0DA4816FA2B21EC6494D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1489,16 +1489,16 @@
 		28DB43A2E7B5DC8A58621997 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */,
-				038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */,
+				C35C5390FCDE013D4EC307BC /* Pods-ExTrip.debug.xcconfig */,
+				56C4B630659C1D141D8D148E /* Pods-ExTrip.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F4714DDEB9475F6DCCBC49CA /* Frameworks */ = {
+		99AB0DA4816FA2B21EC6494D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3D87EF4DCFE37086D024451C /* Pods_ExTrip.framework */,
+				5FF34A3C5E6B7122A7A19818 /* Pods_ExTrip.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1510,13 +1510,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04BF563E294193B300BCF4A5 /* Build configuration list for PBXNativeTarget "ExTrip" */;
 			buildPhases = (
-				4DC418440A795DF3F3BB036A /* [CP] Check Pods Manifest.lock */,
+				E6AF081303CB363EB0636AEC /* [CP] Check Pods Manifest.lock */,
 				04BF5626294193B200BCF4A5 /* Sources */,
 				04BF5628294193B200BCF4A5 /* Resources */,
-				9C8F2F6DBB4FD01970051A92 /* [CP] Embed Pods Frameworks */,
 				9FB8296529A880AD00DBD6B5 /* ShellScript */,
 				044480CE29D44CED002E793D /* ShellScript */,
 				D4ED11DBD970EE9F9613986B /* Frameworks */,
+				15DD8B2061263C7B7F39BE6C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1599,6 +1599,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		044480CE29D44CED002E793D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 8;
 			files = (
 			);
@@ -1616,7 +1617,42 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
 		};
-		4DC418440A795DF3F3BB036A /* [CP] Check Pods Manifest.lock */ = {
+		15DD8B2061263C7B7F39BE6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FB8296529A880AD00DBD6B5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		E6AF081303CB363EB0636AEC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1637,40 +1673,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		9C8F2F6DBB4FD01970051A92 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExTrip/Pods-ExTrip-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9FB8296529A880AD00DBD6B5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1968,7 +1970,7 @@
 		};
 		04BF563F294193B300BCF4A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEDCD30A3015B2D19AB8BBDA /* Pods-ExTrip.debug.xcconfig */;
+			baseConfigurationReference = C35C5390FCDE013D4EC307BC /* Pods-ExTrip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1976,7 +1978,7 @@
 				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTripDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 369462BHJ6;
 				ENABLE_BITCODE = NO;
@@ -2007,7 +2009,7 @@
 		};
 		04BF5640294193B300BCF4A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 038F796C2776C624BC2D6DB5 /* Pods-ExTrip.release.xcconfig */;
+			baseConfigurationReference = 56C4B630659C1D141D8D148E /* Pods-ExTrip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2015,7 +2017,7 @@
 				CODE_SIGN_ENTITLEMENTS = ExTrip/ExTrip.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 369462BHJ6;
 				ENABLE_BITCODE = NO;
