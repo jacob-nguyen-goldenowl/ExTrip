@@ -20,6 +20,8 @@ jobs:
       - name: Install Dependencies
         run: |
           cd ExTrip
+          pod deintegrate
+          pod cache clean --all
           pod install --repo-update
 
       - name: Install the Apple certificate and provisioning profile
