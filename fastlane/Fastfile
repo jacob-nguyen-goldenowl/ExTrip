@@ -1,0 +1,43 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
+ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
+ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to firebase"
+  lane :firebase do |options|
+
+    clear_derived_data
+    clean_build_artifacts
+  
+    build_app(
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: { 
+          "com.golden.extrip" => "Jacob-12-Apr-AppStore"
+        }
+      }
+    )
+
+     firebase_app_distribution(
+       app: ENV["FIREBASE_APP_ID"],
+       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
+     )
+    end
+end

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1062632074684-qq5uvfjk4c6a8a5bornqr6hr3359pnou.apps.googleusercontent.com</string>
+	<string>1062632074684-1a2388f6ufcojmgsgns7pfio33aas9il.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1062632074684-qq5uvfjk4c6a8a5bornqr6hr3359pnou</string>
+	<string>com.googleusercontent.apps.1062632074684-1a2388f6ufcojmgsgns7pfio33aas9il</string>
 	<key>API_KEY</key>
 	<string>AIzaSyALmHK8YLsALFt3mAgjmAY3adoRKj8_NmU</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.kappa.ExTrip</string>
+	<string>com.golden.extrip</string>
 	<key>PROJECT_ID</key>
 	<string>extripapp-8fad1</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1062632074684:ios:b16273d3b9bbe814d54fb9</string>
+	<string>1:1062632074684:ios:9188c18e7a1a0d0ad54fb9</string>
+	<key>DATABASE_URL</key>
+	<string>https://extripapp-8fad1-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
