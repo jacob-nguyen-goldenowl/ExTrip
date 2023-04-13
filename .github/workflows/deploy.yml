@@ -20,7 +20,7 @@ jobs:
       - name: Install Dependencies
         run: |
           cd ExTrip
-          pod deintegrate
+          pod deintegrate ExTrip
           pod cache clean --all
           pod install --repo-update
 
