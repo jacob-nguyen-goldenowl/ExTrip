@@ -20,12 +20,6 @@ jobs:
         run: |
           cd Example
           pod install --repo-update
-        shell: bash
-    - uses: ty0x2333/cocoapods-action@master
-        with:
-          additional_build_params: -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.0'
-          additional_lint_params: --private
-          
       - name: Install the Apple certificate and provisioning profile
         env:
           SIGNING_CERTIFICATE_P12_DATA: ${{ secrets.SIGNING_CERTIFICATE_P12_DATA }}
