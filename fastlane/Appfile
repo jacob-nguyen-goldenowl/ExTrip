@@ -3,5 +3,8 @@ apple_id("jacob.nguyen.goldenowl@gmail.com") # Your Apple Developer Portal usern
 
 itc_team_id(ENV["ITC_TEAM_ID"]) # App Store Connect Team ID
 team_id(ENV["TEAM_ID"]) # Developer Portal Team ID
+
+ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]="dnzl-alqv-szap-pkfl"
+ENV["FASTLANE_PASSWORD"]="Golden@123"
 # For more information about the Appfile, see:
 #     https://docs.fastlane.tools/advanced/#appfile
