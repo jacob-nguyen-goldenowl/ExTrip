@@ -15,7 +15,10 @@
 
 ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
 ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
-ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]
+ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"]="dnzl-alqv-szap-pkfl"
+ENV["FASTLANE_PASSWORD"]="Golden@123"
+ENV["FASTLANE_USER"]
+ENV["FASTLANE_SESSION"]
 
 default_platform(:ios)
 
@@ -46,7 +49,7 @@ platform :ios do
   
       clear_derived_data
       clean_build_artifacts
-  
+
       build_app(
         workspace: "ExTrip.xcworkspace",
         scheme: "ExTrip",
@@ -57,7 +60,9 @@ platform :ios do
           }
         }
       )
-      upload_to_testflight
+      upload_to_testflight(
+
+      )
     end
-    
+
 end
